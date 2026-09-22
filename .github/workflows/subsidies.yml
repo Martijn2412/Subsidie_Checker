@@ -2,8 +2,8 @@ name: Subsidies bijwerken
 
 on:
   schedule:
-    - cron: "15 4 * * *"
-  workflow_dispatch:
+    - cron: "15 4 * * *"   # elke dag rond 06:15 Nederlandse tijd
+  workflow_dispatch:        # handmatig starten via het tabblad Actions
 
 permissions:
   contents: write
@@ -12,6 +12,7 @@ permissions:
 jobs:
   bijwerken:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -23,11 +24,12 @@ jobs:
         run: pip install requests google-genai anthropic
 
       - name: Regelingen ophalen en voorwaarden uitlezen
-        run: python scraper/run.py --vergelijk tests/baseline_pilot.json
+        run: python -u scraper/run.py --vergelijk tests/baseline_pilot.json
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      # Wijzigingen komen als pull request binnen: jij controleert, daarna pas live.
       - name: Pull request maken bij wijzigingen
         uses: peter-evans/create-pull-request@v7
         with:
