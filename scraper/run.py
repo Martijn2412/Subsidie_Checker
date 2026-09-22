@@ -33,6 +33,7 @@ LOG_LAST = DATA / "wijzigingen_laatste.md"
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
+DATA.mkdir(parents=True, exist_ok=True)
 FORCEER = "--forceer" in sys.argv
 PROVIDER = CFG.get("provider", "gemini")
 MODELLEN = CFG["modellen"][PROVIDER]
