@@ -1,0 +1,40 @@
+name: Subsidies bijwerken
+
+on:
+  schedule:
+    - cron: "15 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bijwerken:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pakketten installeren
+        run: pip install requests google-genai anthropic
+
+      - name: Regelingen ophalen en voorwaarden uitlezen
+        run: python scraper/run.py --vergelijk tests/baseline_pilot.json
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Pull request maken bij wijzigingen
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: subsidie-update
+          title: "Subsidie-update"
+          commit-message: "Subsidie-update"
+          body-path: data/wijzigingen_laatste.md
+          add-paths: |
+            regelingen.json
+            data/**
