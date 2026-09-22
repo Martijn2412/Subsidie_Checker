@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.loc.gov/zing/srw/ http://www.loc.gov/standards/sru/xmlFiles/srw-types.xsd">
+   <version>1.2</version>
+   <numberOfRecords>15</numberOfRecords>
+   <records>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR743563_1</dcterms:identifier>
+                        <dcterms:title>Subsidieregeling Isolatie Subsidie Achterhoek (ISA) – Doesburg 2025-2028</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">algemeen verbindend voorschrift (verordening)</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2025-09-01</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2025-370332">gmb-2025-370332</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieregeling Isolatie Subsidie Achterhoek (ISA) - Doesburg 2025-2028</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="https://lokaleregelgeving.overheid.nl/CVDR120813/3#hoofdstuk_1._artikel_n3">artikel 3 van de Algemene subsidieverordening gemeente Doesburg</dcterms:source>
+                        <dcterms:source resourceIdentifier="1.0:c:BWBR0005537&amp;artikel=4%3A2&amp;g=2025-07-01">artikel 4:2 van de Algemene wet bestuursrecht</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">college van burgemeester en wethouders</overheid:isRatifiedBy>
+                        <dcterms:subject>financiën en economie</dcterms:subject>
+                        <dcterms:subject>ruimtelijke ordening, verkeer en vervoer</dcterms:subject>
+                        <dcterms:issued>2025-08-19</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2025-09-01</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2029-01-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Deze regeling vervangt de Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) voor eigenaar-bewoners t.b.v. het Nationaal Isolatie Programma (NIP) Doesburg 2024-2027.&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:intrekkingRegeling>2029-01-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>verordening</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR743563/1/xml/CVDR743563_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR743563/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR743563</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>1</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR723671_1</dcterms:identifier>
+                        <dcterms:title>Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) voor eigenaar-bewoners t.b.v. het Nationaal Isolatie Programma (NIP) Doesburg 2024-2027</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">algemeen verbindend voorschrift (verordening)</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2024-09-01</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2024-348364">gmb-2024-348364</dcterms:isFormatOf>
+                        <dcterms:alternative>Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) eigenaar-bewoners Doesburg 2024-2027</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="https://lokaleregelgeving.overheid.nl/CVDR120813/2">Algemene subsidieverordening</dcterms:source>
+                        <dcterms:source resourceIdentifier="1.0:c:BWBR0005537&amp;titeldeel=4.2&amp;g=2024-08-01">titel 4.2 van de Algemene wet bestuursrecht</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">college van burgemeester en wethouders</overheid:isRatifiedBy>
+                        <dcterms:subject>financiën en economie</dcterms:subject>
+                        <dcterms:issued>2023-08-06</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2024-09-01</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2025-09-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Deze regeling vervangt de Subsidieregeling “Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) gemeente Doesburg”.&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:intrekkingRegeling>2025-09-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>verordening</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR723671/1/xml/CVDR723671_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR723671/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR723671</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>2</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR723686_1</dcterms:identifier>
+                        <dcterms:title>Mandaatbesluit Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) eigenaar-bewoners gemeente Doesburg</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">delegatie- of mandaatbesluit</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2024-09-01</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2024-349811">gmb-2024-349811</dcterms:isFormatOf>
+                        <dcterms:alternative>Mandaatbesluit Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) eigenaar-bewoners gemeente Doesburg</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Onbekend</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">college van burgemeester en wethouders</overheid:isRatifiedBy>
+                        <dcterms:subject>bestuur en recht</dcterms:subject>
+                        <dcterms:issued>2024-08-06</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2024-09-01</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum/>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR723686/1/xml/CVDR723686_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR723686/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR723686</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>3</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR703042_1</dcterms:identifier>
+                        <dcterms:title>Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) gemeente Doesburg</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">algemeen verbindend voorschrift (verordening)</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2023-11-11</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2023-479357">gmb-2023-479357</dcterms:isFormatOf>
+                        <dcterms:alternative>Tijdelijke regeling Isolatie Subsidie Achterhoek (ISA) gemeente Doesburg</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="1.0:c:BWBR0005537&amp;titeldeel=4.2&amp;g=2023-08-01">titel 4.2 van de Algemene wet bestuursrecht</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">college van burgemeester en wethouders</overheid:isRatifiedBy>
+                        <dcterms:subject>maatschappelijke zorg en welzijn</dcterms:subject>
+                        <dcterms:subject>financiën en economie</dcterms:subject>
+                        <dcterms:issued>2023-10-31</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2023-11-11</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2024-09-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:intrekkingRegeling>2024-09-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>verordening</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR703042/1/xml/CVDR703042_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR703042/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR703042</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>4</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR153722_1</dcterms:identifier>
+                        <dcterms:title>Subsidieverordening isolatiemaatregelen bestaande eigen woningen</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="">Regiobode 29-02-12</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieverordening isolatiemaatregelen bestaande eigen woningen</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Artikel 149 Gemeentewet</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>milieu</dcterms:subject>
+                        <dcterms:issued>2012-02-16</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2012-02-29</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2013-04-05</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>10-02-2012, nummer 12</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:terugwerkendekrachtDatum>2012-01-01</overheidrg:terugwerkendekrachtDatum>
+                        <overheidrg:externeBijlage>exb-2018-15977</overheidrg:externeBijlage>
+                        <overheidrg:externeBijlage>exb-2018-15978</overheidrg:externeBijlage>
+                        <overheidrg:intrekkingRegeling>2013-04-05</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR153722/1/xml/CVDR153722_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR153722/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR153722</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>5</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR102310_1</dcterms:identifier>
+                        <dcterms:title>Subsidieverordening isolatiemaatregelen bestaande eigen woningen</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="">Regiobode, 1 juni 2011</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieverordening isolatiemaatregelen bestaande eigen woningen</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Gemeentewet, artikel 149</dcterms:source>
+                        <dcterms:source resourceIdentifier="">Algemene wet bestuursrecht, titel 4.2.</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>milieu</dcterms:subject>
+                        <dcterms:issued>2011-05-26</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2011-06-02</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2012-01-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>26-05-2011/5</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:externeBijlage>exb-2018-15962</overheidrg:externeBijlage>
+                        <overheidrg:intrekkingRegeling>2012-01-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR102310/1/xml/CVDR102310_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR102310/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR102310</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>6</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR296892_1</dcterms:identifier>
+                        <dcterms:title>Subsidieverordening Vitaal Gelderland 2011, Woningisolatie</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="">Streekjournaal, 5 april 2013, week 14</dcterms:isFormatOf>
+                        <dcterms:alternative>Verordening isolatiesubsidie eigen woning 2013-2014</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="1.0:v:BWBR0005416&amp;artikel=149">Gemeentewet, artikel 149</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>milieu</dcterms:subject>
+                        <dcterms:issued>2013-03-28</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2013-04-05</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2014-12-25</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>28/3/2013 IS6256</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:terugwerkendekrachtDatum>2013-02-01</overheidrg:terugwerkendekrachtDatum>
+                        <overheidrg:externeBijlage>exb-2018-16013</overheidrg:externeBijlage>
+                        <overheidrg:externeBijlage>exb-2018-16014</overheidrg:externeBijlage>
+                        <overheidrg:intrekkingRegeling>2014-12-25</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR296892/1/xml/CVDR296892_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR296892/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR296892</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>7</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR757582_1</dcterms:identifier>
+                        <dcterms:title>Subsidieregeling Isolatiesubsidie laag inkomen Achterhoek</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">algemeen verbindend voorschrift (verordening)</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2026-03-01</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2026-84497">gmb-2026-84497</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieregeling Isolatiesubsidie laag inkomen Achterhoek</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="https://lokaleregelgeving.overheid.nl/CVDR120813/3#hoofdstuk_1._artikel_n2">artikel 2, tweede lid, van de Algemene subsidieverordening gemeente Doesburg</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">college van burgemeester en wethouders</overheid:isRatifiedBy>
+                        <dcterms:subject>financiën en economie</dcterms:subject>
+                        <dcterms:issued>2026-02-17</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2026-03-01</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2028-01-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:intrekkingRegeling>2028-01-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>verordening</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR757582/1/xml/CVDR757582_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR757582/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR757582</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>8</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR324639_1</dcterms:identifier>
+                        <dcterms:title>Subsidieverordening isolatiemaatregelen eigen woning 2013- 2014-II</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2014-13540.html?zoekcriteria=%3fzkt%3dUitgebreid%26pst%3dGemeenteblad%26dpr%3dAlle%26spd%3d20140313%26epd%3d20140313%26sdt%3dDatumPublicatie%26org%3dDoesburg!Doetinchem%26orgt%3dgemeente!gemeente%26planId%3d%26pnr%3d1%26rpp%3d10&amp;resultIndex=0&amp;sorttype=1&amp;sortorder=4">Gemeenteblad Nr.13540</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieverordening isolatiemaatregelen eigen woning 2013-2014-II</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="1.0:v:BWBR0005416&amp;artikel=149">Gemeentewet, artikel 149</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>milieu</dcterms:subject>
+                        <dcterms:issued>2014-02-27</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2014-03-14</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2014-12-25</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>IS7632</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:gedelegeerdeRegelgeving>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:gedelegeerdeRegelgeving>
+                        <overheidrg:intrekkingRegeling>2014-12-25</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR324639/1/xml/CVDR324639_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR324639/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR324639</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>9</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR346245_1</dcterms:identifier>
+                        <dcterms:title>Subsidieverordening isolatiemaatregelen bestaande woningen 2013-2015</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2014-80714.html">Gemeenteblad, Nr.80714</dcterms:isFormatOf>
+                        <dcterms:alternative>Subsidieverordening isolatiemaatregelen eigen woning 2013-2015</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="1.0:v:BWBR0005416&amp;artikel=149">Gemeentewet, artikel 149 en Algemene wet bestuursrecht, artikel 4.2</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>bestuur en recht</dcterms:subject>
+                        <dcterms:issued>2014-12-18</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2014-12-25</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2016-05-25</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>181214/6</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:gedelegeerdeRegelgeving>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:gedelegeerdeRegelgeving>
+                        <overheidrg:intrekkingRegeling>2016-05-25</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR346245/1/xml/CVDR346245_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR346245/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR346245</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>10</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR97691_1</dcterms:identifier>
+                        <dcterms:title>Bouwverordening 2011</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="">Regiobode, 09-03-2011</dcterms:isFormatOf>
+                        <dcterms:alternative>Bouwverordening 2011</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Gemeentewet, art. 149</dcterms:source>
+                        <dcterms:source resourceIdentifier="">Woningwet, art. 8 en art. 11</dcterms:source>
+                        <dcterms:source resourceIdentifier="">Wabo, art. 2.1 en art. 2.2</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>volkshuisvesting en woningbouw</dcterms:subject>
+                        <dcterms:issued>2011-02-24</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2011-03-18</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2012-04-01</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>24-02-2011/06</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:gedelegeerdeRegelgeving>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:gedelegeerdeRegelgeving>
+                        <overheidrg:externeBijlage>exb-2018-16069</overheidrg:externeBijlage>
+                        <overheidrg:externeBijlage>exb-2018-16070</overheidrg:externeBijlage>
+                        <overheidrg:externeBijlage>exb-2018-16071</overheidrg:externeBijlage>
+                        <overheidrg:externeBijlage>exb-2018-16072</overheidrg:externeBijlage>
+                        <overheidrg:intrekkingRegeling>2012-04-01</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR97691/1/xml/CVDR97691_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR97691/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR97691</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>11</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR744991_1</dcterms:identifier>
+                        <dcterms:title>Visie op grootschalige zonne-energie</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">beleidsregel</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2025-10-07</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2025-430701">gmb-2025-430701</dcterms:isFormatOf>
+                        <dcterms:alternative>Visie op grootschalige zonne-energie</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Onbekend</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>ruimtelijke ordening, verkeer en vervoer</dcterms:subject>
+                        <dcterms:issued>2025-09-25</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2025-10-07</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum/>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:indeling>beleidsregel</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR744991/1/xml/CVDR744991_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR744991/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR744991</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>12</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR715022_1</dcterms:identifier>
+                        <dcterms:title>Nota Bedrijven en Geluid</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">beleidsregel</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2024-02-07</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2024-56867">gmb-2024-56867</dcterms:isFormatOf>
+                        <dcterms:alternative>Nota Bedrijven en Geluid </dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Onbekend</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>openbare orde en veiligheid</dcterms:subject>
+                        <dcterms:issued>2007-10-25</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2024-02-07</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2024-04-10</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>M.2005.0287.09.R003</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:indeling>beleidsregel</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR715022/1/xml/CVDR715022_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR715022/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR715022</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>13</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR715022_2</dcterms:identifier>
+                        <dcterms:title>Nota Bedrijven en Geluid</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:type scheme="overheidop:Rubriek">beleidsregel</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2024-04-10</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="https://zoek.officielebekendmakingen.nl/gmb-2024-153338">gmb-2024-153338</dcterms:isFormatOf>
+                        <dcterms:alternative>Nota Bedrijven en Geluid </dcterms:alternative>
+                        <dcterms:source resourceIdentifier="">Onbekend</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>openbare orde en veiligheid</dcterms:subject>
+                        <dcterms:issued>2024-03-28</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2024-04-10</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum/>
+                        <overheidrg:betreft>paragraaf 2.1</overheidrg:betreft>
+                        <overheidrg:kenmerk>Onbekend.</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging/>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:indeling>beleidsregel</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR715022/2/xml/CVDR715022_2.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR715022/2</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR715022</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>14</recordPosition>
+      </record>
+      <record>
+         <recordSchema>http://standaarden.overheid.nl/sru/</recordSchema>
+         <recordPacking>xml</recordPacking>
+         <recordData>
+            <gzd xmlns="http://standaarden.overheid.nl/sru"
+                 xmlns:dcterms="http://purl.org/dc/terms/"
+                 xmlns:overheid="http://standaarden.overheid.nl/owms/terms/"
+                 xsi:schemaLocation="http://standaarden.overheid.nl/sru http://standaarden.overheid.nl/sru/gzd.xsd">
+               <originalData>
+                  <overheidrg:meta xmlns:overheidrg="http://standaarden.overheid.nl/cvdr/terms/">
+                     <owmskern>
+                        <dcterms:identifier>CVDR41575_1</dcterms:identifier>
+                        <dcterms:title>Bouwverordening 2010</dcterms:title>
+                        <dcterms:language>nl</dcterms:language>
+                        <dcterms:type scheme="overheid:Informatietype">regeling</dcterms:type>
+                        <dcterms:creator scheme="overheid:Gemeente">Doesburg</dcterms:creator>
+                        <dcterms:modified>2018-03-13</dcterms:modified>
+                     </owmskern>
+                     <owmsmantel>
+                        <dcterms:isFormatOf resourceIdentifier="">Regiobode, 14 juli 2010</dcterms:isFormatOf>
+                        <dcterms:alternative>Bouwverordening 2010</dcterms:alternative>
+                        <dcterms:source resourceIdentifier="jci1.3:c:BWBR0005416">Artikel 149 Gemeentewet</dcterms:source>
+                        <overheid:isRatifiedBy scheme="overheid:BestuursorgaanGemeente">gemeenteraad</overheid:isRatifiedBy>
+                        <dcterms:subject>volkshuisvesting en woningbouw</dcterms:subject>
+                        <dcterms:issued>2010-06-24</dcterms:issued>
+                     </owmsmantel>
+                     <cvdripm>
+                        <overheidrg:inwerkingtredingDatum>2010-10-01</overheidrg:inwerkingtredingDatum>
+                        <overheidrg:uitwerkingtredingDatum>2011-03-18</overheidrg:uitwerkingtredingDatum>
+                        <overheidrg:betreft>Nieuwe regeling</overheidrg:betreft>
+                        <overheidrg:kenmerk>Geen</overheidrg:kenmerk>
+                        <overheidrg:onderwerp/>
+                        <overheidrg:redactioneleToevoeging>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:redactioneleToevoeging>
+                        <overheidrg:alternatieveIdentifier/>
+                        <overheidrg:opvolgerVan/>
+                        <overheidrg:gedelegeerdeRegelgeving>&lt;al&gt;Geen&lt;/al&gt;</overheidrg:gedelegeerdeRegelgeving>
+                        <overheidrg:intrekkingRegeling>2011-03-18</overheidrg:intrekkingRegeling>
+                        <overheidrg:indeling>overig</overheidrg:indeling>
+                        <overheidrg:omgevingswet>nee</overheidrg:omgevingswet>
+                     </cvdripm>
+                  </overheidrg:meta>
+               </originalData>
+               <enrichedData>
+                  <organisatietype>Gemeente</organisatietype>
+                  <publicatieurl_xml>https://repository.officiele-overheidspublicaties.nl/cvdr/CVDR41575/1/xml/CVDR41575_1.xml</publicatieurl_xml>
+                  <preferred_url>https://lokaleregelgeving.overheid.nl/CVDR41575/1</preferred_url>
+                  <preferred_work_url>https://lokaleregelgeving.overheid.nl/CVDR41575</preferred_work_url>
+               </enrichedData>
+            </gzd>
+         </recordData>
+         <recordPosition>15</recordPosition>
+      </record>
+   </records>
+   <extraResponseData>
+      <facetedResults xmlns="http://docs.oasis-open.org/ns/search-ws/sru-facetedResults"
+                      xsi:schemaLocation="http://docs.oasis-open.org/ns/search-ws/sru-facetedResults http://standaarden.overheid.nl/sru/facetedResults.xsd">
+         <datasource>
+            <datasourceDisplayLabel>CVDR</datasourceDisplayLabel>
+            <datasourceDescription>regelgeving van decentrale overheden</datasourceDescription>
+            <baseURL>https://zoekservice.overheid.nl/sru/Search</baseURL>
+            <facets>
+               <facet>
+                  <facetDisplayLabel>Uitgever</facetDisplayLabel>
+                  <facetDescription>Het type organisatie dat de regeling vaststelt.</facetDescription>
+                  <index>organisatietype</index>
+                  <relation>=</relation>
+                  <terms>
+                     <term>
+                        <actualTerm>Gemeente</actualTerm>
+                        <query>organisatietype = "Gemeente" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=organisatietype%20%3D%20%22Gemeente%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>15</count>
+                     </term>
+                  </terms>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Uitgever</facetDisplayLabel>
+                  <facetDescription>De naam van de organisatie die de regeling vaststelt.</facetDescription>
+                  <index>dcterms.creator</index>
+                  <relation>=</relation>
+                  <terms>
+                     <term>
+                        <actualTerm>Doesburg</actualTerm>
+                        <query>dcterms.creator = "Doesburg" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.creator%20%3D%20%22Doesburg%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>15</count>
+                     </term>
+                  </terms>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Onderwerp</facetDisplayLabel>
+                  <facetDescription>Het onderwerp (categorie) van de regeling.</facetDescription>
+                  <index>dcterms.subject</index>
+                  <relation>=</relation>
+                  <terms>
+                     <term>
+                        <actualTerm>bestuur en recht</actualTerm>
+                        <query>dcterms.subject = "bestuur en recht" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22bestuur%20en%20recht%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>2</count>
+                     </term>
+                     <term>
+                        <actualTerm>financiën en economie</actualTerm>
+                        <query>dcterms.subject = "financiën en economie" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22financi%C3%ABn%20en%20economie%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>4</count>
+                     </term>
+                     <term>
+                        <actualTerm>maatschappelijke zorg en welzijn</actualTerm>
+                        <query>dcterms.subject = "maatschappelijke zorg en welzijn" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22maatschappelijke%20zorg%20en%20welzijn%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>1</count>
+                     </term>
+                     <term>
+                        <actualTerm>milieu</actualTerm>
+                        <query>dcterms.subject = "milieu" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22milieu%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>4</count>
+                     </term>
+                     <term>
+                        <actualTerm>openbare orde en veiligheid</actualTerm>
+                        <query>dcterms.subject = "openbare orde en veiligheid" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22openbare%20orde%20en%20veiligheid%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>2</count>
+                     </term>
+                     <term>
+                        <actualTerm>ruimtelijke ordening, verkeer en vervoer</actualTerm>
+                        <query>dcterms.subject = "ruimtelijke ordening, verkeer en vervoer" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22ruimtelijke%20ordening%2C%20verkeer%20en%20vervoer%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>2</count>
+                     </term>
+                     <term>
+                        <actualTerm>volkshuisvesting en woningbouw</actualTerm>
+                        <query>dcterms.subject = "volkshuisvesting en woningbouw" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=dcterms.subject%20%3D%20%22volkshuisvesting%20en%20woningbouw%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>2</count>
+                     </term>
+                  </terms>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Gemeente</facetDisplayLabel>
+                  <facetDescription>De naam van de gemeente die de regeling vaststelt.</facetDescription>
+                  <index>gemeente</index>
+                  <relation>=</relation>
+                  <terms>
+                     <term>
+                        <actualTerm>Doesburg</actualTerm>
+                        <query>gemeente = "Doesburg" AND dcterms.creator="Doesburg" AND keyword all "isolatie"</query>
+                        <requestUrl>https://zoekservice.overheid.nl/sru/Search?version=1.2&amp;operation=searchRetrieve&amp;x-connection=cvdr&amp;query=gemeente%20%3D%20%22Doesburg%22%20AND%20dcterms.creator%3D%22Doesburg%22%20AND%20keyword%20all%20%22isolatie%22&amp;x-info-1-accept=any</requestUrl>
+                        <count>15</count>
+                     </term>
+                  </terms>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Provincie</facetDisplayLabel>
+                  <facetDescription>De naam van de provincie die de regeling vaststelt.</facetDescription>
+                  <index>provincie</index>
+                  <relation>=</relation>
+                  <terms/>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Waterschap</facetDisplayLabel>
+                  <facetDescription>De naam van het waterschap dat de regeling vaststelt.</facetDescription>
+                  <index>waterschap</index>
+                  <relation>=</relation>
+                  <terms/>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Regionaal samenwerkingsorgaan</facetDisplayLabel>
+                  <facetDescription>De naam van het regionaal samenwerkingsorgaan dat de regeling vaststelt.</facetDescription>
+                  <index>regionaalsamenwerkingsorgaan</index>
+                  <relation>=</relation>
+                  <terms/>
+               </facet>
+               <facet>
+                  <facetDisplayLabel>Caribisch openbaar lichaam</facetDisplayLabel>
+                  <facetDescription>De naam van het caribische openbare lichaam die de regeling vaststelt.</facetDescription>
+                  <index>caribischopenbaarlichaam</index>
+                  <relation>=</relation>
+                  <terms/>
+               </facet>
+            </facets>
+         </datasource>
+      </facetedResults>
+   </extraResponseData>
+</searchRetrieveResponse>
+
