@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Subsidiecheck binnendienst</title>
+<title>Subsidiecheck op adres</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -112,7 +112,8 @@ input[type=text],input[type=number]{width:100%;padding:9px 11px;border:1px solid
 .ic.info{background:var(--accent-soft);color:var(--accent)}
 .crit .d{color:var(--muted);font-size:12.5px}
 
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
+@media (max-width:560px){.facts{grid-template-columns:1fr}}
 .facts div{background:var(--panel);padding:10px 20px}
 .facts dt{font-size:12px;color:var(--muted);margin:0}
 .facts dd{margin:2px 0 0;font-size:13.5px}
@@ -128,6 +129,22 @@ details.more p{margin:4px 0;font-size:13.5px;max-width:75ch}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:var(--radius-sm);font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Adres-zoeker */
+.addr{display:grid;grid-template-columns:1fr 76px 64px;gap:6px}
+.addr input{text-transform:uppercase}
+.addr-btn{width:100%;margin-top:8px}
+.addr-btn[disabled]{opacity:.6;cursor:progress}
+.addr-out{margin-top:10px;padding:10px 12px;border-radius:var(--radius-sm);background:var(--bg);border:1px solid var(--line);font-size:13px}
+.addr-out strong{display:block;font-size:14px}
+.addr-out.err{border-color:var(--no);background:var(--no-soft);color:var(--no)}
+.addr-out ul{margin:6px 0 0;padding-left:18px}
+.addr-out .chips{margin-top:8px}
+.divider{border:0;border-top:1px solid var(--line);margin:2px 0 18px}
+.src{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:1px;text-transform:uppercase}
+.src:empty{display:none}
+.src.bag{background:var(--accent-soft);color:var(--accent)}
+.src.tios,.src.url{background:var(--ok-soft);color:var(--ok)}
+.src.hand{background:var(--off-soft);color:var(--off)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 </head>
@@ -148,31 +165,44 @@ details.more p{margin:4px 0;font-size:13.5px;max-width:75ch}
     <h2>Klant en woning</h2>
 
     <div class="field">
-      <label for="gemeente">Gemeente</label>
+      <span class="lbl" id="adresLbl">Adres</span>
+      <div class="addr" role="group" aria-labelledby="adresLbl">
+        <input id="pc" type="text" placeholder="Postcode" maxlength="7" autocomplete="off" aria-label="Postcode">
+        <input id="hn" type="text" inputmode="numeric" placeholder="Nr." maxlength="5" autocomplete="off" aria-label="Huisnummer">
+        <input id="tv" type="text" placeholder="Toev." maxlength="6" autocomplete="off" aria-label="Toevoeging">
+      </div>
+      <button class="btn primary addr-btn" id="zoekAdres" type="button">Zoek woninggegevens</button>
+      <div id="adresOut" class="addr-out" hidden aria-live="polite"></div>
+      <small>Vult gemeente, bouwjaar en woonoppervlak aan uit de BAG. WOZ en energielabel komen straks uit TIOS.</small>
+    </div>
+    <hr class="divider">
+
+    <div class="field">
+      <label for="gemeente">Gemeente<span class="src" id="src-gemeente"></span></label>
       <input id="gemeente" type="text" list="gemeenteList" placeholder="Typ een gemeente" autocomplete="off">
       <datalist id="gemeenteList"></datalist>
     </div>
 
     <div class="field">
-      <span class="lbl" id="labelLbl">Energielabel</span>
+      <span class="lbl" id="labelLbl">Energielabel<span class="src" id="src-label"></span></span>
       <div class="ladder" role="group" aria-labelledby="labelLbl" id="ladder"></div>
     </div>
 
     <div class="field">
-      <label for="woz">WOZ-waarde (€)</label>
+      <label for="woz">WOZ-waarde (€)<span class="src" id="src-woz"></span></label>
       <input id="woz" type="number" inputmode="numeric" min="0" step="1000" placeholder="bijv. 385000">
       <small>Let op: veel regelingen kijken naar de WOZ op een vaste peildatum.</small>
     </div>
 
     <div class="field">
-      <label for="bouwjaar">Bouwjaar</label>
+      <label for="bouwjaar">Bouwjaar<span class="src" id="src-bouwjaar"></span></label>
       <input id="bouwjaar" type="number" inputmode="numeric" min="1500" max="2100" placeholder="bijv. 1968">
     </div>
 
     <div class="field">
-      <label for="opp">Woonoppervlak (m²)</label>
+      <label for="opp">Woonoppervlak (m²)<span class="src" id="src-opp"></span></label>
       <input id="opp" type="number" inputmode="numeric" min="10" max="2000" placeholder="bijv. 115">
-      <small>Staat in het Kadaster/BAG. Sommige gemeenten hebben een maximum.</small>
+      <small>BAG geeft de gebruiksoppervlakte. Sommige gemeenten hebben een maximum.</small>
     </div>
 
     <div class="field">
@@ -209,6 +239,26 @@ details.more p{margin:4px 0;font-size:13.5px;max-width:75ch}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
+/* ============================================================
+   INSTELLINGEN: dit is het enige blok dat je hoeft aan te passen
+   ============================================================ */
+const CONFIG = {
+  // Waar de regelingen staan. De GitHub Action schrijft regelingen.json in de
+  // hoofdmap van de repo; deze pagina staat in /adres/, dus eerst "../".
+  DATA_URLS: ["../regelingen.json", "regelingen.json"],
+
+  // Koppeling met TIOS (nog leeg = uit). Zet hier een adres dat JSON teruggeeft,
+  // met {postcode}, {huisnummer} en {toevoeging} als invulplekken. Bijvoorbeeld:
+  // "https://tios-proxy.jouwdomein.workers.dev/woning?postcode={postcode}&huisnummer={huisnummer}&toevoeging={toevoeging}"
+  // Verwacht antwoord (alles optioneel):
+  // {"gemeente":"Doesburg","woz":325000,"woz_peildatum":"2024-01-01","bouwjaar":1968,"oppervlakte":115,"energielabel":"E"}
+  // Let op: zet hier NOOIT een API-sleutel in. De repo en pagina zijn openbaar.
+  TIOS_URL: "",
+
+  // Openbare BAG-gegevens van het Kadaster via PDOK (gratis, geen sleutel)
+  BAG: true
+};
+
 /* ============================================================
    PILOTDATA: handmatig gecontroleerd tegen de officiële regelingsteksten
    (CVDR), peildatum 22-09-2026. Op GitHub Pages wordt regelingen.json
@@ -283,58 +333,6 @@ const DEMO = [
   "peildatum": "2026-09-22",
   "betrouwbaarheid": "hoog",
   "opmerkingen": "Eenmalig per adres. Niet voor recreatiewoningen. Uitvoering uiterlijk 31-12-2028. Per maatregel niet combineren met een andere gemeentelijke regeling."
- },
- {
-  "id": "doesburg-saak",
-  "cvdr_id": null,
-  "versie": null,
-  "handmatig": true,
-  "gecontroleerd": true,
-  "gemeente": "Doesburg",
-  "provincie": "Gelderland",
-  "naam": "Subsidie Aardgasvrij of Aardgasvrij-klaar Doesburg (SAAK)",
-  "type": "subsidie",
-  "maatregelen": [
-   "glas (HR++ of triple)",
-   "kozijnen",
-   "vloerisolatie",
-   "dakisolatie",
-   "(hybride) warmtepomp",
-   "elektrisch koken",
-   "verwijderen gasaansluiting"
-  ],
-  "doelgroep": null,
-  "bedrag": "30% van de kosten, max. €4.500 per huis",
-  "technische_eisen": null,
-  "criteria": {
-   "eigenaar_bewoner": null,
-   "woz_max": null,
-   "woz_regel": null,
-   "woz_peildatum": null,
-   "woz_uitzondering": null,
-   "isolatiestaat": null,
-   "bouwjaar_min": null,
-   "bouwjaar_max": null,
-   "bouwjaar_opmerking": null,
-   "woonoppervlak_max": null,
-   "inkomen": null,
-   "vve": null,
-   "vve_opmerking": null
-  },
-  "inkomensgrens": null,
-  "aanvragen": "vóór uitvoering",
-  "uitvoerder_eisen": null,
-  "stapelbaar_isde": "ja (volgens Energieloket); ook te combineren met ISA",
-  "looptijd_start": null,
-  "looptijd_eind": null,
-  "budgetstatus": null,
-  "status": "onbekend",
-  "aanvraagloket": "Energieloket Achterhoek",
-  "bron_url": "https://www.energieloketachterhoek.nl/subsidies-leningen/saak-subsidie-doesburg/",
-  "datum_regelingstekst": null,
-  "peildatum": "2026-09-22",
-  "betrouwbaarheid": "laag",
-  "opmerkingen": "Alleen Energieloket-pagina gezien; officiële regelingstekst nog zoeken. Niet voor wijk De Ooi (eigen regeling)."
  },
  {
   "id": "doetinchem-isa-2025-2027",
@@ -538,7 +536,7 @@ const BOUWDELEN=["Dak/zolder","Gevel/spouw","Vloer/bodem","Glas"];
 const SEGS={eb:[["ja","Ja"],["nee","Nee"],["","Onbekend"]],
             type:[["grondgebonden","Grondgebonden"],["appartement","Appartement"],["","Onbekend"]],
             inkomen:[["ja","Ja"],["nee","Nee"],["","Onbekend"]]};
-const blank=()=>({gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
+const blank=()=>({pc:"",hn:"",tv:"",adres:null,bron:{},gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
 let klant=blank();
 let data=DEMO, dsName="Pilotdata (handmatig gecontroleerd)", dsLive=false;
 
@@ -701,7 +699,9 @@ function fmtD(s){ if(!s) return ""; const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s); 
 
 function noteFor(r){
   const crit=evaluate(r,klant), [,vt]=verdict(r,crit);
-  const lines=[`Subsidiecheck ${r.gemeente}: ${r.naam}`,`Uitkomst: ${vt}`];
+  const lines=[`Subsidiecheck ${r.gemeente}: ${r.naam}`];
+  if(klant.adres) lines.push(`Adres: ${klant.adres.weergave}`);
+  lines.push(`Uitkomst: ${vt}`);
   crit.forEach(x=>lines.push(`- ${statusText(x.status)}: ${x.label}${x.detail?" ("+x.detail+")":""}`));
   if(r.bedrag) lines.push(`Bedrag: ${r.bedrag}`);
   if(r.aanvragen) lines.push(`Aanvragen: ${r.aanvragen}`);
@@ -724,7 +724,12 @@ function buildControls(){
     el.innerHTML=SEGS[key].map(([v,t])=>`<button type="button" data-v="${v}" aria-pressed="${v===""}">${t}</button>`).join("");
   });
 }
+const BRON_TXT={bag:"BAG",tios:"TIOS",url:"TIOS-link",hand:"handmatig"};
 function syncControls(){
+  $("#pc").value=klant.pc; $("#hn").value=klant.hn; $("#tv").value=klant.tv;
+  ["gemeente","label","woz","bouwjaar","opp"].forEach(k=>{const el=$("#src-"+k), b=klant.bron[k];
+    el.textContent=b?BRON_TXT[b]:""; el.className="src"+(b?" "+b:"");});
+  if(!klant.adres&&!klant.pc){ const o=$("#adresOut"); o.hidden=true; o.innerHTML=""; }
   $("#gemeente").value=klant.gemeente;
   $("#woz").value=klant.woz??""; $("#bouwjaar").value=klant.bouwjaar??""; $("#opp").value=klant.opp??"";
   document.querySelectorAll("#ladder button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.label===klant.label));
@@ -744,7 +749,7 @@ function refreshDatalist(){
 document.addEventListener("click",e=>{
   const t=e.target.closest("button"); if(!t) return;
   if(t.dataset.pick!==undefined){ klant.gemeente=t.dataset.pick; }
-  else if(t.closest("#ladder")&&t.dataset.label!==undefined){ klant.label=t.dataset.label; }
+  else if(t.closest("#ladder")&&t.dataset.label!==undefined){ klant.label=t.dataset.label; klant.bron.label=t.dataset.label?"hand":undefined; }
   else if(t.dataset.bd){
     const v=t.dataset.bd;
     if(v==="__geen"){ klant.bouwdelen=[]; klant.bouwdelenBeoordeeld=!(klant.bouwdelenBeoordeeld&&!klant.bouwdelen.length); }
@@ -752,20 +757,160 @@ document.addEventListener("click",e=>{
   }
   else if(t.closest(".seg")){ klant[t.closest(".seg").dataset.key]=t.dataset.v; }
   else if(t.id==="reset"){ klant=blank(); }
+  else if(t.id==="zoekAdres"){ zoekAdres(); return; }
+  else if(t.dataset.tv!==undefined){ klant.tv=t.dataset.tv; $("#tv").value=klant.tv; zoekAdres(); return; }
   else if(t.dataset.copy){ const r=data.find(x=>x.id===t.dataset.copy); if(r) copy(noteFor(r)); return; }
   else return;
   syncControls(); render();
 });
-$("#gemeente").addEventListener("input",e=>{klant.gemeente=e.target.value; render();});
-$("#woz").addEventListener("input",e=>{klant.woz=e.target.value===""?null:Number(e.target.value); render();});
-$("#bouwjaar").addEventListener("input",e=>{klant.bouwjaar=e.target.value===""?null:Number(e.target.value); render();});
-$("#opp").addEventListener("input",e=>{klant.opp=e.target.value===""?null:Number(e.target.value); render();});
+const markHand=k=>{klant.bron[k]=klant[k]==null||klant[k]===""?undefined:"hand"; const el=$("#src-"+k), b=klant.bron[k];
+  el.textContent=b?BRON_TXT[b]:""; el.className="src"+(b?" "+b:"");};
+$("#gemeente").addEventListener("input",e=>{klant.gemeente=e.target.value; markHand("gemeente"); render();});
+$("#woz").addEventListener("input",e=>{klant.woz=e.target.value===""?null:Number(e.target.value); markHand("woz"); render();});
+$("#bouwjaar").addEventListener("input",e=>{klant.bouwjaar=e.target.value===""?null:Number(e.target.value); markHand("bouwjaar"); render();});
+$("#opp").addEventListener("input",e=>{klant.opp=e.target.value===""?null:Number(e.target.value); markHand("opp"); render();});
+["pc","hn","tv"].forEach(id=>{
+  $("#"+id).addEventListener("input",e=>{klant[id]=e.target.value;});
+  $("#"+id).addEventListener("keydown",e=>{if(e.key==="Enter") zoekAdres();});
+});
 
 function toast(msg){const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"),2200);}
 async function copy(text){
   try{ await navigator.clipboard.writeText(text); toast("Notitie gekopieerd"); }
   catch{ const ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select();
     try{ document.execCommand("copy"); toast("Notitie gekopieerd"); }catch{ toast("Kopiëren lukt niet in deze browser"); } ta.remove(); }
+}
+
+/* ============================================================ ADRES OPZOEKEN
+   Volgorde: 1) PDOK Locatieserver (adres + gemeente), 2) BAG WFS (bouwjaar,
+   oppervlakte), 3) TIOS (WOZ, label, en overschrijft BAG als TIOS iets weet).
+   ============================================================ */
+const normPc=s=>String(s||"").toUpperCase().replace(/\s+/g,"");
+const normTv=s=>String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"");
+const toNum=x=>{if(x==null||x==="") return null; const n=Number(String(x).replace(/[^\d.,-]/g,"").replace(/\.(?=\d{3}\b)/g,"").replace(",",".")); return isNaN(n)?null:n;};
+async function getJson(url,ms=9000){
+  const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),ms);
+  try{ const r=await fetch(url,{signal:ctl.signal,headers:{Accept:"application/json"}}); if(!r.ok) throw new Error("HTTP "+r.status); return await r.json(); }
+  finally{ clearTimeout(t); }
+}
+
+async function zoekLocatie(pc,hn){
+  const q=new URLSearchParams({q:`${pc} ${hn}`,rows:"50",
+    fl:"weergavenaam,gemeentenaam,provincienaam,woonplaatsnaam,straatnaam,huisnummer,huisletter,huisnummertoevoeging,postcode,adresseerbaarobject_id"});
+  q.append("fq","type:adres"); q.append("fq","postcode:"+pc);
+  const j=await getJson("https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?"+q);
+  return (j.response?.docs||[]).filter(d=>String(d.huisnummer)===String(hn));
+}
+async function zoekBag(pc,hn){
+  const f=`<Filter><And><PropertyIsEqualTo><PropertyName>postcode</PropertyName><Literal>${pc}</Literal></PropertyIsEqualTo>`+
+          `<PropertyIsEqualTo><PropertyName>huisnummer</PropertyName><Literal>${hn}</Literal></PropertyIsEqualTo></And></Filter>`;
+  const q=new URLSearchParams({service:"WFS",version:"2.0.0",request:"GetFeature",typeName:"bag:verblijfsobject",outputFormat:"json",count:"50",filter:f});
+  const j=await getJson("https://service.pdok.nl/lv/bag/wfs/v2_0?"+q);
+  return (j.features||[]).map(x=>x.properties||{});
+}
+async function zoekTios(pc,hn,tv){
+  if(!CONFIG.TIOS_URL) return null;
+  const url=CONFIG.TIOS_URL.replace("{postcode}",encodeURIComponent(pc)).replace("{huisnummer}",encodeURIComponent(hn)).replace("{toevoeging}",encodeURIComponent(tv));
+  const j=await getJson(url);
+  const g=(...keys)=>{for(const k of keys){ if(j[k]!=null&&j[k]!=="") return j[k]; } return null;};
+  return { gemeente:g("gemeente","gemeentenaam"), woz:toNum(g("woz","woz_waarde","wozWaarde")), woz_peildatum:g("woz_peildatum","wozPeildatum"),
+    bouwjaar:toNum(g("bouwjaar")), oppervlakte:toNum(g("oppervlakte","woonoppervlak","gebruiksoppervlakte")), energielabel:g("energielabel","label") };
+}
+function toevoegingVan(d){ return normTv((d.huisletter||"")+(d.huisnummertoevoeging||d.toevoeging||"")); }
+function kiesAdres(lijst,tv){
+  const w=normTv(tv);
+  if(!lijst.length) return {keuze:null,opties:[]};
+  const exact=lijst.find(d=>toevoegingVan(d)===w);
+  if(exact) return {keuze:exact,opties:[]};
+  if(!w&&lijst.length>1) return {keuze:null,opties:lijst};
+  return {keuze:w?null:lijst[0],opties:w?lijst:[]};
+}
+function labelNorm(x){ if(!x) return null; const s=String(x).trim().toUpperCase(); if(/^GEEN/.test(s)) return "geen"; const m=/^([A-G])/.exec(s); return m?m[1]:null; }
+
+let zoekNr=0, linkAdres=null;
+async function zoekAdres(){
+  const pc=normPc($("#pc").value), hn=String($("#hn").value||"").trim().replace(/\D/g,""), tv=String($("#tv").value||"").trim();
+  const out=$("#adresOut"), btn=$("#zoekAdres");
+  klant.pc=pc; klant.hn=hn; klant.tv=tv; $("#pc").value=pc;
+  if(!/^\d{4}[A-Z]{2}$/.test(pc)||!hn){ out.hidden=false; out.className="addr-out err"; out.textContent="Vul een geldige postcode (1234AB) en een huisnummer in."; return; }
+  const nr=++zoekNr; btn.disabled=true; btn.textContent="Zoeken…";
+  out.hidden=false; out.className="addr-out"; out.textContent="Gegevens ophalen…";
+
+  const [loc,bag,tios]=await Promise.allSettled([
+    zoekLocatie(pc,hn),
+    CONFIG.BAG?zoekBag(pc,hn):Promise.resolve([]),
+    zoekTios(pc,hn,tv)
+  ]);
+  if(nr!==zoekNr) return;               // een nieuwere zoekactie loopt al
+  btn.disabled=false; btn.textContent="Zoek woninggegevens";
+
+  const locLijst=loc.status==="fulfilled"?loc.value:[];
+  const bagLijst=bag.status==="fulfilled"?bag.value:[];
+  const t=tios.status==="fulfilled"?tios.value:null;
+  const {keuze,opties}=kiesAdres(locLijst,tv);
+
+  if(!keuze&&opties.length){
+    out.className="addr-out";
+    out.innerHTML=`<strong>Meerdere adressen op dit nummer</strong>Kies de juiste toevoeging:
+      <div class="chips">${opties.map(d=>`<button type="button" class="chip" data-tv="${esc(toevoegingVan(d))}">${esc(hn+(toevoegingVan(d)?" "+toevoegingVan(d):" (geen)"))}</button>`).join("")}</div>`;
+    return;
+  }
+  if(!keuze&&!t){
+    out.className="addr-out err";
+    out.textContent=loc.status==="rejected"?"Adresservice niet bereikbaar. Vul de gegevens hieronder handmatig in.":"Adres niet gevonden. Check postcode, huisnummer en toevoeging.";
+    return;
+  }
+
+  // BAG-object bij dit adres: eerst op id, anders op toevoeging
+  const vbo=keuze&&(bagLijst.find(v=>v.identificatie&&v.identificatie===keuze.adresseerbaarobject_id)
+           ||bagLijst.find(v=>toevoegingVan(v)===toevoegingVan(keuze)))||null;
+
+  // Oude automatisch ingevulde waarden wissen, handmatige laten staan
+  const houdLink=linkAdres===pc+"|"+hn+"|"+normTv(tv);
+  ["gemeente","woz","bouwjaar","opp","label"].forEach(k=>{ const b=klant.bron[k]; if(b&&b!=="hand"&&!(b==="url"&&houdLink)){ klant[k]=k==="gemeente"||k==="label"?"":null; klant.bron[k]=undefined; }});
+  const zet=(k,v,b)=>{ if(v==null||v===""||klant.bron[k]==="hand"||klant.bron[k]==="url") return false; klant[k]=v; klant.bron[k]=b; return true; };
+
+  zet("gemeente",keuze?.gemeentenaam,"bag");
+  if(vbo){ zet("bouwjaar",toNum(vbo.bouwjaar),"bag"); zet("opp",toNum(vbo.oppervlakte),"bag"); }
+  if(t){ zet("gemeente",t.gemeente,"tios"); zet("woz",t.woz,"tios"); zet("bouwjaar",t.bouwjaar,"tios"); zet("opp",t.oppervlakte,"tios"); zet("label",labelNorm(t.energielabel),"tios"); }
+
+  klant.adres={ weergave:keuze?.weergavenaam||`${pc} ${hn}${tv?" "+tv:""}`, provincie:keuze?.provincienaam||null, gebruiksdoel:vbo?.gebruiksdoel||null, wozPeildatum:t?.woz_peildatum||null };
+
+  const gevonden=[], mist=[];
+  const m=(k,txt,waarde)=>klant[k]!=null&&klant[k]!==""?gevonden.push(`${txt}: ${waarde} (${BRON_TXT[klant.bron[k]]})`):mist.push(txt);
+  m("bouwjaar","Bouwjaar",klant.bouwjaar);
+  m("opp","Woonoppervlak",klant.opp+" m²");
+  m("woz","WOZ",klant.woz!=null?eur(klant.woz)+(klant.adres.wozPeildatum?` (peildatum ${fmtD(klant.adres.wozPeildatum)})`:""):"");
+  m("label","Energielabel",klant.label==="geen"?"geen":klant.label);
+  const waarsch=[];
+  if(bag.status==="rejected") waarsch.push("BAG niet bereikbaar: bouwjaar en oppervlakte handmatig invullen.");
+  else if(keuze&&!vbo) waarsch.push("Geen BAG-verblijfsobject gevonden (bijv. nevenadres of woonboot).");
+  if(vbo?.gebruiksdoel&&!/woon/i.test(vbo.gebruiksdoel)) waarsch.push(`Gebruiksdoel is "${vbo.gebruiksdoel}", geen woonfunctie.`);
+  if(tios.status==="rejected") waarsch.push("TIOS gaf geen antwoord.");
+  if(!CONFIG.TIOS_URL&&mist.length) waarsch.push("TIOS-koppeling staat nog uit: vul ontbrekende gegevens zelf in.");
+
+  out.className="addr-out";
+  out.innerHTML=`<strong>${esc(klant.adres.weergave)}</strong>Gemeente ${esc(klant.gemeente||"onbekend")}
+    ${gevonden.length?`<ul>${gevonden.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+    ${mist.length?`<div class="d" style="margin-top:6px">Nog invullen: ${esc(mist.join(", "))}</div>`:""}
+    ${waarsch.map(x=>`<div class="d" style="margin-top:4px">${esc(x)}</div>`).join("")}`;
+  syncControls(); render();
+}
+
+/* Meegeven via de link, bijv. vanuit TIOS:
+   .../adres/?postcode=6981AB&huisnummer=12&toevoeging=a&woz=325000&label=E
+   Waarden uit de link winnen van BAG. */
+async function vanuitLink(){
+  const p=new URLSearchParams(location.search); if(![...p.keys()].length) return;
+  const g=k=>{const v=p.get(k); return v==null||v===""?null:v;};
+  const zet=(k,v)=>{ if(v==null) return; klant[k]=v; klant.bron[k]="url"; };
+  zet("gemeente",g("gemeente")); zet("woz",toNum(g("woz"))); zet("bouwjaar",toNum(g("bouwjaar")));
+  zet("opp",toNum(g("oppervlakte"))); zet("label",labelNorm(g("label")));
+  syncControls(); render();
+  if(g("postcode")&&g("huisnummer")){
+    linkAdres=normPc(g("postcode"))+"|"+String(g("huisnummer")).replace(/\D/g,"")+"|"+normTv(g("toevoeging"));
+    $("#pc").value=g("postcode"); $("#hn").value=g("huisnummer"); $("#tv").value=g("toevoeging")||""; await zoekAdres();
+  }
 }
 
 /* ============================================================ DATASET LADEN
@@ -781,6 +926,10 @@ function fromFlat(row,i){
   const num=k=>v(k)==null?null:Number(String(v(k)).replace(/[^\d.]/g,""));
   const list=k=>v(k)==null?null:String(v(k)).split(/[,;|]/).map(s=>s.trim()).filter(Boolean);
   const eb=v("eigenaar_bewoner");
+  // Excel maakt van datums soms een getal (bijv. 47024): terugzetten naar JJJJ-MM-DD
+  const datum=k=>{const x=v(k); if(x==null) return null; const n=Number(x);
+    if(!isNaN(n)&&n>20000&&n<80000){const d=new Date(Date.UTC(1899,11,30)+n*864e5); return d.toISOString().slice(0,10);} return String(x);};
+  const gc=v("gecontroleerd");
   return { id:v("id")||`rij-${i+1}`, gemeente:v("gemeente")||"", provincie:v("provincie"), naam:v("naam")||v("naam_regeling")||"(naam onbekend)",
     type:v("type"), maatregelen:list("maatregelen"), doelgroep:list("doelgroep"), bedrag:v("bedrag"), technische_eisen:v("technische_eisen"),
     criteria:{ eigenaar_bewoner:eb==null?null:/^(ja|true|1)$/i.test(String(eb)), woz_max:num("woz_max"), woz_regel:v("woz_regel"),
@@ -788,11 +937,12 @@ function fromFlat(row,i){
       bouwdelen_modus:v("bouwdelen_modus"), bouwjaar_min:num("bouwjaar_min"), bouwjaar_max:num("bouwjaar_max"),
       bouwjaar_opmerking:v("bouwjaar_opmerking"), inkomen:v("inkomen"), vve:v("vve"), vve_opmerking:v("vve_opmerking"),
       woonoppervlak_max:num("woonoppervlak_max"), woz_uitzondering:v("woz_uitzondering"),
-      ...(v("isolatiestaat_json")?{isolatiestaat:JSON.parse(v("isolatiestaat_json"))}:{}) },
+      ...(v("isolatiestaat_json")?{isolatiestaat:(j=>Array.isArray(j)?{regels:j}:j)(JSON.parse(v("isolatiestaat_json")))}:{}) },
     inkomensgrens:v("inkomensgrens"), aanvragen:v("aanvragen"), uitvoerder_eisen:v("uitvoerder_eisen"), stapelbaar_isde:v("stapelbaar_isde"),
-    looptijd_start:v("looptijd_start"), looptijd_eind:v("looptijd_eind"), budgetstatus:v("budgetstatus"), status:v("status")||"onbekend",
-    aanvraagloket:v("aanvraagloket"), bron_url:v("bron_url"), datum_regelingstekst:v("datum_regelingstekst"), peildatum:v("peildatum"),
-    betrouwbaarheid:v("betrouwbaarheid"), opmerkingen:v("opmerkingen") };
+    looptijd_start:datum("looptijd_start"), looptijd_eind:datum("looptijd_eind"), budgetstatus:v("budgetstatus"), status:v("status")||"onbekend",
+    aanvraagloket:v("aanvraagloket"), bron_url:v("bron_url"), datum_regelingstekst:datum("datum_regelingstekst"), peildatum:datum("peildatum"),
+    betrouwbaarheid:v("betrouwbaarheid"), opmerkingen:v("opmerkingen"),
+    gecontroleerd: gc==null?undefined:/^(ja|true|1)$/i.test(String(gc)) };
 }
 function useDataset(arr,name,save=true){
   if(!Array.isArray(arr)||!arr.length) throw new Error("Geen regelingen gevonden in het bestand");
@@ -816,13 +966,16 @@ $("#fileIn").addEventListener("change",async e=>{
   e.target.value="";
 });
 
-/* Opstart: 1) regelingen.json naast deze pagina (GitHub Pages), 2) laatst geladen dataset, 3) voorbeelddata */
+/* Opstart: 1) adres uit de link, 2) regelingen.json van de GitHub Action, 3) laatst geladen dataset, 4) voorbeelddata */
 (async function init(){
   buildControls(); syncControls(); refreshDatalist(); render();
-  try{
-    const res=await fetch("regelingen.json",{cache:"no-store"});
-    if(res.ok){ const j=await res.json(); useDataset(Array.isArray(j)?j:(j.regelingen||j.data),"regelingen.json (automatisch)",false); return; }
-  }catch{}
+  vanuitLink();
+  for(const url of CONFIG.DATA_URLS){
+    try{
+      const res=await fetch(url,{cache:"no-store"});
+      if(res.ok){ const j=await res.json(); useDataset(Array.isArray(j)?j:(j.regelingen||j.data),"regelingen.json (automatisch)",false); return; }
+    }catch{}
+  }
   try{
     const s=JSON.parse(localStorage.getItem("subsidiecheck-dataset")||"null");
     if(s&&s.data) useDataset(s.data,s.name+" (eerder geladen)",false);

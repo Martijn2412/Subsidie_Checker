@@ -33,7 +33,6 @@ LOG_LAST = DATA / "wijzigingen_laatste.md"
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
-DATA.mkdir(parents=True, exist_ok=True)  # map data/ aanmaken als die ontbreekt
 FORCEER = "--forceer" in sys.argv
 PROVIDER = CFG.get("provider", "gemini")
 MODELLEN = CFG["modellen"][PROVIDER]
@@ -42,8 +41,7 @@ PAUZE = CFG.get("pauze_tussen_aanroepen_sec", 7)  # gratis Gemini: max. enkele v
 if PROVIDER == "gemini":
     from google import genai
     from google.genai import types
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"],
-                          http_options=types.HttpOptions(timeout=180_000))  # max. 3 min per aanroep
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 else:
     from anthropic import Anthropic
     client = Anthropic()  # leest ANTHROPIC_API_KEY
@@ -63,45 +61,30 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-class LimietOp(Exception):
-    """De (gratis) limiet van het taalmodel is bereikt; de rest volgt bij de volgende run."""
-
-
 def llm(taak, tekst, json_uit=False):
-    """Stuurt tekst naar het taalmodel. Bij drukte of limiet: eerst even wachten,
-    dan het reservemodel proberen, en anders LimietOp opgooien."""
-    modellen = [MODELLEN[taak]] + ([MODELLEN[taak + "_reserve"]] if MODELLEN.get(taak + "_reserve") else [])
-    laatste_fout = None
-    for model in modellen:
-        for poging in range(3):
-            try:
-                time.sleep(PAUZE)
-                if PROVIDER == "gemini":
-                    cfg = types.GenerateContentConfig(
-                        temperature=0,
-                        max_output_tokens=16000 if taak == "extractie" else 1000,
-                        response_mime_type="application/json" if json_uit else "text/plain",
-                    )
-                    r = client.models.generate_content(model=model, contents=tekst, config=cfg)
-                    if not r.text:
-                        raise RuntimeError("leeg antwoord")
-                    return r.text
-                r = client.messages.create(model=model, max_tokens=8000 if taak == "extractie" else 10,
-                                           messages=[{"role": "user", "content": tekst}])
-                return "".join(b.text for b in r.content if b.type == "text")
-            except Exception as e:
-                fout = str(e)
-                laatste_fout = fout
-                limiet = "429" in fout or "RESOURCE_EXHAUSTED" in fout or "rate_limit" in fout
-                if limiet and poging >= 1:
-                    print(f"  {model}: limiet bereikt, ander model proberen")
-                    break
-                wacht = 40 if limiet else 20 * (poging + 1)
-                print(f"  {model}: fout ({fout[:110]}), wacht {wacht}s, poging {poging + 1}/3")
-                time.sleep(wacht)
-    if laatste_fout and ("429" in laatste_fout or "RESOURCE_EXHAUSTED" in laatste_fout or "rate_limit" in laatste_fout):
-        raise LimietOp(laatste_fout[:200])
-    raise RuntimeError(f"Taalmodel faalt: {(laatste_fout or '')[:200]}")
+    """Stuurt tekst naar het gekozen taalmodel. taak = "filter" of "extractie"."""
+    model = MODELLEN[taak]
+    for poging in range(4):
+        try:
+            time.sleep(PAUZE)
+            if PROVIDER == "gemini":
+                cfg = types.GenerateContentConfig(
+                    temperature=0,
+                    max_output_tokens=16000 if taak == "extractie" else 1000,
+                    response_mime_type="application/json" if json_uit else "text/plain",
+                )
+                r = client.models.generate_content(model=model, contents=tekst, config=cfg)
+                if not r.text:
+                    raise RuntimeError("leeg antwoord van Gemini")
+                return r.text
+            r = client.messages.create(model=model, max_tokens=8000 if taak == "extractie" else 10,
+                                       messages=[{"role": "user", "content": tekst}])
+            return "".join(b.text for b in r.content if b.type == "text")
+        except Exception as e:
+            wacht = 65 if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e) else 15 * (poging + 1)
+            print(f"  API-fout ({str(e)[:150]}), wacht {wacht}s, poging {poging + 1}/4")
+            time.sleep(wacht)
+    raise RuntimeError("Taalmodel faalt vier keer")
 
 
 def parse_json(tekst):
@@ -155,50 +138,13 @@ def haal_tekst(xml_url):
     return t[:150_000]
 
 
-# ---------- stap 3: trechter (eerst gratis, dan pas Gemini) ----------
-TITEL_NIET = re.compile(
-    r"algemene plaatselijke|\bapv\b|bouwverordening|leges|omgevingsplan|bestemmingsplan|mandaat|delegatie|"
-    r"volmacht|welstand|monument|erfgoed|aardgasvrij|warmtepomp|zonne|warmtenet|groene? da|afval|precario|"
-    r"tarie|belasting|huisvesting|parkeer|evenement|sport|cultuur|onderwijs|jeugd|wmo|bijstand|participatie|"
-    r"inspraak|klacht|archief|begroting|reglement van orde|horeca|kinderopvang|verkeer|riool|water", re.I)
-TITEL_WEL = re.compile(r"subsidie|regeling|lening|voucher|waardebon|tegoed|bijdrage|stimulering|isol|glas|fonds", re.I)
-
-
-def titel_valt_af(titel):
-    """Stap 3a: alleen op de titel, zonder iets te downloaden."""
-    return bool(TITEL_NIET.search(titel)) or not TITEL_WEL.search(titel)
-
-
-def is_vervallen(cid):
-    """Stap 3b: de CVDR-pagina toont 'Geldend van ... t/m <datum>'. Ligt die datum in het verleden: overslaan."""
-    try:
-        r = requests.get(f"https://lokaleregelgeving.overheid.nl/{cid}", headers=UA, timeout=60)
-        t = re.sub(r"<[^>]+>", " ", r.text)
-        m = re.search(r"Geldend van\s+\d{2}-\d{2}-\d{4}\s+t/m\s+(heden|\d{2}-\d{2}-\d{4})", t)
-        time.sleep(0.5)
-        if not m or m.group(1) == "heden":
-            return False
-        d, mnd, j = m.group(1).split("-")
-        return f"{j}-{mnd}-{d}" < VANDAAG
-    except Exception:
-        return False  # bij twijfel niet overslaan
-
-
-def tekst_valt_af(tekst):
-    """Stap 3c: moet echt over isolatie van woningen en geld gaan."""
-    laag = tekst.lower()
-    return not ("isol" in laag and ("woning" in laag or "eigenaar" in laag)
-                and re.search(r"subsidie|lening|tegoed|voucher|waardebon|bijdrage", laag))
-
-
+# ---------- stap 3: relevantie ----------
 def is_relevant(titel, tekst):
-    """Stap 3d: pas nu Gemini (Flash-Lite) vragen."""
-    vraag = ("Beantwoord met alleen JA of NEE.\n"
-             "JA alleen als het HOOFDDOEL van deze gemeentelijke regeling isolatie is van BESTAANDE woningen "
-             "van particulieren: dak, zolder, gevel, spouwmuur, vloer/bodem of isolerend glas (HR++/triple).\n"
-             "NEE als de regeling vooral gaat over aardgasvrij/aardgasvrij-klaar, warmtepompen, zonnepanelen, "
-             "warmtenet, algemene verduurzaming of een brede duurzaamheidslening, ook als isolatie daar één van "
-             "de opties is. Ook NEE bij monumenten-, bedrijven- of verhuurdersregelingen.\n\n"
+    laag = tekst.lower()
+    if "isol" not in laag or "woning" not in laag:
+        return False
+    vraag = ("Beantwoord met alleen JA of NEE. Gaat deze gemeentelijke regeling over subsidie, "
+             "waardebon of lening voor ISOLATIE van BESTAANDE woningen van PARTICULIERE eigenaar-bewoners?\n\n"
              f"Titel: {titel}\n\nBegin van de tekst:\n{tekst[:6000]}")
     return llm("filter", vraag).strip().upper().startswith("JA")
 
@@ -250,71 +196,42 @@ def main():
     oud_per_cvdr = {r["cvdr_id"]: r for r in oud.values() if r.get("cvdr_id")}
     dekking = lees(DEKKING, {})
     nieuw, log = [], []
-    limiet_op, uitgesteld = False, 0
 
     for g in CFG["gemeenten"]:
         naam = g["naam"]
         print(f"== {naam}")
         treffers = zoek_cvdr(naam)
-        print(f"  {len(treffers)} treffers in CVDR")
         relevant = 0
-        tel = {"titel": 0, "vervallen": 0, "geen isolatie": 0, "gemini-filter": 0, "ongewijzigd": 0, "uitgelezen": 0}
         for cid, meta in treffers.items():
-            st = state.get(cid, {})
-            vorige = oud_per_cvdr.get(cid)
-            zelfde_versie = not FORCEER and st.get("versie") == meta["versie"]
-
-            # al eerder beoordeeld en niets veranderd: niets downloaden
-            if zelfde_versie and st.get("skip"):
-                tel[st["skip"]] = tel.get(st["skip"], 0) + 1
-                continue
-            if zelfde_versie and vorige:
-                nieuw.append({**vorige, "peildatum": VANDAAG, "status": status(vorige)})
-                relevant += 1
-                tel["ongewijzigd"] += 1
-                continue
-
-            def overslaan(reden):
-                state[cid] = {"versie": meta["versie"], "skip": reden}
-                tel[reden] += 1
-
-            if titel_valt_af(meta["titel"]):
-                overslaan("titel"); continue
-            if is_vervallen(cid):
-                overslaan("vervallen"); continue
             try:
                 tekst = haal_tekst(meta["xml_url"])
             except Exception as e:
                 print(f"  {cid}: tekst ophalen mislukt ({e})")
-                if vorige:
-                    nieuw.append(vorige)
+                if cid in oud_per_cvdr:
+                    nieuw.append(oud_per_cvdr[cid])
                 continue
-            if tekst_valt_af(tekst):
-                overslaan("geen isolatie"); continue
-            if limiet_op:  # limiet al bereikt: bewaren voor de volgende run
-                uitgesteld += 1
-                if vorige:
-                    nieuw.append(vorige)
+            h = hashlib.sha256(tekst.encode()).hexdigest()
+            vorige = oud_per_cvdr.get(cid)
+            if state.get(cid, {}).get("hash") == h and vorige:
+                nieuw.append({**vorige, "peildatum": VANDAAG, "status": status(vorige)})
+                relevant += 1
                 continue
+            if state.get(cid, {}).get("irrelevant") and state[cid].get("hash") == h:
+                continue
+            if not is_relevant(meta["titel"], tekst):
+                state[cid] = {"hash": h, "irrelevant": True}
+                continue
+            print(f"  {cid} v{meta['versie']}: extraheren ({meta['titel'][:70]})")
             try:
-                print(f"  {cid}: Gemini-filter ({meta['titel'][:60]})")
-                if not is_relevant(meta["titel"], tekst):
-                    overslaan("gemini-filter"); continue
-                print(f"  {cid} v{meta['versie']}: uitlezen")
                 ext = extraheer(tekst)
-            except LimietOp as e:
-                print(f"  LIMIET BEREIKT ({e}). Resterende regelingen volgen bij de volgende run.")
-                limiet_op, uitgesteld = True, uitgesteld + 1
-                if vorige:
-                    nieuw.append(vorige)
-                continue
             except Exception as e:
-                print(f"  {cid}: mislukt ({e})")
+                print(f"  {cid}: extractie mislukt ({e})")
                 if vorige:
                     nieuw.append(vorige)
                 continue
             if not ext.get("relevant", True):
-                overslaan("gemini-filter"); continue
+                state[cid] = {"hash": h, "irrelevant": True}
+                continue
             ext.pop("relevant", None)
             rec = {
                 "id": vorige["id"] if vorige else f"{slug(naam)}-{cid.lower()}", "cvdr_id": cid, "versie": meta["versie"],
@@ -327,15 +244,13 @@ def main():
             rec["naam"] = rec.get("naam") or meta["titel"]
             rec["status"] = status(rec)
             rec["betrouwbaarheid"] = betrouwbaarheid(rec)
-            state[cid] = {"versie": meta["versie"], "hash": hashlib.sha256(tekst.encode()).hexdigest()}
+            state[cid] = {"hash": h, "versie": meta["versie"]}
             relevant += 1
-            tel["uitgelezen"] += 1
             nieuw.append(rec)
             diff = verschillen(vorige, rec)
             kop = f"**{naam} – {rec['naam']}** ({'nieuw' if not vorige else 'gewijzigd'}, {rec['bron_url']})"
             log.append(kop + "".join(f"\n  - {v}: {json.dumps(a, ensure_ascii=False)} → {json.dumps(b, ensure_ascii=False)}" for v, a, b in diff))
 
-        print("  trechter: " + ", ".join(f"{k} {v}" for k, v in tel.items() if v))
         dekking[naam] = {"datum": VANDAAG, "bronnen_gecheckt": ["CVDR"], "treffers": len(treffers), "relevante_regelingen": relevant}
 
         # regelingen die niet meer gevonden worden: niet weggooien, wel markeren
@@ -355,8 +270,6 @@ def main():
     schrijf(STATE, state)
     schrijf(DEKKING, dekking)
     tekst = f"# Subsidie-update {VANDAAG}\n\n" + ("\n\n".join(log) if log else "Geen wijzigingen.") + "\n"
-    if uitgesteld:
-        tekst += f"\n**Let op:** limiet van het taalmodel bereikt. {uitgesteld} regeling(en) nog niet verwerkt; die volgen bij de volgende run.\n"
     LOG_LAST.write_text(tekst, encoding="utf-8")
     with LOG_ALL.open("a", encoding="utf-8") as f:
         f.write("\n" + tekst)

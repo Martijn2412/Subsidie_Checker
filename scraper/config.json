@@ -1,13 +1,23 @@
 {
   "provider": "gemini",
- "gemeenten": [
-  { "naam": "Doesburg", "provincie": "Gelderland" },
-  { "naam": "Apeldoorn", "provincie": "Gelderland" },
-  { "naam": "Doetinchem", "provincie": "Gelderland" },
-  { "naam": "Arnhem", "provincie": "Gelderland" },
-  { "naam": "Zutphen", "provincie": "Gelderland" },
-  { "naam": "Bronckhorst", "provincie": "Gelderland" }
-],
+  "gemeenten": [
+    {
+      "naam": "Doesburg",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Apeldoorn",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Doetinchem",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Arnhem",
+      "provincie": "Gelderland"
+    }
+  ],
   "trefwoorden": [
     "isolatie",
     "isoleren",
