@@ -33,7 +33,7 @@ LOG_LAST = DATA / "wijzigingen_laatste.md"
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
-DATA.mkdir(parents=True, exist_ok=True)
+DATA.mkdir(parents=True, exist_ok=True)  # map data/ aanmaken als die ontbreekt
 FORCEER = "--forceer" in sys.argv
 PROVIDER = CFG.get("provider", "gemini")
 MODELLEN = CFG["modellen"][PROVIDER]
@@ -42,7 +42,8 @@ PAUZE = CFG.get("pauze_tussen_aanroepen_sec", 7)  # gratis Gemini: max. enkele v
 if PROVIDER == "gemini":
     from google import genai
     from google.genai import types
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"],
+                          http_options=types.HttpOptions(timeout=180_000))  # max. 3 min per aanroep
 else:
     from anthropic import Anthropic
     client = Anthropic()  # leest ANTHROPIC_API_KEY
@@ -202,6 +203,7 @@ def main():
         naam = g["naam"]
         print(f"== {naam}")
         treffers = zoek_cvdr(naam)
+        print(f"  {len(treffers)} treffers in CVDR")
         relevant = 0
         for cid, meta in treffers.items():
             try:
@@ -219,6 +221,7 @@ def main():
                 continue
             if state.get(cid, {}).get("irrelevant") and state[cid].get("hash") == h:
                 continue
+            print(f"  {cid}: relevant? ({meta['titel'][:60]})")
             if not is_relevant(meta["titel"], tekst):
                 state[cid] = {"hash": h, "irrelevant": True}
                 continue
