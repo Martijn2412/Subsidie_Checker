@@ -1,0 +1,40 @@
+{
+  "provider": "gemini",
+  "gemeenten": [
+    {
+      "naam": "Doesburg",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Apeldoorn",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Doetinchem",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Arnhem",
+      "provincie": "Gelderland"
+    }
+  ],
+  "trefwoorden": [
+    "isolatie",
+    "isoleren",
+    "energiebesparing",
+    "verduurzaming woning",
+    "duurzaamheidslening"
+  ],
+  "modellen": {
+    "gemini": {
+      "filter": "gemini-flash-lite-latest",
+      "extractie": "gemini-flash-latest"
+    },
+    "claude": {
+      "filter": "claude-haiku-4-5-20251001",
+      "extractie": "claude-sonnet-5"
+    }
+  },
+  "pauze_tussen_aanroepen_sec": 7,
+  "max_resultaten_per_zoekvraag": 50
+}

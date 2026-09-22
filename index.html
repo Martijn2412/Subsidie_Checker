@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subsidiecheck binnendienst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#eef2f1; --panel:#ffffff; --ink:#1d2a33; --muted:#5b6b73; --line:#d3dbd8;
+  --accent:#22577a; --accent-soft:#e3edf3;
+  --ok:#2e7d4f; --ok-soft:#e4f2e9; --no:#b3261e; --no-soft:#fbe7e5;
+  --unk:#9a6412; --unk-soft:#fbf0dc; --off:#6b7479; --off-soft:#eceeef;
+  --radius-lg:14px; --radius-sm:6px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#131b20; --panel:#1b252c; --ink:#e3eaee; --muted:#9aabb3; --line:#2e3b43;
+    --accent:#7fb3d5; --accent-soft:#223544;
+    --ok:#6cc58f; --ok-soft:#1d3327; --no:#f08a82; --no-soft:#3a2120;
+    --unk:#e5b35c; --unk-soft:#382d18; --off:#9aa3a8; --off-soft:#262f35;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131b20; --panel:#1b252c; --ink:#e3eaee; --muted:#9aabb3; --line:#2e3b43;
+  --accent:#7fb3d5; --accent-soft:#223544;
+  --ok:#6cc58f; --ok-soft:#1d3327; --no:#f08a82; --no-soft:#3a2120;
+  --unk:#e5b35c; --unk-soft:#382d18; --off:#9aa3a8; --off-soft:#262f35;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+header.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+  padding:14px 24px;border-bottom:1px solid var(--line);background:var(--panel)}
+header.top h1{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
+.dataset{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;font-size:12.5px;font-weight:600}
+.pill.demo{background:var(--unk-soft);color:var(--unk)}
+.pill.live{background:var(--ok-soft);color:var(--ok)}
+.btn{border:1px solid var(--line);background:var(--panel);padding:7px 14px;border-radius:var(--radius-sm);cursor:pointer;font-weight:600;font-size:13.5px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#10202b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:#10202b}}
+
+main{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:24px;padding:24px;max-width:1280px;margin:0 auto}
+@media (max-width:860px){main{grid-template-columns:1fr;padding:16px;gap:16px}}
+
+.profile{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px;align-self:start;position:sticky;top:16px}
+@media (max-width:860px){.profile{position:static}}
+.profile h2{font-size:15px;margin:0 0 14px;font-weight:700}
+.field{margin-bottom:18px}
+.field > label,.field > .lbl{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+input[type=text],input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)}
+.seg{display:flex;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+.seg button{flex:1;border:0;background:transparent;padding:7px 4px;cursor:pointer;font-size:13.5px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:700}
+
+/* Energielabel-ladder: het ene opvallende element */
+.ladder{display:flex;flex-direction:column;gap:3px}
+.ladder button{display:flex;align-items:center;border:0;padding:0;background:transparent;cursor:pointer;height:24px}
+.ladder .bar{height:100%;display:flex;align-items:center;padding-left:9px;font-weight:700;color:#fff;font-size:13px;
+  clip-path:polygon(0 0,calc(100% - 11px) 0,100% 50%,calc(100% - 11px) 100%,0 100%);transition:filter .15s}
+.ladder .bar.dark{color:#1d2a33}
+.ladder button[aria-pressed="false"] .bar{filter:saturate(.25) opacity(.55)}
+.ladder button[aria-pressed="true"] .bar{filter:none}
+.ladder button[aria-pressed="true"]::after{content:"◀";margin-left:8px;font-size:11px;color:var(--ink)}
+.ladder .unknown{margin-top:6px;font-size:12.5px;color:var(--muted);text-decoration:underline;align-self:flex-start;height:auto}
+.ladder .unknown[aria-pressed="true"]{color:var(--accent);font-weight:700;text-decoration:none}
+.ladder .unknown[aria-pressed="true"]::after{content:none}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:99px;padding:5px 11px;font-size:13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#10202b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#10202b}}
+
+.results h2{font-size:26px;margin:4px 0 2px;letter-spacing:-.02em;font-weight:700}
+.results .sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+.empty{background:var(--panel);border:1px dashed var(--line);border-radius:var(--radius-lg);padding:28px}
+.empty p{margin:0 0 12px;max-width:60ch}
+
+.reg{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:16px;overflow:hidden}
+.reg-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;padding:18px 20px 12px;flex-wrap:wrap}
+.reg-head h3{margin:0;font-size:17px;line-height:1.3;max-width:52ch}
+.reg-head .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+.verdict{font-weight:700;font-size:13px;padding:5px 12px;border-radius:var(--radius-sm);white-space:nowrap}
+.v-ok{background:var(--ok-soft);color:var(--ok)}
+.v-no{background:var(--no-soft);color:var(--no)}
+.v-unk{background:var(--unk-soft);color:var(--unk)}
+.v-off{background:var(--off-soft);color:var(--off)}
+
+.crit{list-style:none;margin:0;padding:0 20px 8px}
+.crit li{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.crit .ic{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+.ic.ok{background:var(--ok-soft);color:var(--ok)}
+.ic.no{background:var(--no-soft);color:var(--no)}
+.ic.unk,.ic.nodata{background:var(--unk-soft);color:var(--unk)}
+.ic.info{background:var(--accent-soft);color:var(--accent)}
+.crit .d{color:var(--muted);font-size:12.5px}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.facts div{background:var(--panel);padding:10px 20px}
+.facts dt{font-size:12px;color:var(--muted);margin:0}
+.facts dd{margin:2px 0 0;font-size:13.5px}
+.reg-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.soon{color:var(--unk);font-weight:700;font-size:12.5px;margin-top:2px}
+.concept{background:var(--unk-soft);color:var(--unk);padding:1px 7px;border-radius:4px;font-weight:700}
+.rel-hoog{color:var(--ok);font-weight:700}.rel-middel{color:var(--unk);font-weight:700}.rel-laag{color:var(--no);font-weight:700}
+details.more{padding:0 20px 14px}
+details.more summary{cursor:pointer;font-size:13px;color:var(--accent);font-weight:600;padding:8px 0}
+details.more p{margin:4px 0;font-size:13.5px;max-width:75ch}
+
+.notice{font-size:12.5px;color:var(--muted);margin:22px 0 0;max-width:75ch}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:var(--radius-sm);font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>Subsidiecheck isolatie</h1>
+  <div class="dataset">
+    <span id="dsPill" class="pill demo">Pilotdata</span>
+    <span id="dsInfo"></span>
+    <label class="btn" for="fileIn">Dataset laden</label>
+    <input id="fileIn" class="sr" type="file" accept=".json,.csv,.xlsx">
+  </div>
+</header>
+
+<main>
+  <aside class="profile" aria-label="Klantgegevens">
+    <h2>Klant en woning</h2>
+
+    <div class="field">
+      <label for="gemeente">Gemeente</label>
+      <input id="gemeente" type="text" list="gemeenteList" placeholder="Typ een gemeente" autocomplete="off">
+      <datalist id="gemeenteList"></datalist>
+    </div>
+
+    <div class="field">
+      <span class="lbl" id="labelLbl">Energielabel</span>
+      <div class="ladder" role="group" aria-labelledby="labelLbl" id="ladder"></div>
+    </div>
+
+    <div class="field">
+      <label for="woz">WOZ-waarde (€)</label>
+      <input id="woz" type="number" inputmode="numeric" min="0" step="1000" placeholder="bijv. 385000">
+      <small>Let op: veel regelingen kijken naar de WOZ op een vaste peildatum.</small>
+    </div>
+
+    <div class="field">
+      <label for="bouwjaar">Bouwjaar</label>
+      <input id="bouwjaar" type="number" inputmode="numeric" min="1500" max="2100" placeholder="bijv. 1968">
+    </div>
+
+    <div class="field">
+      <label for="opp">Woonoppervlak (m²)</label>
+      <input id="opp" type="number" inputmode="numeric" min="10" max="2000" placeholder="bijv. 115">
+      <small>Staat in het Kadaster/BAG. Sommige gemeenten hebben een maximum.</small>
+    </div>
+
+    <div class="field">
+      <span class="lbl">Slecht geïsoleerde bouwdelen</span>
+      <div class="chips" id="bouwdelen"></div>
+      <small>Tik de delen aan die niet of slecht geïsoleerd zijn.</small>
+    </div>
+
+    <div class="field">
+      <span class="lbl">Eigenaar-bewoner</span>
+      <div class="seg" data-key="eb"></div>
+    </div>
+
+    <div class="field">
+      <span class="lbl">Woningtype</span>
+      <div class="seg" data-key="type"></div>
+    </div>
+
+    <div class="field">
+      <span class="lbl">Laag inkomen</span>
+      <div class="seg" data-key="inkomen"></div>
+      <small>Alleen vragen als de klant dat zelf wil delen.</small>
+    </div>
+
+    <button class="btn" id="reset" type="button">Wis klantgegevens</button>
+  </aside>
+
+  <section class="results" aria-live="polite">
+    <div id="out"></div>
+    <p class="notice">Deze check is extra informatie voor het klantgesprek, geen toezegging. De gemeente beslist. Controleer altijd de officiële regelingstekst via de bronlink vóór je iets belooft.</p>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+/* ============================================================
+   PILOTDATA: handmatig gecontroleerd tegen de officiële regelingsteksten
+   (CVDR), peildatum 22-09-2026. Op GitHub Pages wordt regelingen.json
+   automatisch geladen en vervangt dit.
+   ============================================================ */
+const DEMO = [
+ {
+  "id": "doesburg-isa-2025-2028",
+  "cvdr_id": "CVDR743563",
+  "versie": 1,
+  "handmatig": false,
+  "gecontroleerd": true,
+  "gemeente": "Doesburg",
+  "provincie": "Gelderland",
+  "naam": "Subsidieregeling Isolatie Subsidie Achterhoek (ISA) – Doesburg 2025-2028",
+  "type": "subsidie",
+  "maatregelen": [
+   "dak",
+   "zolder-/vlieringvloer",
+   "gevel",
+   "spouwmuur",
+   "vloer",
+   "bodem",
+   "isolatieglas HR++(+)"
+  ],
+  "doelgroep": [
+   "eigenaar-bewoner (koopwoning)"
+  ],
+  "bedrag": "100% van de subsidiabele kosten, max. €2.000 per adres. Extra bij bio-based materiaal per m²: dak €5, zolder-/vlieringvloer €1,50, spouwmuur €1,50, gevel €6, vloer €2, bodem €1.",
+  "technische_eisen": "Isolatiematerialen op de ISDE-meldcodelijst. Offerte vermeldt maatregelen, materialen, Rd-/Rc-/U-waarde, ISDE-meldcode en m².",
+  "criteria": {
+   "eigenaar_bewoner": true,
+   "woz_max": 477000,
+   "woz_regel": "lte",
+   "woz_peildatum": "1-1-2024",
+   "woz_uitzondering": null,
+   "isolatiestaat": {
+    "omschrijving": "Geregistreerd label D, E, F of G, of min. 2 bestaande bouwdelen niet/slecht geïsoleerd",
+    "regels": [
+     {
+      "labels": [
+       "D",
+       "E",
+       "F",
+       "G"
+      ]
+     },
+     {
+      "bouwdelen_min": 2
+     }
+    ]
+   },
+   "bouwjaar_min": null,
+   "bouwjaar_max": null,
+   "bouwjaar_opmerking": null,
+   "woonoppervlak_max": null,
+   "inkomen": null,
+   "vve": null,
+   "vve_opmerking": null
+  },
+  "inkomensgrens": "geen",
+  "aanvragen": "Aanvraag met offerte of kostenindicatie via het portaal; na verlening 12 maanden om uit te voeren. Maatregelen uitgevoerd op of na 1-1-2025 komen in aanmerking.",
+  "uitvoerder_eisen": "Alleen NVI-gecertificeerde bedrijven (natuurvriendelijk isoleren). Doe-het-zelf: alleen materiaalkosten, geen arbeidsuren.",
+  "stapelbaar_isde": "niet geregeld in de regelingstekst",
+  "looptijd_start": "2025-09-01",
+  "looptijd_eind": "2028-09-30",
+  "budgetstatus": "Plafond €975.504 (tranches 1-3), op volgorde van binnenkomst; actuele stand onbekend",
+  "status": "open",
+  "aanvraagloket": "Portaal Energieloket Achterhoek",
+  "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR743563/1",
+  "datum_regelingstekst": "2025-08-19",
+  "peildatum": "2026-09-22",
+  "betrouwbaarheid": "hoog",
+  "opmerkingen": "Eenmalig per adres. Niet voor recreatiewoningen. Uitvoering uiterlijk 31-12-2028. Per maatregel niet combineren met een andere gemeentelijke regeling."
+ },
+ {
+  "id": "doesburg-saak",
+  "cvdr_id": null,
+  "versie": null,
+  "handmatig": true,
+  "gecontroleerd": true,
+  "gemeente": "Doesburg",
+  "provincie": "Gelderland",
+  "naam": "Subsidie Aardgasvrij of Aardgasvrij-klaar Doesburg (SAAK)",
+  "type": "subsidie",
+  "maatregelen": [
+   "glas (HR++ of triple)",
+   "kozijnen",
+   "vloerisolatie",
+   "dakisolatie",
+   "(hybride) warmtepomp",
+   "elektrisch koken",
+   "verwijderen gasaansluiting"
+  ],
+  "doelgroep": null,
+  "bedrag": "30% van de kosten, max. €4.500 per huis",
+  "technische_eisen": null,
+  "criteria": {
+   "eigenaar_bewoner": null,
+   "woz_max": null,
+   "woz_regel": null,
+   "woz_peildatum": null,
+   "woz_uitzondering": null,
+   "isolatiestaat": null,
+   "bouwjaar_min": null,
+   "bouwjaar_max": null,
+   "bouwjaar_opmerking": null,
+   "woonoppervlak_max": null,
+   "inkomen": null,
+   "vve": null,
+   "vve_opmerking": null
+  },
+  "inkomensgrens": null,
+  "aanvragen": "vóór uitvoering",
+  "uitvoerder_eisen": null,
+  "stapelbaar_isde": "ja (volgens Energieloket); ook te combineren met ISA",
+  "looptijd_start": null,
+  "looptijd_eind": null,
+  "budgetstatus": null,
+  "status": "onbekend",
+  "aanvraagloket": "Energieloket Achterhoek",
+  "bron_url": "https://www.energieloketachterhoek.nl/subsidies-leningen/saak-subsidie-doesburg/",
+  "datum_regelingstekst": null,
+  "peildatum": "2026-09-22",
+  "betrouwbaarheid": "laag",
+  "opmerkingen": "Alleen Energieloket-pagina gezien; officiële regelingstekst nog zoeken. Niet voor wijk De Ooi (eigen regeling)."
+ },
+ {
+  "id": "doetinchem-isa-2025-2027",
+  "cvdr_id": "CVDR744251",
+  "versie": 1,
+  "handmatig": false,
+  "gecontroleerd": true,
+  "gemeente": "Doetinchem",
+  "provincie": "Gelderland",
+  "naam": "Subsidieregeling ‘Isolatie Subsidie Achterhoek - Doetinchem 2025-2027’",
+  "type": "subsidie",
+  "maatregelen": [
+   "isolatiemaatregelen aan de thermische schil (ISDE-maatregelenlijst)"
+  ],
+  "doelgroep": [
+   "eigenaar-bewoner (koopwoning)"
+  ],
+  "bedrag": "max. €2.000",
+  "technische_eisen": "Isolatiematerialen op de ISDE-maatregelenlijst. Offerte vermeldt maatregelen, materialen, Rd-/Rc-/U-waarde, ISDE-meldcode en m².",
+  "criteria": {
+   "eigenaar_bewoner": true,
+   "woz_max": 477000,
+   "woz_regel": "lte",
+   "woz_peildatum": "1-1-2024",
+   "woz_uitzondering": null,
+   "isolatiestaat": {
+    "omschrijving": "Geregistreerd label D, E, F of G, of min. 2 bestaande bouwdelen niet/slecht geïsoleerd",
+    "regels": [
+     {
+      "labels": [
+       "D",
+       "E",
+       "F",
+       "G"
+      ]
+     },
+     {
+      "bouwdelen_min": 2
+     }
+    ]
+   },
+   "bouwjaar_min": null,
+   "bouwjaar_max": null,
+   "bouwjaar_opmerking": null,
+   "woonoppervlak_max": null,
+   "inkomen": null,
+   "vve": null,
+   "vve_opmerking": null
+  },
+  "inkomensgrens": "geen",
+  "aanvragen": "Aanvraag met offerte of kostenindicatie via het portaal; na verlening 12 maanden om uit te voeren. Maatregelen uitgevoerd na 1-1-2024 komen in aanmerking.",
+  "uitvoerder_eisen": "Regels natuurvriendelijk isoleren en Omgevingswet volgen. Doe-het-zelf: alleen materiaalkosten.",
+  "stapelbaar_isde": "niet geregeld in de regelingstekst",
+  "looptijd_start": "2025-09-20",
+  "looptijd_eind": "2027-09-30",
+  "budgetstatus": "Plafond €1.618.000, op volgorde van binnenkomst; actuele stand onbekend",
+  "status": "open",
+  "aanvraagloket": "Portaal Energieloket Achterhoek",
+  "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR744251/1",
+  "datum_regelingstekst": "2025-09-16",
+  "peildatum": "2026-09-22",
+  "betrouwbaarheid": "hoog",
+  "opmerkingen": "Eenmalig per adres. Uitvoering uiterlijk 31-12-2027. Bijlage 1 (grenswaarden slecht geïsoleerd) staat alleen als afbeelding in CVDR. Aparte wijkregeling De Happert-Leerinkstraat, De IJkenberg en De Bezelhorst (CVDR745517) niet opgenomen."
+ },
+ {
+  "id": "apeldoorn-lai-koopwoningen",
+  "cvdr_id": "CVDR724051",
+  "versie": 5,
+  "handmatig": false,
+  "gecontroleerd": true,
+  "gemeente": "Apeldoorn",
+  "provincie": "Gelderland",
+  "naam": "Subsidieregeling lokale aanpak isolatie koopwoningen Apeldoorn",
+  "type": "subsidie",
+  "maatregelen": [
+   "spouwmuur",
+   "vloer",
+   "bodem",
+   "dak",
+   "zolder-/vlieringvloer",
+   "gevel",
+   "HR++ en HR+++ glas met kozijnpanelen",
+   "isolerende deuren met nieuwe kozijnen",
+   "ventilatie (alleen met isolatie)"
+  ],
+  "doelgroep": [
+   "eigenaar-bewoner (grondgebonden koopwoning)"
+  ],
+  "bedrag": "Via aannemer: inkomen onder 150% sociaal minimum max. €2.000 per woning (aanvragen vanaf 1-1-2026); inkomen boven 150% max. €1.000; buiten bebouwde kom met WOZ boven €477.000 max. €1.000; collectief (min. 3 buren) max. €1.500. Doe-het-zelf max. €1.000. Nooit meer dan de kosten.",
+  "technische_eisen": "Dak/zolder Rd ≥ 3,5 m²K/W, min. 20 m²; gevel Rd ≥ 3,5, min. 10 m²; spouw Rd ≥ 1,1, min. 10 m²; vloer/bodem Rd > 3,5, min. 20 m²; HR++ of triple glas min. 3 m². Volgt de actuele ISDE-eisen.",
+  "criteria": {
+   "eigenaar_bewoner": true,
+   "woz_max": 477000,
+   "woz_regel": "lte",
+   "woz_peildatum": "1-1-2022",
+   "woz_uitzondering": "Buiten de bebouwde kom geldt geen WOZ-grens (dan max. €1.000)",
+   "isolatiestaat": {
+    "omschrijving": "Label D–G, óf geen label + min. 2 slechte bouwdelen, óf label B/C + bouwjaar t/m 1995 + min. 2 slechte bouwdelen",
+    "regels": [
+     {
+      "labels": [
+       "D",
+       "E",
+       "F",
+       "G"
+      ]
+     },
+     {
+      "labels": [
+       "geen"
+      ],
+      "bouwdelen_min": 2
+     },
+     {
+      "labels": [
+       "B",
+       "C"
+      ],
+      "bouwjaar_max": 1995,
+      "bouwdelen_min": 2
+     }
+    ]
+   },
+   "bouwjaar_min": null,
+   "bouwjaar_max": null,
+   "bouwjaar_opmerking": null,
+   "woonoppervlak_max": null,
+   "inkomen": "bonus",
+   "vve": "nee",
+   "vve_opmerking": "Alleen grondgebonden woningen; voor VvE's volgt later een regeling"
+  },
+  "inkomensgrens": "Hoger bedrag bij inkomen onder 150% van het sociaal minimum (peildatum: maand vóór de aanvraag)",
+  "aanvragen": "Inkomen onder 150%: vóór uitvoering, met energieadviseur van de gemeente en 2 offertes per maatregel. Overige: vooraf of achteraf (achteraf binnen 1 jaar na uitvoering).",
+  "uitvoerder_eisen": "Werken volgens protocol Soorten Management Plan. Factuur met oppervlakte en isolatiewaarde.",
+  "stapelbaar_isde": "ja (toelichting: ISDE wordt eerst verrekend)",
+  "looptijd_start": "2024-09-02",
+  "looptijd_eind": "2026-10-30",
+  "budgetstatus": "Plafond €5.601.000, op volgorde van binnenkomst; actuele stand onbekend",
+  "status": "open",
+  "aanvraagloket": "Digitaal aanvraagformulier gemeente Apeldoorn",
+  "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR724051/5",
+  "datum_regelingstekst": "2025-10-03",
+  "peildatum": "2026-09-22",
+  "betrouwbaarheid": "middel",
+  "opmerkingen": "Tegenstrijdig: art. 4 noemt uitvoering vóór 31-12-2026, art. 10f weigert uitvoering na 30-10-2026; gemeentesite noemt aanvragen t/m 30-10-2026. Aangehouden: 30-10-2026. College kan de termijn verlengen. Eén aanvraag per woning."
+ },
+ {
+  "id": "arnhem-isa-2026",
+  "cvdr_id": "CVDR759969",
+  "versie": 1,
+  "handmatig": false,
+  "gecontroleerd": true,
+  "gemeente": "Arnhem",
+  "provincie": "Gelderland",
+  "naam": "Subsidieregeling Isolatie Subsidie Arnhem 2026 (ISA)",
+  "type": "subsidie (tegoed)",
+  "maatregelen": [
+   "één isolatiemaatregel uit de ISDE-regeling",
+   "ventilatie (alleen met isolatie)"
+  ],
+  "doelgroep": [
+   "eigenaar-bewoner (grondgebonden woning of woonboot)"
+  ],
+  "bedrag": "100% van de kosten, max. €2.300: max. €1.700 isolatietegoed plus max. €600 bonustegoed (biobased en/of max. €300 hulp Buurtklusbedrijf)",
+  "technische_eisen": "Minimale isolatiewaarden en m² volgens ISDE (m²-eis geldt niet voor doe-het-zelvers). Spouw, gevel en dak van buitenaf: volgens natuurvriendelijk isoleren.",
+  "criteria": {
+   "eigenaar_bewoner": true,
+   "woz_max": 355000,
+   "woz_regel": "lte",
+   "woz_peildatum": "peiljaar 2022",
+   "woz_uitzondering": "Max. €477.000 (peiljaar 2024) bij schuldhulpverlening, GelrePas, Energiebank-traject of Bijzondere Bijstand Hoge Energiekosten",
+   "isolatiestaat": null,
+   "bouwjaar_min": null,
+   "bouwjaar_max": 1992,
+   "bouwjaar_opmerking": null,
+   "woonoppervlak_max": 140,
+   "inkomen": null,
+   "vve": "nee",
+   "vve_opmerking": "Alleen grondgebonden woningen en woonboten"
+  },
+  "inkomensgrens": "geen (wel ruimere WOZ-grens bij schulden of GelrePas)",
+  "aanvragen": "vóór uitvoering; na de beschikking 1 jaar om uit te voeren",
+  "uitvoerder_eisen": "Alleen bedrijven die met de gemeente Arnhem hebben afgesproken mee te doen (lijst op arnhem.nl/subsidies/isolatietegoed), of doe-het-zelf via een deelnemende leverancier.",
+  "stapelbaar_isde": "niet geregeld in de regelingstekst",
+  "looptijd_start": "2026-03-10",
+  "looptijd_eind": "2030-12-31",
+  "budgetstatus": "Plafond €6,2 mln, op volgorde van binnenkomst; actuele stand onbekend",
+  "status": "open",
+  "aanvraagloket": "Digitaal formulier via arnhem.nl/subsidies/isolatietegoed",
+  "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759969/1",
+  "datum_regelingstekst": "2026-03-10",
+  "peildatum": "2026-09-22",
+  "betrouwbaarheid": "hoog",
+  "opmerkingen": "Eenmalig per adres. Niet voor woningen in een SEWA-cluster (Arnhem-Oost, eigen regeling) en niet als eerder KWAS- of SWEN-subsidie is ontvangen. Art. 5 stelt 'slecht geïsoleerde woning' niet als eis, hoewel het begrip in art. 1 staat: navragen. Takkenkamp kan alleen als aangesloten bedrijf uitvoeren."
+ }
+];
+
+/* ============================================================ STATE */
+const LABELS=[["A","#00a651",0],["B","#50b848",0],["C","#bed630",1],["D","#fff200",1],["E","#fdb913",1],["F","#f37021",0],["G","#ed1c24",0]];
+const BOUWDELEN=["Dak/zolder","Gevel/spouw","Vloer/bodem","Glas"];
+const SEGS={eb:[["ja","Ja"],["nee","Nee"],["","Onbekend"]],
+            type:[["grondgebonden","Grondgebonden"],["appartement","Appartement"],["","Onbekend"]],
+            inkomen:[["ja","Ja"],["nee","Nee"],["","Onbekend"]]};
+const blank=()=>({gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
+let klant=blank();
+let data=DEMO, dsName="Pilotdata (handmatig gecontroleerd)", dsLive=false;
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const eur=n=>"€"+Number(n).toLocaleString("nl-NL");
+const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");
+const unk=v=>v==null||v===""?'<span class="d">onbekend</span>':esc(v);
+
+/* ============================================================ MATCHING */
+const labelTxt=k=>k.label==="geen"?"geen label":k.label?`label ${k.label}`:"label onbekend";
+function isolatiestaat(c){
+  if(c.isolatiestaat!==undefined) return c.isolatiestaat;
+  // ouder plat formaat omzetten
+  if(!c.labels&&c.bouwdelen_min==null) return null;
+  if(c.bouwdelen_modus==="alternatief") return {regels:[{labels:c.labels},{bouwdelen_min:c.bouwdelen_min}]};
+  const r={}; if(c.labels) r.labels=c.labels; if(c.bouwdelen_min!=null) r.bouwdelen_min=c.bouwdelen_min;
+  return {regels:[r]};
+}
+function beschrijf(r){
+  const d=[];
+  if(r.labels) d.push(r.labels.length===1&&r.labels[0]==="geen"?"geen label":"label "+r.labels.join("/"));
+  if(r.bouwjaar_max!=null) d.push("bouwjaar t/m "+r.bouwjaar_max);
+  if(r.bouwjaar_min!=null) d.push("bouwjaar vanaf "+r.bouwjaar_min);
+  if(r.bouwdelen_min!=null) d.push(`min. ${r.bouwdelen_min} slechte bouwdelen`);
+  return d.join(" + ");
+}
+function toetsRegel(r,k){
+  const s=[];
+  if(r.labels) s.push(!k.label?"unk":r.labels.includes(k.label)?"ok":"no");
+  if(r.bouwdelen_min!=null) s.push(!k.bouwdelenBeoordeeld?"unk":k.bouwdelen.length>=r.bouwdelen_min?"ok":"no");
+  if(r.bouwjaar_max!=null) s.push(k.bouwjaar==null?"unk":k.bouwjaar<=r.bouwjaar_max?"ok":"no");
+  if(r.bouwjaar_min!=null) s.push(k.bouwjaar==null?"unk":k.bouwjaar>=r.bouwjaar_min?"ok":"no");
+  return s.includes("no")?"no":s.every(x=>x==="ok")?"ok":"unk";
+}
+function evaluate(r,k){
+  const c=r.criteria||{}, out=[];
+  const add=(status,label,detail)=>out.push({status,label,detail});
+
+  if(c.eigenaar_bewoner===true){
+    add(k.eb==="ja"?"ok":k.eb==="nee"?"no":"unk","Eigenaar-bewoner",k.eb?"":"Vraag of de klant zelf in de woning woont");
+  }
+  if(c.woz_max!=null){
+    const rule=c.woz_regel==="lte"?"≤":"<";
+    const txt=`WOZ ${rule} ${eur(c.woz_max)}${c.woz_peildatum?` (${/peil/.test(c.woz_peildatum)?"":"peildatum "}${c.woz_peildatum})`:""}`;
+    if(k.woz==null) add("unk",txt,"WOZ-waarde klant ontbreekt"+(c.woz_uitzondering?`. Uitzondering: ${c.woz_uitzondering}`:""));
+    else{
+      const pass=c.woz_regel==="lte"?k.woz<=c.woz_max:k.woz<c.woz_max;
+      if(pass) add("ok",txt,`Klant: ${eur(k.woz)}. Check of dit de WOZ op de peildatum is.`);
+      else if(c.woz_uitzondering) add("unk",txt,`Klant: ${eur(k.woz)}, boven de grens. Kan nog als: ${c.woz_uitzondering}`);
+      else add("no",txt,`Klant: ${eur(k.woz)}`);
+    }
+  }
+  const iso=isolatiestaat(c);
+  if(iso&&iso.regels&&iso.regels.length){
+    const txt=iso.omschrijving||iso.regels.map(beschrijf).join(", of ");
+    const res=iso.regels.map(x=>toetsRegel(x,k));
+    const i=res.indexOf("ok");
+    if(i>=0) add("ok",txt,"Voldoet via: "+beschrijf(iso.regels[i]));
+    else if(res.every(x=>x==="no")) add("no",txt,`Klant: ${labelTxt(k)}, ${k.bouwdelen.length} slechte bouwdelen${k.bouwjaar?", bouwjaar "+k.bouwjaar:""}`);
+    else add("unk",txt,"Vul energielabel, bouwdelen en/of bouwjaar in");
+  }
+  if(c.bouwjaar_max!=null||c.bouwjaar_min!=null){
+    const txt=`Bouwjaar ${c.bouwjaar_min!=null?"vanaf "+c.bouwjaar_min+" ":""}${c.bouwjaar_max!=null?"t/m "+c.bouwjaar_max:""}`.trim();
+    if(k.bouwjaar==null) add("unk",txt,"Bouwjaar ontbreekt");
+    else add((c.bouwjaar_max==null||k.bouwjaar<=c.bouwjaar_max)&&(c.bouwjaar_min==null||k.bouwjaar>=c.bouwjaar_min)?"ok":"no",txt,`Klant: ${k.bouwjaar}`);
+  }else if(c.bouwjaar_opmerking){
+    add("nodata","Bouwjaar",c.bouwjaar_opmerking);
+  }
+  if(c.woonoppervlak_max!=null){
+    const txt=`Woonoppervlak max. ${c.woonoppervlak_max} m²`;
+    if(k.opp==null) add("unk",txt,"Woonoppervlak ontbreekt (Kadaster/BAG)");
+    else add(k.opp<=c.woonoppervlak_max?"ok":"no",txt,`Klant: ${k.opp} m²`);
+  }
+  if(c.inkomen==="vereist"){
+    add(k.inkomen==="ja"?"ok":k.inkomen==="nee"?"no":"unk","Laag inkomen vereist",r.inkomensgrens||"");
+  }else if(c.inkomen==="bonus"){
+    add("info","Hoger bedrag bij laag inkomen",k.inkomen==="ja"?"Klant komt mogelijk in aanmerking voor het hogere bedrag":(r.inkomensgrens||""));
+  }
+  if(c.vve){
+    if(k.type==="appartement"){
+      if(c.vve==="nee") add("no","Alleen grondgebonden woningen",c.vve_opmerking||"");
+      else if(c.vve==="ja") add("ok","Appartement/VvE",c.vve_opmerking||"VvE kan aanvragen");
+      else add("unk","Appartement/VvE",c.vve_opmerking||"");
+    }else if(k.type==="grondgebonden"){
+      if(c.vve==="nee") add("ok","Grondgebonden woning",c.vve_opmerking||"");
+    }else if(c.vve!=="ja"){
+      add("unk","Woningtype",c.vve_opmerking||"Check of het om een appartement gaat");
+    }
+  }
+  return out;
+}
+function isClosed(r){
+  if(String(r.status).toLowerCase()==="gesloten") return true;
+  if(r.looptijd_eind){ const d=new Date(r.looptijd_eind+"T23:59:59"); if(!isNaN(d)&&d<new Date()) return true; }
+  return false;
+}
+function verdict(r,crit){
+  if(isClosed(r)) return ["v-off","Gesloten"];
+  if(crit.some(x=>x.status==="no")) return ["v-no","Voldoet niet"];
+  if(crit.some(x=>x.status==="unk"||x.status==="nodata")||crit.length===0) return ["v-unk","Aanvullen of checken"];
+  return ["v-ok","Voldoet aan bekende voorwaarden"];
+}
+
+/* ============================================================ RENDER */
+function render(){
+  const out=$("#out");
+  const g=norm(klant.gemeente);
+  const alle=[...new Set(data.map(r=>r.gemeente))].sort((a,b)=>a.localeCompare(b,"nl"));
+  if(!g){
+    out.innerHTML=`<div class="empty"><p><strong>Kies een gemeente om te beginnen.</strong> Vul daarna in wat je van de klant weet. Wat je leeg laat, blijft 'onbekend'.</p>
+      <p class="sub" style="margin-bottom:8px">Gemeenten in deze dataset (${alle.length}):</p>
+      <div class="chips">${alle.map(n=>`<button class="chip" data-pick="${esc(n)}">${esc(n)}</button>`).join("")}</div></div>`;
+    return;
+  }
+  const regs=data.filter(r=>norm(r.gemeente)===g);
+  if(!regs.length){
+    out.innerHTML=`<h2>${esc(klant.gemeente)}</h2><div class="empty"><p><strong>Geen regeling gevonden in deze dataset.</strong> Dat betekent niet dat er geen regeling is. Mogelijk is de gemeente nog niet gecontroleerd of staat de naam anders gespeld.</p>
+      <p>Check zelf: <a href="https://lokaleregelgeving.overheid.nl/" target="_blank" rel="noopener">CVDR (lokale regelgeving)</a>, de website van de gemeente en <a href="https://www.verbeterjehuis.nl/energiesubsidiewijzer/" target="_blank" rel="noopener">Energiesubsidiewijzer</a>.</p></div>`;
+    return;
+  }
+  const prov=regs[0].provincie?` · ${esc(regs[0].provincie)}`:"";
+  out.innerHTML=`<h2>${esc(regs[0].gemeente)}</h2><p class="sub">${regs.length} regeling${regs.length>1?"en":""}${prov}</p>`+
+    regs.map(r=>{
+      const crit=evaluate(r,klant); const [vc,vt]=verdict(r,crit);
+      const icon={ok:"✓",no:"✕",unk:"?",nodata:"?",info:"i"};
+      const looptijd=(r.looptijd_start||r.looptijd_eind)?`${fmtD(r.looptijd_start)||"?"} t/m ${fmtD(r.looptijd_eind)||"?"}`:null;
+      const dagen=r.looptijd_eind?Math.ceil((new Date(r.looptijd_eind+"T23:59:59")-new Date())/864e5):null;
+      const spoed=dagen!=null&&dagen>=0&&dagen<=60?`<div class="soon">Nog ${dagen} dagen om aan te vragen</div>`:"";
+      return `<article class="reg">
+        <div class="reg-head"><div><h3>${esc(r.naam)}</h3>
+          <div class="meta">${esc(r.type||"")}${r.doelgroep?" voor "+esc([].concat(r.doelgroep).join(", ")):""}</div></div>
+          <span class="verdict ${vc}">${vt}</span></div>
+        <ul class="crit">${crit.length?crit.map(x=>`<li><span class="ic ${x.status}" aria-hidden="true">${icon[x.status]}</span>
+          <div><span class="sr">${statusText(x.status)}: </span>${esc(x.label)}${x.detail?`<div class="d">${esc(x.detail)}</div>`:""}</div></li>`).join("")
+          :`<li><span class="ic unk">?</span><div>Geen toetsbare woningeisen in de dataset<div class="d">Lees de voorwaarden via de bron</div></div></li>`}</ul>
+        <dl class="facts">
+          <div><dt>Bedrag</dt><dd>${unk(r.bedrag)}</dd></div>
+          <div><dt>Aanvragen</dt><dd>${unk(r.aanvragen)}</dd></div>
+          <div><dt>Aanvragen t/m</dt><dd>${unk(looptijd)}${spoed}</dd></div>
+          <div><dt>Stapelbaar met ISDE</dt><dd>${unk(r.stapelbaar_isde)}</dd></div>
+        </dl>
+        <details class="more"><summary>Alle voorwaarden en details</summary>
+          <p><strong>Maatregelen:</strong> ${unk(r.maatregelen&&[].concat(r.maatregelen).join(", "))}</p>
+          <p><strong>Technische eisen:</strong> ${unk(r.technische_eisen)}</p>
+          <p><strong>Eisen uitvoerder/offerte:</strong> ${unk(r.uitvoerder_eisen)}</p>
+          <p><strong>Inkomensgrens:</strong> ${unk(r.inkomensgrens)}</p>
+          <p><strong>Budget:</strong> ${unk(r.budgetstatus)}</p>
+          <p><strong>Aanvraagloket:</strong> ${unk(r.aanvraagloket)}</p>
+          <p><strong>Opmerkingen:</strong> ${unk(r.opmerkingen)}</p>
+        </details>
+        <div class="reg-foot"><span>${r.gecontroleerd===false?'<span class="concept">Nog niet gecontroleerd</span> · ':""}Betrouwbaarheid <span class="rel-${esc(r.betrouwbaarheid)}">${esc(r.betrouwbaarheid||"onbekend")}</span> · peildatum ${esc(fmtD(r.peildatum)||"onbekend")}
+          ${r.bron_url?` · <a href="${esc(r.bron_url)}" target="_blank" rel="noopener">Bron</a>`:""}</span>
+          <button class="btn" data-copy="${esc(r.id)}">Kopieer notitie</button></div>
+      </article>`;
+    }).join("");
+}
+const statusText=s=>({ok:"voldoet",no:"voldoet niet",unk:"onbekend",nodata:"geen gegevens",info:"info"}[s]);
+function fmtD(s){ if(!s) return ""; const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s); return m?`${+m[3]}-${+m[2]}-${m[1]}`:s; }
+
+function noteFor(r){
+  const crit=evaluate(r,klant), [,vt]=verdict(r,crit);
+  const lines=[`Subsidiecheck ${r.gemeente}: ${r.naam}`,`Uitkomst: ${vt}`];
+  crit.forEach(x=>lines.push(`- ${statusText(x.status)}: ${x.label}${x.detail?" ("+x.detail+")":""}`));
+  if(r.bedrag) lines.push(`Bedrag: ${r.bedrag}`);
+  if(r.aanvragen) lines.push(`Aanvragen: ${r.aanvragen}`);
+  lines.push(`Bron: ${r.bron_url||"onbekend"} (peildatum ${fmtD(r.peildatum)||"onbekend"}, betrouwbaarheid ${r.betrouwbaarheid||"onbekend"})`);
+  lines.push("Indicatief, geen toezegging.");
+  return lines.join("\n");
+}
+
+/* ============================================================ CONTROLS */
+function buildControls(){
+  const lad=$("#ladder");
+  lad.innerHTML=LABELS.map(([l,col,dark],i)=>`<button type="button" data-label="${l}" aria-pressed="false" aria-label="Label ${l}">
+     <span class="bar${dark?" dark":""}" style="background:${col};width:${46+i*22}px">${l}</span></button>`).join("")+
+     `<div style="display:flex;gap:14px"><button type="button" class="unknown" data-label="geen" aria-pressed="false">Geen label</button>`+
+     `<button type="button" class="unknown" data-label="" aria-pressed="true">Label onbekend</button></div>`;
+  $("#bouwdelen").innerHTML=BOUWDELEN.map(b=>`<button type="button" class="chip" data-bd="${b}" aria-pressed="false">${b}</button>`).join("")+
+     `<button type="button" class="chip" data-bd="__geen" aria-pressed="false">Alles goed</button>`;
+  document.querySelectorAll(".seg").forEach(el=>{
+    const key=el.dataset.key;
+    el.innerHTML=SEGS[key].map(([v,t])=>`<button type="button" data-v="${v}" aria-pressed="${v===""}">${t}</button>`).join("");
+  });
+}
+function syncControls(){
+  $("#gemeente").value=klant.gemeente;
+  $("#woz").value=klant.woz??""; $("#bouwjaar").value=klant.bouwjaar??""; $("#opp").value=klant.opp??"";
+  document.querySelectorAll("#ladder button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.label===klant.label));
+  document.querySelectorAll("#bouwdelen .chip").forEach(b=>{
+    const v=b.dataset.bd;
+    b.setAttribute("aria-pressed",v==="__geen"?(klant.bouwdelenBeoordeeld&&!klant.bouwdelen.length):klant.bouwdelen.includes(v));
+  });
+  document.querySelectorAll(".seg").forEach(el=>el.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===klant[el.dataset.key])));
+}
+function refreshDatalist(){
+  const alle=[...new Set(data.map(r=>r.gemeente))].sort((a,b)=>a.localeCompare(b,"nl"));
+  $("#gemeenteList").innerHTML=alle.map(n=>`<option value="${esc(n)}">`).join("");
+  const pill=$("#dsPill"); pill.textContent=dsLive?"Dataset geladen":"Pilotdata"; pill.className="pill "+(dsLive?"live":"demo");
+  $("#dsInfo").textContent=`${dsName} · ${data.length} regelingen`;
+}
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button"); if(!t) return;
+  if(t.dataset.pick!==undefined){ klant.gemeente=t.dataset.pick; }
+  else if(t.closest("#ladder")&&t.dataset.label!==undefined){ klant.label=t.dataset.label; }
+  else if(t.dataset.bd){
+    const v=t.dataset.bd;
+    if(v==="__geen"){ klant.bouwdelen=[]; klant.bouwdelenBeoordeeld=!(klant.bouwdelenBeoordeeld&&!klant.bouwdelen.length); }
+    else{ klant.bouwdelenBeoordeeld=true; klant.bouwdelen=klant.bouwdelen.includes(v)?klant.bouwdelen.filter(x=>x!==v):[...klant.bouwdelen,v]; }
+  }
+  else if(t.closest(".seg")){ klant[t.closest(".seg").dataset.key]=t.dataset.v; }
+  else if(t.id==="reset"){ klant=blank(); }
+  else if(t.dataset.copy){ const r=data.find(x=>x.id===t.dataset.copy); if(r) copy(noteFor(r)); return; }
+  else return;
+  syncControls(); render();
+});
+$("#gemeente").addEventListener("input",e=>{klant.gemeente=e.target.value; render();});
+$("#woz").addEventListener("input",e=>{klant.woz=e.target.value===""?null:Number(e.target.value); render();});
+$("#bouwjaar").addEventListener("input",e=>{klant.bouwjaar=e.target.value===""?null:Number(e.target.value); render();});
+$("#opp").addEventListener("input",e=>{klant.opp=e.target.value===""?null:Number(e.target.value); render();});
+
+function toast(msg){const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"),2200);}
+async function copy(text){
+  try{ await navigator.clipboard.writeText(text); toast("Notitie gekopieerd"); }
+  catch{ const ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); toast("Notitie gekopieerd"); }catch{ toast("Kopiëren lukt niet in deze browser"); } ta.remove(); }
+}
+
+/* ============================================================ DATASET LADEN
+   Formaat 1 (aanbevolen): JSON-array in bovenstaand schema.
+   Formaat 2: CSV/XLSX met platte kolommen: dezelfde namen, criteria als
+   woz_max, woz_regel, woz_peildatum, labels ("D,E,F,G"), bouwdelen_min,
+   bouwdelen_modus, bouwjaar_min, bouwjaar_max, eigenaar_bewoner (ja/nee),
+   inkomen (vereist/bonus), vve (ja/nee/voorwaarde), vve_opmerking.
+   ============================================================ */
+const CRIT_KEYS=["eigenaar_bewoner","woz_max","woz_regel","woz_peildatum","labels","bouwdelen_min","bouwdelen_modus","bouwjaar_min","bouwjaar_max","bouwjaar_opmerking","inkomen","vve","vve_opmerking"];
+function fromFlat(row,i){
+  const v=k=>{const x=row[k]; return x===undefined||x===null||String(x).trim()===""||String(x).toLowerCase()==="onbekend"?null:x;};
+  const num=k=>v(k)==null?null:Number(String(v(k)).replace(/[^\d.]/g,""));
+  const list=k=>v(k)==null?null:String(v(k)).split(/[,;|]/).map(s=>s.trim()).filter(Boolean);
+  const eb=v("eigenaar_bewoner");
+  return { id:v("id")||`rij-${i+1}`, gemeente:v("gemeente")||"", provincie:v("provincie"), naam:v("naam")||v("naam_regeling")||"(naam onbekend)",
+    type:v("type"), maatregelen:list("maatregelen"), doelgroep:list("doelgroep"), bedrag:v("bedrag"), technische_eisen:v("technische_eisen"),
+    criteria:{ eigenaar_bewoner:eb==null?null:/^(ja|true|1)$/i.test(String(eb)), woz_max:num("woz_max"), woz_regel:v("woz_regel"),
+      woz_peildatum:v("woz_peildatum"), labels:list("labels")?.map(s=>s.toUpperCase()), bouwdelen_min:num("bouwdelen_min"),
+      bouwdelen_modus:v("bouwdelen_modus"), bouwjaar_min:num("bouwjaar_min"), bouwjaar_max:num("bouwjaar_max"),
+      bouwjaar_opmerking:v("bouwjaar_opmerking"), inkomen:v("inkomen"), vve:v("vve"), vve_opmerking:v("vve_opmerking"),
+      woonoppervlak_max:num("woonoppervlak_max"), woz_uitzondering:v("woz_uitzondering"),
+      ...(v("isolatiestaat_json")?{isolatiestaat:JSON.parse(v("isolatiestaat_json"))}:{}) },
+    inkomensgrens:v("inkomensgrens"), aanvragen:v("aanvragen"), uitvoerder_eisen:v("uitvoerder_eisen"), stapelbaar_isde:v("stapelbaar_isde"),
+    looptijd_start:v("looptijd_start"), looptijd_eind:v("looptijd_eind"), budgetstatus:v("budgetstatus"), status:v("status")||"onbekend",
+    aanvraagloket:v("aanvraagloket"), bron_url:v("bron_url"), datum_regelingstekst:v("datum_regelingstekst"), peildatum:v("peildatum"),
+    betrouwbaarheid:v("betrouwbaarheid"), opmerkingen:v("opmerkingen") };
+}
+function useDataset(arr,name,save=true){
+  if(!Array.isArray(arr)||!arr.length) throw new Error("Geen regelingen gevonden in het bestand");
+  data=arr.map((r,i)=>r.criteria?r:fromFlat(r,i)).filter(r=>r.gemeente);
+  if(!data.length) throw new Error("Geen rijen met een gemeentenaam");
+  dsName=name; dsLive=true; refreshDatalist(); render();
+  if(save){ try{ localStorage.setItem("subsidiecheck-dataset",JSON.stringify({name,data})); }catch{} }
+}
+$("#fileIn").addEventListener("change",async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{
+    let rows;
+    if(/\.json$/i.test(f.name)){ const j=JSON.parse(await f.text()); rows=Array.isArray(j)?j:(j.regelingen||j.data); }
+    else{
+      if(typeof XLSX==="undefined") throw new Error("Excel-lezer niet geladen; gebruik JSON");
+      const wb=XLSX.read(await f.arrayBuffer(),{type:"array"});
+      rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""});
+    }
+    useDataset(rows,f.name); toast(`${data.length} regelingen geladen`);
+  }catch(err){ toast("Laden mislukt: "+err.message); }
+  e.target.value="";
+});
+
+/* Opstart: 1) regelingen.json naast deze pagina (GitHub Pages), 2) laatst geladen dataset, 3) voorbeelddata */
+(async function init(){
+  buildControls(); syncControls(); refreshDatalist(); render();
+  try{
+    const res=await fetch("regelingen.json",{cache:"no-store"});
+    if(res.ok){ const j=await res.json(); useDataset(Array.isArray(j)?j:(j.regelingen||j.data),"regelingen.json (automatisch)",false); return; }
+  }catch{}
+  try{
+    const s=JSON.parse(localStorage.getItem("subsidiecheck-dataset")||"null");
+    if(s&&s.data) useDataset(s.data,s.name+" (eerder geladen)",false);
+  }catch{}
+})();
+</script>
+</body>
+</html>
