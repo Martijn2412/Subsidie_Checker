@@ -86,3 +86,4 @@ jobs:
             data/web/*.csv
             data/web/*.xlsx
             data/web/samenvatting.md
+            data/web/wijzigingen_web.md

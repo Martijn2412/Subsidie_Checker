@@ -52,6 +52,12 @@ en laat Gemini de voorwaarden uitlezen met dezelfde prompt als `scraper/run.py`.
 met de voorwaarden in gewone taal, een klikbare bron en een kolom `gecontroleerd` die je zelf op ja zet
 (blijft bewaard bij de volgende run). Blad *Dekking* toont per gemeente wat er gevonden is.
 
+**Volgende runs doen alleen wat veranderd is.** Pagina's worden na 7 dagen opnieuw opgehaald; alleen
+als de tekst anders is, gaat de gemeente opnieuw naar Gemini. Elke gemeente wordt na 30 dagen opnieuw
+doorzocht op nieuwe pagina's. Veranderen de voorwaarden, dan komt dat in `wijzigingen_web.md`, krijgt de
+rij in Excel een datum bij *gewijzigd op* (vetgedrukt) en gaat `gecontroleerd` terug naar nee. Een site die
+tijdelijk niet werkt, wist niets: pas na 3 mislukte runs op rij volgt de melding "bron niet bereikbaar, controleren".
+
 Overige uitvoer: `bronnen_sitemap.csv` (gevonden pagina's per gemeente), `voorwaarden.csv` (overzicht, ook
 gemeenten zonder regeling), `regelingen_web.json` (zelfde formaat als `regelingen.json`, nog niet
 gecontroleerd) en `samenvatting.md`. Controleer een regeling tegen de bron voordat je hem overneemt.
