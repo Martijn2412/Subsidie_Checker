@@ -1,0 +1,4 @@
+# cache van opgehaalde pagina's (notebooks/voorwaarden_scraper.ipynb); in GitHub Actions via actions/cache
+data/web/teksten/
+data/web/*.oud
+data/web/*.tmp

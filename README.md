@@ -11,6 +11,7 @@ isolatieregelingen ophaalt uit het CVDR (lokaleregelgeving.overheid.nl).
 | `scraper/run.py` | Zoekt, leest en extraheert de regelingen. |
 | `scraper/config.json` | Welke gemeenten, trefwoorden en modellen. Gemeente toevoegen = hier. |
 | `scraper/prompt_extractie.md` | De opdracht aan Claude. Hier schaaf je bij als het model iets verkeerd leest. |
+| `notebooks/voorwaarden_scraper.ipynb` | Zoekt isolatiesubsidies op de websites van alle gemeenten (en energieloketten, pdf's) en leest de voorwaarden uit. Draait in Colab of via GitHub Actions. |
 | `tests/baseline_pilot.json` | Handmatig gecontroleerde pilotdata (4 gemeenten) om het model tegen te testen. |
 | `data/` | Logboek (`wijzigingen.md`), vergelijking, dekking per gemeente, interne status. |
 
@@ -34,3 +35,29 @@ binnendienst de wijziging. Niets gewijzigd? Dan komt er geen pull request.
 
 Regelingen die niet in het CVDR staan (zoals SAAK Doesburg) zet je zelf in
 `regelingen.json` met `"handmatig": true`. De scraper laat die met rust.
+
+## Gemeentewebsites scrapen (Colab of GitHub)
+Niet elke gemeente zet haar isolatiesubsidie in het CVDR. `notebooks/voorwaarden_scraper.ipynb`
+zoekt daarom op de websites van alle gemeenten (sitemap, zoekfunctie, gelinkte pdf's en energieloketten)
+en laat Gemini de voorwaarden uitlezen met dezelfde prompt als `scraper/run.py`.
+
+- **Colab**: open de notebook in Colab, zet onder 🔑 *Secrets* `GEMINI_API_KEY` en kies *Alles uitvoeren*.
+  Bestanden komen in Drive, map `MyDrive/subsidie_checker`. Is de repo privé, zet dan ook
+  `prompt_extractie.md` en `config.json` in die map.
+- **GitHub**: workflow *Webpagina's gemeenten scrapen* draait elke nacht (of via Actions → Run workflow,
+  eventueel met alleen een paar gemeenten). Elke run gaat verder waar de vorige stopte; resultaten komen
+  als pull request in `data/web/`.
+
+**Alle voorwaarden op één plek:** `overzicht_voorwaarden.xlsx`, één rij per regeling (website én CVDR)
+met de voorwaarden in gewone taal, een klikbare bron en een kolom `gecontroleerd` die je zelf op ja zet
+(blijft bewaard bij de volgende run). Blad *Dekking* toont per gemeente wat er gevonden is.
+
+**Volgende runs doen alleen wat veranderd is.** Pagina's worden na 7 dagen opnieuw opgehaald; alleen
+als de tekst anders is, gaat de gemeente opnieuw naar Gemini. Elke gemeente wordt na 30 dagen opnieuw
+doorzocht op nieuwe pagina's. Veranderen de voorwaarden, dan komt dat in `wijzigingen_web.md`, krijgt de
+rij in Excel een datum bij *gewijzigd op* (vetgedrukt) en gaat `gecontroleerd` terug naar nee. Een site die
+tijdelijk niet werkt, wist niets: pas na 3 mislukte runs op rij volgt de melding "bron niet bereikbaar, controleren".
+
+Overige uitvoer: `bronnen_sitemap.csv` (gevonden pagina's per gemeente), `voorwaarden.csv` (overzicht, ook
+gemeenten zonder regeling), `regelingen_web.json` (zelfde formaat als `regelingen.json`, nog niet
+gecontroleerd) en `samenvatting.md`. Controleer een regeling tegen de bron voordat je hem overneemt.
