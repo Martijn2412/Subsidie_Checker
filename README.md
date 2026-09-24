@@ -48,6 +48,10 @@ en laat Gemini de voorwaarden uitlezen met dezelfde prompt als `scraper/run.py`.
   eventueel met alleen een paar gemeenten). Elke run gaat verder waar de vorige stopte; resultaten komen
   als pull request in `data/web/`.
 
-Uitvoer: `bronnen_sitemap.csv` (gevonden pagina's per gemeente), `voorwaarden.csv` (overzicht, ook
+**Alle voorwaarden op één plek:** `overzicht_voorwaarden.xlsx`, één rij per regeling (website én CVDR)
+met de voorwaarden in gewone taal, een klikbare bron en een kolom `gecontroleerd` die je zelf op ja zet
+(blijft bewaard bij de volgende run). Blad *Dekking* toont per gemeente wat er gevonden is.
+
+Overige uitvoer: `bronnen_sitemap.csv` (gevonden pagina's per gemeente), `voorwaarden.csv` (overzicht, ook
 gemeenten zonder regeling), `regelingen_web.json` (zelfde formaat als `regelingen.json`, nog niet
 gecontroleerd) en `samenvatting.md`. Controleer een regeling tegen de bron voordat je hem overneemt.
