@@ -1,0 +1,87 @@
+name: Webpagina's gemeenten scrapen
+
+# Draait notebooks/voorwaarden_scraper.ipynb. Elke run gaat verder waar de vorige stopte
+# (tijdslimiet of Gemini-limiet); de tussenstand staat in de Actions-cache.
+on:
+  schedule:
+    - cron: "30 1 * * *"   # elke nacht rond 03:30 Nederlandse tijd
+  workflow_dispatch:
+    inputs:
+      alleen:
+        description: "Alleen deze gemeenten (met komma's), leeg = alle"
+        required: false
+        default: ""
+      opnieuw:
+        description: "Kandidaat-pagina's helemaal opnieuw zoeken"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: web-voorwaarden
+
+jobs:
+  scrapen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: notebooks/requirements.txt
+
+      - name: Pakketten installeren
+        run: pip install -r notebooks/requirements.txt
+
+      - name: Tussenstand van vorige run terugzetten
+        uses: actions/cache/restore@v4
+        with:
+          path: data/web
+          key: web-voorwaarden-${{ github.run_id }}
+          restore-keys: web-voorwaarden-
+
+      - name: Notebook uitvoeren
+        run: >
+          jupyter nbconvert --to notebook --execute notebooks/voorwaarden_scraper.ipynb
+          --output-dir uitvoer --output voorwaarden_scraper_uitgevoerd.ipynb
+          --ExecutePreprocessor.timeout=-1
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ALLEEN: ${{ inputs.alleen }}
+          OPNIEUW: ${{ inputs.opnieuw }}
+          MAX_MINUTEN: "320"
+          MAX_MINUTEN_ZOEKEN: "200"
+
+      - name: Tussenstand bewaren
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/web
+          key: web-voorwaarden-${{ github.run_id }}
+
+      - name: Uitgevoerde notebook bewaren (logboek)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notebook-uitvoer
+          path: uitvoer/
+          if-no-files-found: ignore
+
+      # Resultaten komen als pull request binnen: jij controleert, daarna pas overnemen.
+      - name: Pull request maken bij wijzigingen
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: web-voorwaarden
+          title: "Voorwaarden van gemeentewebsites"
+          commit-message: "Voorwaarden van gemeentewebsites bijwerken"
+          body-path: data/web/samenvatting.md
+          add-paths: |
+            data/web/*.json
+            data/web/*.csv
+            data/web/samenvatting.md

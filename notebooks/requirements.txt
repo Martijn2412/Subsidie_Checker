@@ -1,0 +1,7 @@
+requests
+pandas
+beautifulsoup4
+pypdf
+google-genai
+nbconvert
+ipykernel
