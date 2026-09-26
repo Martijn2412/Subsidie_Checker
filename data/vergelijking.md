@@ -1,4 +1,4 @@
-# Vergelijking model vs. handmatig (2026-09-22)
+# Vergelijking model vs. handmatig (2026-09-26)
 
 ## Doesburg – CVDR743563
 - bedrag: handmatig "100% van de subsidiabele kosten, max. €2.000 per adres. Extra bij bio-based materiaal per m²: dak €5, zolder-/vlieringvloer €1,50, spouwmuur €1,50, gevel €6, vloer €2, bodem €1." | model "100% van de subsidiabele kosten met een maximum van €2.000,- per adres. Aanvullend voor bio-based: dakisolatie €5/m², zolder-/vlieringvloerisolatie €1,50/m², spouwmuurisolatie €1,50/m², gevelisolatie €6/m², vloerisolatie €2/m², bodemisolatie €1/m²"

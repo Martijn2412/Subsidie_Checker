@@ -254,3 +254,7 @@
   - aanvragen: null → "vooraf"
   - status: null → "onbekend"
   - criteria.eigenaar_bewoner: null → true
+
+# Subsidie-update 2026-09-26
+
+Geen wijzigingen.

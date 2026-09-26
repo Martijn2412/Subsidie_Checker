@@ -4,112 +4,112 @@
     "versie": 1
   },
   "CVDR723686": {
-    "hash": "5fb09e8828aa5e27d05bb0a4e344f17cd0380650ad8901bf96a8683f66d72a18",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR757582": {
     "hash": "5f12165add9f26ce4fa8d1cf1902501440958e41744a540475be235916922c14",
     "versie": 1
   },
   "CVDR744991": {
-    "hash": "6b74796e7b8342b9415ddb78747beb2c59282980f18eb17ec83ce8ddde558ee2",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR715022": {
-    "hash": "79788ef9145824b8fe104febeb47b23bbb0b8e29a30a5b669602c6673944c903",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR723930": {
     "hash": "bc49f0ed78481bb82fe87aec279fd79b1d1ba938a1d28820cd5360848c0c9acb",
     "versie": 2
   },
   "CVDR715021": {
-    "hash": "5f917f1a1001107d9d377f8816f6538bcf9b1d992f83f124557984459a6c70bb",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR749101": {
     "hash": "52ffca63686744627eefd9cb6dfb617396fbd29ea5bc3da12cca63039eef5033",
     "versie": 1
   },
   "CVDR696222": {
-    "hash": "9c4dc02dd8160c2a1be17f47931112a829e36846da2468c6400c7d012c048d7a",
-    "irrelevant": true
+    "versie": 3,
+    "skip": "titel"
   },
   "CVDR723042": {
-    "hash": "ba73067118b73948801f9bd1305785e2eafdd94740ea58408b4194fbadbc01e5",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR724051": {
     "hash": "fc3d2258f3f7a0c8223c4de848fd3597b246feadff3c46b426a156a0e3b8be45",
     "versie": 5
   },
   "CVDR755746": {
-    "hash": "356123014bc16c65b253585414038d23432f89742f471ea6057221343c6245dc",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR743679": {
-    "hash": "c06235690f5575c8fd31ca5dcddf258b66c3bc7798ed9feae742304bd46090e9",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR622395": {
     "hash": "e4619d292fb2e4c72012e15b05d7701d240c43b8637b876fb04bbcc974be64dc",
     "irrelevant": true
   },
   "CVDR652390": {
-    "hash": "97c0056a74fbc090087928376335b2879e640e82cda09df773c7f6a045546629",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696217": {
-    "hash": "99a73c79c60637788c5fe902eb38349cfe1b8577564f07897b4145338768fe37",
-    "irrelevant": true
+    "versie": 4,
+    "skip": "titel"
   },
   "CVDR754178": {
-    "hash": "93b9f7ef70f82e97545199a88ea89a84f53641d1fe1e2aa2cb8b87eddac10eec",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR756443": {
-    "hash": "7918a6a29c99e2f00f2812ff76246022dd848e28473afa3e574217dd366cebba",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR484684": {
-    "hash": "b7bd6024d4c8158dbdd5ffd2d0ad4d939ac6750079725eecccb1c640f0fed4a3",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR484682": {
-    "hash": "67c547253601873a2e12d7f474a34149415905588838ff9a9313904bd6fc0eb7",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR622282": {
-    "hash": "cd45ba7eaaace790c22cc3eed774c75825e91d0dc49000e732dc4edb0c4af05b",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR703804": {
     "hash": "763fdff7f004d2c2383e43cdb55fe103131d7689b86f1f3d0295c076646c557f",
     "versie": 2
   },
   "CVDR754251": {
-    "hash": "e0f04fa3740f4705eb805c79e09b6aa95535cb2e30803e488f73d8f4477a284e",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR754257": {
-    "hash": "2b1287d2771a1384f6d03772cb7fd0fdf9a3b138599f9af8649b4fe4f7f7345b",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR739824": {
-    "hash": "c0a6cfb74ddc54b2b3a5c1b257c7b397d8b0d28a0a5eda13e76580876423e106",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR701192": {
     "hash": "7b423de142373f0528759cc906dd821202c4fc1223182c17a22602760e42bac5",
     "irrelevant": true
   },
   "CVDR725562": {
-    "hash": "036d4fd6df423903b952a6338e05a76f5d9955edb94b5a4d6fbc93ac229dffdd",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR50778": {
-    "hash": "7d8d932a5a25ab94e55910d3e063b15c6dcc78a6c4238f4105f020057ed7d9d1",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "geen isolatie"
   },
   "CVDR744251": {
     "hash": "de84b65fca4d105169d2a3e79cee9b12cb6dfdcfb64dc8a7a972030fd537c71e",
@@ -120,8 +120,8 @@
     "versie": 1
   },
   "CVDR748272": {
-    "hash": "e0e347ef33e6a4e6e30698f1405597f5cb1e5c2058965a35c7a3b85b0daee9d4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR407463": {
     "hash": "e8b5ca1c5ee4ed9be3ec4193433ab3a062f4648a36cd91c4264ce080ce566730",
@@ -132,44 +132,44 @@
     "versie": 1
   },
   "CVDR337664": {
-    "hash": "82f0a05c3057028e9a2436ac657b54910a3c6531913101e99da141e6802f367d",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR765375": {
-    "hash": "9305eb6110e3df4e87563da5166d2368ed01035384847333269d8f788599e803",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR752544": {
-    "hash": "b872836bdb8cf885be6f6db44e8b73c9e45f3a9340aaea24f042f5740ac91031",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR745517": {
     "hash": "ec9673b48731d90d1628c315dca7139766d5ba7d7b9d6ad416994ce369063b8e",
     "versie": 1
   },
   "CVDR760015": {
-    "hash": "5a6d239084a9039e7f4ebec15507e77755d8905e5d261b245709676fbb049bc2",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR466085": {
     "hash": "9de92746980bdf939d1c49a509d4b1d64654e46a3d0b8176b9cf4bdbc55a0a87",
     "irrelevant": true
   },
   "CVDR696221": {
-    "hash": "45352a3fae1e55f94ba087093a4427d6858aa1d5794ec1d62d682f63fddf0233",
-    "irrelevant": true
+    "versie": 6,
+    "skip": "titel"
   },
   "CVDR745544": {
-    "hash": "12f15e2ad3db4b112ba19e32284e7af4b0d56972c9404a7e1186d0cc8a4a7227",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR627747": {
-    "hash": "4f48330cded0580aa1ab89881d4703d12a380fe66c37fe4006110da27b9e6b57",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751180": {
-    "hash": "a9297a439f7668a2f7b2d5466224254254877a4db99ededad90fb0338a6bc1a4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR738986": {
     "hash": "44bf5908e94f85fef27f617677983e28c58b826173955b4af02c64199aca68aa",
@@ -188,84 +188,84 @@
     "versie": 1
   },
   "CVDR757894": {
-    "hash": "bfe42558cdf8afe902cba15ebaf1dd694e732c0cd16ba58288fc3e2af70e0d51",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR714847": {
     "hash": "60e4dd19e650d4ee46b91b7a5eac96b7a21b997678f49679e85959975fb258d0",
     "versie": 5
   },
   "CVDR680689": {
-    "hash": "e6c38a88d3cea731917957632d051e5a603bd4be24604f3bcac10544ca569903",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696216": {
-    "hash": "323523752590f6f8b3b43dec4db633931d6dd8acfbcbd56ae6f1af9e16427194",
-    "irrelevant": true
+    "versie": 9,
+    "skip": "titel"
   },
   "CVDR365248": {
-    "hash": "70e856010d914cc64a692ea7b98d031a67916cf319708590f1cd2965021d60ab",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR755037": {
     "hash": "895c7d4f8c311b1cb148ca776134cbd281e69293d370f8e5876e6257587a1d88",
     "versie": 1
   },
   "CVDR748107": {
-    "hash": "ebbb90f6f651a9c1e52e016cb6aaa3e8f6d95749db6cd001d1cc40923110e7d3",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR678665": {
-    "hash": "615017765fd3fcf7cf36dcee88746b17c1c60946f9741b8cf6284cf478a2440b",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR376469": {
-    "hash": "13c5879de615a7d4dd54cfe7a6a8ab7de9549afa3ada68814584c190fb77d9cc",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR694500": {
-    "hash": "622a2b0e6eaa1177be35b06af68a9a789557e83e9acb8d21e818a00b4c277658",
-    "irrelevant": true
+    "versie": 4,
+    "skip": "geen isolatie"
   },
   "CVDR670526": {
     "hash": "c711c33739aaf0535e091030d8d345f0a8bcaeebb649e84de75f179754d7b045",
     "irrelevant": true
   },
   "CVDR692393": {
-    "hash": "01e6a49807041314e3463e05d931925892a98fd4846d272cb75769a627cf41e7",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR744838": {
-    "hash": "00067ca1622dcf307a803b0db3aa566d061797fb618126564632124974b2c461",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR678647": {
-    "hash": "cf26cb68ffe6d16dd7a8063ebb804790849d03cad43a4b4b2307821e26243dbb",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR609449": {
     "hash": "7d29edaf65a0679c34a222cbd3e267a19b5a0d5e5cd5be304a7c5dc826e873fe",
     "versie": 3
   },
   "CVDR663094": {
-    "hash": "417bedfb316966442f02e9d9ad97a0fffea7b4ebb6a6923924dbeb4c26d1ddcb",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR755038": {
-    "hash": "e07148500190d889947b215447f05b7eb4ac5ec4450be8caeea9db09c0ee241c",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR755039": {
-    "hash": "87b12de2557fed2487054846b2df81a01ad6dc4ef4b7474d67652babd455da16",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR762426": {
-    "hash": "061fb71681b30ed34b58b618a7c596206c450cb5040eff98a5e688fd77902638",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR762471": {
-    "hash": "a23af58639f1183ed2c84fafcdedebd5025aec4825940e8f47724d3f13847f62",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR741234": {
     "hash": "eb4c55df566dec690cc77608a76aaa7f660f917a899ee4cede1880fb0182b928",
@@ -276,159 +276,159 @@
     "versie": 1
   },
   "CVDR676843": {
-    "hash": "abff90a3bf03f02993828ee6d0c0ecb43b2dc2a51276bd008c5af610fcb693b9",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR40755": {
-    "hash": "c82d15a2c8cf665ef02c6e960777c0fa202302d812d289b7a3d88d7a41c1f5c4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR750060": {
     "hash": "b0e730c91a327875aa71c9b2615953b24b515807033c2d7c4f7c46df47e2a34d",
     "irrelevant": true
   },
   "CVDR757543": {
-    "hash": "d6888498bcc95e82f8744758a636eef1d7612f9f388b6a913fb13a982536a1c3",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751546": {
     "hash": "111c653e585617117a72579b676fc79155a88b382e71352202e05d51fde57e43",
     "versie": 1
   },
   "CVDR699759": {
-    "hash": "c6a94bfb8fa115177b21c698955887cf1c3c88e782f65a46aa56db66d527640d",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR710121": {
-    "hash": "dcff5bf85f7d52408269f992aee7a078754df7457c3a2f0ad2f24332e59f1690",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR672966": {
-    "hash": "5de83decbc7b847436093f670f12f7ec7371bdb20a3c9a46ac95c7fda8816760",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751515": {
-    "hash": "38c7bcd8bd3bf2f7fb377708ca1457e0c6b832a8dd0d2562cfa27d9f1b4bc487",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696262": {
-    "hash": "5940f39456aceaf8a1fa4c3d53c1cb2880ec787d74e8b260128fab25b4243d8b",
-    "irrelevant": true
+    "versie": 3,
+    "skip": "titel"
   },
   "CVDR661423": {
-    "hash": "bc7800bed03a599fdee72254c6248440a9e24b2208d4496b0b75c77099d50771",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR743293": {
     "hash": "35759cfaaa9eedf2517054a3b969e7954424318730ce131ec0ffd4a4d9a45fc7",
     "versie": 1
   },
   "CVDR724089": {
-    "hash": "591cf96a2f50a39f991ea535f77b3d4dd1d2a4fcddeec9ed5642ddaa3b576110",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR672415": {
-    "hash": "f17e0e4f188fa1a472eed7869dd3db6dcbff2845531347fdc251dd4e8174f560",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR637438": {
-    "hash": "f66dfaede70838d7d611221f84f175d5f1614489b9baff70fb0dd8265d4c3c38",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR723355": {
-    "hash": "39592048727f1ab21bccecc1c4f9c22c19c30d66bf4ad30cdc5b823652762197",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR744567": {
     "hash": "07ea3fc1f520dd07052d5ed1de69db84a692374bf6f166dabfdc95a238c4ec44",
     "irrelevant": true
   },
   "CVDR443426": {
-    "hash": "21d1232d268cc96cef87a1576f9eb074f6d8fd5974b0bcc39ddad8425b93fca7",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR661112": {
-    "hash": "f1a1bd2414b2bf920fc7812259dcd28bcc4f0fc9f5276fa5d636b0082853e54e",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR733692": {
-    "hash": "bd89ebc9982f2ad9190188cf161ee61f6e46b0bdf83df883ea7fd41d06b69578",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR682026": {
     "hash": "14035c257d3412fa37b9a0090430043cdccb54536da0f5750094560b54ce9302",
     "versie": 1
   },
   "CVDR660827": {
-    "hash": "a5a61ff0798e9e8b273df8a6a6a3660576aa34f570b2e59b2d03b809bb7297ce",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR661153": {
-    "hash": "de2843dd20a3bd1666c216b91ac9563eb4f7f46280539c0b17baba1d0ac2dbd0",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR734004": {
-    "hash": "fbe6955a80258a188e85b7b0b5fa67e709e5343b3e95c4cbc164dafdf7d0dc83",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR638342": {
-    "hash": "d6c36f7647991180da45a8fe5127e2313f578e2a6dfab31dd3a3e46b588fec1a",
-    "irrelevant": true
+    "versie": 2,
+    "skip": "titel"
   },
   "CVDR750319": {
-    "hash": "03b80a0ab5ba3978faaa64599b777f06b6d96a6d6449fef8767e027415a98854",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR467079": {
     "hash": "e51009e250436511e5217fc11a322ceb9f3e9ccf83f60c40e4ec9949c2a7f15b",
     "irrelevant": true
   },
   "CVDR763174": {
-    "hash": "8702d817da7e51d3f7d92626cd2b8d78c3f049c68fef8be4f945fd2fbc4bf494",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR715292": {
-    "hash": "21a23f74a689363140167a7d3878c202678729d0c030848550fa23ed4aa492ed",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR637340": {
-    "hash": "30251d2a0e7e2adec5106a97e2d76135d01c52086461165a7a29a76e95ae371b",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR693612": {
-    "hash": "209c5abcb1ee68fe6e2f2364e794659a6036c91562abf8bef795f53ad93275d4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696508": {
-    "hash": "cc61dc9f04b3823ece8c1d2ab5fdf36e2492a6bad4c98a566c592e031b9c9111",
-    "irrelevant": true
+    "versie": 6,
+    "skip": "titel"
   },
   "CVDR669209": {
-    "hash": "6dd5e72ec8f0de149e4c2d5da0030f57b41ff7ddd77dc161adfdeacfd160b155",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR723090": {
-    "hash": "c23bd513969907e81d18f33dcd6a34d60218066a2429ca161b8a3e41df433790",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR756056": {
-    "hash": "f6e78f6f7d4e14650866c4119c5b39a2b81536e6428454fa4076799a2e244499",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696002": {
-    "hash": "ef5db309cd5f682ce03e347f12bd5c03a9fe94bb59996827e42153b6950515f3",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR467088": {
     "hash": "83cd06484939ca0d9c66910fc52c27394c2f342d964c999490dbcb06ca7dba17",
     "versie": 1
   },
   "CVDR610961": {
-    "hash": "47baab34ab2b0219d9963d13480afc8a2b1c356ae5b6d4fb3180e04a5d776a9e",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR430625": {
-    "hash": "2ea7d8c1529a8f87b81a8497182195bacc8b4f1f4e3c2dc14b4f11a05af78a34",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   }
 }

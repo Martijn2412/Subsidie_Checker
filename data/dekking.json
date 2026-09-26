@@ -1,6 +1,6 @@
 {
   "Doesburg": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -8,15 +8,15 @@
     "relevante_regelingen": 4
   },
   "Apeldoorn": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 2
+    "relevante_regelingen": 1
   },
   "Doetinchem": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -24,7 +24,7 @@
     "relevante_regelingen": 5
   },
   "Arnhem": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -32,7 +32,7 @@
     "relevante_regelingen": 7
   },
   "Zutphen": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -40,7 +40,7 @@
     "relevante_regelingen": 3
   },
   "Bronckhorst": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-26",
     "bronnen_gecheckt": [
       "CVDR"
     ],
