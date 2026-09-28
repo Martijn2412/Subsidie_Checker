@@ -1745,3 +1745,9 @@
   - criteria.woz_regel: null → "lte"
 
 **Let op:** limiet van het taalmodel bereikt. Nog 1013 regeling(en) in het CVDR wachten op uitlezen; die volgen bij de volgende run(s).
+
+# Subsidie-update 2026-09-28
+
+Geen wijzigingen.
+
+**Let op:** limiet van het taalmodel bereikt. Nog 689 regeling(en) in het CVDR wachten op uitlezen; die volgen bij de volgende run(s).
