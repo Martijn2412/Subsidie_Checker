@@ -1,0 +1,26 @@
+{
+  "peildatum": "2026-09-28",
+  "gemeenten": [
+    {
+      "gemeente": "Doetinchem",
+      "provincie": "Gelderland",
+      "cvdr_gecheckt": "2026-09-28",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null
+    },
+    {
+      "gemeente": "Groningen",
+      "provincie": "Groningen",
+      "cvdr_gecheckt": "2026-09-28",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-09-28"
+    },
+    {
+      "gemeente": "Zutphen",
+      "provincie": "Gelderland",
+      "cvdr_gecheckt": "2026-09-28",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null
+    }
+  ]
+}

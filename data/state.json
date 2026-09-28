@@ -120,8 +120,8 @@
     "versie": 1
   },
   "CVDR748272": {
-    "hash": "e0e347ef33e6a4e6e30698f1405597f5cb1e5c2058965a35c7a3b85b0daee9d4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR407463": {
     "hash": "e8b5ca1c5ee4ed9be3ec4193433ab3a062f4648a36cd91c4264ce080ce566730",
@@ -132,44 +132,44 @@
     "versie": 1
   },
   "CVDR337664": {
-    "hash": "82f0a05c3057028e9a2436ac657b54910a3c6531913101e99da141e6802f367d",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR765375": {
-    "hash": "9305eb6110e3df4e87563da5166d2368ed01035384847333269d8f788599e803",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR752544": {
-    "hash": "b872836bdb8cf885be6f6db44e8b73c9e45f3a9340aaea24f042f5740ac91031",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR745517": {
     "hash": "ec9673b48731d90d1628c315dca7139766d5ba7d7b9d6ad416994ce369063b8e",
     "versie": 1
   },
   "CVDR760015": {
-    "hash": "5a6d239084a9039e7f4ebec15507e77755d8905e5d261b245709676fbb049bc2",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR466085": {
-    "hash": "9de92746980bdf939d1c49a509d4b1d64654e46a3d0b8176b9cf4bdbc55a0a87",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "gemini-filter"
   },
   "CVDR696221": {
-    "hash": "45352a3fae1e55f94ba087093a4427d6858aa1d5794ec1d62d682f63fddf0233",
-    "irrelevant": true
+    "versie": 6,
+    "skip": "titel"
   },
   "CVDR745544": {
-    "hash": "12f15e2ad3db4b112ba19e32284e7af4b0d56972c9404a7e1186d0cc8a4a7227",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR627747": {
-    "hash": "4f48330cded0580aa1ab89881d4703d12a380fe66c37fe4006110da27b9e6b57",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751180": {
-    "hash": "a9297a439f7668a2f7b2d5466224254254877a4db99ededad90fb0338a6bc1a4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR738986": {
     "hash": "44bf5908e94f85fef27f617677983e28c58b826173955b4af02c64199aca68aa",
@@ -276,48 +276,48 @@
     "versie": 1
   },
   "CVDR676843": {
-    "hash": "abff90a3bf03f02993828ee6d0c0ecb43b2dc2a51276bd008c5af610fcb693b9",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR40755": {
-    "hash": "c82d15a2c8cf665ef02c6e960777c0fa202302d812d289b7a3d88d7a41c1f5c4",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR750060": {
-    "hash": "b0e730c91a327875aa71c9b2615953b24b515807033c2d7c4f7c46df47e2a34d",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "gemini-filter"
   },
   "CVDR757543": {
-    "hash": "d6888498bcc95e82f8744758a636eef1d7612f9f388b6a913fb13a982536a1c3",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751546": {
     "hash": "111c653e585617117a72579b676fc79155a88b382e71352202e05d51fde57e43",
     "versie": 1
   },
   "CVDR699759": {
-    "hash": "c6a94bfb8fa115177b21c698955887cf1c3c88e782f65a46aa56db66d527640d",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR710121": {
-    "hash": "dcff5bf85f7d52408269f992aee7a078754df7457c3a2f0ad2f24332e59f1690",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "geen isolatie"
   },
   "CVDR672966": {
-    "hash": "5de83decbc7b847436093f670f12f7ec7371bdb20a3c9a46ac95c7fda8816760",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR751515": {
-    "hash": "38c7bcd8bd3bf2f7fb377708ca1457e0c6b832a8dd0d2562cfa27d9f1b4bc487",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR696262": {
-    "hash": "5940f39456aceaf8a1fa4c3d53c1cb2880ec787d74e8b260128fab25b4243d8b",
-    "irrelevant": true
+    "versie": 3,
+    "skip": "titel"
   },
   "CVDR661423": {
-    "hash": "bc7800bed03a599fdee72254c6248440a9e24b2208d4496b0b75c77099d50771",
-    "irrelevant": true
+    "versie": 1,
+    "skip": "titel"
   },
   "CVDR743293": {
     "hash": "35759cfaaa9eedf2517054a3b969e7954424318730ce131ec0ffd4a4d9a45fc7",
@@ -430,5 +430,113 @@
   "CVDR430625": {
     "hash": "2ea7d8c1529a8f87b81a8497182195bacc8b4f1f4e3c2dc14b4f11a05af78a34",
     "irrelevant": true
+  },
+  "CVDR413571": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR763432": {
+    "versie": 1,
+    "skip": "gemini-filter"
+  },
+  "CVDR740952": {
+    "versie": 1,
+    "skip": "gemini-filter"
+  },
+  "CVDR756401": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR656133": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR749289": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR727683": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR766399": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR762541": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR740195": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR123111": {
+    "versie": 115,
+    "skip": "geen isolatie"
+  },
+  "CVDR658150": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR736303": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR410635": {
+    "versie": 5,
+    "skip": "titel"
+  },
+  "CVDR735768": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR724523": {
+    "versie": 3,
+    "skip": "geen isolatie"
+  },
+  "CVDR732984": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR712856": {
+    "versie": 3,
+    "skip": "gemini-filter"
+  },
+  "CVDR712844": {
+    "versie": 3,
+    "skip": "geen isolatie"
+  },
+  "CVDR712843": {
+    "versie": 3,
+    "skip": "gemini-filter"
+  },
+  "CVDR733718": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR737287": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR653060": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR683554": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR683550": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR759405": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR755473": {
+    "versie": 1,
+    "skip": "geen isolatie"
   }
 }

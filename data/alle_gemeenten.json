@@ -1,0 +1,1370 @@
+[
+  {
+    "naam": "'s-Gravenhage",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "'s-Hertogenbosch",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Aa en Hunze",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Aalsmeer",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Aalten",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Achtkarspelen",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Alblasserdam",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Albrandswaard",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Alkmaar",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Almelo",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Almere",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Alphen aan den Rijn",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Alphen-Chaam",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Altena",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Ameland",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Amersfoort",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Amstelveen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Amsterdam",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Apeldoorn",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Arnhem",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Assen",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Asten",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Baarle-Nassau",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Baarn",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Barendrecht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Barneveld",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Beek",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Beekdaelen",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Beesel",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Berg en Dal",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Bergeijk",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Bergen (L)",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Bergen (NH)",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Bergen op Zoom",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Berkelland",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Bernheze",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Best",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Beuningen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Beverwijk",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Bladel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Blaricum",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Bloemendaal",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Bodegraven-Reeuwijk",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Boekel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Borger-Odoorn",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Borne",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Borsele",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Boxtel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Breda",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Bronckhorst",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Brummen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Brunssum",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Bunnik",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Bunschoten",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Buren",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Capelle aan den IJssel",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Castricum",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Coevorden",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Cranendonck",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Culemborg",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Dalfsen",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Dantumadiel",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "De Bilt",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "De Fryske Marren",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "De Ronde Venen",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "De Wolden",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Delft",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Den Helder",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Deurne",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Deventer",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Diemen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Dijk en Waard",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Dinkelland",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Doesburg",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Doetinchem",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Dongen",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Dordrecht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Drechterland",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Drimmelen",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Dronten",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Druten",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Duiven",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Echt-Susteren",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Edam-Volendam",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Ede",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Eemnes",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Eemsdelta",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Eersel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Eijsden-Margraten",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Eindhoven",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Elburg",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Emmen",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Enkhuizen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Enschede",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Epe",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Ermelo",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Etten-Leur",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Geertruidenberg",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Geldrop-Mierlo",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Gemert-Bakel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Gennep",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Gilze en Rijen",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Goeree-Overflakkee",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Goes",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Goirle",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Gooise Meren",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Gorinchem",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Gouda",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Groningen",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Gulpen-Wittem",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Haaksbergen",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Haarlem",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Haarlemmermeer",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Halderberge",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Hardenberg",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Harderwijk",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Hardinxveld-Giessendam",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Harlingen",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Hattem",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Heemskerk",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Heemstede",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Heerde",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Heerenveen",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Heerlen",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Heeze-Leende",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Heiloo",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Hellendoorn",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Helmond",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Hendrik-Ido-Ambacht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Hengelo (O)",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Het Hogeland",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Heumen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Heusden",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Hillegom",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Hilvarenbeek",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Hilversum",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Hoeksche Waard",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Hof van Twente",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Hollands Kroon",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Hoogeveen",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Hoorn",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Horst aan de Maas",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Houten",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Huizen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Hulst",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "IJsselstein",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Kaag en Braassem",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Kampen",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Kapelle",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Katwijk",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Kerkrade",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Koggenland",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Krimpen aan den IJssel",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Krimpenerwaard",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Laarbeek",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Land van Cuijk",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Landgraaf",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Landsmeer",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Lansingerland",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Laren",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Leeuwarden",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Leiden",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Leiderdorp",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Leidschendam-Voorburg",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Lelystad",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Leudal",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Leusden",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Lingewaard",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Lisse",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Lochem",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Loon op Zand",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Lopik",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Losser",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Maasdriel",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Maasgouw",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Maashorst",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Maassluis",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Maastricht",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Medemblik",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Meerssen",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Meierijstad",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Meppel",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Middelburg",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Midden-Delfland",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Midden-Drenthe",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Midden-Groningen",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Moerdijk",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Molenlanden",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Montferland",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Montfoort",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Mook en Middelaar",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Neder-Betuwe",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Nederweert",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Nieuwegein",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Nieuwkoop",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Nijkerk",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Nijmegen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Nissewaard",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Noardeast-Fryslân",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Noord-Beveland",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Noordenveld",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Noordoostpolder",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Noordwijk",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Nuenen, Gerwen en Nederwetten",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Nunspeet",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Oegstgeest",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Oirschot",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Oisterwijk",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Oldambt",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Oldebroek",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Oldenzaal",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Olst-Wijhe",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Ommen",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Oost Gelre",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Oosterhout",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Ooststellingwerf",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Oostzaan",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Opmeer",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Opsterland",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Oss",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Oude IJsselstreek",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Ouder-Amstel",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Oudewater",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Overbetuwe",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Papendrecht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Peel en Maas",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Pekela",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Pijnacker-Nootdorp",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Purmerend",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Putten",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Raalte",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Reimerswaal",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Renkum",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Renswoude",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Reusel-De Mierden",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Rheden",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Rhenen",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Ridderkerk",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Rijssen-Holten",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Rijswijk",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Roerdalen",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Roermond",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Roosendaal",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Rotterdam",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Rozendaal",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Rucphen",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Schagen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Scherpenzeel",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Schiedam",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Schiermonnikoog",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Schouwen-Duiveland",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Simpelveld",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Sint-Michielsgestel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Sittard-Geleen",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Sliedrecht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Sluis",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Smallingerland",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Soest",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Someren",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Son en Breugel",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Stadskanaal",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Staphorst",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Stede Broec",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Steenbergen",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Steenwijkerland",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Stein",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Stichtse Vecht",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Súdwest-Fryslân",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Terneuzen",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Terschelling",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Texel",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Teylingen",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Tholen",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Tiel",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Tilburg",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Tubbergen",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Twenterand",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Tynaarlo",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Tytsjerksteradiel",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Uitgeest",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Uithoorn",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Urk",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Utrecht",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Utrechtse Heuvelrug",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Vaals",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Valkenburg aan de Geul",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Valkenswaard",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Veendam",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Veenendaal",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Veere",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Veldhoven",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Velsen",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Venlo",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Venray",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Vijfheerenlanden",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Vlaardingen",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Vlieland",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Vlissingen",
+    "provincie": "Zeeland"
+  },
+  {
+    "naam": "Voerendaal",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "Voorne aan Zee",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Voorschoten",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Voorst",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Vught",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Waadhoeke",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Waalre",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Waalwijk",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Waddinxveen",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Wageningen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Wassenaar",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Waterland",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Weert",
+    "provincie": "Limburg"
+  },
+  {
+    "naam": "West Betuwe",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "West Maas en Waal",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Westerkwartier",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Westerveld",
+    "provincie": "Drenthe"
+  },
+  {
+    "naam": "Westervoort",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Westerwolde",
+    "provincie": "Groningen"
+  },
+  {
+    "naam": "Westland",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Weststellingwerf",
+    "provincie": "Fryslân"
+  },
+  {
+    "naam": "Wierden",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Wijchen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Wijdemeren",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Wijk bij Duurstede",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Winterswijk",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Woensdrecht",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Woerden",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Wormerland",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Woudenberg",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Zaanstad",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Zaltbommel",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Zandvoort",
+    "provincie": "Noord-Holland"
+  },
+  {
+    "naam": "Zeewolde",
+    "provincie": "Flevoland"
+  },
+  {
+    "naam": "Zeist",
+    "provincie": "Utrecht"
+  },
+  {
+    "naam": "Zevenaar",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Zoetermeer",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Zoeterwoude",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Zuidplas",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Zundert",
+    "provincie": "Noord-Brabant"
+  },
+  {
+    "naam": "Zutphen",
+    "provincie": "Gelderland"
+  },
+  {
+    "naam": "Zwartewaterland",
+    "provincie": "Overijssel"
+  },
+  {
+    "naam": "Zwijndrecht",
+    "provincie": "Zuid-Holland"
+  },
+  {
+    "naam": "Zwolle",
+    "provincie": "Overijssel"
+  }
+]
