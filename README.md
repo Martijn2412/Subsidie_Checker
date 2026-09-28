@@ -9,6 +9,7 @@ en, als daar niets staat, met AI zoekt op internet.
 |---|---|
 | `index.html` | De checkpagina. Laadt automatisch `regelingen.json`. |
 | `regelingen.json` | Alle regelingen met voorwaarden. Dit is wat de binnendienst ziet. |
+| `overzicht_voorwaarden.xlsx` | Alles in één sheet: blad *Regelingen* (voorwaarden per regeling, geel = via AI) en blad *Gemeenten* (alle gemeenten met conclusie). Ook te downloaden via de knop op de checkpagina. Alleen om te lezen: wordt elke run opnieuw gemaakt. |
 | `zoekstatus.json` | Per gemeente: wat in het CVDR nog wacht op uitlezen en wanneer er op internet is gezocht. |
 | `scraper/run.py` | Zoekt, leest en extraheert de regelingen. |
 | `scraper/config.json` | Instellingen: alle gemeenten aan/uit, trefwoorden, modellen, limieten. |
