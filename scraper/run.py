@@ -20,6 +20,7 @@ Draait in GitHub Actions. Taalmodel kies je in scraper/config.json ("provider":
   python scraper/run.py --forceer             alles opnieuw extraheren
   python scraper/run.py --alleen Doesburg,Arnhem   alleen deze gemeenten
   python scraper/run.py --vergelijk tests/baseline_pilot.json
+  python scraper/run.py --alleen-overzicht    alleen overzicht_voorwaarden.xlsx opnieuw maken
 """
 import datetime as dt
 import hashlib
@@ -45,6 +46,7 @@ LOG_LAST = DATA / "wijzigingen_laatste.md"
 ALLE_GEMEENTEN = DATA / "alle_gemeenten.json"  # buffer voor als PDOK even niet reageert
 ZOEKSTATUS = ROOT / "zoekstatus.json"  # per gemeente: wachtrij + laatste zoekactie op internet
 WEB_STATE = DATA / "web_state.json"  # wanneer per gemeente op internet is gezocht
+OVERZICHT = ROOT / "overzicht_voorwaarden.xlsx"  # alles in één sheet, om te lezen
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
@@ -298,7 +300,8 @@ TITEL_NIET = re.compile(
     r"algemene plaatselijke|\bapv\b|bouwverordening|leges|omgevingsplan|bestemmingsplan|mandaat|delegatie|"
     r"volmacht|welstand|monument|erfgoed|aardgasvrij|warmtepomp|zonne|warmtenet|groene? da|afval|precario|"
     r"tarie|belasting|huisvesting|parkeer|evenement|sport|cultuur|onderwijs|jeugd|wmo|bijstand|participatie|"
-    r"inspraak|klacht|archief|begroting|reglement van orde|horeca|kinderopvang|verkeer|riool|water", re.I)
+    r"inspraak|klacht|archief|begroting|reglement van orde|horeca|kinderopvang|verkeer|riool|water|"
+    r"dienstverlening|aanwijzingsbesluit|restauratie|bedrijven|maatschappelijk vastgoed|subsidieplafond", re.I)
 TITEL_WEL = re.compile(r"subsidie|regeling|lening|voucher|waardebon|tegoed|bijdrage|stimulering|isol|glas|fonds", re.I)
 
 
@@ -386,6 +389,9 @@ def verschillen(oud, nieuw):
 
 # ---------- hoofdprogramma ----------
 def main():
+    if "--alleen-overzicht" in sys.argv:  # alleen de sheet opnieuw maken uit de bestaande bestanden
+        schrijf_overzicht(lees(OUT, []), lees(ZOEKSTATUS, {}).get("gemeenten", []), lees(DEKKING, {}))
+        return
     state = {} if FORCEER else lees(STATE, {})
     web_state = lees(WEB_STATE, {})
     oud = {r["id"]: r for r in lees(OUT, [])}
@@ -405,6 +411,8 @@ def main():
         print(f"== {naam}")
         try:
             treffers = zoek_cvdr(naam)
+            if not treffers and "(" in naam:  # PDOK zegt "Hengelo (O)", het CVDR "Hengelo"
+                treffers = zoek_cvdr(re.sub(r"\s*\(.*?\)", "", naam).strip())
         except Exception as e:
             print(f"  CVDR-zoekvraag mislukt ({e}); vorige uitkomst behouden")
             nieuw += [r for r in oud.values() if r["gemeente"] == naam and not r.get("handmatig")]
@@ -441,8 +449,7 @@ def main():
 
             if titel_valt_af(meta["titel"], naam):
                 overslaan("titel"); continue
-            if limiet_op:  # geen taalmodel meer: niet eens downloaden
-                later(); continue
+            # ook na de limiet: de gratis controles doen, dan blijft er in de wachtrij alleen iets bruikbaars
             if is_vervallen(cid):
                 overslaan("vervallen"); continue
             try:
@@ -452,6 +459,8 @@ def main():
                 later(); continue
             if tekst_valt_af(tekst):
                 overslaan("geen isolatie"); continue
+            if limiet_op:  # geen taalmodel meer: bewaren voor de volgende run
+                later(); continue
             try:
                 print(f"  {cid}: filter ({meta['titel'][:60]})")
                 if not is_relevant(meta["titel"], tekst):
@@ -557,9 +566,173 @@ def main():
     with LOG_ALL.open("a", encoding="utf-8") as f:
         f.write("\n" + tekst)
     print(f"Klaar: {len(nieuw)} regelingen, {len(log)} wijzigingen, {web_gedaan} zoekacties op internet, {wacht} wachten nog")
+    schrijf_overzicht(nieuw, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
 
     if "--vergelijk" in sys.argv:
         vergelijk(pathlib.Path(sys.argv[sys.argv.index("--vergelijk") + 1]), nieuw)
+
+
+# ---------- overzicht in Excel ----------
+def _eur(x):
+    try:
+        return f"€ {float(x):,.0f}".replace(",", ".")
+    except (TypeError, ValueError):
+        return str(x)
+
+
+def _tekst(v):
+    if v is None or v == "" or v == [] or v == {}:
+        return ""
+    if isinstance(v, bool):
+        return "ja" if v else "nee"
+    if isinstance(v, list):
+        return ", ".join(_tekst(x) for x in v)
+    if isinstance(v, dict):
+        return "; ".join(f"{k}: {_tekst(x)}" for k, x in v.items() if _tekst(x))
+    return str(v)
+
+
+def _datum(s):
+    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", s or "")
+    return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else _tekst(s)
+
+
+def _bedrag(b):
+    """Bedrag als tekst; het model geeft soms {max, eenheid, type} in plaats van een zin."""
+    if isinstance(b, dict):
+        delen = [f"max. {_eur(b['max'])}" if b.get("max") is not None else "",
+                 f"min. {_eur(b['min'])}" if b.get("min") is not None else "",
+                 f"{b['percentage']}%" if b.get("percentage") is not None else "",
+                 _tekst({k: v for k, v in b.items() if k not in ("max", "min", "percentage", "eenheid", "type")})]
+        return ", ".join(x for x in delen if x) or _tekst(b)
+    return _tekst(b)
+
+
+def rij_voor(r):
+    """Eén regeling als leesbare rij (voorwaarden in gewone taal)."""
+    c = r.get("criteria") or {}
+    woz = ""
+    if c.get("woz_max") is not None:
+        woz = ("≤ " if c.get("woz_regel") == "lte" else "< ") + _eur(c["woz_max"])
+        woz += f" (peildatum {c['woz_peildatum']})" if c.get("woz_peildatum") else ""
+        woz += f". Uitzondering: {c['woz_uitzondering']}" if c.get("woz_uitzondering") else ""
+    iso = c.get("isolatiestaat") or {}
+    bouwjaar = " ".join(x for x in [f"vanaf {c['bouwjaar_min']}" if c.get("bouwjaar_min") else "",
+                                    f"t/m {c['bouwjaar_max']}" if c.get("bouwjaar_max") else "",
+                                    _tekst(c.get("bouwjaar_opmerking"))] if x)
+    bron = "handmatig" if r.get("handmatig") else {"web": "internet (AI)", "wacht": "CVDR (wacht)"}.get(r.get("bron"), "CVDR")
+    return {
+        "Gemeente": r.get("gemeente"), "Provincie": r.get("provincie"), "Regeling": r.get("naam"),
+        "Bron": bron, "Status": r.get("status"), "Gecontroleerd": "" if r.get("bron") == "wacht" else ("ja" if r.get("gecontroleerd") else "nee"),
+        "Betrouwbaarheid": r.get("betrouwbaarheid"), "Bedrag": _bedrag(r.get("bedrag")),
+        "Aanvragen t/m": _datum(r.get("looptijd_eind")), "Eigenaar-bewoner": _tekst(c.get("eigenaar_bewoner")),
+        "WOZ": woz, "Isolatiestaat / energielabel": _tekst(iso.get("omschrijving")) if isinstance(iso, dict) else _tekst(iso),
+        "Bouwjaar": bouwjaar, "Max. woonoppervlak": _tekst(c.get("woonoppervlak_max")),
+        "Inkomen": {"vereist": "laag inkomen verplicht", "bonus": "hoger bedrag bij laag inkomen"}.get(c.get("inkomen"), _tekst(c.get("inkomen"))),
+        "Inkomensgrens": _tekst(r.get("inkomensgrens")),
+        "VvE / appartement": " ".join(x for x in [_tekst(c.get("vve")), _tekst(c.get("vve_opmerking"))] if x),
+        "Maatregelen": _tekst(r.get("maatregelen")), "Technische eisen": _tekst(r.get("technische_eisen")),
+        "Eisen uitvoerder": _tekst(r.get("uitvoerder_eisen")), "Aanvragen": _tekst(r.get("aanvragen")),
+        "Stapelbaar met ISDE": _tekst(r.get("stapelbaar_isde")), "Budget": _tekst(r.get("budgetstatus")),
+        "Opmerkingen": _tekst(r.get("opmerkingen")), "Peildatum": _datum(r.get("peildatum")),
+        "Link": r.get("bron_url") or "",
+    }
+
+
+def schrijf_overzicht(regelingen, zoekstatus, dekking):
+    """overzicht_voorwaarden.xlsx: blad Regelingen (één rij per regeling) en blad Gemeenten (alle gemeenten).
+    Alleen om te lezen: wijzigingen in dit bestand worden niet teruggelezen (dat gaat via regelingen.json)."""
+    try:
+        from openpyxl import Workbook
+        from openpyxl.styles import Alignment, Font, PatternFill
+        from openpyxl.utils import get_column_letter
+    except ImportError:
+        print("openpyxl ontbreekt: overzicht_voorwaarden.xlsx niet gemaakt (pip install openpyxl)")
+        return
+    kop_stijl, kop_vul = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="2F5D50")
+    geel = PatternFill("solid", fgColor="FFF2CC")
+
+    def blad(ws, rijen, breedtes, link_kolom=None):
+        koppen = list(rijen[0].keys()) if rijen else []
+        ws.append(koppen)
+        for cel in ws[1]:
+            cel.font, cel.fill = kop_stijl, kop_vul
+        for rij in rijen:
+            ws.append([rij[k] for k in koppen])
+        for i, k in enumerate(koppen, 1):
+            ws.column_dimensions[get_column_letter(i)].width = breedtes.get(k, 18)
+        for regel in ws.iter_rows(min_row=2):
+            for cel in regel:
+                cel.alignment = Alignment(wrap_text=True, vertical="top")
+            if link_kolom and regel[koppen.index(link_kolom)].value:
+                cel = regel[koppen.index(link_kolom)]
+                cel.hyperlink, cel.font = cel.value, Font(color="0563C1", underline="single")
+        ws.freeze_panes = "B2"
+        if rijen:
+            ws.auto_filter.ref = ws.dimensions
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Regelingen"
+    wachtend = [{"gemeente": z["gemeente"], "provincie": z.get("provincie"), "naam": w["titel"], "bron": "wacht",
+                 "status": "nog niet uitgelezen", "bron_url": w["bron_url"],
+                 "opmerkingen": "Gevonden in het CVDR, voorwaarden nog niet uitgelezen (volgt bij een volgende run)."}
+                for z in zoekstatus for w in (z.get("wacht_op_uitlezen") or [])
+                if not titel_valt_af(w["titel"], z["gemeente"])]
+    rijen = [rij_voor(r) for r in sorted(regelingen + wachtend, key=lambda r: (r.get("gemeente") or "", r.get("naam") or ""))]
+    blad(ws, rijen, {"Gemeente": 16, "Regeling": 40, "Bedrag": 35, "WOZ": 24, "Isolatiestaat / energielabel": 35,
+                     "Maatregelen": 35, "Technische eisen": 35, "Eisen uitvoerder": 30, "Aanvragen": 30,
+                     "Opmerkingen": 50, "Link": 45, "Inkomensgrens": 25, "VvE / appartement": 25}, "Link")
+    grijs = PatternFill("solid", fgColor="EDEDED")
+    for regel, r in zip(ws.iter_rows(min_row=2), rijen):
+        vul = {"internet (AI)": geel, "CVDR (wacht)": grijs}.get(r["Bron"])
+        for cel in regel if vul else []:
+            cel.fill = vul
+
+    per_gemeente = {}
+    for r in regelingen:
+        per_gemeente.setdefault(r.get("gemeente"), []).append(r)
+    status = {z["gemeente"]: z for z in zoekstatus}
+    gemeenten = sorted(set(per_gemeente) | set(status) | set(dekking))
+    g_rijen = []
+    for g in gemeenten:
+        regs, z, d = per_gemeente.get(g, []), status.get(g, {}), dekking.get(g, {})
+        open_ = [r for r in regs if r.get("status") != "gesloten"]
+        wacht = len(z.get("wacht_op_uitlezen") or [])
+        if open_:
+            conclusie = "regeling gevonden"
+        elif regs:
+            conclusie = "alleen gesloten regeling(en)"
+        elif wacht:
+            conclusie = "wacht op uitlezen"
+        else:
+            conclusie = "geen regeling gevonden"
+        g_rijen.append({
+            "Gemeente": g, "Provincie": z.get("provincie") or (regs[0].get("provincie") if regs else ""),
+            "Conclusie": conclusie, "Regelingen (open)": len(open_), "Regelingen (totaal)": len(regs),
+            "Waarvan via internet (AI)": sum(1 for r in regs if r.get("bron") == "web"),
+            "Wacht op uitlezen": wacht, "Treffers in CVDR": d.get("treffers", ""),
+            "CVDR gecheckt": _datum(z.get("cvdr_gecheckt") or d.get("datum")),
+            "Internet gezocht": _datum(z.get("internet_gezocht")),
+            "Namen regelingen": ", ".join([r.get("naam") or "" for r in regs]
+                                          + [f"{w['titel']} (nog niet uitgelezen)" for w in z.get("wacht_op_uitlezen") or []]),
+        })
+    blad(wb.create_sheet("Gemeenten"), g_rijen, {"Gemeente": 20, "Conclusie": 26, "Namen regelingen": 80})
+
+    uitleg = wb.create_sheet("Uitleg")
+    for regel in [
+        ["Overzicht isolatieregelingen", f"bijgewerkt {_datum(VANDAAG)}"],
+        ["Regelingen", "Eén rij per regeling met de voorwaarden. Geel = gevonden via AI op internet: altijd de link controleren. "
+                       "Grijs = gevonden in het CVDR maar nog niet uitgelezen."],
+        ["Gemeenten", "Alle gemeenten met de conclusie, ook als er niets is gevonden."],
+        ["Let op", "Dit bestand wordt bij elke run opnieuw gemaakt. Aanpassingen hierin gaan verloren; "
+                   "'gecontroleerd' zet je in regelingen.json."],
+    ]:
+        uitleg.append(regel)
+    uitleg.column_dimensions["A"].width, uitleg.column_dimensions["B"].width = 18, 110
+    uitleg["A1"].font = Font(bold=True, size=13)
+    wb.save(OVERZICHT)
+    print(f"Overzicht geschreven: {OVERZICHT.name} ({len(rijen)} regelingen, {len(g_rijen)} gemeenten)")
 
 
 def vergelijk(baseline_pad, resultaat):
