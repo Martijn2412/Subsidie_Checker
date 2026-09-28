@@ -226,8 +226,13 @@ Antwoord met ALLEEN deze JSON, zonder uitleg:
 Niets gevonden? Antwoord {{"regelingen": []}}. Verzin nooit een regeling of link."""
 
 
+# Sommige gemeentesites (bijv. Groningen) weigeren onbekende programma's; doe je voor als gewone browser
+BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                         "Chrome/130.0 Safari/537.36", "Accept-Language": "nl-NL,nl;q=0.9"}
+
+
 def haal_webpagina(url):
-    r = requests.get(url, headers=UA, timeout=60)
+    r = requests.get(url, headers=BROWSER, timeout=60)
     r.raise_for_status()
     t = re.sub(r"(?is)<(script|style|nav|footer|header)[^>]*>.*?</\1>", " ", r.text)
     t = re.sub(r"<[^>]+>", " ", t)
