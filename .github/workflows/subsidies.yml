@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "15 4 * * *"   # elke dag rond 06:15 Nederlandse tijd
   workflow_dispatch:        # handmatig starten via het tabblad Actions
+    inputs:
+      gemeenten:
+        description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten."
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -12,7 +17,7 @@ permissions:
 jobs:
   bijwerken:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 350   # GitHub staat max. 6 uur toe
     steps:
       - uses: actions/checkout@v4
 
@@ -24,10 +29,16 @@ jobs:
         run: pip install requests google-genai anthropic
 
       - name: Regelingen ophalen en voorwaarden uitlezen
-        run: python -u scraper/run.py --vergelijk tests/baseline_pilot.json
+        run: |
+          if [ -n "$ALLEEN" ]; then
+            python -u scraper/run.py --alleen "$ALLEEN"
+          else
+            python -u scraper/run.py --vergelijk tests/baseline_pilot.json
+          fi
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ALLEEN: ${{ github.event.inputs.gemeenten }}
 
       # Wijzigingen komen als pull request binnen: jij controleert, daarna pas live.
       - name: Pull request maken bij wijzigingen
@@ -39,4 +50,5 @@ jobs:
           body-path: data/wijzigingen_laatste.md
           add-paths: |
             regelingen.json
+            zoekstatus.json
             data/**

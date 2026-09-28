@@ -1,13 +1,33 @@
 {
   "provider": "gemini",
- "gemeenten": [
-  { "naam": "Doesburg", "provincie": "Gelderland" },
-  { "naam": "Apeldoorn", "provincie": "Gelderland" },
-  { "naam": "Doetinchem", "provincie": "Gelderland" },
-  { "naam": "Arnhem", "provincie": "Gelderland" },
-  { "naam": "Zutphen", "provincie": "Gelderland" },
-  { "naam": "Bronckhorst", "provincie": "Gelderland" }
-],
+  "alle_gemeenten": true,
+  "_uitleg_gemeenten": "alle_gemeenten true = alle gemeenten van Nederland (lijst via PDOK). De lijst hieronder is dan alleen reserve als PDOK niet werkt. Zet op false om alleen deze gemeenten te doen.",
+  "gemeenten": [
+    {
+      "naam": "Doesburg",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Apeldoorn",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Doetinchem",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Arnhem",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Zutphen",
+      "provincie": "Gelderland"
+    },
+    {
+      "naam": "Bronckhorst",
+      "provincie": "Gelderland"
+    }
+  ],
   "trefwoorden": [
     "isolatie",
     "isoleren",
@@ -15,16 +35,22 @@
     "verduurzaming woning",
     "duurzaamheidslening"
   ],
+  "web_zoeken_elke_dagen": 30,
+  "max_web_zoekacties_per_run": 400,
+  "max_minuten_taalmodel": 300,
   "modellen": {
     "gemini": {
       "filter": "gemini-flash-lite-latest",
-      "extractie": "gemini-flash-latest"
+      "extractie": "gemini-flash-latest",
+      "zoeken": "gemini-flash-latest"
     },
     "claude": {
       "filter": "claude-haiku-4-5-20251001",
-      "extractie": "claude-sonnet-5"
+      "extractie": "claude-sonnet-5",
+      "zoeken": "claude-sonnet-5"
     }
   },
-  "pauze_tussen_aanroepen_sec": 7,
-  "max_resultaten_per_zoekvraag": 50
+  "pauze_tussen_aanroepen_sec": 1,
+  "max_resultaten_per_zoekvraag": 50,
+  "_uitleg_limieten": "Ingesteld voor een BETAALDE API-sleutel. Gratis Gemini-sleutel? Zet pauze op 7, max_minuten_taalmodel op 100 en max_web_zoekacties_per_run op 25."
 }

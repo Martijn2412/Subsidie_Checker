@@ -119,6 +119,7 @@ input[type=text],input[type=number]{width:100%;padding:9px 11px;border:1px solid
 .facts dd{margin:2px 0 0;font-size:13.5px}
 .reg-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
 .soon{color:var(--unk);font-weight:700;font-size:12.5px;margin-top:2px}
+.webnote{margin-top:6px;background:var(--unk-soft);color:var(--unk);padding:3px 8px;border-radius:4px;font-size:.85em;font-weight:600;display:inline-block}
 .concept{background:var(--unk-soft);color:var(--unk);padding:1px 7px;border-radius:4px;font-weight:700}
 .rel-hoog{color:var(--ok);font-weight:700}.rel-middel{color:var(--unk);font-weight:700}.rel-laag{color:var(--no);font-weight:700}
 details.more{padding:0 20px 14px}
@@ -246,6 +247,8 @@ const CONFIG = {
   // Waar de regelingen staan. De GitHub Action schrijft regelingen.json in de
   // hoofdmap van de repo; deze pagina staat in /adres/, dus eerst "../".
   DATA_URLS: ["../regelingen.json", "regelingen.json"],
+  // Zoekstatus per gemeente (wat nog wacht op uitlezen, wanneer op internet gezocht)
+  STATUS_URLS: ["../zoekstatus.json", "zoekstatus.json"],
 
   // Koppeling met TIOS (nog leeg = uit). Zet hier een adres dat JSON teruggeeft,
   // met {postcode}, {huisnummer} en {toevoeging} als invulplekken. Bijvoorbeeld:
@@ -539,6 +542,7 @@ const SEGS={eb:[["ja","Ja"],["nee","Nee"],["","Onbekend"]],
 const blank=()=>({pc:"",hn:"",tv:"",adres:null,bron:{},gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
 let klant=blank();
 let data=DEMO, dsName="Pilotdata (handmatig gecontroleerd)", dsLive=false;
+let zstatus={};  // zoekstatus per gemeente (genormaliseerde naam)
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -654,12 +658,23 @@ function render(){
   }
   const regs=data.filter(r=>norm(r.gemeente)===g);
   if(!regs.length){
+    const zs=zstatus[g];
+    if(zs){
+      const w=zs.wacht_op_uitlezen||[], n=w.length;
+      out.innerHTML=`<h2>${esc(zs.gemeente)}</h2><p class="sub">CVDR gecheckt ${esc(fmtD(zs.cvdr_gecheckt)||"?")}${zs.provincie?` · ${esc(zs.provincie)}`:""}</p><div class="empty">`+
+        (n?`<p><strong>${n} mogelijke regeling${n>1?"en":""} gevonden in het CVDR, nog niet uitgelezen.</strong> De voorwaarden volgen bij een volgende run. Open intussen de bron om zelf te checken.</p>
+          <ul>${w.map(r=>`<li><a href="${esc(r.bron_url)}" target="_blank" rel="noopener">${esc(r.titel)}</a></li>`).join("")}</ul>`
+          :`<p><strong>Geen regeling gevonden.</strong> Niet in het CVDR${zs.internet_gezocht?` en niet via een AI-zoekactie op internet (${esc(fmtD(zs.internet_gezocht))})`:""}. Dat is geen garantie dat er niets is.</p>`)+
+        `<p>Check ook: de website van de gemeente en <a href="https://www.verbeterjehuis.nl/energiesubsidiewijzer/" target="_blank" rel="noopener">Energiesubsidiewijzer</a>.</p></div>`;
+      return;
+    }
     out.innerHTML=`<h2>${esc(klant.gemeente)}</h2><div class="empty"><p><strong>Geen regeling gevonden in deze dataset.</strong> Dat betekent niet dat er geen regeling is. Mogelijk is de gemeente nog niet gecontroleerd of staat de naam anders gespeld.</p>
       <p>Check zelf: <a href="https://lokaleregelgeving.overheid.nl/" target="_blank" rel="noopener">CVDR (lokale regelgeving)</a>, de website van de gemeente en <a href="https://www.verbeterjehuis.nl/energiesubsidiewijzer/" target="_blank" rel="noopener">Energiesubsidiewijzer</a>.</p></div>`;
     return;
   }
   const prov=regs[0].provincie?` · ${esc(regs[0].provincie)}`:"";
-  out.innerHTML=`<h2>${esc(regs[0].gemeente)}</h2><p class="sub">${regs.length} regeling${regs.length>1?"en":""}${prov}</p>`+
+  const wacht=(zstatus[g]?.wacht_op_uitlezen||[]).length;
+  out.innerHTML=`<h2>${esc(regs[0].gemeente)}</h2><p class="sub">${regs.length} regeling${regs.length>1?"en":""}${prov}${wacht?` · nog ${wacht} in het CVDR die nog niet uitgelezen ${wacht>1?"zijn":"is"}`:""}</p>`+
     regs.map(r=>{
       const crit=evaluate(r,klant); const [vc,vt]=verdict(r,crit);
       const icon={ok:"✓",no:"✕",unk:"?",nodata:"?",info:"i"};
@@ -668,7 +683,8 @@ function render(){
       const spoed=dagen!=null&&dagen>=0&&dagen<=60?`<div class="soon">Nog ${dagen} dagen om aan te vragen</div>`:"";
       return `<article class="reg">
         <div class="reg-head"><div><h3>${esc(r.naam)}</h3>
-          <div class="meta">${esc(r.type||"")}${r.doelgroep?" voor "+esc([].concat(r.doelgroep).join(", ")):""}</div></div>
+          <div class="meta">${esc(r.type||"")}${r.doelgroep?" voor "+esc([].concat(r.doelgroep).join(", ")):""}</div>
+          ${r.bron==="web"?'<div class="webnote">Gevonden via AI op internet, niet in het CVDR. Controleer de bron.</div>':""}</div>
           <span class="verdict ${vc}">${vt}</span></div>
         <ul class="crit">${crit.length?crit.map(x=>`<li><span class="ic ${x.status}" aria-hidden="true">${icon[x.status]}</span>
           <div><span class="sr">${statusText(x.status)}: </span>${esc(x.label)}${x.detail?`<div class="d">${esc(x.detail)}</div>`:""}</div></li>`).join("")
@@ -740,7 +756,7 @@ function syncControls(){
   document.querySelectorAll(".seg").forEach(el=>el.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===klant[el.dataset.key])));
 }
 function refreshDatalist(){
-  const alle=[...new Set(data.map(r=>r.gemeente))].sort((a,b)=>a.localeCompare(b,"nl"));
+  const alle=[...new Set([...data.map(r=>r.gemeente),...Object.values(zstatus).map(g=>g.gemeente)])].sort((a,b)=>a.localeCompare(b,"nl"));
   $("#gemeenteList").innerHTML=alle.map(n=>`<option value="${esc(n)}">`).join("");
   const pill=$("#dsPill"); pill.textContent=dsLive?"Dataset geladen":"Pilotdata"; pill.className="pill "+(dsLive?"live":"demo");
   $("#dsInfo").textContent=`${dsName} · ${data.length} regelingen`;
@@ -970,6 +986,13 @@ $("#fileIn").addEventListener("change",async e=>{
 (async function init(){
   buildControls(); syncControls(); refreshDatalist(); render();
   vanuitLink();
+  (async()=>{ for(const url of CONFIG.STATUS_URLS){
+    try{
+      const res=await fetch(url,{cache:"no-store"});
+      if(res.ok){ const j=await res.json();
+        zstatus=Object.fromEntries((j.gemeenten||[]).map(x=>[norm(x.gemeente),x])); refreshDatalist(); render(); return; }
+    }catch{}
+  }})();
   for(const url of CONFIG.DATA_URLS){
     try{
       const res=await fetch(url,{cache:"no-store"});

@@ -16,12 +16,13 @@
     "relevante_regelingen": 2
   },
   "Doetinchem": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-28",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 5
+    "relevante_regelingen": 5,
+    "wacht_op_uitlezen": 0
   },
   "Arnhem": {
     "datum": "2026-09-22",
@@ -32,12 +33,13 @@
     "relevante_regelingen": 7
   },
   "Zutphen": {
-    "datum": "2026-09-22",
+    "datum": "2026-09-28",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 3
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Bronckhorst": {
     "datum": "2026-09-22",
@@ -46,5 +48,15 @@
     ],
     "treffers": 28,
     "relevante_regelingen": 3
+  },
+  "Groningen": {
+    "datum": "2026-09-28",
+    "bronnen_gecheckt": [
+      "CVDR",
+      "internet (AI)"
+    ],
+    "treffers": 27,
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   }
 }
