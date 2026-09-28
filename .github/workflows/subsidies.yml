@@ -17,7 +17,7 @@ permissions:
 jobs:
   bijwerken:
     runs-on: ubuntu-latest
-    timeout-minutes: 170
+    timeout-minutes: 350   # GitHub staat max. 6 uur toe
     steps:
       - uses: actions/checkout@v4
 

@@ -31,12 +31,15 @@ en, als daar niets staat, met AI zoekt op internet.
 
 ## Hoe het werkt (per gemeente)
 1. **Snel zoeken in het CVDR** voor alle ± 340 gemeenten (lijst via PDOK).
-2. **Gevonden?** Het taalmodel leest de voorwaarden uit. Het gratis quotum is niet
-   genoeg voor alles tegelijk: de rest volgt bij de volgende runs (eerste keer: een
-   paar dagen). Daarna wordt alleen opnieuw gelezen wat in het CVDR verandert.
+2. **Gevonden?** Het taalmodel leest de voorwaarden uit. Daarna wordt alleen
+   opnieuw gelezen wat in het CVDR verandert. Lukt iets niet (limiet of tijd op),
+   dan volgt het bij de volgende run.
 3. **Niets relevants in het CVDR?** Dan zoekt het taalmodel op internet (vooral de
-   gemeentesite). Per gemeente hooguit eens per 30 dagen, max. 25 gemeenten per run.
+   gemeentesite). Per gemeente hooguit eens per 30 dagen.
    Zulke regelingen hebben `"bron": "web"` en betrouwbaarheid "laag": altijd controleren.
+
+De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
+(alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.
 
 ## Elke dag
 De scraper draait automatisch. Is er iets nieuw of gewijzigd, dan krijg je een

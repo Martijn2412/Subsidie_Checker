@@ -36,8 +36,8 @@
     "duurzaamheidslening"
   ],
   "web_zoeken_elke_dagen": 30,
-  "max_web_zoekacties_per_run": 25,
-  "max_minuten_taalmodel": 100,
+  "max_web_zoekacties_per_run": 400,
+  "max_minuten_taalmodel": 300,
   "modellen": {
     "gemini": {
       "filter": "gemini-flash-lite-latest",
@@ -50,6 +50,7 @@
       "zoeken": "claude-sonnet-5"
     }
   },
-  "pauze_tussen_aanroepen_sec": 7,
-  "max_resultaten_per_zoekvraag": 50
+  "pauze_tussen_aanroepen_sec": 1,
+  "max_resultaten_per_zoekvraag": 50,
+  "_uitleg_limieten": "Ingesteld voor een BETAALDE API-sleutel. Gratis Gemini-sleutel? Zet pauze op 7, max_minuten_taalmodel op 100 en max_web_zoekacties_per_run op 25."
 }
