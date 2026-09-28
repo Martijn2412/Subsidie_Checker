@@ -146,34 +146,39 @@ def parse_json(tekst):
 def zoek_cvdr(gemeente, trefwoorden=None):
     """Geeft {cvdr_id: {versie, titel, xml_url, gewijzigd}} met alleen de hoogste versie."""
     gevonden = {}
+    per_pagina = CFG["max_resultaten_per_zoekvraag"]
     for woord in trefwoorden or CFG["trefwoorden"]:
-        params = {
-            "version": "1.2", "operation": "searchRetrieve", "x-connection": "cvdr",
-            "query": f'dcterms.creator="{gemeente}" AND keyword all "{woord}"',
-            "startRecord": 1, "maximumRecords": CFG["max_resultaten_per_zoekvraag"],
-            "x-info-1-accept": "any",
-        }
-        r = requests.get(SRU, params=params, headers=UA, timeout=60)
-        r.raise_for_status()
-        dbg = DATA / "debug_sru_voorbeeld.xml"  # bewaar één ruwe respons om veldnamen te checken
-        if not dbg.exists():
-            dbg.write_text(r.text, encoding="utf-8")
-        for rec in re.findall(r"<(?:\w+:)?recordData>(.*?)</(?:\w+:)?recordData>", r.text, re.S):
-            m = re.search(r">(CVDR\d+)_(\d+)<", rec)
-            url = re.search(r"(https://repository\.officiele-overheidspublicaties\.nl/cvdr/CVDR\d+/\d+/xml/[^<\s\"]+\.xml)", rec, re.I)
-            if not (m and url):
-                continue
-            eind = re.search(r"uitwerkingtreding[^>]*>(\d{4}-\d{2}-\d{2})<", rec, re.I)
-            if eind and eind.group(1) < VANDAAG:
-                continue  # regeling is al vervallen
-            cid, versie = m.group(1), int(m.group(2))
-            titel = re.search(r"<dcterms:title[^>]*>(.*?)</dcterms:title>", rec, re.S)
-            gew = re.search(r"<dcterms:modified[^>]*>(\d{4}-\d{2}-\d{2})", rec)
-            if cid not in gevonden or versie > gevonden[cid]["versie"]:
-                gevonden[cid] = {"versie": versie, "xml_url": url.group(1),
-                                 "titel": html.unescape(titel.group(1).strip()) if titel else cid,
-                                 "gewijzigd": gew.group(1) if gew else None}
-        time.sleep(1)  # netjes blijven tegen de overheidsserver
+        for start in range(1, 4 * per_pagina, per_pagina):  # grote gemeenten: max. 4 pagina's
+            params = {
+                "version": "1.2", "operation": "searchRetrieve", "x-connection": "cvdr",
+                "query": f'dcterms.creator="{gemeente}" AND keyword all "{woord}"',
+                "startRecord": start, "maximumRecords": per_pagina,
+                "x-info-1-accept": "any",
+            }
+            r = requests.get(SRU, params=params, headers=UA, timeout=60)
+            r.raise_for_status()
+            dbg = DATA / "debug_sru_voorbeeld.xml"  # bewaar één ruwe respons om veldnamen te checken
+            if not dbg.exists():
+                dbg.write_text(r.text, encoding="utf-8")
+            for rec in re.findall(r"<(?:\w+:)?recordData>(.*?)</(?:\w+:)?recordData>", r.text, re.S):
+                m = re.search(r">(CVDR\d+)_(\d+)<", rec)
+                url = re.search(r"(https://repository\.officiele-overheidspublicaties\.nl/cvdr/CVDR\d+/\d+/xml/[^<\s\"]+\.xml)", rec, re.I)
+                if not (m and url):
+                    continue
+                eind = re.search(r"uitwerkingtreding[^>]*>(\d{4}-\d{2}-\d{2})<", rec, re.I)
+                if eind and eind.group(1) < VANDAAG:
+                    continue  # regeling is al vervallen
+                cid, versie = m.group(1), int(m.group(2))
+                titel = re.search(r"<dcterms:title[^>]*>(.*?)</dcterms:title>", rec, re.S)
+                gew = re.search(r"<dcterms:modified[^>]*>(\d{4}-\d{2}-\d{2})", rec)
+                if cid not in gevonden or versie > gevonden[cid]["versie"]:
+                    gevonden[cid] = {"versie": versie, "xml_url": url.group(1),
+                                     "titel": html.unescape(titel.group(1).strip()) if titel else cid,
+                                     "gewijzigd": gew.group(1) if gew else None}
+            time.sleep(1)  # netjes blijven tegen de overheidsserver
+            totaal = re.search(r"numberOfRecords>(\d+)<", r.text)
+            if not totaal or int(totaal.group(1)) < start + per_pagina:
+                break  # alle resultaten binnen
     return gevonden
 
 
@@ -248,6 +253,8 @@ def web_zoek(g):
         url, titel = (w.get("url") or "").strip(), (w.get("naam") or "").strip()
         if not url.startswith("http") or not titel:
             continue
+        if "lokaleregelgeving.overheid.nl" in url or "officiele-overheidspublicaties" in url:
+            continue  # staat in het CVDR; die route heeft deze regeling al beoordeeld
         rec = {
             "id": f"{slug(naam)}-web-{slug(titel)[:50]}", "cvdr_id": None, "bron": "web",
             "handmatig": False, "gecontroleerd": False,
@@ -295,8 +302,11 @@ TITEL_NIET = re.compile(
 TITEL_WEL = re.compile(r"subsidie|regeling|lening|voucher|waardebon|tegoed|bijdrage|stimulering|isol|glas|fonds", re.I)
 
 
-def titel_valt_af(titel):
-    """Stap 3a: alleen op de titel, zonder iets te downloaden."""
+def titel_valt_af(titel, gemeente=""):
+    """Stap 3a: alleen op de titel, zonder iets te downloaden.
+    De gemeentenaam telt niet mee (anders valt bijv. alles van 'Waterland' af op 'water')."""
+    if gemeente:
+        titel = re.sub(re.escape(gemeente), " ", titel, flags=re.I)
     return bool(TITEL_NIET.search(titel)) or not TITEL_WEL.search(titel)
 
 
@@ -429,7 +439,7 @@ def main():
                 if vorige:
                     nieuw.append(vorige)
 
-            if titel_valt_af(meta["titel"]):
+            if titel_valt_af(meta["titel"], naam):
                 overslaan("titel"); continue
             if limiet_op:  # geen taalmodel meer: niet eens downloaden
                 later(); continue
