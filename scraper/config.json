@@ -15,6 +15,10 @@
     "verduurzaming woning",
     "duurzaamheidslening"
   ],
+  "trefwoorden_licht": [
+    "isolatie",
+    "isoleren"
+  ],
   "modellen": {
     "gemini": {
       "filter": "gemini-flash-lite-latest",

@@ -246,6 +246,8 @@ const CONFIG = {
   // Waar de regelingen staan. De GitHub Action schrijft regelingen.json in de
   // hoofdmap van de repo; deze pagina staat in /adres/, dus eerst "../".
   DATA_URLS: ["../regelingen.json", "regelingen.json"],
+  // Lichte CVDR-scan van alle overige gemeenten (ook door de GitHub Action gemaakt)
+  LICHT_URLS: ["../cvdr_treffers.json", "cvdr_treffers.json"],
 
   // Koppeling met TIOS (nog leeg = uit). Zet hier een adres dat JSON teruggeeft,
   // met {postcode}, {huisnummer} en {toevoeging} als invulplekken. Bijvoorbeeld:
@@ -539,6 +541,7 @@ const SEGS={eb:[["ja","Ja"],["nee","Nee"],["","Onbekend"]],
 const blank=()=>({pc:"",hn:"",tv:"",adres:null,bron:{},gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
 let klant=blank();
 let data=DEMO, dsName="Pilotdata (handmatig gecontroleerd)", dsLive=false;
+let licht={}, lichtDatum=null;  // lichte CVDR-scan per gemeente (genormaliseerde naam)
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -654,6 +657,16 @@ function render(){
   }
   const regs=data.filter(r=>norm(r.gemeente)===g);
   if(!regs.length){
+    const lg=licht[g];
+    if(lg){
+      const n=lg.regelingen.length;
+      out.innerHTML=`<h2>${esc(lg.gemeente)}</h2><p class="sub">Lichte CVDR-scan · peildatum ${esc(fmtD(lichtDatum)||"onbekend")}${lg.provincie?` · ${esc(lg.provincie)}`:""}</p><div class="empty">`+
+        (n?`<p><strong>${n} mogelijke regeling${n>1?"en":""} gevonden in het CVDR.</strong> Deze zijn nog niet uitgelezen: voorwaarden zijn onbekend. Open de bron om te checken of het om isolatie van woningen gaat.</p>
+          <ul>${lg.regelingen.map(r=>`<li><a href="${esc(r.bron_url)}" target="_blank" rel="noopener">${esc(r.titel)}</a>${r.gewijzigd?` <span class="sub">(${esc(fmtD(r.gewijzigd))})</span>`:""}</li>`).join("")}</ul>`
+          :`<p><strong>Geen regeling gevonden in het CVDR.</strong> Niet elke gemeente publiceert haar subsidieregeling daar.</p>`)+
+        `<p>Check ook: de website van de gemeente en <a href="https://www.verbeterjehuis.nl/energiesubsidiewijzer/" target="_blank" rel="noopener">Energiesubsidiewijzer</a>.</p></div>`;
+      return;
+    }
     out.innerHTML=`<h2>${esc(klant.gemeente)}</h2><div class="empty"><p><strong>Geen regeling gevonden in deze dataset.</strong> Dat betekent niet dat er geen regeling is. Mogelijk is de gemeente nog niet gecontroleerd of staat de naam anders gespeld.</p>
       <p>Check zelf: <a href="https://lokaleregelgeving.overheid.nl/" target="_blank" rel="noopener">CVDR (lokale regelgeving)</a>, de website van de gemeente en <a href="https://www.verbeterjehuis.nl/energiesubsidiewijzer/" target="_blank" rel="noopener">Energiesubsidiewijzer</a>.</p></div>`;
     return;
@@ -740,7 +753,7 @@ function syncControls(){
   document.querySelectorAll(".seg").forEach(el=>el.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===klant[el.dataset.key])));
 }
 function refreshDatalist(){
-  const alle=[...new Set(data.map(r=>r.gemeente))].sort((a,b)=>a.localeCompare(b,"nl"));
+  const alle=[...new Set([...data.map(r=>r.gemeente),...Object.values(licht).map(g=>g.gemeente)])].sort((a,b)=>a.localeCompare(b,"nl"));
   $("#gemeenteList").innerHTML=alle.map(n=>`<option value="${esc(n)}">`).join("");
   const pill=$("#dsPill"); pill.textContent=dsLive?"Dataset geladen":"Pilotdata"; pill.className="pill "+(dsLive?"live":"demo");
   $("#dsInfo").textContent=`${dsName} · ${data.length} regelingen`;
@@ -970,6 +983,13 @@ $("#fileIn").addEventListener("change",async e=>{
 (async function init(){
   buildControls(); syncControls(); refreshDatalist(); render();
   vanuitLink();
+  (async()=>{ for(const url of CONFIG.LICHT_URLS){
+    try{
+      const res=await fetch(url,{cache:"no-store"});
+      if(res.ok){ const j=await res.json(); lichtDatum=j.peildatum||null;
+        licht=Object.fromEntries((j.gemeenten||[]).map(x=>[norm(x.gemeente),x])); refreshDatalist(); render(); return; }
+    }catch{}
+  }})();
   for(const url of CONFIG.DATA_URLS){
     try{
       const res=await fetch(url,{cache:"no-store"});

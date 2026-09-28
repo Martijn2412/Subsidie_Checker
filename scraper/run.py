@@ -8,6 +8,11 @@ Draait in GitHub Actions. Taalmodel kies je in scraper/config.json ("provider":
   python scraper/run.py                       normale run
   python scraper/run.py --forceer             alles opnieuw extraheren
   python scraper/run.py --vergelijk tests/baseline_pilot.json
+  python scraper/run.py --zonder-lichte-scan   alleen de gemeenten uit config.json
+
+Gemeenten uit config.json worden volledig uitgelezen. Alle andere gemeenten
+krijgen een lichte CVDR-scan zonder taalmodel (cvdr_treffers.json), zodat de
+checkpagina ook daar laat zien of er mogelijk een regeling is.
 """
 import datetime as dt
 import hashlib
@@ -30,6 +35,8 @@ STATE = DATA / "state.json"
 DEKKING = DATA / "dekking.json"
 LOG_ALL = DATA / "wijzigingen.md"
 LOG_LAST = DATA / "wijzigingen_laatste.md"
+ALLE_GEMEENTEN = DATA / "alle_gemeenten.json"  # buffer voor als PDOK even niet reageert
+LICHT = ROOT / "cvdr_treffers.json"  # lichte scan van alle overige gemeenten (zonder taalmodel)
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
@@ -110,10 +117,10 @@ def parse_json(tekst):
 
 
 # ---------- stap 1: zoeken in het CVDR ----------
-def zoek_cvdr(gemeente):
+def zoek_cvdr(gemeente, trefwoorden=None):
     """Geeft {cvdr_id: {versie, titel, xml_url, gewijzigd}} met alleen de hoogste versie."""
     gevonden = {}
-    for woord in CFG["trefwoorden"]:
+    for woord in trefwoorden or CFG["trefwoorden"]:
         params = {
             "version": "1.2", "operation": "searchRetrieve", "x-connection": "cvdr",
             "query": f'dcterms.creator="{gemeente}" AND keyword all "{woord}"',
@@ -142,6 +149,69 @@ def zoek_cvdr(gemeente):
                                  "gewijzigd": gew.group(1) if gew else None}
         time.sleep(1)  # netjes blijven tegen de overheidsserver
     return gevonden
+
+
+def haal_alle_gemeenten():
+    """Alle Nederlandse gemeenten via de PDOK Locatieserver. Lukt dat niet, dan de lijst van de vorige run."""
+    url = "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free"
+    gemeenten = {}
+    try:
+        for start in range(0, 500, 100):
+            r = requests.get(url, params={"q": "*:*", "fq": "type:gemeente", "fl": "gemeentenaam,provincienaam",
+                                          "rows": 100, "start": start}, headers=UA, timeout=60)
+            r.raise_for_status()
+            docs = r.json()["response"]["docs"]
+            for d in docs:
+                gemeenten[d["gemeentenaam"]] = d.get("provincienaam")
+            if len(docs) < 100:
+                break
+    except Exception as e:
+        print(f"Gemeentelijst ophalen bij PDOK mislukt ({e}); vorige lijst gebruiken")
+        return lees(ALLE_GEMEENTEN, [])
+    lijst = [{"naam": n, "provincie": p} for n, p in sorted(gemeenten.items())]
+    if len(lijst) > 300:  # alleen bewaren als de lijst compleet lijkt
+        schrijf(ALLE_GEMEENTEN, lijst)
+        return lijst
+    print(f"Gemeentelijst van PDOK lijkt onvolledig ({len(lijst)}); vorige lijst gebruiken")
+    return lees(ALLE_GEMEENTEN, lijst)
+
+
+def lichte_scan(dekking):
+    """Zoekt voor elke gemeente die niet in config.json staat in het CVDR, zonder taalmodel.
+    Alleen de titelfilter wordt toegepast; de treffers komen op de pagina als 'nog niet uitgelezen'."""
+    vast = {g["naam"].lower() for g in CFG["gemeenten"]}
+    woorden = CFG.get("trefwoorden_licht") or CFG["trefwoorden"]
+    vorige = {g["gemeente"]: g for g in lees(LICHT, {}).get("gemeenten", [])}
+    uit, log = [], []
+    for g in haal_alle_gemeenten():
+        naam = g["naam"]
+        if naam.lower() in vast:
+            continue
+        try:
+            treffers = zoek_cvdr(naam, woorden)
+        except Exception as e:
+            print(f"  {naam}: CVDR-zoekvraag mislukt ({e}); vorige uitkomst behouden")
+            if naam in vorige:
+                uit.append(vorige[naam])
+            continue
+        regs = sorted(({"cvdr_id": cid, "titel": m["titel"], "gewijzigd": m["gewijzigd"],
+                        "bron_url": f"https://lokaleregelgeving.overheid.nl/{cid}/{m['versie']}"}
+                       for cid, m in treffers.items() if not titel_valt_af(m["titel"])), key=lambda r: r["titel"])
+        uit.append({"gemeente": naam, "provincie": g.get("provincie"), "regelingen": regs})
+        dekking[naam] = {"datum": VANDAAG, "bronnen_gecheckt": ["CVDR (lichte scan)"],
+                         "treffers": len(treffers), "relevante_regelingen": None, "mogelijk_relevant": len(regs)}
+        oud_ids = {r["cvdr_id"] for r in vorige.get(naam, {}).get("regelingen", [])}
+        for r in regs:
+            if vorige and r["cvdr_id"] not in oud_ids:  # eerste run: geen lange lijst in het logboek
+                log.append(f"**{naam} – {r['titel']}** (lichte scan, nog niet uitgelezen, {r['bron_url']})")
+        if regs:
+            print(f"  {naam}: {len(regs)} mogelijk relevant")
+    schrijf(LICHT, {"peildatum": VANDAAG, "trefwoorden": woorden, "gemeenten": uit})
+    met = sum(1 for g in uit if g["regelingen"])
+    print(f"Lichte scan: {len(uit)} gemeenten, {met} met mogelijke regelingen")
+    if not vorige:
+        log.append(f"**Lichte CVDR-scan** voor het eerst gedraaid: {len(uit)} gemeenten, {met} met mogelijke regelingen (zie cvdr_treffers.json)")
+    return log
 
 
 # ---------- stap 2: tekst ophalen ----------
@@ -346,6 +416,10 @@ def main():
                      "opmerkingen": f"Niet meer gevonden in CVDR op {VANDAAG}: mogelijk ingetrokken of vervangen. " + (r.get("opmerkingen") or "")}
                 nieuw.append(r)
                 log.append(f"**{naam} – {r['naam']}**: niet meer gevonden in CVDR")
+
+    if "--zonder-lichte-scan" not in sys.argv:
+        print("== Lichte CVDR-scan overige gemeenten")
+        log += lichte_scan(dekking)
 
     # handmatige regelingen blijven altijd staan
     nieuw += [r for r in oud.values() if r.get("handmatig")]

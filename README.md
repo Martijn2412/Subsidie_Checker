@@ -8,6 +8,7 @@ isolatieregelingen ophaalt uit het CVDR (lokaleregelgeving.overheid.nl).
 |---|---|
 | `index.html` | De checkpagina. Laadt automatisch `regelingen.json`. |
 | `regelingen.json` | Alle regelingen met voorwaarden. Dit is wat de binnendienst ziet. |
+| `cvdr_treffers.json` | Lichte CVDR-scan van álle overige gemeenten (alleen titels en links, niet uitgelezen). |
 | `scraper/run.py` | Zoekt, leest en extraheert de regelingen. |
 | `scraper/config.json` | Welke gemeenten, trefwoorden en modellen. Gemeente toevoegen = hier. |
 | `scraper/prompt_extractie.md` | De opdracht aan Claude. Hier schaaf je bij als het model iets verkeerd leest. |
@@ -27,6 +28,11 @@ isolatieregelingen ophaalt uit het CVDR (lokaleregelgeving.overheid.nl).
 5. Tabblad Actions → "Subsidies bijwerken" → Run workflow (eerste testrun).
 
 ## Elke dag
+Gemeenten in `scraper/config.json` worden volledig uitgelezen. Alle andere
+gemeenten (lijst via PDOK) krijgen een lichte scan in het CVDR zonder taalmodel:
+de checkpagina toont dan de gevonden regelingen met bronlink, als 'nog niet uitgelezen'.
+Wil je een gemeente volledig laten uitlezen? Zet hem in `config.json`.
+
 De scraper draait automatisch. Is er iets nieuw of gewijzigd, dan krijg je een
 pull request met de wijzigingen in gewone taal. Controleer ze tegen de bronlink,
 zet bij goedgekeurde regelingen `"gecontroleerd": true` en merge. Pas dan ziet de
