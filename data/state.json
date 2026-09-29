@@ -13186,5 +13186,1385 @@
   "CVDR696214": {
     "versie": 4,
     "skip": "titel"
+  },
+  "CVDR760657": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755293": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR606963": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR749763": {
+    "versie": 3,
+    "skip": "titel"
+  },
+  "CVDR722757": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR698384": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR634687": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR699065": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766339": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR763076": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR761876": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR639552": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR617662": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR96772": {
+    "versie": 1,
+    "skip": "vervallen"
+  },
+  "CVDR671787": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR671786": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR693202": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR760331": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR760333": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR705839": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR711250": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR672324": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR615881": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR750315": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR659937": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR448342": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR626187": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR402059": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR698348": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR691749": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR758197": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR390859": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR317325": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR737140": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR608389": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR609568": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR700425": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR675484": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR705650": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR647242": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR706892": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR692886": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR766682": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR728616": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR720146": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR701109": {
+    "versie": 4,
+    "skip": "geen isolatie"
+  },
+  "CVDR719807": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761312": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR754261": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR696828": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR754360": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR764760": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR735189": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR740534": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR746392": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR761111": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR710047": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR695399": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR753274": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR628887": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762137": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR713625": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR713626": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR713627": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR734882": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR732153": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR759534": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761693": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR723941": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR752318": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR756078": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR695242": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR724577": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR715813": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR694815": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR760538": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR740296": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR681151": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR701499": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR722495": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR742030": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR764343": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR681155": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR738095": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR696201": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR726098": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR697155": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR683297": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR683294": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR265328": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR380802": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR715631": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR742540": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR738737": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761686": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR766451": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR765410": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR754919": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR737444": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR700253": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR457777": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR443699": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762139": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR762368": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR733558": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762325": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR752345": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766279": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR744267": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766824": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR764727": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755423": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR717146": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR614622": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR751428": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR680429": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762959": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR754385": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR729427": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR75135": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR746020": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR734505": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR704008": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR754264": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR746502": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR722747": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR720207": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761674": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR735314": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755950": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761287": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR639249": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR758541": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR722638": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR723408": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755813": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR661080": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761961": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR746348": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR742539": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR698683": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR692371": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR746427": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR765432": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR723328": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR757383": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR754297": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR760946": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR739365": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR764444": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR764455": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR750219": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR694996": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR694997": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR752059": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR83373": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR415135": {
+    "versie": 3,
+    "skip": "geen isolatie"
+  },
+  "CVDR755025": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR754883": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR712712": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR760729": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR735032": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR735034": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR697205": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR447867": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR410844": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755859": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR717473": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR128139": {
+    "versie": 1,
+    "skip": "vervallen"
+  },
+  "CVDR84499": {
+    "versie": 1,
+    "skip": "vervallen"
+  },
+  "CVDR692638": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR673476": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR667223": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR735898": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR643935": {
+    "versie": 3,
+    "skip": "titel"
+  },
+  "CVDR751124": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR693070": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR664564": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR471816": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR756033": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR334128": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR756348": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR379396": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR697581": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR693560": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR761008": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR654576": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR693145": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR643053": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR763845": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR747170": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR751705": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR763341": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR700052": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR748479": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR453092": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR616459": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR758792": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR718389": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR85702": {
+    "versie": 1,
+    "skip": "vervallen"
+  },
+  "CVDR695245": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR736510": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR724531": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR724533": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR690827": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR763629": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR626768": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR734219": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762849": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR684077": {
+    "versie": 3,
+    "skip": "titel"
+  },
+  "CVDR637247": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR763002": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR763511": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR696559": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR728945": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR684074": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR622737": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR748895": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR746607": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR752919": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR752920": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR748817": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766253": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR748787": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR719380": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR338159": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766582": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR751599": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR745750": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR744875": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR746984": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR695095": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR718232": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR714236": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR744192": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR737599": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR656276": {
+    "versie": 7,
+    "skip": "titel"
+  },
+  "CVDR752241": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR748370": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR758926": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR455859": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR766002": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR683792": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR479008": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR764776": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR665570": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR665577": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR753241": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR696712": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR744030": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR750982": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR756815": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR763506": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR738720": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR699310": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR756369": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR669164": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR719274": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR212955": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR739902": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR656097": {
+    "versie": 4,
+    "skip": "geen isolatie"
+  },
+  "CVDR697815": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR615003": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR760032": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR746162": {
+    "versie": 4,
+    "skip": "geen isolatie"
+  },
+  "CVDR742541": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR126509": {
+    "versie": 3,
+    "skip": "geen isolatie"
+  },
+  "CVDR446335": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR624383": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR687281": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR623651": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR685417": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR701628": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR70869": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR677030": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR612986": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR720352": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR756959": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR724525": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR760493": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR621372": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR602104": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR612673": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR647783": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR762410": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR719852": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR763101": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR624521": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR702578": {
+    "versie": 4,
+    "skip": "geen isolatie"
+  },
+  "CVDR646218": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR649765": {
+    "versie": 12,
+    "skip": "geen isolatie"
+  },
+  "CVDR717673": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR736953": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR751398": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR759178": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR628527": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762665": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR682642": {
+    "versie": 3,
+    "skip": "geen isolatie"
+  },
+  "CVDR751717": {
+    "versie": 2,
+    "skip": "titel"
+  },
+  "CVDR723822": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR762586": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR696739": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR715975": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR758716": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR663652": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR755157": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR730481": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR748440": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR644181": {
+    "versie": 10,
+    "skip": "geen isolatie"
+  },
+  "CVDR706616": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR707968": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR734753": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR358047": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR740756": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR719564": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR675096": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR223382": {
+    "versie": 1,
+    "skip": "vervallen"
+  },
+  "CVDR693495": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR723612": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR678401": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR624006": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR766337": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR760736": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR713075": {
+    "versie": 10,
+    "skip": "geen isolatie"
+  },
+  "CVDR697157": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR608852": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR696863": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR653807": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR719220": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR113690": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR305340": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR467359": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR467350": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR623602": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR760564": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR733894": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR755703": {
+    "versie": 1,
+    "skip": "titel"
+  },
+  "CVDR762095": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR692128": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR723497": {
+    "versie": 3,
+    "skip": "titel"
+  },
+  "CVDR725511": {
+    "versie": 2,
+    "skip": "geen isolatie"
+  },
+  "CVDR737134": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR738003": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR121406": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR602038": {
+    "versie": 24,
+    "skip": "geen isolatie"
   }
 }
