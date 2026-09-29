@@ -1,6 +1,6 @@
 {
   "Doesburg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -9,7 +9,7 @@
     "wacht_op_uitlezen": 0
   },
   "Apeldoorn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -18,7 +18,7 @@
     "wacht_op_uitlezen": 0
   },
   "Doetinchem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -27,7 +27,7 @@
     "wacht_op_uitlezen": 0
   },
   "Arnhem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -36,7 +36,7 @@
     "wacht_op_uitlezen": 0
   },
   "Zutphen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -45,7 +45,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bronckhorst": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -54,16 +54,17 @@
     "wacht_op_uitlezen": 0
   },
   "Groningen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 43,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "'s-Gravenhage": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -72,7 +73,7 @@
     "wacht_op_uitlezen": 0
   },
   "'s-Hertogenbosch": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -81,7 +82,7 @@
     "wacht_op_uitlezen": 0
   },
   "Aa en Hunze": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -91,7 +92,7 @@
     "wacht_op_uitlezen": 0
   },
   "Aalsmeer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -100,7 +101,7 @@
     "wacht_op_uitlezen": 0
   },
   "Aalten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -109,7 +110,7 @@
     "wacht_op_uitlezen": 0
   },
   "Achtkarspelen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -118,7 +119,7 @@
     "wacht_op_uitlezen": 0
   },
   "Alblasserdam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -127,7 +128,7 @@
     "wacht_op_uitlezen": 0
   },
   "Albrandswaard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -136,7 +137,7 @@
     "wacht_op_uitlezen": 0
   },
   "Alkmaar": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -145,7 +146,7 @@
     "wacht_op_uitlezen": 0
   },
   "Almelo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -154,7 +155,7 @@
     "wacht_op_uitlezen": 0
   },
   "Almere": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -163,7 +164,7 @@
     "wacht_op_uitlezen": 0
   },
   "Alphen aan den Rijn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -172,7 +173,7 @@
     "wacht_op_uitlezen": 0
   },
   "Alphen-Chaam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -181,7 +182,7 @@
     "wacht_op_uitlezen": 0
   },
   "Altena": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -190,7 +191,7 @@
     "wacht_op_uitlezen": 0
   },
   "Ameland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -199,7 +200,7 @@
     "wacht_op_uitlezen": 0
   },
   "Amersfoort": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -208,7 +209,7 @@
     "wacht_op_uitlezen": 0
   },
   "Amstelveen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -217,17 +218,17 @@
     "wacht_op_uitlezen": 0
   },
   "Amsterdam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
     ],
-    "treffers": 25,
+    "treffers": 26,
     "relevante_regelingen": 1,
     "wacht_op_uitlezen": 0
   },
   "Assen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -236,7 +237,7 @@
     "wacht_op_uitlezen": 0
   },
   "Asten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -245,7 +246,7 @@
     "wacht_op_uitlezen": 0
   },
   "Baarle-Nassau": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -254,7 +255,7 @@
     "wacht_op_uitlezen": 0
   },
   "Baarn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -263,7 +264,7 @@
     "wacht_op_uitlezen": 0
   },
   "Barendrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -272,7 +273,7 @@
     "wacht_op_uitlezen": 0
   },
   "Barneveld": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -281,7 +282,7 @@
     "wacht_op_uitlezen": 0
   },
   "Beek": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -290,7 +291,7 @@
     "wacht_op_uitlezen": 0
   },
   "Beekdaelen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -299,7 +300,7 @@
     "wacht_op_uitlezen": 0
   },
   "Beesel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -308,7 +309,7 @@
     "wacht_op_uitlezen": 0
   },
   "Berg en Dal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -317,7 +318,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bergeijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -327,7 +328,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bergen (L)": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -336,7 +337,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bergen (NH)": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -345,7 +346,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bergen op Zoom": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -355,7 +356,7 @@
     "wacht_op_uitlezen": 0
   },
   "Berkelland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -364,7 +365,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bernheze": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -373,7 +374,7 @@
     "wacht_op_uitlezen": 0
   },
   "Best": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -383,7 +384,7 @@
     "wacht_op_uitlezen": 0
   },
   "Beuningen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -392,7 +393,7 @@
     "wacht_op_uitlezen": 0
   },
   "Beverwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -401,7 +402,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bladel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -411,7 +412,7 @@
     "wacht_op_uitlezen": 0
   },
   "Blaricum": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -420,7 +421,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bloemendaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -429,7 +430,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bodegraven-Reeuwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -438,7 +439,7 @@
     "wacht_op_uitlezen": 0
   },
   "Boekel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -447,7 +448,7 @@
     "wacht_op_uitlezen": 0
   },
   "Borger-Odoorn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -456,7 +457,7 @@
     "wacht_op_uitlezen": 0
   },
   "Borne": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -465,7 +466,7 @@
     "wacht_op_uitlezen": 0
   },
   "Borsele": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -474,7 +475,7 @@
     "wacht_op_uitlezen": 0
   },
   "Boxtel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -483,7 +484,7 @@
     "wacht_op_uitlezen": 0
   },
   "Breda": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -492,7 +493,7 @@
     "wacht_op_uitlezen": 0
   },
   "Brummen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -502,7 +503,7 @@
     "wacht_op_uitlezen": 0
   },
   "Brunssum": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -511,7 +512,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bunnik": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -520,7 +521,7 @@
     "wacht_op_uitlezen": 0
   },
   "Bunschoten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -529,7 +530,7 @@
     "wacht_op_uitlezen": 0
   },
   "Buren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -538,7 +539,7 @@
     "wacht_op_uitlezen": 0
   },
   "Capelle aan den IJssel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -547,7 +548,7 @@
     "wacht_op_uitlezen": 0
   },
   "Castricum": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -556,7 +557,7 @@
     "wacht_op_uitlezen": 0
   },
   "Coevorden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -565,7 +566,7 @@
     "wacht_op_uitlezen": 0
   },
   "Cranendonck": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -574,7 +575,7 @@
     "wacht_op_uitlezen": 0
   },
   "Culemborg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -583,7 +584,7 @@
     "wacht_op_uitlezen": 0
   },
   "Dalfsen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -592,7 +593,7 @@
     "wacht_op_uitlezen": 0
   },
   "Dantumadiel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -601,7 +602,7 @@
     "wacht_op_uitlezen": 0
   },
   "De Bilt": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -610,7 +611,7 @@
     "wacht_op_uitlezen": 0
   },
   "De Fryske Marren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -619,7 +620,7 @@
     "wacht_op_uitlezen": 0
   },
   "De Ronde Venen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -628,7 +629,7 @@
     "wacht_op_uitlezen": 0
   },
   "De Wolden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -637,7 +638,7 @@
     "wacht_op_uitlezen": 0
   },
   "Delft": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -647,7 +648,7 @@
     "wacht_op_uitlezen": 0
   },
   "Den Helder": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -656,7 +657,7 @@
     "wacht_op_uitlezen": 0
   },
   "Deurne": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR",
       "internet (AI)"
@@ -666,7 +667,7 @@
     "wacht_op_uitlezen": 0
   },
   "Deventer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -675,7 +676,7 @@
     "wacht_op_uitlezen": 0
   },
   "Diemen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -684,7 +685,7 @@
     "wacht_op_uitlezen": 0
   },
   "Dijk en Waard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -693,7 +694,7 @@
     "wacht_op_uitlezen": 0
   },
   "Dinkelland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -702,7 +703,7 @@
     "wacht_op_uitlezen": 0
   },
   "Dongen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -711,2293 +712,2328 @@
     "wacht_op_uitlezen": 0
   },
   "Dordrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
     "relevante_regelingen": 4,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "Drechterland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Drimmelen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Dronten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Druten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Duiven": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Echt-Susteren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 4,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Edam-Volendam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Ede": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Eemnes": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Eemsdelta": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Eersel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 25,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Eijsden-Margraten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 5,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "Eindhoven": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 23,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Elburg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 11,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "Emmen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Enkhuizen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Enschede": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Epe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Ermelo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Etten-Leur": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Geertruidenberg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Geldrop-Mierlo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 28,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 7
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Gemert-Bakel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Gennep": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Gilze en Rijen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Goeree-Overflakkee": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Goes": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Goirle": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Gooise Meren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Gorinchem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Gouda": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 32,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Gulpen-Wittem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Haaksbergen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Haarlem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Haarlemmermeer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 26,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Halderberge": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 3,
-    "relevante_regelingen": 0,
+    "relevante_regelingen": 1,
     "wacht_op_uitlezen": 0
   },
   "Hardenberg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Harderwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hardinxveld-Giessendam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Harlingen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hattem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heemskerk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heemstede": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heerde": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heerenveen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 20,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heerlen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 19,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Heeze-Leende": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heiloo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hellendoorn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Helmond": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Hendrik-Ido-Ambacht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hengelo (O)": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Het Hogeland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heumen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Heusden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Hillegom": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Hilvarenbeek": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Hilversum": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 26,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 8
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hoeksche Waard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hof van Twente": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hollands Kroon": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Hoogeveen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 8
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Hoorn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 4,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Horst aan de Maas": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Houten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Huizen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Hulst": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "IJsselstein": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Kaag en Braassem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Kampen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 20,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Kapelle": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Katwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Kerkrade": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Koggenland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 4,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Krimpen aan den IJssel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Krimpenerwaard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Laarbeek": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Land van Cuijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Landgraaf": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Landsmeer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Lansingerland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Laren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Leeuwarden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Leiden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 19,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Leiderdorp": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Leidschendam-Voorburg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Lelystad": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Leudal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Leusden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Lingewaard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 23,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Lisse": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Lochem": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Loon op Zand": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Lopik": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 8,
     "relevante_regelingen": 0,
     "wacht_op_uitlezen": 0
   },
   "Losser": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Maasdriel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Maasgouw": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Maashorst": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Maassluis": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Maastricht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Medemblik": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Meerssen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 10,
     "relevante_regelingen": 0,
     "wacht_op_uitlezen": 0
   },
   "Meierijstad": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "wacht_op_uitlezen": 0
   },
   "Meppel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Middelburg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Midden-Delfland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Midden-Drenthe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
+    "relevante_regelingen": 1,
     "wacht_op_uitlezen": 0
   },
   "Midden-Groningen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Moerdijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Molenlanden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Montferland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Montfoort": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Mook en Middelaar": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 2,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Neder-Betuwe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Nederweert": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 3,
-    "relevante_regelingen": 0,
+    "relevante_regelingen": 1,
     "wacht_op_uitlezen": 0
   },
   "Nieuwegein": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Nieuwkoop": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Nijkerk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Nijmegen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 27,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 9
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Nissewaard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Noardeast-Fryslân": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Noord-Beveland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Noordenveld": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 6,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "Noordoostpolder": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Noordwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 21,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Nuenen, Gerwen en Nederwetten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Nunspeet": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oegstgeest": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oirschot": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oisterwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oldambt": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 7
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oldebroek": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Oldenzaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Olst-Wijhe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Ommen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oost Gelre": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Oosterhout": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Ooststellingwerf": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oostzaan": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Opmeer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Opsterland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Oss": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oude IJsselstreek": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 7
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Ouder-Amstel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Oudewater": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Overbetuwe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Papendrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Peel en Maas": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Pekela": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 4,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Pijnacker-Nootdorp": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Purmerend": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 23,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Putten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Raalte": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Reimerswaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Renkum": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Renswoude": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
-    "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "treffers": 6,
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Reusel-De Mierden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Rheden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Rhenen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Ridderkerk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
+    "relevante_regelingen": 2,
     "wacht_op_uitlezen": 0
   },
   "Rijssen-Holten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Rijswijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Roerdalen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 4,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Roermond": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Roosendaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Rotterdam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 32,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Rozendaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Rucphen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 7,
     "relevante_regelingen": 0,
     "wacht_op_uitlezen": 0
   },
   "Schagen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Scherpenzeel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Schiedam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Schiermonnikoog": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Schouwen-Duiveland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 18,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Simpelveld": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Sint-Michielsgestel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Sittard-Geleen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Sliedrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Sluis": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Smallingerland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 19,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Soest": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Someren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Son en Breugel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 11,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "wacht_op_uitlezen": 0
   },
   "Stadskanaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Staphorst": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Stede Broec": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Steenbergen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Steenwijkerland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Stein": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Stichtse Vecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Súdwest-Fryslân": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Terneuzen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Terschelling": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Texel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Teylingen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Tholen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Tiel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Tilburg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Tubbergen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 24,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Twenterand": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Tynaarlo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 7,
     "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "wacht_op_uitlezen": 0
   },
   "Tytsjerksteradiel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Uitgeest": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Uithoorn": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 15,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Urk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Utrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
-    "treffers": 66,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 16
+    "treffers": 68,
+    "relevante_regelingen": 6,
+    "wacht_op_uitlezen": 0
   },
   "Utrechtse Heuvelrug": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Vaals": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Valkenburg aan de Geul": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Valkenswaard": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Veendam": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Veenendaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 21,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 8
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Veere": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 21,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Veldhoven": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Velsen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Venlo": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Venray": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Vijfheerenlanden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 21,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 6
+    "relevante_regelingen": 3,
+    "wacht_op_uitlezen": 0
   },
   "Vlaardingen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 7,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Vlieland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Vlissingen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Voerendaal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Voorne aan Zee": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Voorschoten": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Voorst": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Vught": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Waadhoeke": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Waalre": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 5,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Waalwijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Waddinxveen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Wageningen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Wassenaar": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 8,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 1
   },
   "Waterland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Weert": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "West Betuwe": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 22,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "West Maas en Waal": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Westerkwartier": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Westerveld": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Westervoort": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 6,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Westerwolde": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Westland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 12,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Weststellingwerf": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Wierden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 13,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Wijchen": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 16,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Wijdemeren": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
-      "CVDR"
+      "CVDR",
+      "internet (AI)"
     ],
     "treffers": 1,
-    "relevante_regelingen": 0,
+    "relevante_regelingen": 2,
     "wacht_op_uitlezen": 0
   },
   "Wijk bij Duurstede": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 17,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 2
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Winterswijk": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 20,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Woensdrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 2,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 1
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Woerden": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 20,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Wormerland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 11,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Woudenberg": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 9,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 3
+    "relevante_regelingen": 2,
+    "wacht_op_uitlezen": 0
   },
   "Zaanstad": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 29,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 0
   },
   "Zaltbommel": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 14,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 5
+    "relevante_regelingen": 4,
+    "wacht_op_uitlezen": 0
   },
   "Zandvoort": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
     "treffers": 10,
-    "relevante_regelingen": 0,
-    "wacht_op_uitlezen": 4
+    "relevante_regelingen": 1,
+    "wacht_op_uitlezen": 3
   },
   "Zeewolde": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3006,7 +3042,7 @@
     "wacht_op_uitlezen": 2
   },
   "Zeist": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3015,7 +3051,7 @@
     "wacht_op_uitlezen": 5
   },
   "Zevenaar": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3024,7 +3060,7 @@
     "wacht_op_uitlezen": 4
   },
   "Zoetermeer": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3033,7 +3069,7 @@
     "wacht_op_uitlezen": 4
   },
   "Zoeterwoude": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3042,7 +3078,7 @@
     "wacht_op_uitlezen": 2
   },
   "Zuidplas": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3051,7 +3087,7 @@
     "wacht_op_uitlezen": 2
   },
   "Zundert": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3060,7 +3096,7 @@
     "wacht_op_uitlezen": 1
   },
   "Zwartewaterland": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3069,7 +3105,7 @@
     "wacht_op_uitlezen": 2
   },
   "Zwijndrecht": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
@@ -3078,7 +3114,7 @@
     "wacht_op_uitlezen": 2
   },
   "Zwolle": {
-    "datum": "2026-09-28",
+    "datum": "2026-09-29",
     "bronnen_gecheckt": [
       "CVDR"
     ],
