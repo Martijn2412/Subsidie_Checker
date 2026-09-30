@@ -18,7 +18,7 @@
     {
       "gemeente": "Aa en Hunze",
       "provincie": "Drenthe",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -207,21 +207,21 @@
     {
       "gemeente": "Berg en Dal",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
     {
       "gemeente": "Bergeijk",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
     {
       "gemeente": "Bergen (L)",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -256,7 +256,7 @@
     {
       "gemeente": "Best",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -277,7 +277,7 @@
     {
       "gemeente": "Bladel",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -795,7 +795,7 @@
     {
       "gemeente": "Halderberge",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -970,7 +970,7 @@
     {
       "gemeente": "Hollands Kroon",
       "provincie": "Noord-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -984,7 +984,7 @@
     {
       "gemeente": "Hoorn",
       "provincie": "Noord-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1271,7 +1271,7 @@
     {
       "gemeente": "Meppel",
       "provincie": "Drenthe",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1537,7 +1537,7 @@
     {
       "gemeente": "Oss",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1586,7 +1586,7 @@
     {
       "gemeente": "Pekela",
       "provincie": "Groningen",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1663,7 +1663,7 @@
     {
       "gemeente": "Ridderkerk",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1677,7 +1677,7 @@
     {
       "gemeente": "Rijswijk",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -1740,14 +1740,21 @@
     {
       "gemeente": "Schiedam",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
-      "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "cvdr_gecheckt": "2026-09-30",
+      "wacht_op_uitlezen": [
+        {
+          "cvdr_id": "CVDR767066",
+          "titel": "Subsidieregeling Doe-Het-Zelf Aanpak isolerende maatregelen Schiedam 2026",
+          "gewijzigd": "2026-10-01",
+          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767066/1"
+        }
+      ],
+      "internet_gezocht": null
     },
     {
       "gemeente": "Schiermonnikoog",
       "provincie": "Fryslân",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1789,7 +1796,7 @@
     {
       "gemeente": "Sluis",
       "provincie": "Zeeland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1859,7 +1866,7 @@
     {
       "gemeente": "Stein",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -1915,7 +1922,7 @@
     {
       "gemeente": "Tiel",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -1936,7 +1943,7 @@
     {
       "gemeente": "Twenterand",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1992,7 +1999,7 @@
     {
       "gemeente": "Vaals",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -2097,7 +2104,7 @@
     {
       "gemeente": "Voorne aan Zee",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -2195,7 +2202,7 @@
     {
       "gemeente": "West Maas en Waal",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -2322,26 +2329,7 @@
       "gemeente": "Zandvoort",
       "provincie": "Noord-Holland",
       "cvdr_gecheckt": "2026-09-30",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR736593",
-          "titel": "Subsidieregeling lokale aanpak isolatie Zandvoort",
-          "gewijzigd": "2026-06-25",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR736593/2"
-        },
-        {
-          "cvdr_id": "CVDR747658",
-          "titel": "Subsidieregeling duurzame commerciële en maatschappelijke panden Zandvoort",
-          "gewijzigd": "2025-11-25",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR747658/1"
-        },
-        {
-          "cvdr_id": "CVDR676485",
-          "titel": "Verordening Duurzaamheidslening gemeente Zandvoort",
-          "gewijzigd": "2022-05-10",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR676485/1"
-        }
-      ],
+      "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
     {
@@ -2354,12 +2342,6 @@
           "titel": "Subsidieregeling lokale aanpak isolatie gemeente Zeewolde 2026",
           "gewijzigd": "2025-12-12",
           "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR749311/1"
-        },
-        {
-          "cvdr_id": "CVDR628403",
-          "titel": "Verordening van de gemeenteraad van de gemeente Zeewolde houdende regels omtrent duurzaamheidslening (Verordening Duurzaamheidslening gemeente Zeewolde 2019)",
-          "gewijzigd": "2019-11-04",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR628403/1"
         }
       ],
       "internet_gezocht": null
@@ -2386,18 +2368,6 @@
           "titel": "Subsidieregeling Lokale Aanpak Isolatie Zeist",
           "gewijzigd": "2024-10-18",
           "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR725641/1"
-        },
-        {
-          "cvdr_id": "CVDR703472",
-          "titel": "Verordening leningregeling asbestdaken Zeist 2024",
-          "gewijzigd": "2024-01-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR703472/1"
-        },
-        {
-          "cvdr_id": "CVDR761706",
-          "titel": "Tijdelijke Subsidieregeling Omruilactie Energiezuinig Witgoed gemeente Zeist 2026",
-          "gewijzigd": "2026-05-20",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR761706/1"
         }
       ],
       "internet_gezocht": null
@@ -2407,12 +2377,6 @@
       "provincie": "Gelderland",
       "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR643490",
-          "titel": "Subsidieregeling energiebesparende maatregelen woningen gemeente Zevenaar",
-          "gewijzigd": "2020-09-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR643490/1"
-        },
         {
           "cvdr_id": "CVDR757892",
           "titel": "Subsidieregeling Lokale Isolatieaanpak gemeente Zevenaar 2026-2028",
