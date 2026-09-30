@@ -1,5 +1,5 @@
 {
-  "peildatum": "2026-09-29",
+  "peildatum": "2026-09-30",
   "gemeenten": [
     {
       "gemeente": "'s-Gravenhage",
@@ -2160,7 +2160,7 @@
     {
       "gemeente": "Wassenaar",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR762816",
@@ -2321,7 +2321,7 @@
     {
       "gemeente": "Zandvoort",
       "provincie": "Noord-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR736593",
@@ -2347,7 +2347,7 @@
     {
       "gemeente": "Zeewolde",
       "provincie": "Flevoland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR749311",
@@ -2367,7 +2367,7 @@
     {
       "gemeente": "Zeist",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR759526",
@@ -2405,7 +2405,7 @@
     {
       "gemeente": "Zevenaar",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR643490",
@@ -2437,7 +2437,7 @@
     {
       "gemeente": "Zoetermeer",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR764672",
@@ -2469,7 +2469,7 @@
     {
       "gemeente": "Zoeterwoude",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR746366",
@@ -2489,7 +2489,7 @@
     {
       "gemeente": "Zuidplas",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR760261",
@@ -2509,7 +2509,7 @@
     {
       "gemeente": "Zundert",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR760954",
@@ -2530,7 +2530,7 @@
     {
       "gemeente": "Zwartewaterland",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR760839",
@@ -2550,7 +2550,7 @@
     {
       "gemeente": "Zwijndrecht",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR759345",
@@ -2570,7 +2570,7 @@
     {
       "gemeente": "Zwolle",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-09-29",
+      "cvdr_gecheckt": "2026-09-30",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR705000",
