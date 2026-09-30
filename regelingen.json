@@ -4209,7 +4209,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR741281/1",
     "datum_regelingstekst": "2025-06-28",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -4266,7 +4266,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR277622/2",
     "datum_regelingstekst": "2016-10-25",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },
@@ -4389,7 +4389,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR724020/2",
     "datum_regelingstekst": "2025-01-29",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -4459,7 +4459,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR724014/2",
     "datum_regelingstekst": "2025-01-29",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "middel"
   },
@@ -17676,7 +17676,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR739965/2",
     "datum_regelingstekst": "2026-04-25",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -29761,7 +29761,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR705212/2",
     "datum_regelingstekst": "2025-01-01",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -30555,49 +30555,6 @@
     "peildatum": "2026-09-29",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
-  },
-  {
-    "id": "schiedam-web-stimuleringslening-particuliere-woningverbetering",
-    "cvdr_id": null,
-    "bron": "web",
-    "handmatig": false,
-    "gecontroleerd": false,
-    "gemeente": "Schiedam",
-    "provincie": "Zuid-Holland",
-    "naam": "Stimuleringslening",
-    "bron_url": "https://www.servicepuntwoningverbetering.nl/subsidies-financiering",
-    "peildatum": "2026-09-29",
-    "type": "lening",
-    "maatregelen": "het renoveren van het dak, het isoleren van de woning en het plaatsen van zonnepanelen maar ook het bestrijden van agressieve vormen van zwam",
-    "doelgroep": "woningeigenaren en VvE’s",
-    "criteria": {
-      "eigenaar_bewoner": null,
-      "woz_max": null,
-      "woz_regel": null,
-      "woz_peildatum": null,
-      "woz_uitzondering": null,
-      "isolatiestaat": null,
-      "bouwjaar_min": null,
-      "bouwjaar_max": null,
-      "bouwjaar_opmerking": null,
-      "woonoppervlak_max": null,
-      "inkomen": null,
-      "vve": "ja",
-      "vve_opmerking": null
-    },
-    "aanvraagloket": "contactformulier",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Een gemeentelijke lening met een gunstig rentetarief via SVn voor woningverbetering en verduurzaming, waaronder isolatie van het dak, de gevel en beglazing. De regeling is bedoeld voor particuliere woningeigenaren (eigenaar-bewoners) van woningen in Schiedam die zijn gebouwd vóór 2012. Er kan minimaal € 2.500,- tot maximaal € 35.000,- per woning worden geleend met een looptijd tot 15 jaar; de regeling is doorlopend. Voorwaarde is dat de aanvrager niet meer dan 5 woningen in bezit heeft. De tekst noemt daarnaast kort een subsidieregeling voor VvE's, maar geeft daarvan geen verdere details of voorwaarden.",
-    "bewijs": {
-      "naam": "Stimuleringslening",
-      "type": "Stimuleringslening",
-      "maatregelen": "het renoveren van het dak, het isoleren van de woning en het plaatsen van zonnepanelen maar ook het bestrijden van agressieve vormen van zwam",
-      "doelgroep": "woningeigenaren en VvE’s",
-      "vve": "uw woning, appartement of VvE complex",
-      "aanvraagloket": "neem dan contact op via het contactformulier",
-      "opmerkingen": "de aanvrager heeft niet meer dan 5 woningen in bezit"
-    },
-    "status": "onbekend",
-    "betrouwbaarheid": "laag"
   },
   {
     "id": "schiermonnikoog-web-subsidieregeling-aardgasvrij-eiland-natuurvriendel",
@@ -32562,7 +32519,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR736349/1",
     "datum_regelingstekst": "2025-03-07",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },
@@ -33620,7 +33577,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR63680/1",
     "datum_regelingstekst": "2018-07-10",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },
@@ -33682,7 +33639,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR323082/1",
     "datum_regelingstekst": "2018-07-10",
-    "peildatum": "2026-09-29",
+    "peildatum": "2026-09-30",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },
@@ -40415,6 +40372,101 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR735095/1",
     "datum_regelingstekst": "2025-02-07",
+    "peildatum": "2026-09-30",
+    "status": "open",
+    "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "zandvoort-cvdr736593",
+    "cvdr_id": "CVDR736593",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zandvoort",
+    "provincie": "Noord-Holland",
+    "naam": "Subsidieregeling lokale aanpak isolatie Zandvoort",
+    "type": "subsidie",
+    "maatregelen": [
+      "dakisolatie",
+      "zoldervloerisolatie",
+      "vlieringvloerisolatie",
+      "gevelisolatie",
+      "spouwmuurisolatie",
+      "glas-, kozijnpaneel- of deurisolatie",
+      "vloerisolatie",
+      "bodemisolatie",
+      "energiezuinige ventilatiemaatregel"
+    ],
+    "doelgroep": "eigenaar-bewoners van een bestaande grondgebonden koopwoning in slecht geïsoleerde staat",
+    "bedrag": "Maximaal 100% van de werkelijke kosten tot € 7.000,- voor doelgroep 1 en maximaal € 4.000,- voor doelgroep 2",
+    "technische_eisen": "Voorwaarden uit Regeling Nationale EZK- en LNV-subsidies art. 4.5.2 lid 3; ventilatie gecombineerd met isolatie en CO2-gestuurd of balansventilatie WTW met rendement ≥ 90%; gevelisolatie mits gedegen ecologisch onderzoek.",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 579000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": "Voor doelgroep 1 geldt geen WOZ-maximum, mits de eigenaar in het bezit is van een Zandvoortpas.",
+      "isolatiestaat": {
+        "omschrijving": "woning met een energielabelklasse D, E, F, G of ten minste twee niet of slecht geïsoleerde bestaande bouwdelen volgens bijlage 1",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "bonus",
+      "vve": "nee",
+      "vve_opmerking": "Subsidie geldt uitsluitend voor een grondgebonden koopwoning."
+    },
+    "inkomensgrens": "In bezit zijn van een Zandvoortpas (voor doelgroep 1)",
+    "aanvragen": "Aanvraag via Winst uit je woning door middel van offerte (ontzorgingsaanpak) of reservering vooraf met factuur/declaratie achteraf (regel-het-zelf-route)",
+    "uitvoerder_eisen": "Erkend isolatiebedrijf dat beschikt over een SKG IKOB certificaat, een Insula certificaat of vergelijkbaar; doe-het-zelf is alleen toegestaan voor schuindakisolatie (binnen)",
+    "stapelbaar_isde": true,
+    "looptijd_start": "2026-06-10",
+    "looptijd_eind": "2027-12-31",
+    "budgetstatus": "€657.070,- gedurende de looptijd van de regeling",
+    "aanvraagloket": "Winst uit je woning (https://winstuitjewoning.nl/)",
+    "opmerkingen": null,
+    "bewijs": {
+      "naam": "Subsidieregeling lokale aanpak isolatie Zandvoort",
+      "type": "Subsidieregeling lokale aanpak isolatie Zandvoort",
+      "maatregelen": "dakisolatie dan wel zolder- of vlieringvloerisolatievloer; gevelisolatie, waaronder spouwmuurisolatie, [...] glas-, kozijnpaneel- of deurisolatie [...] vloer- dan wel bodemisolatie; energiezuinige ventilatiemaatregel.",
+      "doelgroep": "Aanvrager : eigenaar-bewoner van een grondgebonden koopwoning, die valt binnen de doelgroep zoals omschreven in artikel 4.",
+      "bedrag": "De subsidie bedraagt maximaal 100% van de werkelijke kosten en ten hoogste: voor doelgroep 1: maximaal €7.000,- inclusief BTW.; voor doelgroep 2: maximaal €4.000,- inclusief BTW",
+      "technische_eisen": "De voorwaarden voor de isolatiemaatregelen zijn te vinden in de Regeling Nationale EZK- en LNV-subsidies in artikel 4.5.2, derde lid.",
+      "eigenaar_bewoner": "Aanvrager : eigenaar-bewoner van een grondgebonden koopwoning",
+      "woz_max": "en een WOZ-waarde van maximaal € 579.000,- op 1 januari 2022.",
+      "woz_regel": "een WOZ-waarde van maximaal € 579.000,-",
+      "woz_peildatum": "op 1 januari 2022.",
+      "woz_uitzondering": "Doelgroep 1: De Aanvrager is een natuurlijk persoon, die eigenaar-bewoner is van een bestaande grondgebonden koopwoning in slecht geïsoleerde staat, mits deze eigenaar in bezit is van een Zandvoortpas.",
+      "isolatiestaat": "Slecht geïsoleerde woning: woning met een energielabelklasse D, E, F, G of [...] waarin ten minste twee van de volgende bestaande bouwdelen [...] niet of slecht geïsoleerd zijn",
+      "inkomen": "Doelgroep 1: [...] mits deze eigenaar in bezit is van een Zandvoortpas.",
+      "vve": "Aanvrager : eigenaar-bewoner van een grondgebonden koopwoning",
+      "vve_opmerking": "Grondgebonden koopwoning : een woning binnen het grondgebied van de gemeente die rechtstreeks toegankelijk is op het straatniveau en waarvan een bouwlaag aansluit op het maaiveld",
+      "inkomensgrens": "mits deze eigenaar in bezit is van een Zandvoortpas.",
+      "aanvragen": "kan zich aanmelden via de website van “Winst uit je woning” voor een huisadvies door een professioneel en onafhankelijk energieadviseur.",
+      "uitvoerder_eisen": "Erkend isolatiebedrijf : een isolatiebedrijf dat beschikt over een SKG IKOB certificaat, een Insula certificaat of vergelijkbaar",
+      "stapelbaar_isde": "De subsidie kan worden gecombineerd met subsidies van rijkswege en van de provincie die gericht zijn op energiebesparing en woningverbetering.",
+      "looptijd_start": "De aanvraagperiode vangt aan op 10 juni 2026.",
+      "looptijd_eind": "Aanvragen kunnen ingediend worden tot en met 31 december 2027 of zolang het subsidieplafond niet is bereikt.",
+      "budgetstatus": "Het subsidieplafond bedraagt €657.070,- gedurende de looptijd van de regeling.",
+      "aanvraagloket": "kan zich aanmelden via de website van “Winst uit je woning”"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR736593/2",
+    "datum_regelingstekst": "2026-06-25",
     "peildatum": "2026-09-30",
     "status": "open",
     "betrouwbaarheid": "hoog"
