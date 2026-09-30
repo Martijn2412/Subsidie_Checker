@@ -36,13 +36,15 @@
     "duurzaamheidslening"
   ],
   "web_zoeken_elke_dagen": 30,
-  "max_web_zoekacties_per_run": 400,
-  "max_minuten_taalmodel": 300,
+  "max_web_zoekacties_per_run": 25,
+  "max_minuten_taalmodel": 100,
   "modellen": {
     "gemini": {
       "filter": "gemini-flash-lite-latest",
       "extractie": "gemini-flash-latest",
-      "zoeken": "gemini-flash-latest"
+      "zoeken": "gemini-flash-latest",
+      "extractie_reserve": "gemini-flash-lite-latest",
+      "zoeken_reserve": "gemini-flash-lite-latest"
     },
     "claude": {
       "filter": "claude-haiku-4-5-20251001",
@@ -50,7 +52,7 @@
       "zoeken": "claude-sonnet-5"
     }
   },
-  "pauze_tussen_aanroepen_sec": 1,
+  "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
-  "_uitleg_limieten": "Ingesteld voor een BETAALDE API-sleutel. Gratis Gemini-sleutel? Zet pauze op 7, max_minuten_taalmodel op 100 en max_web_zoekacties_per_run op 25."
+  "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400."
 }
