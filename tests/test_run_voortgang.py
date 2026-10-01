@@ -104,6 +104,19 @@ class TestVoortgang(unittest.TestCase):
         self.assertEqual(self.regelingen(), GEMEENTEN)
         self.assertIsNone(self.voortgang())
 
+    def test_resultaat_per_gemeente_in_samenvatting(self):
+        samenvatting = self.map / "summary.md"
+        os.environ["GITHUB_STEP_SUMMARY"] = str(samenvatting)
+        try:
+            self.budget_op_bij = "Ceedorp"
+            run.main()
+        finally:
+            del os.environ["GITHUB_STEP_SUMMARY"]
+        tekst = samenvatting.read_text()
+        self.assertIn("| ✅ | Aadorp | voorwaarden opgehaald", tekst)
+        self.assertIn("| 🛑 | Ceedorp |", tekst)
+        self.assertIn("verder bij **Ceedorp**", tekst)
+
     def test_tijd_op_stopt_netjes(self):
         self.tijd_op_na = 2
         run.main()                                                        # geen fout: netjes gestopt
