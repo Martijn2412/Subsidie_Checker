@@ -38,6 +38,8 @@
   "web_zoeken_elke_dagen": 30,
   "max_web_zoekacties_per_run": 25,
   "max_minuten_taalmodel": 100,
+  "max_minuten_run": 300,
+  "_uitleg_run": "max_minuten_run: na zoveel minuten stopt de run netjes en slaat alles op (GitHub stopt hard na 6 uur). Daarnaast slaat hij elke 5 minuten tussentijds op. De volgende run begint bij de gemeente waar deze stopte (data/voortgang.json).",
   "modellen": {
     "gemini": {
       "filter": "gemini-flash-lite-latest",

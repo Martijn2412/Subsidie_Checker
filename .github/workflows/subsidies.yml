@@ -44,6 +44,7 @@ jobs:
         run: pip install requests google-genai anthropic openpyxl
 
       - name: Regelingen ophalen en voorwaarden uitlezen
+        timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem
         run: |
           if [ -n "$ALLEEN" ]; then
             python -u scraper/run.py --alleen "$ALLEEN"
@@ -55,8 +56,16 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ALLEEN: ${{ github.event.inputs.gemeenten }}
 
+      # Is de run hard gestopt (noodrem, runner weg)? Dan staat er wel een tussentijdse stand,
+      # maar zijn het overzicht en de TIOS-export misschien niet bijgewerkt. Dat gebeurt hier.
+      - name: Afronden na een onderbreking
+        if: failure()
+        run: python -u scraper/run.py --alleen-overzicht
+
       # Wijzigingen komen als pull request binnen: jij controleert, daarna pas live.
+      # Ook na een onderbreking, zodat het werk tot dan toe niet verloren gaat.
       - name: Pull request maken bij wijzigingen
+        if: always()
         uses: peter-evans/create-pull-request@v7
         with:
           branch: subsidie-update
