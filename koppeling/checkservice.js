@@ -2,13 +2,13 @@
    Geen extra pakketten nodig, alleen Node.js 18 of nieuwer.
 
    Starten:   node koppeling/checkservice.js
-   Aanroepen: GET http://localhost:8085/check?postcode=2511AB&huisnummer=12&energielabel=E&woz=325000&eigenaar_bewoner=ja
+   Aanroepen: GET http://localhost:8085/check?postcode=2511AB&huisnummer=12&energielabel=E&bouwjaar=1931&woonoppervlak=95&woz=325000&eigenaar_bewoner=ja
    Status:    GET http://localhost:8085/status
 
    - Met postcode + huisnummer zoekt de service zelf de gemeente op bij PDOK (gratis
      adresdienst van de overheid, geen sleutel). De gemeentenaam is dan precies die uit
      de subsidielijst; "Den Haag" of een woonplaats geeft dus geen misser meer.
-     Bouwjaar en woonoppervlak komen uit het BAG, als TIOS die niet zelf meestuurt.
+     Bouwjaar, woonoppervlak en de rest stuurt TIOS zelf mee.
      Alleen postcode + huisnummer gaan naar PDOK; geen naam of andere klantgegevens.
    - Zonder postcode werkt ?gemeente=... nog steeds (dan moet de naam wel kloppen).
    - Haalt één keer per dag (en bij het starten) tios/subsidies.json op en bewaart de
@@ -46,9 +46,6 @@ let laatsteFout = null;
 /* ---------------- adres opzoeken (zelfde bronnen als de checkpagina) ---------------- */
 const normPc = s => String(s || "").toUpperCase().replace(/\s+/g, "");
 const normHn = s => String(s || "").trim().replace(/\D/g, "");
-const normTv = s => String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
-const getal = x => (x == null || x === "" || isNaN(Number(x))) ? null : Number(x);
-const toevoegingVan = d => normTv((d.huisletter || "") + (d.huisnummertoevoeging || d.toevoeging || ""));
 
 async function haalJson(url) {
   const r = await fetch(url, {signal: AbortSignal.timeout(PDOK_TIMEOUT_MS), headers: {Accept: "application/json"}});
@@ -57,43 +54,24 @@ async function haalJson(url) {
 }
 async function zoekLocatie(pc, hn) {
   const q = new URLSearchParams({q: `${pc} ${hn}`, rows: "50",
-    fl: "gemeentenaam,woonplaatsnaam,huisnummer,huisletter,huisnummertoevoeging,postcode,adresseerbaarobject_id"});
+    fl: "gemeentenaam,woonplaatsnaam,huisnummer,postcode"});
   q.append("fq", "type:adres"); q.append("fq", "postcode:" + pc);
   const j = await haalJson("https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?" + q);
   return ((j.response && j.response.docs) || []).filter(d => String(d.huisnummer) === String(hn));
 }
-async function zoekBag(pc, hn) {
-  const f = `<Filter><And><PropertyIsEqualTo><PropertyName>postcode</PropertyName><Literal>${pc}</Literal></PropertyIsEqualTo>` +
-            `<PropertyIsEqualTo><PropertyName>huisnummer</PropertyName><Literal>${hn}</Literal></PropertyIsEqualTo></And></Filter>`;
-  const q = new URLSearchParams({service: "WFS", version: "2.0.0", request: "GetFeature", typeName: "bag:verblijfsobject",
-                                 outputFormat: "json", count: "50", filter: f});
-  const j = await haalJson("https://service.pdok.nl/lv/bag/wfs/v2_0?" + q);
-  return (j.features || []).map(x => x.properties || {});
-}
 
-/* Postcode + huisnummer → {gemeente, woonplaats, bouwjaar, woonoppervlak} of {fout}.
-   Een postcode + huisnummer ligt altijd in één gemeente; de toevoeging is alleen nodig
-   om bij meerdere woningen op hetzelfde nummer het juiste bouwjaar/oppervlak te kiezen. */
+/* Postcode + huisnummer → {gemeente, woonplaats} of {fout}.
+   Een postcode + huisnummer ligt altijd in één gemeente, dus de toevoeging is niet nodig. */
 const adresCache = new Map();
-async function zoekAdres(postcode, huisnummer, toevoeging) {
-  const pc = normPc(postcode), hn = normHn(huisnummer), tv = normTv(toevoeging);
+async function zoekAdres(postcode, huisnummer) {
+  const pc = normPc(postcode), hn = normHn(huisnummer);
   if (!/^\d{4}[A-Z]{2}$/.test(pc) || !hn) return {fout: "ongeldige postcode of huisnummer"};
-  const sleutel = `${pc}|${hn}|${tv}`;
+  const sleutel = `${pc}|${hn}`;
   if (adresCache.has(sleutel)) return adresCache.get(sleutel);
-
-  const [loc, bag] = await Promise.allSettled([zoekLocatie(pc, hn), zoekBag(pc, hn)]);
-  if (loc.status === "rejected") return {fout: "adresdienst PDOK niet bereikbaar"};
-  const lijst = loc.value;
+  let lijst;
+  try { lijst = await zoekLocatie(pc, hn); } catch (e) { return {fout: "adresdienst PDOK niet bereikbaar"}; }
   if (!lijst.length) return {fout: "adres niet gevonden"};
-  const keuze = lijst.find(d => toevoegingVan(d) === tv) || (lijst.length === 1 || !tv ? lijst[0] : null) || lijst[0];
-  const eenduidig = lijst.length === 1 || lijst.some(d => toevoegingVan(d) === tv);
-
-  const uit = {gemeente: keuze.gemeentenaam || null, woonplaats: keuze.woonplaatsnaam || null, bouwjaar: null, woonoppervlak: null};
-  if (bag.status === "fulfilled" && eenduidig) {
-    const vbo = bag.value.find(v => v.identificatie && v.identificatie === keuze.adresseerbaarobject_id)
-             || bag.value.find(v => toevoegingVan(v) === toevoegingVan(keuze));
-    if (vbo) { uit.bouwjaar = getal(vbo.bouwjaar); uit.woonoppervlak = getal(vbo.oppervlakte); }
-  }
+  const uit = {gemeente: lijst[0].gemeentenaam || null, woonplaats: lijst[0].woonplaatsnaam || null};
   if (adresCache.size > 5000) adresCache.clear();
   adresCache.set(sleutel, uit);
   return uit;
@@ -106,13 +84,11 @@ async function beoordeel(params) {
   let adres = null, waarschuwing = null;
 
   if (PDOK_AAN && params.postcode && params.huisnummer) {
-    adres = await zoekAdres(params.postcode, params.huisnummer, params.toevoeging);
+    adres = await zoekAdres(params.postcode, params.huisnummer);
     if (adres.fout) {
       waarschuwing = `Gemeente niet opgezocht: ${adres.fout}.`;
     } else {
       klant.gemeente = adres.gemeente;   // PDOK wint: die naam staat precies zo in de lijst
-      if (klant.bouwjaar == null && adres.bouwjaar != null) klant.bouwjaar = adres.bouwjaar;
-      if (klant.woonoppervlak == null && adres.woonoppervlak != null) klant.woonoppervlak = adres.woonoppervlak;
     }
   }
 

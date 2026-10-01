@@ -21,7 +21,8 @@ global.fetch = async (url) => {
   const hn = (/^\S+ (\d+)$/.exec(u.searchParams.get("q") || "") || [])[1]
           || (/huisnummer<\/PropertyName><Literal>(\d+)/.exec(u.searchParams.get("filter") || "") || [])[1];
   const rec = PDOK[`${pc}|${hn}`] || {docs: [], bag: []};
-  const body = u.hostname === "api.pdok.nl" ? {response: {docs: rec.docs}} : {features: rec.bag.map(p => ({properties: p}))};
+  assert.equal(u.hostname, "api.pdok.nl", "alleen de Locatieserver mag worden aangeroepen");
+  const body = {response: {docs: rec.docs}};
   return {ok: true, json: async () => body};
 };
 
@@ -32,10 +33,9 @@ svc._zetData({bijgewerkt: new Date().toISOString().slice(0, 10), gemeenten: {},
   regelingen: [regeling("'s-Gravenhage"), regeling("Bronckhorst"), regeling("Testdorp")]});
 
 test("postcode geeft de officiële gemeentenaam, ook als TIOS 'Den Haag' stuurt", async () => {
-  const uit = await svc.beoordeel({postcode: "2511 ab", huisnummer: "12", gemeente: "Den Haag", eigenaar_bewoner: "ja"});
+  const uit = await svc.beoordeel({postcode: "2511 ab", huisnummer: "12", gemeente: "Den Haag", bouwjaar: "1931", eigenaar_bewoner: "ja"});
   assert.equal(uit.gemeente, "'s-Gravenhage");
   assert.equal(uit.uitkomst, "mogelijk");
-  assert.equal(uit.adres.bouwjaar, 1931);
 });
 
 test("woonplaats Hengelo in gemeente Bronckhorst gaat goed", async () => {
@@ -44,17 +44,9 @@ test("woonplaats Hengelo in gemeente Bronckhorst gaat goed", async () => {
   assert.equal(uit.adres.woonplaats, "Hengelo");
 });
 
-test("bouwjaar van TIOS gaat voor BAG", async () => {
-  const uit = await svc.beoordeel({postcode: "7255AA", huisnummer: "3", bouwjaar: "1990", eigenaar_bewoner: "ja"});
-  assert.equal(uit.uitkomst, "voldoet_niet");   // 1990 > 1980
-});
-
-test("meerdere woningen op één nummer: gemeente wel, bouwjaar alleen met toevoeging", async () => {
-  const zonder = await svc.zoekAdres("1000AA", "5", "");
-  assert.equal(zonder.gemeente, "Testdorp");
-  assert.equal(zonder.bouwjaar, null);
-  const met = await svc.zoekAdres("1000AA", "5", "b");
-  assert.equal(met.bouwjaar, 2010);
+test("meerdere woningen op één nummer: gemeente is gewoon bekend", async () => {
+  const uit = await svc.zoekAdres("1000AA", "5");
+  assert.equal(uit.gemeente, "Testdorp");
 });
 
 test("adres niet gevonden of PDOK plat: waarschuwing, geen crash", async () => {
@@ -69,8 +61,8 @@ test("adres niet gevonden of PDOK plat: waarschuwing, geen crash", async () => {
 });
 
 test("zelfde adres wordt maar één keer opgezocht", async () => {
-  await svc.zoekAdres("2511AB", "12", "");
+  await svc.zoekAdres("2511AB", "12");
   const voor = pdokAanroepen;
-  await svc.zoekAdres("2511AB", "12", "");
+  await svc.zoekAdres("2511AB", "12");
   assert.equal(pdokAanroepen, voor);
 });
