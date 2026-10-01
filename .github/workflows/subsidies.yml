@@ -6,7 +6,7 @@ on:
   workflow_dispatch:        # handmatig starten via het tabblad Actions
     inputs:
       gemeenten:
-        description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten."
+        description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten, verder waar de vorige run stopte."
         required: false
         default: ""
 
@@ -14,12 +14,27 @@ permissions:
   contents: write
   pull-requests: write
 
+# Nooit twee runs tegelijk: de tweede wacht tot de eerste klaar is.
+concurrency:
+  group: subsidies-bijwerken
+  cancel-in-progress: false
+
 jobs:
   bijwerken:
     runs-on: ubuntu-latest
     timeout-minutes: 350   # GitHub staat max. 6 uur toe
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # volledige geschiedenis, nodig om de openstaande update erbij te halen
+
+      # Staat er nog een Subsidie-update open (niet gemerged)? Dan gaat deze run daar verder,
+      # zodat het werk van de vorige run niet opnieuw gedaan wordt. De code komt altijd uit main;
+      # alleen de gegevens (regelingen, wachtrij, status) komen uit de openstaande update.
+      - name: Verder waar de vorige run bleef
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scraper/verder_op_open_update.sh
 
       - uses: actions/setup-python@v5
         with:
@@ -29,6 +44,7 @@ jobs:
         run: pip install requests google-genai anthropic openpyxl
 
       - name: Regelingen ophalen en voorwaarden uitlezen
+        timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem
         run: |
           if [ -n "$ALLEEN" ]; then
             python -u scraper/run.py --alleen "$ALLEEN"
@@ -40,8 +56,16 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ALLEEN: ${{ github.event.inputs.gemeenten }}
 
+      # Is de run hard gestopt (noodrem, runner weg)? Dan staat er wel een tussentijdse stand,
+      # maar zijn het overzicht en de TIOS-export misschien niet bijgewerkt. Dat gebeurt hier.
+      - name: Afronden na een onderbreking
+        if: failure()
+        run: python -u scraper/run.py --alleen-overzicht
+
       # Wijzigingen komen als pull request binnen: jij controleert, daarna pas live.
+      # Ook na een onderbreking, zodat het werk tot dan toe niet verloren gaat.
       - name: Pull request maken bij wijzigingen
+        if: always()
         uses: peter-evans/create-pull-request@v7
         with:
           branch: subsidie-update

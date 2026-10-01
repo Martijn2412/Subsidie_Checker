@@ -195,7 +195,7 @@
   /* Toetst een klant tegen alle regelingen van zijn gemeente.
      invoer:      zie maakKlant()
      regelingen:  array uit regelingen.json (of tios/subsidies.json → .regelingen)
-     opties.zoekstatus: (optioneel) inhoud van zoekstatus.json, voor "nog niet uitgelezen"
+     opties.zoekstatus: (optioneel) inhoud van zoekstatus.json óf van tios/subsidies.json, voor "nog niet uitgelezen"
      opties.nu:   (optioneel) Date, voor testen
      Geeft {gemeente, uitkomst, tekst, regelingen:[...], ontbreekt:[...], wacht_op_uitlezen} */
   function check(invoer, regelingen, opties) {
@@ -203,8 +203,15 @@
     const k = maakKlant(invoer);
     const g = norm(k.gemeente);
     const regs = g ? (regelingen || []).filter(r => norm(r.gemeente) === g) : [];
-    const zs = opties.zoekstatus && (opties.zoekstatus.gemeenten || []).find(x => norm(x.gemeente) === g);
-    const wacht = zs ? (zs.wacht_op_uitlezen || []).length : 0;
+    // zoekstatus.json heeft een lijst; tios/subsidies.json een object per gemeentenaam.
+    const zsBron = opties.zoekstatus && opties.zoekstatus.gemeenten;
+    let zs = null;
+    if (Array.isArray(zsBron)) zs = zsBron.find(x => norm(x.gemeente) === g) || null;
+    else if (zsBron) {
+      const naam = Object.keys(zsBron).find(n => norm(n) === g);
+      if (naam) zs = Object.assign({gemeente: naam}, zsBron[naam]);
+    }
+    const wacht = !zs ? 0 : Array.isArray(zs.wacht_op_uitlezen) ? zs.wacht_op_uitlezen.length : (zs.wacht_op_uitlezen || 0);
 
     const uit = regs.map(r => {
       const crit = evaluate(r, k);

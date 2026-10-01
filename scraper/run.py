@@ -29,6 +29,7 @@ import json
 import os
 import pathlib
 import re
+import signal
 import sys
 import time
 
@@ -51,6 +52,7 @@ ALLE_GEMEENTEN = DATA / "alle_gemeenten.json"  # buffer voor als PDOK even niet 
 ZOEKSTATUS = ROOT / "zoekstatus.json"  # per gemeente: wachtrij + laatste zoekactie op internet
 WEB_STATE = DATA / "web_state.json"  # wanneer per gemeente op internet is gezocht
 OVERZICHT = ROOT / "overzicht_voorwaarden.xlsx"  # alles in één sheet, om te lezen
+VOORTGANG = DATA / "voortgang.json"  # bij welke gemeente de volgende run begint
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
@@ -61,6 +63,8 @@ MODELLEN = CFG["modellen"][PROVIDER]
 PAUZE = CFG.get("pauze_tussen_aanroepen_sec", 7)  # gratis Gemini: max. enkele verzoeken per minuut
 START = time.monotonic()
 MAX_AI_SEC = CFG.get("max_minuten_taalmodel", 100) * 60  # daarna: rest bij de volgende run
+MAX_RUN_SEC = CFG.get("max_minuten_run", 300) * 60  # daarna netjes stoppen, ruim vóór de grens van GitHub
+BEWAAR_ELKE_SEC = 300  # tussentijds opslaan, zodat een harde onderbreking weinig werk kost
 ALLEEN = [n.strip().lower() for n in sys.argv[sys.argv.index("--alleen") + 1].split(",")] if "--alleen" in sys.argv else None
 
 if "--alleen-overzicht" in sys.argv:
@@ -76,6 +80,11 @@ else:
 
 
 # ---------- hulpfuncties ----------
+def limiet_reden(fout):
+    """Korte reden voor de PR-tekst waarom de run stopte."""
+    return "AI-tijd van deze run op" if "tijdslimiet" in str(fout) else "AI-budget of daglimiet op"
+
+
 def lees(p, standaard):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else standaard
 
@@ -437,8 +446,74 @@ def main():
     gemeenten = gemeentelijst()
     namen = {g["naam"] for g in gemeenten}
     print(f"{len(gemeenten)} gemeenten")
+    # Is de vorige run halverwege gestopt? Dan beginnen bij de gemeente waar hij bleef.
+    volgende = None if ALLEEN else lees(VOORTGANG, {}).get("volgende")
+    if volgende in namen:
+        i = [g["naam"] for g in gemeenten].index(volgende)
+        gemeenten = gemeenten[i:] + gemeenten[:i]
+        print(f"Verder bij {volgende} (daar stopte de vorige run)")
+    # PR-tekst van een openstaande Subsidie-update, voordat deze run hem overschrijft
+    vorige_tekst = (LOG_LAST.read_text(encoding="utf-8")
+                    if os.environ.get("VERDER_OP_OPEN_UPDATE") == "1" and LOG_LAST.exists() else "")
+    gedaan = set()
+    stand = {"volgende": None, "reden": None}
 
-    for g in gemeenten:
+    def pr_tekst():
+        tekst = f"# Subsidie-update {VANDAAG}\n\n" + ("\n\n".join(log) if log else "Geen wijzigingen.") + "\n"
+        wacht = sum(len(z["wacht_op_uitlezen"]) for z in zoekstatus.values())
+        if wacht:
+            tekst += (f"\n**Let op:** nog {wacht} regeling(en) in het CVDR wachten op uitlezen; "
+                      "die volgen bij de volgende run(s).\n")
+        if stand["volgende"]:
+            tekst += (f"\n**Let op:** deze run is gestopt ({stand['reden']}) na {len(gedaan)} van {len(namen)} gemeenten. "
+                      f"De volgende run gaat verder bij {stand['volgende']}.\n")
+        # Gaat deze run verder op een openstaande Subsidie-update? Dan blijven de wijzigingen van de
+        # eerdere runs in de PR-tekst staan (zonder hun oude "Let op"-regels).
+        if vorige_tekst:
+            eerder = re.sub(r"\n\*\*Let op:\*\*[^\n]*\n?", "\n", vorige_tekst)
+            eerder = re.sub(r"^# Subsidie-update", "### Subsidie-update", eerder, flags=re.M)
+            eerder = eerder.replace("## Eerdere runs in deze update (nog niet gemerged)", "")
+            eerder = re.sub(r"\n{3,}", "\n\n", eerder).strip()
+            tekst += "\n## Eerdere runs in deze update (nog niet gemerged)\n\n" + eerder + "\n"
+            if len(tekst) > 60000:   # GitHub staat max. 65.536 tekens toe in een PR-tekst
+                tekst = tekst[:60000] + "\n\n… (ingekort; alles staat in data/wijzigingen.md)\n"
+        return tekst
+
+    def opslaan(definitief=False):
+        """Schrijft alles weg wat tot nu toe gedaan is. Gemeenten die nog niet aan bod kwamen
+        houden hun vorige uitkomst. Kan op elk moment, dus ook tussentijds en bij een fout."""
+        in_nieuw = {r["id"] for r in nieuw}
+        lijst = nieuw + [r for r in oud.values() if r.get("handmatig")]
+        lijst += [r for r in oud.values() if not r.get("handmatig") and r["gemeente"] not in gedaan
+                  and r["id"] not in in_nieuw]
+        lijst = [normaliseer(r) for r in {r["id"]: r for r in lijst}.values()]
+        lijst.sort(key=lambda r: (r["gemeente"], r["naam"]))
+        schrijf(OUT, lijst)
+        schrijf(STATE, state)
+        schrijf(WEB_STATE, web_state)
+        schrijf(DEKKING, dekking)
+        schrijf(ZOEKSTATUS, {"peildatum": VANDAAG,
+                             "gemeenten": sorted(zoekstatus.values(), key=lambda x: x["gemeente"])})
+        if not ALLEEN:
+            schrijf(VOORTGANG, {"volgende": stand["volgende"], "datum": VANDAAG})
+        tekst = pr_tekst()
+        LOG_LAST.write_text(tekst, encoding="utf-8")
+        if definitief:
+            with LOG_ALL.open("a", encoding="utf-8") as f:
+                f.write("\n" + tekst)
+        return lijst
+
+    def stop_signaal(signum, frame):
+        raise KeyboardInterrupt(f"signaal {signum}")
+    signal.signal(signal.SIGTERM, stop_signaal)
+    laatst_bewaard = time.monotonic()
+
+    try:
+      for i_g, g in enumerate(gemeenten):
+        if time.monotonic() - START > MAX_RUN_SEC:
+            stand.update(volgende=g["naam"], reden="tijd van de run op")
+            print(f"Tijd van de run op: stoppen. Volgende run begint bij {g['naam']}.")
+            break
         naam = g["naam"]
         print(f"== {naam}")
         try:
@@ -481,7 +556,6 @@ def main():
 
             if titel_valt_af(meta["titel"], naam):
                 overslaan("titel"); continue
-            # ook na de limiet: de gratis controles doen, dan blijft er in de wachtrij alleen iets bruikbaars
             if is_vervallen(cid):
                 overslaan("vervallen"); continue
             try:
@@ -500,8 +574,6 @@ def main():
                 relevant += 1
                 tel["ongewijzigd"] += 1
                 continue
-            if limiet_op:  # geen taalmodel meer: bewaren voor de volgende run
-                later(); continue
             try:
                 print(f"  {cid}: filter ({meta['titel'][:60]})")
                 if not is_relevant(meta["titel"], tekst):
@@ -509,9 +581,9 @@ def main():
                 print(f"  {cid} v{meta['versie']}: uitlezen")
                 ext = extraheer(tekst)
             except LimietOp as e:
-                print(f"  LIMIET BEREIKT ({e}). Rest volgt bij de volgende run.")
-                limiet_op = True
-                later(); continue
+                print(f"  AI-BUDGET OF LIMIET OP ({e}). Run stopt; de volgende gaat hier verder.")
+                limiet_op = limiet_reden(e)
+                break
             except Exception as e:
                 print(f"  {cid}: mislukt ({e})")
                 later(); continue
@@ -539,6 +611,9 @@ def main():
             log.append(kop + "".join(f"\n  - {v}: {json.dumps(a, ensure_ascii=False)} → {json.dumps(b, ensure_ascii=False)}" for v, a, b in diff))
 
         print("  trechter: " + ", ".join(f"{k} {v}" for k, v in tel.items() if v))
+        if limiet_op:  # budget/limiet op: deze gemeente is niet af, de volgende run begint hier
+            stand.update(volgende=naam, reden=limiet_op)
+            break
 
         # regelingen die niet meer gevonden worden: niet weggooien, wel markeren
         gezien = {r["cvdr_id"] for r in nieuw if r.get("cvdr_id")}
@@ -568,9 +643,11 @@ def main():
                 nieuw += web
                 print(f"  internet: {len(web)} regeling(en)")
             except LimietOp as e:
-                print(f"  LIMIET BEREIKT bij zoeken op internet ({e})")
-                limiet_op = True
+                print(f"  AI-BUDGET OF LIMIET OP bij zoeken op internet ({e}). Run stopt.")
+                limiet_op = limiet_reden(e)
                 nieuw += oud_web
+                stand.update(volgende=naam, reden=limiet_op)
+                break
             except Exception as e:
                 print(f"  zoeken op internet mislukt ({e})")
                 nieuw += oud_web
@@ -586,27 +663,31 @@ def main():
         zoekstatus[naam] = {"gemeente": naam, "provincie": g.get("provincie"), "cvdr_gecheckt": VANDAAG,
                             "wacht_op_uitlezen": wachtrij,
                             "internet_gezocht": web_state.get(naam, {}).get("datum") if web_nodig else None}
+        gedaan.add(naam)
+        stand["volgende"] = gemeenten[i_g + 1]["naam"] if i_g + 1 < len(gemeenten) else None
+        stand["reden"] = "onderbroken"
+        if time.monotonic() - laatst_bewaard > BEWAAR_ELKE_SEC:
+            opslaan()
+            laatst_bewaard = time.monotonic()
+            print(f"  (tussentijds opgeslagen: {len(gedaan)} gemeenten gedaan)")
+      else:
+        stand.update(volgende=None, reden=None)   # alle gemeenten gedaan: volgende keer weer vooraan
+    except BaseException as e:
+        # Crash, annuleren of signaal: bewaren wat er is, zodat de volgende run verder kan.
+        print(f"Run onderbroken ({type(e).__name__}: {e}). Opslaan wat er is.")
+        if stand["volgende"] is None or stand["reden"] == "onderbroken":
+            huidig = [g["naam"] for g in gemeenten if g["naam"] not in gedaan]
+            stand.update(volgende=huidig[0] if huidig else None, reden=f"onderbroken: {type(e).__name__}")
+        lijst = opslaan(definitief=True)
+        try:
+            schrijf_overzicht(lijst, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
+            export_tios.schrijf(ROOT)
+        except Exception as e2:
+            print(f"Overzicht/export na onderbreking mislukt ({e2})")
+        raise
 
-    # handmatige regelingen blijven altijd staan; gemeenten die deze run niet aan bod kwamen ook
-    nieuw += [r for r in oud.values() if r.get("handmatig")]
-    nieuw += [r for r in oud.values() if not r.get("handmatig") and r["gemeente"] not in namen]
-    nieuw = [normaliseer(r) for r in {r["id"]: r for r in nieuw}.values()]
-    nieuw.sort(key=lambda r: (r["gemeente"], r["naam"]))
-
-    schrijf(OUT, nieuw)
-    schrijf(STATE, state)
-    schrijf(WEB_STATE, web_state)
-    schrijf(DEKKING, dekking)
-    schrijf(ZOEKSTATUS, {"peildatum": VANDAAG,
-                         "gemeenten": sorted(zoekstatus.values(), key=lambda x: x["gemeente"])})
-    tekst = f"# Subsidie-update {VANDAAG}\n\n" + ("\n\n".join(log) if log else "Geen wijzigingen.") + "\n"
+    nieuw = opslaan(definitief=True)
     wacht = sum(len(z["wacht_op_uitlezen"]) for z in zoekstatus.values())
-    if limiet_op or wacht:
-        tekst += (f"\n**Let op:** limiet van het taalmodel bereikt. Nog {wacht} regeling(en) in het CVDR wachten op "
-                  "uitlezen; die volgen bij de volgende run(s).\n")
-    LOG_LAST.write_text(tekst, encoding="utf-8")
-    with LOG_ALL.open("a", encoding="utf-8") as f:
-        f.write("\n" + tekst)
     print(f"Klaar: {len(nieuw)} regelingen, {len(log)} wijzigingen, {web_gedaan} zoekacties op internet, {wacht} wachten nog")
     schrijf_overzicht(nieuw, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
     export_tios.schrijf(ROOT)

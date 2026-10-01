@@ -25,11 +25,12 @@ Alles is optioneel. Wat ontbreekt, komt terug als "aanvullen".
 
 | Veld | Voorbeeld | Waar haal je het vandaan |
 |---|---|---|
-| `gemeente` | `"Arnhem"` | Uit het adres. TIOS heeft het meestal al; anders gratis via PDOK (postcode + huisnummer). |
+| `postcode` + `huisnummer` | `"2511AB"`, `12` | TIOS. De checkservice zoekt daarmee de gemeente op (PDOK). |
+| `gemeente` | `"Arnhem"` | Alleen nodig zonder postcode. De naam moet precies zo zijn als in de lijst ("'s-Gravenhage", niet "Den Haag"). |
 | `energielabel` | `"E"`, `"geen"` | TIOS (staat er al), of EP-Online van RVO. |
 | `woz` | `325000` | Vragen aan de klant of het WOZ-waardeloket (geen gratis bulk-API). |
-| `bouwjaar` | `1968` | BAG via PDOK (gratis, geen sleutel). |
-| `woonoppervlak` | `115` | BAG via PDOK. |
+| `bouwjaar` | `1968` | TIOS (stuurt het altijd mee). |
+| `woonoppervlak` | `115` | TIOS (stuurt het altijd mee). |
 | `eigenaar_bewoner` | `true` | Vraag in het intakeformulier. |
 | `woningtype` | `"tussenwoning"`, `"appartement"` | TIOS of BAG. Woorden als tussen/hoek/vrijstaand = grondgebonden, flat/portiek/VvE = appartement. |
 | `laag_inkomen` | `false` | Vraag in het intakeformulier (alleen nodig bij inkomensregelingen). |
@@ -59,7 +60,17 @@ uit.regelingen // per regeling: naam, bedrag, aanvragen_tm, bron_url, uitkomst, 
 
 Altijd indicatief: de binnendienst checkt de bron voordat er iets aan de klant wordt beloofd.
 
-## Drie manieren om het in TIOS te krijgen
+## Aanbevolen: checkservice op de TIOS-server
+
+TIOS draait op Ubuntu. De kortste route is `koppeling/checkservice.js`: een kleine service (alleen Node.js nodig, geen pakketten) die één keer per dag `tios/subsidies.json` ophaalt en een oordeel teruggeeft op:
+
+```
+GET http://localhost:8085/check?postcode=2511AB&huisnummer=12&energielabel=E&bouwjaar=1931&woonoppervlak=95&woz=300000&eigenaar_bewoner=ja
+```
+
+**Stuur postcode + huisnummer mee, niet de gemeentenaam.** De service zoekt de gemeente dan zelf op bij PDOK. Dat is dezelfde bron als de subsidielijst, dus de naam klopt altijd. Met alleen `gemeente=Den Haag` vindt hij niets, want in de lijst heet die gemeente "'s-Gravenhage". Bouwjaar, woonoppervlak en de andere velden stuurt TIOS zelf mee. Alleen postcode en huisnummer gaan naar PDOK. De server moet daarvoor naar `api.pdok.nl` mogen. Is PDOK niet bereikbaar, dan gebruikt de service `gemeente=` als reserve en zet hij een `waarschuwing` in het antwoord. `koppeling/subsidiecheck.service` laat hem als systemd-dienst draaien. Uitleg, beheer en overdracht: `docs/Technisch-ontwerp-TIOS-koppeling.docx`.
+
+## Andere manieren om het in TIOS te krijgen
 
 Welke het wordt, hangt af van wat TIOS kan. Vraag de leverancier van TIOS:
 *"Kan TIOS bij een nieuwe lead een HTTP-aanroep doen (webhook) en het antwoord in een veld zetten? Of kunnen we eigen JavaScript draaien?"*

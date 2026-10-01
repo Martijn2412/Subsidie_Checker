@@ -22,9 +22,8 @@ toetsen. Hieronder staat wat er beter kan, het belangrijkste eerst.
    eerder omdat het geld op is. Voorstel: één keer per maand per open regeling de gemeentepagina laten
    checken (Flash-Lite, goedkoop) op "plafond bereikt", "gesloten" of "vol". Dan wordt `budgetstatus` = `uitgeput`
    en zegt TIOS "budget op". Dit is het grootste gat tussen het idee en wat er nu staat.
-2. **Geen werk meer kwijt bij een ongemergde update.** Een nieuwe run start vanaf `main` en overschrijft
-   een openstaande "Subsidie-update". Voorstel: de workflow laat de run verdergaan op de branch
-   `subsidie-update` als die al openstaat.
+2. ~~**Geen werk meer kwijt bij een ongemergde update.**~~ Gedaan: staat er een "Subsidie-update" open,
+   dan gaat de volgende run daar verder (`scraper/verder_op_open_update.sh`).
 3. **Leningen en "maatregelenlijsten" apart.** Er komen nu ook regelingen door zonder voorwaarden
    (bijv. Arnhem: "Maatregelenlijst Toekomstbestendig Wonen Lening"). Voorstel: `type` vast indelen
    (subsidie / lening / voucher / in natura). TIOS telt alleen subsidies en vouchers mee voor "mogelijk subsidie",
