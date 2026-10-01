@@ -5,7 +5,8 @@
    Aanroepen: GET http://localhost:8085/check?gemeente=Arnhem&energielabel=E&woz=325000&eigenaar_bewoner=ja
    Status:    GET http://localhost:8085/status
 
-   - Haalt elk uur tios/subsidies.json op en bewaart de laatste goede versie op schijf.
+   - Haalt één keer per dag (en bij het starten) tios/subsidies.json op en bewaart de
+     laatste goede versie op schijf. De lijst verandert hooguit één keer per dag.
      Lukt ophalen niet, dan rekent hij verder met die laatste versie.
    - Klantgegevens blijven op de server: alleen de (openbare) regelingen komen van buiten.
    - De rekenregels staan in subsidiecheck.js: hetzelfde bestand als de checkpagina.
@@ -28,7 +29,7 @@ const ADRES = process.env.ADRES || "127.0.0.1";
 const DATA_URL = process.env.DATA_URL || "https://martijn2412.github.io/Subsidie_Checker/tios/subsidies.json";
 const CACHE = process.env.CACHE || path.join(__dirname, "subsidies-cache.json");
 const SLEUTEL = process.env.SLEUTEL || "";
-const VERVERS_MS = 60 * 60 * 1000;
+const VERVERS_MS = 24 * 60 * 60 * 1000;
 const OUD_NA_DAGEN = 14;
 
 let data = null;

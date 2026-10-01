@@ -61,7 +61,7 @@ Altijd indicatief: de binnendienst checkt de bron voordat er iets aan de klant w
 
 ## Aanbevolen: checkservice op de TIOS-server
 
-TIOS draait op Ubuntu. De kortste route is `koppeling/checkservice.js`: een kleine service (alleen Node.js nodig, geen pakketten) die elk uur `tios/subsidies.json` ophaalt en op `GET http://localhost:8085/check?gemeente=…&energielabel=…` een oordeel teruggeeft. `koppeling/subsidiecheck.service` laat hem als systemd-dienst draaien. Uitleg, beheer en overdracht: `docs/Technisch-ontwerp-TIOS-koppeling.docx`.
+TIOS draait op Ubuntu. De kortste route is `koppeling/checkservice.js`: een kleine service (alleen Node.js nodig, geen pakketten) die één keer per dag `tios/subsidies.json` ophaalt en op `GET http://localhost:8085/check?gemeente=…&energielabel=…` een oordeel teruggeeft. `koppeling/subsidiecheck.service` laat hem als systemd-dienst draaien. Uitleg, beheer en overdracht: `docs/Technisch-ontwerp-TIOS-koppeling.docx`.
 
 ## Andere manieren om het in TIOS te krijgen
 
