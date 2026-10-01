@@ -4900,7 +4900,7 @@
     "skip": "titel"
   },
   "CVDR749450": {
-    "versie": 1,
+    "versie": 2,
     "skip": "titel"
   },
   "CVDR685236": {
@@ -7340,7 +7340,7 @@
     "skip": "titel"
   },
   "CVDR754735": {
-    "versie": 1,
+    "versie": 2,
     "skip": "titel"
   },
   "CVDR742896": {
@@ -11424,7 +11424,7 @@
     "skip": "titel"
   },
   "CVDR761751": {
-    "versie": 1,
+    "versie": 2,
     "skip": "titel"
   },
   "CVDR736153": {
@@ -12288,7 +12288,7 @@
     "skip": "titel"
   },
   "CVDR696530": {
-    "versie": 2,
+    "versie": 3,
     "skip": "titel"
   },
   "CVDR739016": {
@@ -16832,8 +16832,8 @@
     "skip": "gemini-filter"
   },
   "CVDR761585": {
-    "versie": 1,
-    "hash": "82892fed30165bbbfa4b0def3713345d4f5f1975e5084a80ae7a9b6eabe786ed"
+    "versie": 2,
+    "skip": "vervallen"
   },
   "CVDR736156": {
     "versie": 2,
@@ -17280,6 +17280,10 @@
     "skip": "geen isolatie"
   },
   "CVDR767153": {
+    "versie": 1,
+    "skip": "geen isolatie"
+  },
+  "CVDR767035": {
     "versie": 1,
     "skip": "geen isolatie"
   }
