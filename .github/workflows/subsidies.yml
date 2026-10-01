@@ -52,4 +52,5 @@ jobs:
             regelingen.json
             zoekstatus.json
             overzicht_voorwaarden.xlsx
+            tios/**
             data/**

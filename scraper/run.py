@@ -34,6 +34,10 @@ import time
 
 import requests
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from normaliseer import normaliseer  # noqa: E402  (getallen als getal, ja/nee als true/false)
+import export_tios  # noqa: E402  (tios/subsidies.json en .csv voor de koppeling met TIOS)
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "scraper/config.json").read_text(encoding="utf-8"))
 PROMPT = (ROOT / "scraper/prompt_extractie.md").read_text(encoding="utf-8")
@@ -59,7 +63,9 @@ START = time.monotonic()
 MAX_AI_SEC = CFG.get("max_minuten_taalmodel", 100) * 60  # daarna: rest bij de volgende run
 ALLEEN = [n.strip().lower() for n in sys.argv[sys.argv.index("--alleen") + 1].split(",")] if "--alleen" in sys.argv else None
 
-if PROVIDER == "gemini":
+if "--alleen-overzicht" in sys.argv:
+    client = None  # geen taalmodel nodig, dus ook geen sleutel
+elif PROVIDER == "gemini":
     from google import genai
     from google.genai import types
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"],
@@ -88,6 +94,16 @@ class LimietOp(Exception):
 
 
 TOKENS = {"extractie": 16000, "zoeken": 4000, "filter": 1000}
+UITGEPUT = set()  # modellen waarvan de daglimiet op is: deze run niet meer proberen
+
+
+def is_limiet(fout):
+    """429 = limiet, 402 = tegoed op. Beide: stoppen of reservemodel, niet blijven proberen."""
+    return re.search(r"\b(429|402)\b|RESOURCE_EXHAUSTED|rate_limit|credits", fout) is not None
+
+
+def is_daglimiet(fout):
+    return re.search(r"\b402\b|credits|per ?day", fout, re.I) is not None
 
 
 def llm(taak, tekst, json_uit=False, zoeken=False):
@@ -97,6 +113,9 @@ def llm(taak, tekst, json_uit=False, zoeken=False):
     if time.monotonic() - START > MAX_AI_SEC:
         raise LimietOp("tijdslimiet van deze run bereikt")
     modellen = [MODELLEN[taak]] + ([MODELLEN[taak + "_reserve"]] if MODELLEN.get(taak + "_reserve") else [])
+    modellen = [m for m in modellen if m not in UITGEPUT]
+    if not modellen:
+        raise LimietOp(f"daglimiet bereikt voor {taak}")
     laatste_fout = None
     for model in modellen:
         for poging in range(3):
@@ -121,14 +140,18 @@ def llm(taak, tekst, json_uit=False, zoeken=False):
             except Exception as e:
                 fout = str(e)
                 laatste_fout = fout
-                limiet = "429" in fout or "RESOURCE_EXHAUSTED" in fout or "rate_limit" in fout
+                limiet = is_limiet(fout)
+                if limiet and is_daglimiet(fout):
+                    UITGEPUT.add(model)
+                    print(f"  {model}: daglimiet of tegoed op, deze run niet meer gebruiken")
+                    break
                 if limiet and poging >= 1:
                     print(f"  {model}: limiet bereikt, ander model proberen")
                     break
                 wacht = 40 if limiet else 20 * (poging + 1)
                 print(f"  {model}: fout ({fout[:110]}), wacht {wacht}s, poging {poging + 1}/3")
                 time.sleep(wacht)
-    if laatste_fout and ("429" in laatste_fout or "RESOURCE_EXHAUSTED" in laatste_fout or "rate_limit" in laatste_fout):
+    if laatste_fout and is_limiet(laatste_fout):
         raise LimietOp(laatste_fout[:200])
     raise RuntimeError(f"Taalmodel faalt: {(laatste_fout or '')[:200]}")
 
@@ -275,6 +298,7 @@ def web_zoek(g):
             continue
         ext.pop("relevant", None)
         rec.update({k: v for k, v in ext.items() if v is not None})
+        rec = normaliseer(rec)
         rec["naam"] = ext.get("naam") or titel
         rec["opmerkingen"] = ("Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. "
                               + (w.get("samenvatting") or "") + " " + (ext.get("opmerkingen") or "")).strip()
@@ -285,9 +309,16 @@ def web_zoek(g):
 
 
 # ---------- stap 2: tekst ophalen ----------
-def haal_tekst(xml_url):
-    r = requests.get(xml_url, headers=UA, timeout=60)
-    r.raise_for_status()
+def haal_tekst(xml_url, pagina_url=None):
+    """Tekst van de regeling uit de XML. Geeft die een fout (bijv. 404), dan de gewone CVDR-pagina."""
+    try:
+        r = requests.get(xml_url, headers=UA, timeout=60)
+        r.raise_for_status()
+    except Exception as e:
+        if not pagina_url:
+            raise
+        print(f"  XML niet bereikbaar ({e}); CVDR-pagina proberen")
+        return haal_webpagina(pagina_url)[:150_000]
     t = re.sub(r"<[^>]+>", " ", r.text)
     t = re.sub(r"\s+", " ", html.unescape(t)).strip()
     if "<illustratie" in r.text or ".jpg" in r.text or ".png" in r.text:
@@ -391,6 +422,7 @@ def verschillen(oud, nieuw):
 def main():
     if "--alleen-overzicht" in sys.argv:  # alleen de sheet opnieuw maken uit de bestaande bestanden
         schrijf_overzicht(lees(OUT, []), lees(ZOEKSTATUS, {}).get("gemeenten", []), lees(DEKKING, {}))
+        export_tios.schrijf(ROOT)
         return
     state = {} if FORCEER else lees(STATE, {})
     web_state = lees(WEB_STATE, {})
@@ -453,12 +485,21 @@ def main():
             if is_vervallen(cid):
                 overslaan("vervallen"); continue
             try:
-                tekst = haal_tekst(meta["xml_url"])
+                tekst = haal_tekst(meta["xml_url"], f"https://lokaleregelgeving.overheid.nl/{cid}/{meta['versie']}")
             except Exception as e:
                 print(f"  {cid}: tekst ophalen mislukt ({e})")
                 later(); continue
             if tekst_valt_af(tekst):
                 overslaan("geen isolatie"); continue
+            tekst_hash = hashlib.sha256(tekst.encode()).hexdigest()
+            if vorige and not FORCEER and st.get("hash") == tekst_hash:
+                # alleen het versienummer is veranderd, de tekst niet: vorige uitkomst houden
+                state[cid] = {"versie": meta["versie"], "hash": tekst_hash}
+                nieuw.append({**vorige, "versie": meta["versie"], "peildatum": VANDAAG, "status": status(vorige),
+                              "bron_url": f"https://lokaleregelgeving.overheid.nl/{cid}/{meta['versie']}"})
+                relevant += 1
+                tel["ongewijzigd"] += 1
+                continue
             if limiet_op:  # geen taalmodel meer: bewaren voor de volgende run
                 later(); continue
             try:
@@ -485,10 +526,11 @@ def main():
                 "bron_url": f"https://lokaleregelgeving.overheid.nl/{cid}/{meta['versie']}",
                 "datum_regelingstekst": meta.get("gewijzigd"), "peildatum": VANDAAG,
             }
+            rec = normaliseer(rec)
             rec["naam"] = rec.get("naam") or meta["titel"]
             rec["status"] = status(rec)
             rec["betrouwbaarheid"] = betrouwbaarheid(rec)
-            state[cid] = {"versie": meta["versie"], "hash": hashlib.sha256(tekst.encode()).hexdigest()}
+            state[cid] = {"versie": meta["versie"], "hash": tekst_hash}
             relevant += 1
             tel["uitgelezen"] += 1
             nieuw.append(rec)
@@ -548,7 +590,7 @@ def main():
     # handmatige regelingen blijven altijd staan; gemeenten die deze run niet aan bod kwamen ook
     nieuw += [r for r in oud.values() if r.get("handmatig")]
     nieuw += [r for r in oud.values() if not r.get("handmatig") and r["gemeente"] not in namen]
-    nieuw = list({r["id"]: r for r in nieuw}.values())
+    nieuw = [normaliseer(r) for r in {r["id"]: r for r in nieuw}.values()]
     nieuw.sort(key=lambda r: (r["gemeente"], r["naam"]))
 
     schrijf(OUT, nieuw)
@@ -567,6 +609,7 @@ def main():
         f.write("\n" + tekst)
     print(f"Klaar: {len(nieuw)} regelingen, {len(log)} wijzigingen, {web_gedaan} zoekacties op internet, {wacht} wachten nog")
     schrijf_overzicht(nieuw, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
+    export_tios.schrijf(ROOT)
 
     if "--vergelijk" in sys.argv:
         vergelijk(pathlib.Path(sys.argv[sys.argv.index("--vergelijk") + 1]), nieuw)

@@ -240,6 +240,7 @@ details.more p{margin:4px 0;font-size:13.5px;max-width:75ch}
 <div class="toast" id="toast" role="status"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="subsidiecheck.js"></script>
 <script>
 /* ============================================================
    INSTELLINGEN: dit is het enige blok dat je hoeft aan te passen
@@ -552,99 +553,8 @@ const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u03
 const unk=v=>v==null||v===""?'<span class="d">onbekend</span>':esc(v);
 
 /* ============================================================ MATCHING */
-const labelTxt=k=>k.label==="geen"?"geen label":k.label?`label ${k.label}`:"label onbekend";
-function isolatiestaat(c){
-  if(c.isolatiestaat!==undefined) return c.isolatiestaat;
-  // ouder plat formaat omzetten
-  if(!c.labels&&c.bouwdelen_min==null) return null;
-  if(c.bouwdelen_modus==="alternatief") return {regels:[{labels:c.labels},{bouwdelen_min:c.bouwdelen_min}]};
-  const r={}; if(c.labels) r.labels=c.labels; if(c.bouwdelen_min!=null) r.bouwdelen_min=c.bouwdelen_min;
-  return {regels:[r]};
-}
-function beschrijf(r){
-  const d=[];
-  if(r.labels) d.push(r.labels.length===1&&r.labels[0]==="geen"?"geen label":"label "+r.labels.join("/"));
-  if(r.bouwjaar_max!=null) d.push("bouwjaar t/m "+r.bouwjaar_max);
-  if(r.bouwjaar_min!=null) d.push("bouwjaar vanaf "+r.bouwjaar_min);
-  if(r.bouwdelen_min!=null) d.push(`min. ${r.bouwdelen_min} slechte bouwdelen`);
-  return d.join(" + ");
-}
-function toetsRegel(r,k){
-  const s=[];
-  if(r.labels) s.push(!k.label?"unk":r.labels.includes(k.label)?"ok":"no");
-  if(r.bouwdelen_min!=null) s.push(!k.bouwdelenBeoordeeld?"unk":k.bouwdelen.length>=r.bouwdelen_min?"ok":"no");
-  if(r.bouwjaar_max!=null) s.push(k.bouwjaar==null?"unk":k.bouwjaar<=r.bouwjaar_max?"ok":"no");
-  if(r.bouwjaar_min!=null) s.push(k.bouwjaar==null?"unk":k.bouwjaar>=r.bouwjaar_min?"ok":"no");
-  return s.includes("no")?"no":s.every(x=>x==="ok")?"ok":"unk";
-}
-function evaluate(r,k){
-  const c=r.criteria||{}, out=[];
-  const add=(status,label,detail)=>out.push({status,label,detail});
-
-  if(c.eigenaar_bewoner===true){
-    add(k.eb==="ja"?"ok":k.eb==="nee"?"no":"unk","Eigenaar-bewoner",k.eb?"":"Vraag of de klant zelf in de woning woont");
-  }
-  if(c.woz_max!=null){
-    const rule=c.woz_regel==="lte"?"≤":"<";
-    const txt=`WOZ ${rule} ${eur(c.woz_max)}${c.woz_peildatum?` (${/peil/.test(c.woz_peildatum)?"":"peildatum "}${c.woz_peildatum})`:""}`;
-    if(k.woz==null) add("unk",txt,"WOZ-waarde klant ontbreekt"+(c.woz_uitzondering?`. Uitzondering: ${c.woz_uitzondering}`:""));
-    else{
-      const pass=c.woz_regel==="lte"?k.woz<=c.woz_max:k.woz<c.woz_max;
-      if(pass) add("ok",txt,`Klant: ${eur(k.woz)}. Check of dit de WOZ op de peildatum is.`);
-      else if(c.woz_uitzondering) add("unk",txt,`Klant: ${eur(k.woz)}, boven de grens. Kan nog als: ${c.woz_uitzondering}`);
-      else add("no",txt,`Klant: ${eur(k.woz)}`);
-    }
-  }
-  const iso=isolatiestaat(c);
-  if(iso&&iso.regels&&iso.regels.length){
-    const txt=iso.omschrijving||iso.regels.map(beschrijf).join(", of ");
-    const res=iso.regels.map(x=>toetsRegel(x,k));
-    const i=res.indexOf("ok");
-    if(i>=0) add("ok",txt,"Voldoet via: "+beschrijf(iso.regels[i]));
-    else if(res.every(x=>x==="no")) add("no",txt,`Klant: ${labelTxt(k)}, ${k.bouwdelen.length} slechte bouwdelen${k.bouwjaar?", bouwjaar "+k.bouwjaar:""}`);
-    else add("unk",txt,"Vul energielabel, bouwdelen en/of bouwjaar in");
-  }
-  if(c.bouwjaar_max!=null||c.bouwjaar_min!=null){
-    const txt=`Bouwjaar ${c.bouwjaar_min!=null?"vanaf "+c.bouwjaar_min+" ":""}${c.bouwjaar_max!=null?"t/m "+c.bouwjaar_max:""}`.trim();
-    if(k.bouwjaar==null) add("unk",txt,"Bouwjaar ontbreekt");
-    else add((c.bouwjaar_max==null||k.bouwjaar<=c.bouwjaar_max)&&(c.bouwjaar_min==null||k.bouwjaar>=c.bouwjaar_min)?"ok":"no",txt,`Klant: ${k.bouwjaar}`);
-  }else if(c.bouwjaar_opmerking){
-    add("nodata","Bouwjaar",c.bouwjaar_opmerking);
-  }
-  if(c.woonoppervlak_max!=null){
-    const txt=`Woonoppervlak max. ${c.woonoppervlak_max} m²`;
-    if(k.opp==null) add("unk",txt,"Woonoppervlak ontbreekt (Kadaster/BAG)");
-    else add(k.opp<=c.woonoppervlak_max?"ok":"no",txt,`Klant: ${k.opp} m²`);
-  }
-  if(c.inkomen==="vereist"){
-    add(k.inkomen==="ja"?"ok":k.inkomen==="nee"?"no":"unk","Laag inkomen vereist",r.inkomensgrens||"");
-  }else if(c.inkomen==="bonus"){
-    add("info","Hoger bedrag bij laag inkomen",k.inkomen==="ja"?"Klant komt mogelijk in aanmerking voor het hogere bedrag":(r.inkomensgrens||""));
-  }
-  if(c.vve){
-    if(k.type==="appartement"){
-      if(c.vve==="nee") add("no","Alleen grondgebonden woningen",c.vve_opmerking||"");
-      else if(c.vve==="ja") add("ok","Appartement/VvE",c.vve_opmerking||"VvE kan aanvragen");
-      else add("unk","Appartement/VvE",c.vve_opmerking||"");
-    }else if(k.type==="grondgebonden"){
-      if(c.vve==="nee") add("ok","Grondgebonden woning",c.vve_opmerking||"");
-    }else if(c.vve!=="ja"){
-      add("unk","Woningtype",c.vve_opmerking||"Check of het om een appartement gaat");
-    }
-  }
-  return out;
-}
-function isClosed(r){
-  if(String(r.status).toLowerCase()==="gesloten") return true;
-  if(r.looptijd_eind){ const d=new Date(r.looptijd_eind+"T23:59:59"); if(!isNaN(d)&&d<new Date()) return true; }
-  return false;
-}
-function verdict(r,crit){
-  if(isClosed(r)) return ["v-off","Gesloten"];
-  if(crit.some(x=>x.status==="no")) return ["v-no","Voldoet niet"];
-  if(crit.some(x=>x.status==="unk"||x.status==="nodata")||crit.length===0) return ["v-unk","Aanvullen of checken"];
-  return ["v-ok","Voldoet aan bekende voorwaarden"];
-}
+/* De rekenregels staan in subsidiecheck.js (zelfde regels als voor TIOS). */
+const {evaluate,verdict,isClosed,bedragTekst}=SubsidieCheck;
 
 /* ============================================================ RENDER */
 function render(){
@@ -657,7 +567,7 @@ function render(){
       <div class="chips">${alle.map(n=>`<button class="chip" data-pick="${esc(n)}">${esc(n)}</button>`).join("")}</div></div>`;
     return;
   }
-  const regs=data.filter(r=>norm(r.gemeente)===g);
+  const regs=data.filter(r=>norm(r.gemeente)===g).sort((a,b)=>isClosed(a)-isClosed(b));  // gesloten onderaan
   if(!regs.length){
     const zs=zstatus[g];
     if(zs){
@@ -691,7 +601,7 @@ function render(){
           <div><span class="sr">${statusText(x.status)}: </span>${esc(x.label)}${x.detail?`<div class="d">${esc(x.detail)}</div>`:""}</div></li>`).join("")
           :`<li><span class="ic unk">?</span><div>Geen toetsbare woningeisen in de dataset<div class="d">Lees de voorwaarden via de bron</div></div></li>`}</ul>
         <dl class="facts">
-          <div><dt>Bedrag</dt><dd>${unk(r.bedrag)}</dd></div>
+          <div><dt>Bedrag</dt><dd>${unk(bedragTekst(r.bedrag))}</dd></div>
           <div><dt>Aanvragen</dt><dd>${unk(r.aanvragen)}</dd></div>
           <div><dt>Aanvragen t/m</dt><dd>${unk(looptijd)}${spoed}</dd></div>
           <div><dt>Stapelbaar met ISDE</dt><dd>${unk(r.stapelbaar_isde)}</dd></div>
@@ -720,7 +630,7 @@ function noteFor(r){
   if(klant.adres) lines.push(`Adres: ${klant.adres.weergave}`);
   lines.push(`Uitkomst: ${vt}`);
   crit.forEach(x=>lines.push(`- ${statusText(x.status)}: ${x.label}${x.detail?" ("+x.detail+")":""}`));
-  if(r.bedrag) lines.push(`Bedrag: ${r.bedrag}`);
+  if(r.bedrag) lines.push(`Bedrag: ${bedragTekst(r.bedrag)}`);
   if(r.aanvragen) lines.push(`Aanvragen: ${r.aanvragen}`);
   lines.push(`Bron: ${r.bron_url||"onbekend"} (peildatum ${fmtD(r.peildatum)||"onbekend"}, betrouwbaarheid ${r.betrouwbaarheid||"onbekend"})`);
   lines.push("Indicatief, geen toezegging.");
