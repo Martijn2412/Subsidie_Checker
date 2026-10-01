@@ -80,6 +80,37 @@ else:
 
 
 # ---------- hulpfuncties ----------
+def heeft_voorwaarden(r):
+    """Staat er minstens één toetsbare voorwaarde in de regeling?"""
+    return any(v not in (None, "", [], {}) for k, v in (r.get("criteria") or {}).items()
+               if not re.search(r"opmerking|peildatum|regel$|uitzondering", k))
+
+
+def schrijf_samenvatting(resultaten, stand, totaal):
+    """Overzicht per gemeente: in de log en op de samenvattingspagina van de GitHub-run."""
+    volgorde = {"❌": 0, "🛑": 1, "⚠️": 2, "➖": 3, "✅": 4}
+    tel = {}
+    for _, sym, _ in resultaten:
+        tel[sym] = tel.get(sym, 0) + 1
+    kop = (f"{len(resultaten)} van {totaal} gemeenten bekeken: "
+           + ", ".join(f"{sym} {tel[sym]}" for sym in sorted(tel, key=lambda x: volgorde.get(x, 9))))
+    print("\n== Samenvatting ==\n" + kop)
+    print("✅ voorwaarden opgehaald · ⚠️ deels gelukt of zonder voorwaarden · ➖ geen (open) regeling · "
+          "❌ mislukt · 🛑 gestopt (budget/tijd)")
+    pad = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not pad:
+        return
+    regels = ["## Subsidie-update: resultaat per gemeente", "", kop, ""]
+    if stand.get("volgende"):
+        regels += [f"**Gestopt ({stand['reden']}).** De volgende run gaat verder bij **{stand['volgende']}**.", ""]
+    regels += ["✅ voorwaarden opgehaald · ⚠️ deels gelukt of zonder voorwaarden · ➖ geen (open) regeling · "
+               "❌ mislukt · 🛑 gestopt", "", "| | Gemeente | Resultaat |", "|---|---|---|"]
+    for naam, sym, tekst in sorted(resultaten, key=lambda x: (volgorde.get(x[1], 9), x[0])):
+        regels.append(f"| {sym} | {naam} | {tekst.replace('|', '/')} |")
+    with open(pad, "a", encoding="utf-8") as f:
+        f.write("\n".join(regels) + "\n")
+
+
 def limiet_reden(fout):
     """Korte reden voor de PR-tekst waarom de run stopte."""
     return "AI-tijd van deze run op" if "tijdslimiet" in str(fout) else "AI-budget of daglimiet op"
@@ -457,6 +488,12 @@ def main():
                     if os.environ.get("VERDER_OP_OPEN_UPDATE") == "1" and LOG_LAST.exists() else "")
     gedaan = set()
     stand = {"volgende": None, "reden": None}
+    resultaten = []   # (gemeente, symbool, tekst) voor de samenvatting
+
+    def resultaat(naam, sym, tekst):
+        print("::endgroup::")
+        print(f"{sym} {naam}: {tekst}")
+        resultaten.append((naam, sym, tekst))
 
     def pr_tekst():
         tekst = f"# Subsidie-update {VANDAAG}\n\n" + ("\n\n".join(log) if log else "Geen wijzigingen.") + "\n"
@@ -515,7 +552,7 @@ def main():
             print(f"Tijd van de run op: stoppen. Volgende run begint bij {g['naam']}.")
             break
         naam = g["naam"]
-        print(f"== {naam}")
+        print(f"::group::{naam} (details)")
         try:
             treffers = zoek_cvdr(naam)
             if not treffers and "(" in naam:  # PDOK zegt "Hengelo (O)", het CVDR "Hengelo"
@@ -523,6 +560,7 @@ def main():
         except Exception as e:
             print(f"  CVDR-zoekvraag mislukt ({e}); vorige uitkomst behouden")
             nieuw += [r for r in oud.values() if r["gemeente"] == naam and not r.get("handmatig")]
+            resultaat(naam, "❌", "CVDR niet bereikbaar; vorige uitkomst blijft staan")
             continue
         print(f"  {len(treffers)} treffers in CVDR")
         relevant, wachtrij = 0, []
@@ -613,6 +651,7 @@ def main():
         print("  trechter: " + ", ".join(f"{k} {v}" for k, v in tel.items() if v))
         if limiet_op:  # budget/limiet op: deze gemeente is niet af, de volgende run begint hier
             stand.update(volgende=naam, reden=limiet_op)
+            resultaat(naam, "🛑", f"{limiet_op}; de volgende run gaat hier verder")
             break
 
         # regelingen die niet meer gevonden worden: niet weggooien, wel markeren
@@ -630,6 +669,7 @@ def main():
         heeft_handmatig = any(r["gemeente"] == naam and r.get("handmatig") for r in oud.values())
         web_nodig = relevant == 0 and not wachtrij and not heeft_handmatig
         web_te_oud = not ws.get("datum") or (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(ws["datum"])).days >= web_interval
+        web_uitkomst = None   # wat het zoeken op internet deze run opleverde
         if web_nodig and web_te_oud and not limiet_op and web_gedaan < web_max:
             try:
                 print("  niets in CVDR: zoeken op internet")
@@ -642,15 +682,18 @@ def main():
                         log.append(f"**{naam} – {r['naam']}** (nieuw via AI-zoekactie op internet, {r['bron_url']})")
                 nieuw += web
                 print(f"  internet: {len(web)} regeling(en)")
+                web_uitkomst = "gezocht"
             except LimietOp as e:
                 print(f"  AI-BUDGET OF LIMIET OP bij zoeken op internet ({e}). Run stopt.")
                 limiet_op = limiet_reden(e)
                 nieuw += oud_web
                 stand.update(volgende=naam, reden=limiet_op)
+                resultaat(naam, "🛑", f"{limiet_op} bij zoeken op internet; de volgende run gaat hier verder")
                 break
             except Exception as e:
                 print(f"  zoeken op internet mislukt ({e})")
                 nieuw += oud_web
+                web_uitkomst = "mislukt"
         elif web_nodig:
             nieuw += oud_web  # vorige internetuitkomst blijft staan tot de volgende zoekactie
         # heeft de gemeente inmiddels een CVDR-regeling, dan vervallen de internetresultaten
@@ -663,6 +706,32 @@ def main():
         zoekstatus[naam] = {"gemeente": naam, "provincie": g.get("provincie"), "cvdr_gecheckt": VANDAAG,
                             "wacht_op_uitlezen": wachtrij,
                             "internet_gezocht": web_state.get(naam, {}).get("datum") if web_nodig else None}
+        regs = [r for r in nieuw if r["gemeente"] == naam and r.get("status") != "gesloten"]
+        zonder = [r for r in regs if not heeft_voorwaarden(r)]
+        web_regs = [r for r in regs if r.get("bron") == "web"]
+        delen = []
+        if tel["uitgelezen"]:
+            delen.append(f"{tel['uitgelezen']} nieuw/gewijzigd uitgelezen")
+        if tel["ongewijzigd"]:
+            delen.append(f"{tel['ongewijzigd']} ongewijzigd")
+        if web_regs:
+            delen.append(f"{len(web_regs)} via internet (controleren)")
+        uitleg = f" ({', '.join(delen)})" if delen else ""
+        if web_uitkomst == "mislukt":
+            resultaat(naam, "❌", "niets in CVDR en zoeken op internet mislukt")
+        elif wachtrij:
+            resultaat(naam, "⚠️", f"{len(wachtrij)} regeling(en) niet uitgelezen (fout bij ophalen of uitlezen), "
+                                  f"volgt bij de volgende run" + (f"; wel gelukt: {len(regs)}" if regs else ""))
+        elif regs and zonder:
+            resultaat(naam, "⚠️", f"{len(regs)} open regeling(en), waarvan {len(zonder)} zonder voorwaarden{uitleg}")
+        elif regs:
+            resultaat(naam, "✅", f"voorwaarden opgehaald voor {len(regs)} open regeling(en){uitleg}")
+        elif any(r["gemeente"] == naam for r in nieuw):
+            resultaat(naam, "➖", "alleen gesloten regelingen")
+        elif web_uitkomst == "gezocht":
+            resultaat(naam, "➖", "geen regeling in CVDR, en op internet niets gevonden")
+        else:
+            resultaat(naam, "➖", "geen isolatieregeling gevonden")
         gedaan.add(naam)
         stand["volgende"] = gemeenten[i_g + 1]["naam"] if i_g + 1 < len(gemeenten) else None
         stand["reden"] = "onderbroken"
@@ -674,6 +743,7 @@ def main():
         stand.update(volgende=None, reden=None)   # alle gemeenten gedaan: volgende keer weer vooraan
     except BaseException as e:
         # Crash, annuleren of signaal: bewaren wat er is, zodat de volgende run verder kan.
+        print("::endgroup::")
         print(f"Run onderbroken ({type(e).__name__}: {e}). Opslaan wat er is.")
         if stand["volgende"] is None or stand["reden"] == "onderbroken":
             huidig = [g["naam"] for g in gemeenten if g["naam"] not in gedaan]
@@ -684,9 +754,11 @@ def main():
             export_tios.schrijf(ROOT)
         except Exception as e2:
             print(f"Overzicht/export na onderbreking mislukt ({e2})")
+        schrijf_samenvatting(resultaten, stand, len(namen))
         raise
 
     nieuw = opslaan(definitief=True)
+    schrijf_samenvatting(resultaten, stand, len(namen))
     wacht = sum(len(z["wacht_op_uitlezen"]) for z in zoekstatus.values())
     print(f"Klaar: {len(nieuw)} regelingen, {len(log)} wijzigingen, {web_gedaan} zoekacties op internet, {wacht} wachten nog")
     schrijf_overzicht(nieuw, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
