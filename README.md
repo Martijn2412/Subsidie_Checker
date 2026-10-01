@@ -56,10 +56,12 @@ binnendienst de wijziging. Niets gewijzigd? Dan komt er geen pull request.
 Nog niet gemerged? Geen probleem: de volgende run gaat verder op de openstaande
 Subsidie-update en voegt zijn wijzigingen daaraan toe. Er gaat geen werk verloren.
 
-Stopt een run halverwege (crash, tijd op, handmatig geannuleerd)? Ook dan gaat er weinig
+Is het AI-budget of de daglimiet op, dan stopt de run meteen.
+Stopt een run halverwege (budget op, crash, tijd op, handmatig geannuleerd)? Ook dan gaat er weinig
 verloren: de run slaat elke 5 minuten tussentijds op, stopt zelf netjes na 5 uur
 (`max_minuten_run` in `scraper/config.json`) en maakt toch een pull request met wat hij
 gedaan heeft. De volgende run begint bij de gemeente waar hij stopte (`data/voortgang.json`).
+Dat geldt ook als je hem zelf start via Run workflow met het veld "gemeenten" leeg.
 
 Regelingen die niet in het CVDR staan (zoals SAAK Doesburg) zet je zelf in
 `regelingen.json` met `"handmatig": true`. De scraper laat die met rust.

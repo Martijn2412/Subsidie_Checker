@@ -43,7 +43,7 @@ class TestVoortgang(unittest.TestCase):
         run.extraheer = self.nep_extraheer
         run.schrijf_overzicht = lambda *a: None
         run.web_zoek = lambda g: []
-        self.gezocht, self.uitgelezen, self.crash_bij, self.tijd_op_na = [], [], None, None
+        self.gezocht, self.uitgelezen, self.crash_bij, self.tijd_op_na, self.budget_op_bij = [], [], None, None, None
 
     def tearDown(self):
         for k, v in self.oud.items():
@@ -61,6 +61,8 @@ class TestVoortgang(unittest.TestCase):
     def nep_extraheer(self, tekst):
         if self.crash_bij and self.gezocht[-1] == self.crash_bij:
             raise KeyboardInterrupt("nagebootste onderbreking")
+        if self.budget_op_bij and self.gezocht[-1] == self.budget_op_bij:
+            raise run.LimietOp("402 credits op")
         self.uitgelezen.append(self.gezocht[-1])
         return {"naam": f"Isolatiesubsidie {self.gezocht[-1]}", "bedrag": "max. € 1.000",
                 "looptijd_eind": "2030-12-31", "criteria": {"eigenaar_bewoner": True}}
@@ -86,6 +88,21 @@ class TestVoortgang(unittest.TestCase):
         self.assertEqual(self.uitgelezen, ["Ceedorp", "Deedorp", "Eedorp"])  # A en B niet opnieuw uitgelezen
         self.assertEqual(self.regelingen(), GEMEENTEN)
         self.assertIsNone(self.voortgang())                               # rond: volgende keer weer vooraan
+
+    def test_budget_op_stopt_en_volgende_run_gaat_daar_verder(self):
+        self.budget_op_bij = "Ceedorp"
+        run.main()                                                        # geen fout: netjes gestopt
+        self.assertEqual(self.gezocht, ["Aadorp", "Beekdorp", "Ceedorp"])  # niet doorgegaan na het budget
+        self.assertEqual(self.regelingen(), ["Aadorp", "Beekdorp"])
+        self.assertEqual(self.voortgang(), "Ceedorp")
+        self.assertIn("AI-budget of daglimiet op", run.LOG_LAST.read_text())
+
+        self.budget_op_bij, self.gezocht, self.uitgelezen = None, [], []  # volgende dag: nieuw budget
+        run.main()
+        self.assertEqual(self.gezocht[0], "Ceedorp")
+        self.assertEqual(self.uitgelezen, ["Ceedorp", "Deedorp", "Eedorp"])
+        self.assertEqual(self.regelingen(), GEMEENTEN)
+        self.assertIsNone(self.voortgang())
 
     def test_tijd_op_stopt_netjes(self):
         self.tijd_op_na = 2

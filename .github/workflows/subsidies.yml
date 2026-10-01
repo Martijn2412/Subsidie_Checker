@@ -6,7 +6,7 @@ on:
   workflow_dispatch:        # handmatig starten via het tabblad Actions
     inputs:
       gemeenten:
-        description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten."
+        description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten, verder waar de vorige run stopte."
         required: false
         default: ""
 

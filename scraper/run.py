@@ -80,6 +80,11 @@ else:
 
 
 # ---------- hulpfuncties ----------
+def limiet_reden(fout):
+    """Korte reden voor de PR-tekst waarom de run stopte."""
+    return "AI-tijd van deze run op" if "tijdslimiet" in str(fout) else "AI-budget of daglimiet op"
+
+
 def lees(p, standaard):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else standaard
 
@@ -456,9 +461,9 @@ def main():
     def pr_tekst():
         tekst = f"# Subsidie-update {VANDAAG}\n\n" + ("\n\n".join(log) if log else "Geen wijzigingen.") + "\n"
         wacht = sum(len(z["wacht_op_uitlezen"]) for z in zoekstatus.values())
-        if limiet_op or wacht:
-            tekst += (f"\n**Let op:** limiet van het taalmodel bereikt. Nog {wacht} regeling(en) in het CVDR wachten op "
-                      "uitlezen; die volgen bij de volgende run(s).\n")
+        if wacht:
+            tekst += (f"\n**Let op:** nog {wacht} regeling(en) in het CVDR wachten op uitlezen; "
+                      "die volgen bij de volgende run(s).\n")
         if stand["volgende"]:
             tekst += (f"\n**Let op:** deze run is gestopt ({stand['reden']}) na {len(gedaan)} van {len(namen)} gemeenten. "
                       f"De volgende run gaat verder bij {stand['volgende']}.\n")
@@ -551,7 +556,6 @@ def main():
 
             if titel_valt_af(meta["titel"], naam):
                 overslaan("titel"); continue
-            # ook na de limiet: de gratis controles doen, dan blijft er in de wachtrij alleen iets bruikbaars
             if is_vervallen(cid):
                 overslaan("vervallen"); continue
             try:
@@ -570,8 +574,6 @@ def main():
                 relevant += 1
                 tel["ongewijzigd"] += 1
                 continue
-            if limiet_op:  # geen taalmodel meer: bewaren voor de volgende run
-                later(); continue
             try:
                 print(f"  {cid}: filter ({meta['titel'][:60]})")
                 if not is_relevant(meta["titel"], tekst):
@@ -579,9 +581,9 @@ def main():
                 print(f"  {cid} v{meta['versie']}: uitlezen")
                 ext = extraheer(tekst)
             except LimietOp as e:
-                print(f"  LIMIET BEREIKT ({e}). Rest volgt bij de volgende run.")
-                limiet_op = True
-                later(); continue
+                print(f"  AI-BUDGET OF LIMIET OP ({e}). Run stopt; de volgende gaat hier verder.")
+                limiet_op = limiet_reden(e)
+                break
             except Exception as e:
                 print(f"  {cid}: mislukt ({e})")
                 later(); continue
@@ -609,6 +611,9 @@ def main():
             log.append(kop + "".join(f"\n  - {v}: {json.dumps(a, ensure_ascii=False)} → {json.dumps(b, ensure_ascii=False)}" for v, a, b in diff))
 
         print("  trechter: " + ", ".join(f"{k} {v}" for k, v in tel.items() if v))
+        if limiet_op:  # budget/limiet op: deze gemeente is niet af, de volgende run begint hier
+            stand.update(volgende=naam, reden=limiet_op)
+            break
 
         # regelingen die niet meer gevonden worden: niet weggooien, wel markeren
         gezien = {r["cvdr_id"] for r in nieuw if r.get("cvdr_id")}
@@ -638,9 +643,11 @@ def main():
                 nieuw += web
                 print(f"  internet: {len(web)} regeling(en)")
             except LimietOp as e:
-                print(f"  LIMIET BEREIKT bij zoeken op internet ({e})")
-                limiet_op = True
+                print(f"  AI-BUDGET OF LIMIET OP bij zoeken op internet ({e}). Run stopt.")
+                limiet_op = limiet_reden(e)
                 nieuw += oud_web
+                stand.update(volgende=naam, reden=limiet_op)
+                break
             except Exception as e:
                 print(f"  zoeken op internet mislukt ({e})")
                 nieuw += oud_web
