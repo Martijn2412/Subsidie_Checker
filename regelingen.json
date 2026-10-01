@@ -2372,7 +2372,7 @@
     "bedrag": "maximaal € 6.000,-- per woning (laag inkomen), € 1.000,-- (regulier/buiten bebouwde kom), € 1.500,-- (collectief), € 1.000,-- (doe-het-zelf)",
     "technische_eisen": "Minimale isolatiewaarden en oppervlaktes conform bijlage 2 (ISDE-voorwaarden). Geen UF-schuim toegestaan.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 625000,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
@@ -2947,7 +2947,7 @@
     "bedrag": "100% van de kosten (inclusief BTW) tot maximaal € 2.000,00 per woning",
     "technische_eisen": null,
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": null,
       "woz_regel": null,
       "woz_peildatum": null,
@@ -3264,7 +3264,7 @@
     },
     "technische_eisen": "Voldoen aan minimale isolatiewaarden (Rd- of U-waarden) en minimale oppervlakte-eisen van de ISDE. Het gebruik van PUR- of UF-schuim is niet toegestaan.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 477000,
       "woz_regel": "lt",
       "woz_peildatum": "2022-01-01",
@@ -3768,7 +3768,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "slecht geïsoleerde woning, met uitzondering van een appartement, zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -3838,7 +3851,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "slecht geïsoleerde koopwoning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -5942,7 +5968,7 @@
     "technische_eisen": "De minimale isolatiewaarden en oppervlakten en overige eisen per onderdeel genoemd in het eerste lid van dit artikel waaraan voldaan moet worden, zijn beschreven in artikel 4.5.2. derde lid van de Regeling nationale EZ- en LNNV- en KGG-subsidies. In afwijking van het tweede lid bedraagt het minimale oppervlak bij spouwmuurisolatie uit ten minste 20 vierkante meter van de bestaande thermische schil",
     "criteria": {
       "eigenaar_bewoner": true,
-      "woz_max": "500000",
+      "woz_max": 500000,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
       "woz_uitzondering": "Als de hogere WOZ-waarde na deze datum is verlaagd tot of minder dan €500.000, kan aanvrager verzoeken om uit te gaan van de lagere WOZ-waarde.",
@@ -6802,7 +6828,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -6870,7 +6909,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "slecht geïsoleerde woning, met uitzondering van een appartement, zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -9247,7 +9299,20 @@
       "woz_uitzondering": "als uit een recent taxatierapport of koopcontract blijkt de huidige WOZ-waarde wel voldoet aan de norm volgens de SPUK Lokale Aanpak Isolatie",
       "isolatiestaat": {
         "omschrijving": "slecht geïsoleerd conform voorwaarden SPUK Lokale Aanpak Isolatie",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": null,
@@ -12211,7 +12276,7 @@
     "bedrag": null,
     "technische_eisen": null,
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": null,
       "woz_regel": null,
       "woz_peildatum": null,
@@ -13522,7 +13587,7 @@
     "bedrag": "maximaal 100% van de kosten met een maximum van € 1.500 per woning (verhoogd met max. € 1.500 voor minima; biobased bonus van € 500)",
     "technische_eisen": "Voldoen aan minimale isolatiewaarden en oppervlakte-eisen ISDE; geen PUR- of UF-schuim toegestaan; bij spouwmuurisolatie gecertificeerd conform Training Natuurvrij Maken",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 477000,
       "woz_regel": "lt",
       "woz_peildatum": "2022-01-01",
@@ -14367,7 +14432,7 @@
     "bedrag": "maximaal € 2.240,-",
     "technische_eisen": "voldoen aan de eisen en specificaties vermeld in artikel 4.5.2, derde lid, van de Regeling nationale EZK- en LNV-subsidies",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 429300,
       "woz_regel": "lt",
       "woz_peildatum": null,
@@ -15642,7 +15707,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde koopwoning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -15725,7 +15803,20 @@
       "woz_uitzondering": "Minimaal 50% van de koopwoningen binnen de vereniging heeft op peildatum 1 januari 2022 een WOZ-waarde < € 260.000 én minimaal 80% van de woningen heeft een WOZ-waarde < € 477.000",
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI; woning grenst fysiek aan het niet of slecht geïsoleerde bouwdeel",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -15800,7 +15891,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde koopwoning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -17394,7 +17498,7 @@
     "bedrag": "maximaal 100% van de subsidiabele kosten, verminderd met ISDE-subsidie, tot een maximum van € 1.650 per woning (of per appartementsrecht)",
     "technische_eisen": "Minimale isolatiewaarden en minimale m2 conform ISDE (dak/vloer/gevel Rd ≥ 3,5, spouw Rd ≥ 1,1, glas Ug ≤ 1,2). Ventilatie vereist WTW-rendement ≥ 90% of CO2-gestuurd en combinatie met isolatie.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 525000,
       "woz_regel": "lte",
       "woz_peildatum": "2024-01-01",
@@ -18665,7 +18769,7 @@
     "bedrag": "maximaal € 1850,-",
     "technische_eisen": "Minimale isolatiewaarden en oppervlakten conform ISDE (RVO). Glas en kozijnpanelen Ug/Up ≤ 1,2 W/m2K of ≤ 0,7 W/m2K; isolerende deuren Ud ≤ 1,5 W/m2K of ≤ 1,0 W/m2K. Spouwmuurisolatie moet natuurvriendelijk worden uitgevoerd.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": null,
       "woz_regel": "lte",
       "woz_peildatum": "de laatste door de gemeente afgegeven WOZ-waarde",
@@ -19107,7 +19211,7 @@
     "technische_eisen": "De minimale isolatiewaarden en oppervlakten en overige eisen per onderdeel genoemd in het eerste lid van dit artikel waaraan voldaan moet worden, zijn beschreven in artikel 4.5.2. derde lid van de Regeling nationale EZK- en LNV-subsidies; In afwijking van het tweede lid bedraagt het minimale oppervlak bij spouwmuurisolatie uit ten minste 20 vierkante meter van de bestaande thermische schil",
     "criteria": {
       "eigenaar_bewoner": true,
-      "woz_max": 500000.0,
+      "woz_max": 500000,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
       "woz_uitzondering": null,
@@ -19197,7 +19301,7 @@
     "technische_eisen": "De minimale isolatiewaarden en oppervlakten en overige eisen per onderdeel genoemd in het eerste lid van dit artikel waaraan voldaan moet worden, zijn beschreven in artikel 4.5.2. derde lid van de Regeling nationale EZ- en LNNV- en KGG-subsidies.",
     "criteria": {
       "eigenaar_bewoner": true,
-      "woz_max": "500000",
+      "woz_max": 500000,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
       "woz_uitzondering": "Als de hogere WOZ-waarde na deze datum is verlaagd tot of minder dan €500.000, kan aanvrager verzoeken om uit te gaan van de lagere WOZ-waarde.",
@@ -19537,7 +19641,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "een slecht geïsoleerde woning, met uitzondering van een appartement, zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -19612,7 +19729,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -19774,7 +19904,7 @@
     "bedrag": "Maximaal € 3.000 voor doelgroep 1; maximaal € 1.250 voor doelgroep 2 of doe-het-zelf; maximaal 100% van de werkelijke kosten",
     "technische_eisen": "Voldoen aan voorschriften ISDE; spouwmuurisolatie uitgesloten; bij doe-het-zelf Rd ten minste 3,5 voor dak, vloer, bodem kruipruimte en voorzetwand/binnenkant gevel",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 477000,
       "woz_regel": "lt",
       "woz_peildatum": "2022-01-01",
@@ -20248,7 +20378,7 @@
     "technische_eisen": "Minimale Rd-waarden en oppervlaktes volgens ISDE (o.a. spouwmuur Rd ≥ 1,1 min 10 m², gevel/dak/vloer/bodem Rd ≥ 3,5 min 10 of 20 m², glas Ug ≤ 1,2 min 3 m²). Isolatieschuim zoals UF-schuim, Icynene en PUR is uitgesloten.",
     "criteria": {
       "eigenaar_bewoner": true,
-      "woz_max": 429300.0,
+      "woz_max": 429300,
       "woz_regel": "lte",
       "woz_peildatum": "2023-01-01",
       "woz_uitzondering": "Voor woningen gelegen in het buitengebied geldt een hogere maximale WOZ-waarde lager dan € 477.000,-.",
@@ -20516,7 +20646,7 @@
     "bedrag": "maximaal 50% van materiaalkosten en/of arbeidskosten; maximaal € 1.500,- inclusief btw voor 1 isolerende maatregel; maximaal € 2.000,- inclusief btw voor twee of meer maatregelen of in combinatie met ventilatie",
     "technische_eisen": "Dak-/zolder-/vlieringvloerisolatie: min. 20 m², Rd ≥ 3,5 m²K/W (monument Rd ≥ 2,5 m²K/W); gevelisolatie: min. 10 m², Rd ≥ 3,5 m²K/W (monument Rd ≥ 2,5 m²K/W); spouwmuurisolatie: min. 10 m², Rd ≥ 1,1 m²K/W; vloer-/bodemisolatie: min. 20 m², Rd ≥ 3,5 m²K/W; HR++ glas min. 3 m² met Ud ≤ 1,5 W/m²K, triple glas min. 3 m² met Uf ≤ 1,5 W/m²K en Ud ≤ 1,0 W/m²K; gespoten PIR/PUR met HFK-vrije blaasmiddelen; ventilatie: CO2-gestuurd of balansventilatie met WTW rendement ≥ 90%",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": null,
       "woz_regel": null,
       "woz_peildatum": null,
@@ -22260,7 +22390,7 @@
     "bedrag": "maximaal € 1.500,00 per woning (tot 100% van de werkelijk gemaakte kosten); maximaal € 1.900,- bij recht op bijstand of Samen Loont Pas",
     "technische_eisen": "Spouwmuur/gevel min. 10 m2 (gevel Rd >= 3,5, spouw Rd >= 1,1); vloer/bodem min. 20 m2 (Rd >= 3,5); dak of zolder-/vlieringvloer min. 20 m2 (Rd >= 3,5); isolerend glas min. 8 m2 (HR++ U <= 1,2, Triple U <= 0,7 met isolerend kozijn Uf <= 1,5). Natuurvriendelijk isoleren vereist.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 429300,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
@@ -22697,7 +22827,7 @@
     "bedrag": "100% van de subsidiabele kosten, maximaal € 1.250,- incl. btw per woning (of maximaal € 6.000,- bij inkomen < 130% van het sociaal minimum)",
     "technische_eisen": "Minimale isolatiewaarden en minimale m2-eisen zoals omschreven in de ISDE; vanaf 1 april 2026 geen UF-schuim; vanaf 17 mei 2025 certificaat Natuurvriendelijk Isoleren vereist (tenzij glasisolatie zonder kozijnvervanging, vloer-, binnendak- of binnenmuurisolatie)",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 477000,
       "woz_regel": "lte",
       "woz_peildatum": "2024-01-01",
@@ -26329,7 +26459,7 @@
     "bedrag": "maximaal € 1500 voor conventionele isolatiematerialen en maximaal € 2000 voor biobased isolatiemateriaal",
     "technische_eisen": "minimale isolatiewaarden en oppervlaktes in lijn met LAI regeling; alleen op een slecht geïsoleerd bouwdeel; keuze tussen vloer- of bodemisolatie en keuze tussen dak- of zolder/vlieringisolatie",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 429300,
       "woz_regel": "lt",
       "woz_peildatum": "2022-01-01",
@@ -31073,7 +31203,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "een slecht geïsoleerde woning, met uitzondering van een appartement, zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -31227,7 +31370,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -32966,7 +33122,7 @@
     "bedrag": "Bodemisolatie max. € 26,34 per m²; spouwmuurisolatie max. € 18,28 per m² + € 300 voor eDNA/natuurvrij maken (minimum € 1.100). Biobased toeslag per m²: dak € 5,-; zolder/vliering € 1,50; gevel € 6,-; spouwmuur € 1,50; vloer € 2,-; bodem € 1,-.",
     "technische_eisen": "Minimale isolatiewaarden en oppervlakten conform artikel 4.5.2. derde lid Regeling nationale EZK- en LNV-subsidies. Minimale oppervlakte spouwmuurisolatie ten minste 20 m² van bestaande thermische schil.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": null,
       "woz_regel": null,
       "woz_peildatum": null,
@@ -35754,7 +35910,7 @@
     "bedrag": "Categorie A: maximaal € 4.000,- voor één maatregel. Categorie B: minimaal € 1.000,- en maximaal € 1.185,- per woning.",
     "technische_eisen": "Maatregelen conform ISDE-meldcodelijst en Rd-waarde of U-waarde conform ISDE. Geen lokaal gespoten isolatieschuimen zoals PUR.",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 429300,
       "woz_regel": "lt",
       "woz_peildatum": "2022-01-01",
@@ -37031,7 +37187,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning: een slecht geïsoleerde woning, met uitzondering van een appartement, zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI.",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -37107,7 +37276,20 @@
       "woz_uitzondering": null,
       "isolatiestaat": {
         "omschrijving": "Slecht geïsoleerde woning zoals gedefinieerd in artikel 1, eerste lid, van de Regeling SPUK LAI.",
-        "regels": []
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ],
+        "afgeleid": "Definitie 'slecht geïsoleerde woning' uit de Regeling SPUK Lokale Aanpak Isolatie: label D t/m G, of een vergelijkbare energetische staat (gangbaar: min. 2 slechte bouwdelen)."
       },
       "bouwjaar_min": null,
       "bouwjaar_max": 1991,
@@ -37921,7 +38103,7 @@
     },
     "technische_eisen": "Minimale isolatiewaarden en minimale m2 eisen zoals omschreven in de ISDE. Ventilatiemaatregel: CO2 gestuurde ventilatie of balansventilatie met warmteterugwinning (rendement ≥ 90%).",
     "criteria": {
-      "eigenaar_bewoner": "ja",
+      "eigenaar_bewoner": true,
       "woz_max": 550000,
       "woz_regel": "lte",
       "woz_peildatum": "2024-01-01",
@@ -38163,7 +38345,7 @@
     "technische_eisen": "Vloerisolatie: min. 20 m², Rd = 3,5 m²K/W; Bodemisolatie: min. 20 m², Rd = 3,5 m²K/W; Dakisolatie (schuin dak): min. 20 m², Rd = 3,5 m²K/W; HR++ glas: min. 8 m², U = 1,2 W/m²K; Gevelisolatie: min. 10 m², Rd = 3,5 m²K/W; Monumenten-/vacuümglas: min. 3 m², U = 3,0 W/m²K; PUR/PIR lokaal gespoten met HFK-vrije blaasmiddelen",
     "criteria": {
       "eigenaar_bewoner": true,
-      "woz_max": "€ 390.000",
+      "woz_max": 390000,
       "woz_regel": "lte",
       "woz_peildatum": "2022-01-01",
       "woz_uitzondering": "Maximaal € 429.300 voor aanvragers die de energietoeslag 2023 vanuit de gemeente hebben ontvangen (doelgroep 1)",

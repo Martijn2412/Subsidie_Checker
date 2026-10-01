@@ -12,6 +12,11 @@ en, als daar niets staat, met AI zoekt op internet.
 | `overzicht_voorwaarden.xlsx` | Alles in één sheet: blad *Regelingen* (voorwaarden per regeling, geel = via AI) en blad *Gemeenten* (alle gemeenten met conclusie). Ook te downloaden via de knop op de checkpagina. Alleen om te lezen: wordt elke run opnieuw gemaakt. |
 | `zoekstatus.json` | Per gemeente: wat in het CVDR nog wacht op uitlezen en wanneer er op internet is gezocht. |
 | `scraper/run.py` | Zoekt, leest en extraheert de regelingen. |
+| `scraper/normaliseer.py` | Schoont de uitkomst van het model op (WOZ als getal, ja/nee als true/false). |
+| `scraper/export_tios.py` | Schrijft na elke run de map `tios/` voor de koppeling met TIOS. |
+| `subsidiecheck.js` | De rekenregels: klantgegevens erin, oordeel + één regel tekst eruit. Gebruikt door de checkpagina én bedoeld voor TIOS. |
+| `tios/` | `subsidies.json`, `regelingen.csv`, `gemeenten.csv`: alles wat TIOS nodig heeft. Zie `docs/TIOS-koppeling.md`. |
+| `docs/verbeterplan.md` | Wat er nog beter kan, op volgorde van belang. |
 | `scraper/config.json` | Instellingen: alle gemeenten aan/uit, trefwoorden, modellen, limieten. |
 | `scraper/prompt_extractie.md` | De opdracht aan Claude. Hier schaaf je bij als het model iets verkeerd leest. |
 | `tests/baseline_pilot.json` | Handmatig gecontroleerde pilotdata (4 gemeenten) om het model tegen te testen. |

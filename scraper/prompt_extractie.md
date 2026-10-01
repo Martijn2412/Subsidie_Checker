@@ -7,10 +7,14 @@ Regels:
 - Geef bij elk ingevuld veld in "bewijs" het korte zinsdeel (max. 25 woorden) uit de tekst waar het vandaan komt.
 - Spreekt de tekst zichzelf tegen (bijv. twee verschillende einddata)? Neem de strengste waarde en leg het uit in "opmerkingen".
 - Datums als JJJJ-MM-DD.
+- Getallen als getal, zonder € of punten: "woz_max": 500000 (niet "€ 500.000"). Ook bouwjaar en woonoppervlak.
+- "eigenaar_bewoner": true of false, niet "ja"/"nee".
 - "woz_regel": "lt" bij "lager dan"/"onder", "lte" bij "niet hoger dan"/"maximaal"/"tot en met".
 - "isolatiestaat.regels": lijst van alternatieven. De woning voldoet als ÉÉN regel helemaal klopt.
   Een regel kan bevatten: "labels" (lijst, gebruik "geen" voor 'zonder energielabel'), "bouwdelen_min", "bouwjaar_max", "bouwjaar_min".
   Voorbeeld "label D-G, of minimaal 2 slecht geïsoleerde bouwdelen": [{"labels":["D","E","F","G"]},{"bouwdelen_min":2}]
+  Verwijst de regeling naar "slecht geïsoleerde woning" uit de Regeling SPUK (Lokale Aanpak Isolatie) of een bijlage
+  met bouwdelen? Vul dan toch de regels in: [{"labels":["D","E","F","G"]},{"bouwdelen_min":2}] (pas aan als de tekst iets anders zegt).
   Stelt de regeling de isolatiestaat niet als voorwaarde? Zet "isolatiestaat" op null.
 - "inkomen": "vereist" als een laag inkomen verplicht is, "bonus" als het alleen een hoger bedrag geeft, anders null.
 - "vve": "ja" als VvE/appartement mag, "nee" als alleen grondgebonden woningen, "voorwaarde" bij een tussenvorm, null als niet genoemd.

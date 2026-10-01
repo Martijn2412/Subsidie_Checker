@@ -1,0 +1,27 @@
+name: Tests
+
+# Controleert de rekenregels (subsidiecheck.js) en het opschonen van de data
+# bij elke pull request en elke push naar main.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rekenregels (subsidiecheck.js)
+        run: node --test tests/*.test.js
+      - name: Data opschonen (normaliseer.py)
+        run: python -m unittest discover tests
