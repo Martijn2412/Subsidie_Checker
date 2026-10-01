@@ -604,9 +604,19 @@ def main():
     if limiet_op or wacht:
         tekst += (f"\n**Let op:** limiet van het taalmodel bereikt. Nog {wacht} regeling(en) in het CVDR wachten op "
                   "uitlezen; die volgen bij de volgende run(s).\n")
-    LOG_LAST.write_text(tekst, encoding="utf-8")
     with LOG_ALL.open("a", encoding="utf-8") as f:
         f.write("\n" + tekst)
+    # Gaat deze run verder op een openstaande Subsidie-update? Dan blijven de wijzigingen van de
+    # eerdere runs in de PR-tekst staan (zonder hun oude "Let op"-regel).
+    if os.environ.get("VERDER_OP_OPEN_UPDATE") == "1" and LOG_LAST.exists():
+        eerder = re.sub(r"\n\*\*Let op:\*\*[^\n]*\n?", "\n", LOG_LAST.read_text(encoding="utf-8"))
+        eerder = re.sub(r"^# Subsidie-update", "### Subsidie-update", eerder, flags=re.M)
+        eerder = eerder.replace("## Eerdere runs in deze update (nog niet gemerged)", "")
+        eerder = re.sub(r"\n{3,}", "\n\n", eerder).strip()
+        tekst += "\n## Eerdere runs in deze update (nog niet gemerged)\n\n" + eerder + "\n"
+        if len(tekst) > 60000:   # GitHub staat max. 65.536 tekens toe in een PR-tekst
+            tekst = tekst[:60000] + "\n\n… (ingekort; alles staat in data/wijzigingen.md)\n"
+    LOG_LAST.write_text(tekst, encoding="utf-8")
     print(f"Klaar: {len(nieuw)} regelingen, {len(log)} wijzigingen, {web_gedaan} zoekacties op internet, {wacht} wachten nog")
     schrijf_overzicht(nieuw, lees(ZOEKSTATUS, {}).get("gemeenten", []), dekking)
     export_tios.schrijf(ROOT)

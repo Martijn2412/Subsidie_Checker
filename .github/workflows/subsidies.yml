@@ -14,12 +14,27 @@ permissions:
   contents: write
   pull-requests: write
 
+# Nooit twee runs tegelijk: de tweede wacht tot de eerste klaar is.
+concurrency:
+  group: subsidies-bijwerken
+  cancel-in-progress: false
+
 jobs:
   bijwerken:
     runs-on: ubuntu-latest
     timeout-minutes: 350   # GitHub staat max. 6 uur toe
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # volledige geschiedenis, nodig om de openstaande update erbij te halen
+
+      # Staat er nog een Subsidie-update open (niet gemerged)? Dan gaat deze run daar verder,
+      # zodat het werk van de vorige run niet opnieuw gedaan wordt. De code komt altijd uit main;
+      # alleen de gegevens (regelingen, wachtrij, status) komen uit de openstaande update.
+      - name: Verder waar de vorige run bleef
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scraper/verder_op_open_update.sh
 
       - uses: actions/setup-python@v5
         with:

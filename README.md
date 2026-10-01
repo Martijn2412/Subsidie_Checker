@@ -53,5 +53,8 @@ pull request met de wijzigingen in gewone taal. Controleer ze tegen de bronlink,
 zet bij goedgekeurde regelingen `"gecontroleerd": true` en merge. Pas dan ziet de
 binnendienst de wijziging. Niets gewijzigd? Dan komt er geen pull request.
 
+Nog niet gemerged? Geen probleem: de volgende run gaat verder op de openstaande
+Subsidie-update en voegt zijn wijzigingen daaraan toe. Er gaat geen werk verloren.
+
 Regelingen die niet in het CVDR staan (zoals SAAK Doesburg) zet je zelf in
 `regelingen.json` met `"handmatig": true`. De scraper laat die met rust.
