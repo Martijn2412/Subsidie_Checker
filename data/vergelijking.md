@@ -1,4 +1,4 @@
-# Vergelijking model vs. handmatig (2026-09-29)
+# Vergelijking model vs. handmatig (2026-09-30)
 
 ## Doesburg – CVDR743563
 - bedrag: handmatig "100% van de subsidiabele kosten, max. €2.000 per adres. Extra bij bio-based materiaal per m²: dak €5, zolder-/vlieringvloer €1,50, spouwmuur €1,50, gevel €6, vloer €2, bodem €1." | model "100% van de subsidiabele kosten met een maximum van €2.000,- per adres. Aanvullend voor bio-based: dakisolatie €5/m², zolder-/vlieringvloerisolatie €1,50/m², spouwmuurisolatie €1,50/m², gevelisolatie €6/m², vloerisolatie €2/m², bodemisolatie €1/m²"
@@ -111,6 +111,7 @@
 - Borger-Odoorn: Subsidieregeling nationaal isolatieprogramma Borger-Odoorn (CVDR741573)
 - Borne: Subsidieregeling energiebesparende maatregelen slecht geïsoleerde woningen gemeente Borne 2025 (herziening) (CVDR749596)
 - Borsele: Subsidieregeling Lokale Aanpak Isolatie gemeente Borsele 2025 (CVDR738384)
+- Borsele: Subsidieregeling Lokale Aanpak Isolatie gemeente Borsele 2026 (CVDR767116)
 - Borsele: Subsidieregeling subsidie isoleren particuliere woningen NIP22 in de gemeente Borsele (CVDR728778)
 - Boxtel: Subsidieregeling Lokale Aanpak Spouwmuurisolatie Boxtel 2025 (CVDR742416)
 - Boxtel: Subsidieregeling Samen Isoleren Boxtel (CVDR762057)
@@ -256,6 +257,7 @@
 - Kaag en Braassem: Subsidieregeling Isolatieprogramma Kaag en Braassem 2026-2028 (CVDR762080)
 - Kampen: Subsidieregeling lokale aanpak isolatie gemeente Kampen 2026 (CVDR765685)
 - Kapelle: Subsidieregeling Lokale Aanpak Isolatie gemeente Kapelle 2024 (CVDR736291)
+- Kapelle: Subsidieregeling Lokale Aanpak Isolatie gemeente Kapelle 2025 (CVDR767100)
 - Kapelle: Subsidieregeling isoleren particuliere woningen (NIP22) in de gemeente Kapelle (CVDR732367)
 - Katwijk: Subsidieregeling Katwijks Isolatiefonds (CVDR701080)
 - Katwijk: Subsidieregeling Lokale Aanpak Isolatie Katwijk voor koopwoningen (CVDR734523)
@@ -491,6 +493,7 @@
 - Zaltbommel: Subsidieverordening isolatie eigen woningen 2013-2014 (CVDR302310)
 - Zaltbommel: Subsidieverordening isolatie eigen woningen 2014 (CVDR333706)
 - Zandvoort: Subsidieregeling isolatie Zandvoortse vve’s (CVDR735095)
+- Zandvoort: Subsidieregeling lokale aanpak isolatie Zandvoort (CVDR736593)
 - Zutphen: Tijdelijke subsidieregeling energetische woningverbetering voor eigenaar-bewoners in energiearmoede gemeente Zutphen 2022-2027 II (CVDR741234)
 - Zutphen: Tijdelijke subsidieregeling lokale aanpak isolatie koopwoningen gemeente Zutphen 2024-2028-II (CVDR758825)
 - Zutphen: Verordening Toekomstbestendig Wonen Gelderland gemeente Zutphen 2025 (CVDR751546)
