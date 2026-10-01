@@ -23,5 +23,7 @@ jobs:
           python-version: "3.12"
       - name: Rekenregels (subsidiecheck.js)
         run: node --test tests/*.test.js
-      - name: Data opschonen (normaliseer.py)
+      - name: Pakketten voor de scraper-tests
+        run: pip install requests
+      - name: Data opschonen en verdergaan na een onderbreking (Python)
         run: python -m unittest discover tests
