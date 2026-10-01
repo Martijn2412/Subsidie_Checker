@@ -59,7 +59,11 @@ uit.regelingen // per regeling: naam, bedrag, aanvragen_tm, bron_url, uitkomst, 
 
 Altijd indicatief: de binnendienst checkt de bron voordat er iets aan de klant wordt beloofd.
 
-## Drie manieren om het in TIOS te krijgen
+## Aanbevolen: checkservice op de TIOS-server
+
+TIOS draait op Ubuntu. De kortste route is `koppeling/checkservice.js`: een kleine service (alleen Node.js nodig, geen pakketten) die elk uur `tios/subsidies.json` ophaalt en op `GET http://localhost:8085/check?gemeente=…&energielabel=…` een oordeel teruggeeft. `koppeling/subsidiecheck.service` laat hem als systemd-dienst draaien. Uitleg, beheer en overdracht: `docs/Technisch-ontwerp-TIOS-koppeling.docx`.
+
+## Andere manieren om het in TIOS te krijgen
 
 Welke het wordt, hangt af van wat TIOS kan. Vraag de leverancier van TIOS:
 *"Kan TIOS bij een nieuwe lead een HTTP-aanroep doen (webhook) en het antwoord in een veld zetten? Of kunnen we eigen JavaScript draaien?"*

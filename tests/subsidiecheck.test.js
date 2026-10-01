@@ -90,3 +90,10 @@ test("tios/subsidies.json werkt met check()", () => {
   const uit = SC.check({gemeente: "Arnhem", energielabel: "E", woz: 300000}, data.regelingen, {zoekstatus});
   assert.ok(uit.regelingen.length > 0);
 });
+
+test("tios/subsidies.json kan direct als zoekstatus mee", () => {
+  const data = {gemeenten: {Leegdorp: {conclusie: "wacht", wacht_op_uitlezen: 2}}};
+  const uit = SC.check({gemeente: "leegdorp"}, [regeling()], {nu: NU, zoekstatus: data});
+  assert.equal(uit.uitkomst, "geen_regeling");
+  assert.equal(uit.wacht_op_uitlezen, 2);
+});

@@ -1,0 +1,22 @@
+# systemd-unit voor de checkservice (Ubuntu).
+# Installeren:
+#   sudo cp koppeling/subsidiecheck.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now subsidiecheck
+# Controleren: systemctl status subsidiecheck   en   curl http://localhost:8085/status
+[Unit]
+Description=Subsidiecheck isolatie (Takkenkamp) voor TIOS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Pas het pad aan naar waar de repo op de server staat.
+WorkingDirectory=/opt/subsidie_checker
+ExecStart=/usr/bin/node koppeling/checkservice.js
+Environment=POORT=8085
+Environment=ADRES=127.0.0.1
+Restart=always
+RestartSec=10
+User=subsidiecheck
+
+[Install]
+WantedBy=multi-user.target

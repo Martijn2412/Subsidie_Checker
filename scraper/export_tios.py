@@ -121,7 +121,7 @@ def schrijf(root, vandaag=None):
         "versie": VERSIE,
         "bijgewerkt": vandaag,
         "uitleg": ("Open gemeentelijke isolatieregelingen met voorwaarden. Toetsen met subsidiecheck.js: "
-                   "SubsidieCheck.check(klant, data.regelingen, {zoekstatus: {gemeenten: ...}}). "
+                   "SubsidieCheck.check(klant, data.regelingen, {zoekstatus: data}). "
                    "Indicatief, geen toezegging; controleer altijd de bron_url."),
         "gemeenten": gemeenten,
         "regelingen": open_regs,
