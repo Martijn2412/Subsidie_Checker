@@ -1,4 +1,4 @@
-# Vergelijking model vs. handmatig (2026-09-30)
+# Vergelijking model vs. handmatig (2026-10-01)
 
 ## Doesburg – CVDR743563
 - bedrag: handmatig "100% van de subsidiabele kosten, max. €2.000 per adres. Extra bij bio-based materiaal per m²: dak €5, zolder-/vlieringvloer €1,50, spouwmuur €1,50, gevel €6, vloer €2, bodem €1." | model "100% van de subsidiabele kosten met een maximum van €2.000,- per adres. Aanvullend voor bio-based: dakisolatie €5/m², zolder-/vlieringvloerisolatie €1,50/m², spouwmuurisolatie €1,50/m², gevelisolatie €6/m², vloerisolatie €2/m², bodemisolatie €1/m²"
@@ -24,7 +24,6 @@
 - inkomensgrens: handmatig "Hoger bedrag bij inkomen onder 150% van het sociaal minimum (peildatum: maand vóór de aanvraag)" | model "150% van het sociaal minimum"
 - stapelbaar_isde: handmatig "ja (toelichting: ISDE wordt eerst verrekend)" | model true
 - criteria.bouwjaar_opmerking: handmatig null | model "Bouwjaar van 1995 of ouder is alleen vereist als voorwaarde bij een woning zonder energielabel of met energielabel B of C"
-- criteria.eigenaar_bewoner: handmatig true | model "ja"
 - criteria.isolatiestaat: handmatig {"omschrijving": "Label D–G, óf geen label + min. 2 slechte bouwdelen, óf label B/C + bouwjaar t/m 1995 + min. 2 slechte bouwdelen", "regels": [{"labels": ["D", "E", "F", "G"]}, {"labels": ["geen"], "bouwdelen_min": 2}, {"labels": ["B", "C"], "bouwjaar_max": 1995, "bouwdelen_min": 2}]} | model {"omschrijving": "Slecht geïsoleerde woning: label D-G, of geen label/label B of C met bouwjaar <= 1995 en minstens 2 slecht geïsoleerde bouwdelen, of niet voldoen aan Bouwbesluit 1992", "regels": [{"labels": ["D", "E", "F", "G"]}, {"labels": ["geen"], "bouwdelen_min": 2, "bouwjaar_max": 1995}, {"labels": ["B", "C"], "bouwdelen_min": 2, "bouwjaar_max": 1995}]}
 - criteria.vve: handmatig "nee" | model "ja"
 - criteria.vve_opmerking: handmatig "Alleen grondgebonden woningen; voor VvE's volgt later een regeling" | model "Doe-het-zelf maatregelen in een appartement deel uitmakend van een VvE zijn niet subsidiabel"

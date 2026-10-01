@@ -6413,3 +6413,9 @@ Geen wijzigingen.
   - criteria.woz_uitzondering: null → "Als de hogere WOZ-waarde na deze datum is verlaagd tot of minder dan €500.000, kan aanvrager verzoeken om uit te gaan van de lagere WOZ-waarde."
 
 **Let op:** limiet van het taalmodel bereikt. Nog 26 regeling(en) in het CVDR wachten op uitlezen; die volgen bij de volgende run(s).
+
+# Subsidie-update 2026-10-01
+
+**Veere – Subsidieregeling Aanvullende Maatregel Lokale Aanpak Isolatie gemeente Veere**: niet meer gevonden in CVDR
+
+**Let op:** limiet van het taalmodel bereikt. Nog 33 regeling(en) in het CVDR wachten op uitlezen; die volgen bij de volgende run(s).
