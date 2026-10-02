@@ -56,18 +56,23 @@ jobs:
       - name: Pakketten installeren
         run: pip install requests google-genai anthropic openpyxl pypdf
 
-      # Alleen bij een proef met aanbieder github: laat zien wat GitHub Models terugstuurt (zonder het token te tonen)
-      - name: GitHub Models controleren
-        if: github.event.inputs.aanbieder == 'github' && github.event.inputs.proef == 'true'
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      # Alleen bij een proef met een gekozen aanbieder: laat zien of de gratis taalmodellen zonder sleutel antwoorden
+      - name: Gratis taalmodellen controleren
+        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder != 'standaard' && github.event.inputs.aanbieder != ''
+        continue-on-error: true
         run: |
-          for url in https://models.github.ai/inference/chat/completions https://models.inference.ai.azure.com/chat/completions; do
-            echo "== $url"
-            curl -sS -i -X POST "$url" -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" \
-              -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" \
-              -d '{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Zeg alleen: hallo"}],"max_tokens":5}' \
-              | head -c 1500; echo
+          for basis in https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 https://api.llm7.io/v1 https://text.pollinations.ai/openai; do
+            echo "== $basis/models"
+            curl -sS --max-time 30 "$basis/models" | head -c 2500; echo
+          done
+          vraag='{"messages":[{"role":"user","content":"Antwoord alleen met het woord: hallo"}],"max_tokens":10,"model":"MODEL"}'
+          for paar in "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 Mistral-Small-3.2-24B-Instruct-2506" \
+                      "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 Meta-Llama-3_3-70B-Instruct" \
+                      "https://api.llm7.io/v1 gpt-4o-mini" "https://text.pollinations.ai/openai openai"; do
+            set -- $paar
+            echo "== $1 model $2"
+            curl -sS --max-time 60 -i -X POST "$1/chat/completions" -H "Content-Type: application/json" \
+              -d "${vraag/MODEL/$2}" | head -c 1200; echo
           done
 
       - name: Regelingen ophalen en voorwaarden uitlezen
