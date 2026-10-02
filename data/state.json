@@ -729,7 +729,7 @@
   },
   "CVDR723040": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "hash": "0312b653f6aeb25e26a9ef92559d95779ce6ca3a8dc7b646a9b7a3e6ef72c051"
   },
   "CVDR696477": {
     "versie": 4,
@@ -2361,7 +2361,7 @@
   },
   "CVDR764252": {
     "versie": 1,
-    "skip": "titel"
+    "hash": "acbacdff13a11af7741b67ea4b692d6da6ee26f17378e855416910953f5d0d18"
   },
   "CVDR764281": {
     "versie": 1,
@@ -2381,7 +2381,8 @@
   },
   "CVDR735191": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR766572": {
     "versie": 1,
@@ -2417,7 +2418,8 @@
   },
   "CVDR744817": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR756351": {
     "versie": 1,
@@ -2425,7 +2427,8 @@
   },
   "CVDR644769": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR696395": {
     "versie": 3,
@@ -6501,7 +6504,8 @@
   },
   "CVDR708921": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR696308": {
     "versie": 2,
@@ -9129,7 +9133,8 @@
   },
   "CVDR765407": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR696460": {
     "versie": 3,
@@ -9985,11 +9990,13 @@
   },
   "CVDR122707": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR394606": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR149534": {
     "versie": 1,
@@ -10169,7 +10176,8 @@
   },
   "CVDR721298": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR749140": {
     "versie": 1,
@@ -10721,7 +10729,8 @@
   },
   "CVDR653373": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR734748": {
     "versie": 1,
@@ -10741,11 +10750,13 @@
   },
   "CVDR759778": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR759780": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR696254": {
     "versie": 2,
@@ -11117,7 +11128,8 @@
   },
   "CVDR749700": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR654091": {
     "versie": 2,
@@ -11125,7 +11137,8 @@
   },
   "CVDR766731": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR758854": {
     "versie": 1,
@@ -11137,7 +11150,8 @@
   },
   "CVDR747641": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR662580": {
     "versie": 1,
@@ -11225,7 +11239,8 @@
   },
   "CVDR720101": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR731183": {
     "versie": 1,
@@ -11237,7 +11252,8 @@
   },
   "CVDR698050": {
     "versie": 2,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR739040": {
     "versie": 1,
@@ -11249,7 +11265,8 @@
   },
   "CVDR704250": {
     "versie": 8,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR700971": {
     "versie": 1,
@@ -11449,7 +11466,8 @@
   },
   "CVDR668667": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR736150": {
     "versie": 1,
@@ -11457,7 +11475,8 @@
   },
   "CVDR687622": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR702056": {
     "versie": 1,
@@ -12025,11 +12044,13 @@
   },
   "CVDR11755": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR626102": {
     "versie": 2,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR746304": {
     "versie": 1,
@@ -12185,11 +12206,13 @@
   },
   "CVDR751452": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR751579": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR696374": {
     "versie": 2,
@@ -12585,7 +12608,8 @@
   },
   "CVDR746092": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR83993": {
     "versie": 1,
@@ -12837,7 +12861,8 @@
   },
   "CVDR622341": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR696168": {
     "versie": 2,
@@ -12877,7 +12902,8 @@
   },
   "CVDR643429": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR749945": {
     "versie": 1,
@@ -12893,7 +12919,8 @@
   },
   "CVDR765323": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR686686": {
     "versie": 1,
@@ -12913,15 +12940,17 @@
   },
   "CVDR758375": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR757279": {
     "versie": 1,
-    "skip": "titel"
+    "hash": "4b1e4842c6954aba0126fc55144b00c983578d5939356ae9c296d2edf3d67064"
   },
   "CVDR632964": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR743250": {
     "versie": 3,
@@ -12965,7 +12994,8 @@
   },
   "CVDR626231": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR713294": {
     "versie": 1,
@@ -12997,7 +13027,8 @@
   },
   "CVDR657811": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR696369": {
     "versie": 2,
@@ -13021,7 +13052,8 @@
   },
   "CVDR682277": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR634465": {
     "versie": 1,
@@ -13057,7 +13089,8 @@
   },
   "CVDR622480": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "geen isolatie",
+    "fv": 2
   },
   "CVDR750080": {
     "versie": 1,
@@ -13077,7 +13110,8 @@
   },
   "CVDR758005": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR752721": {
     "versie": 1,
@@ -13177,7 +13211,8 @@
   },
   "CVDR706656": {
     "versie": 1,
-    "skip": "titel"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR760298": {
     "versie": 1,
@@ -15177,7 +15212,8 @@
   },
   "CVDR727541": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR745550": {
     "versie": 1,
@@ -15601,7 +15637,7 @@
   },
   "CVDR336821": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "d41e8da08c4c51e86503211841d9ce4286e415b4039e939acaedc6057ea2344c"
   },
   "CVDR714807": {
     "versie": 1,
@@ -16029,15 +16065,18 @@
   },
   "CVDR483367": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR478055": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR608484": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR739154": {
     "versie": 1,
@@ -16081,7 +16120,7 @@
   },
   "CVDR715878": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "d6b99dcca9be8157662d2be15d60bd5a59c07845da88713fb1f0b585253c708a"
   },
   "CVDR757215": {
     "versie": 1,
@@ -16389,11 +16428,11 @@
   },
   "CVDR328894": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "56916966800c6a9a63bddadd04cee970f4c79ac018c1f56e6fab90b1aff330bd"
   },
   "CVDR682481": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "53891337744c73f08075e90bb43a8c396547e65d6ad2984fa2a21506d8420364"
   },
   "CVDR720733": {
     "versie": 2,
@@ -16613,11 +16652,11 @@
   },
   "CVDR409925": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "b718f3c01ff77e23f0ccfab917b649f3485b18a0be69fb074cc8e052c82532a3"
   },
   "CVDR759781": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "824bfaff643ceb6033e48a41b1e68fff87e928d430a384ec018d5c93ad41630e"
   },
   "CVDR739799": {
     "versie": 1,
@@ -16637,15 +16676,16 @@
   },
   "CVDR746987": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "hash": "bb2f6bacf04c0e334a3b31ca62cfda784928d7b11e56a68b268ebdf5674a5124"
   },
   "CVDR756859": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "3740f56c941773d5de9bab5b0b1cf54ca126ef942ef1033f9daba0ffb2612b99"
   },
   "CVDR757105": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR734945": {
     "versie": 1,
@@ -16697,11 +16737,12 @@
   },
   "CVDR716355": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR739088": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "hash": "0f7fd1dc42c639f011944ef8ac67169ee9af3b11e6cd9702b2c8ac91345b6c3b"
   },
   "CVDR756239": {
     "versie": 12,
@@ -16725,7 +16766,8 @@
   },
   "CVDR725026": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR736105": {
     "versie": 1,
@@ -16737,7 +16779,7 @@
   },
   "CVDR758475": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "7b1e9ac3bd29f7510f59e3603054c197045194789df13b9de0812559a6e70347"
   },
   "CVDR674363": {
     "versie": 6,
@@ -16745,7 +16787,7 @@
   },
   "CVDR659309": {
     "versie": 3,
-    "skip": "gemini-filter"
+    "hash": "04407407e089d40cfe867ad8aff86d7e3494e3e022cccc0f6e2e8d509d1243fa"
   },
   "CVDR760322": {
     "versie": 1,
@@ -16765,7 +16807,7 @@
   },
   "CVDR409328": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "hash": "dc01ced357db8ae5dad265b9c391a83b0321599ca74cd74af5fc90021582df8d"
   },
   "CVDR764680": {
     "versie": 1,
@@ -16841,7 +16883,8 @@
   },
   "CVDR668324": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR758216": {
     "versie": 1,
@@ -17149,11 +17192,12 @@
   },
   "CVDR643638": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "c10abbf1a27ae0529ba394c456dffce3329c626989bf263b5480a3893f8905b6"
   },
   "CVDR660142": {
     "versie": 2,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR759753": {
     "versie": 1,
@@ -17237,19 +17281,22 @@
   },
   "CVDR628403": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR703472": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR761706": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "skip": "gemini-filter",
+    "fv": 2
   },
   "CVDR643490": {
     "versie": 1,
-    "skip": "gemini-filter"
+    "hash": "6ee5319cc160c1d1367f034ebbf00e69b93c7345fd32e4711feb114d7ae3f7a7"
   },
   "CVDR767109": {
     "versie": 1,
@@ -17286,5 +17333,603 @@
   "CVDR767035": {
     "versie": 1,
     "skip": "geen isolatie"
+  },
+  "CVDR763383": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR715968": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR723795": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR623446": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR737510": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR740758": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR621176": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR751158": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR756493": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR715509": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR733271": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR759982": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767190": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR767189": {
+    "versie": 1,
+    "hash": "53945c5ad62905f4c3d0beb7cb62797e8b0440f1a7f8cf5f6ea63caaaedf1584"
+  },
+  "CVDR752650": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767098": {
+    "versie": 1,
+    "hash": "147d3fb7cc3d8bc49bb6d7154dc40fba5986f8b13fdd4c33fd9232076e1d79f9"
+  },
+  "CVDR719676": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR767204": {
+    "versie": 1,
+    "hash": "b2d09cdbc7e15ced6ceba7c39d6830c5054e07ab4f1b0339cf233d6060bc039f"
+  },
+  "CVDR453546": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR463049": {
+    "versie": 2,
+    "hash": "33be174e67dafcf0824c91883ab0918e55b479a7ef2f86675708cee12dbdb49c"
+  },
+  "CVDR731992": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR735455": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR738593": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR674333": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR663337": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767066": {
+    "versie": 1,
+    "hash": "9cc25fe35963f5a76fcda5cf23d1116e57c9024f81658151a0a1301caa357c8a"
+  },
+  "CVDR366310": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR436994": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR675734": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR627693": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR122897": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR694938": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR732948": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR640086": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR764792": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR725909": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR750099": {
+    "versie": 2,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767167": {
+    "versie": 1,
+    "hash": "fc384454b8771008b29cdab413e58aa7e65f442521c229ac67d184c4dda65a6c"
+  },
+  "CVDR729360": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR695236": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR629223": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR719664": {
+    "versie": 2,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR656404": {
+    "versie": 6,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR749826": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR692846": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR675761": {
+    "versie": 3,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR724688": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR721451": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR762058": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR735955": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR601509": {
+    "versie": 3,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR747444": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR747443": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR601706": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR731469": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR731556": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR732379": {
+    "versie": 9,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR764668": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR700194": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR735130": {
+    "versie": 3,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR667632": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR753012": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR682435": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767047": {
+    "versie": 1,
+    "hash": "c522a8ae23a3e45491258c24a211db92ec9328c0a83ec7596723f975abb0075c"
+  },
+  "CVDR767049": {
+    "versie": 1,
+    "hash": "8fb02ab5f55ba213f1f1fbdba16cad469b345316d27e6307f9abdd05f1ef9e26"
+  },
+  "CVDR737536": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR676389": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR716099": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR692985": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR759209": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR766601": {
+    "versie": 1,
+    "hash": "88b40ef0f25ce61a8f114c4076d96db1001ee0487a22f1e2f494824809ba0ecb"
+  },
+  "CVDR723622": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR638208": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR664757": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR760624": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR695799": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR743350": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR662292": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR764307": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR767199": {
+    "versie": 1,
+    "hash": "df680ba48418b2985f1c4999895bad7c2b9562b2c4123fab026136335d578cba"
+  },
+  "CVDR753431": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR749311": {
+    "versie": 1,
+    "hash": "cbf3d1d34c258279add05baabc89f8d4352af574b56ca595f1440809a0216910"
+  },
+  "CVDR760904": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR759526": {
+    "versie": 1,
+    "hash": "d493b3b240762fce538060a64d7e830dc858140910e108632f196740564b766c"
+  },
+  "CVDR759103": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR725641": {
+    "versie": 1,
+    "hash": "2689b63509fa7a4800f802cd611a98bad20fe72011d4c05aaf5f26c18007c4e3"
+  },
+  "CVDR765327": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR757892": {
+    "versie": 1,
+    "hash": "3a00d3bb15533248cf9c083d6dad313246a7f6ecb8206eb8c4f17946842896fe"
+  },
+  "CVDR305401": {
+    "versie": 1,
+    "hash": "53baf954e3bba369c1b956f51b8680284b51cc463881147d0fadc78dff8b38fb"
+  },
+  "CVDR323454": {
+    "versie": 1,
+    "hash": "f5534895ed88f81b992bc9672feb478153eb66f03aba750f4d57ef5950c949f6"
+  },
+  "CVDR642503": {
+    "versie": 2,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR3596": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR717053": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR735430": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR766091": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR764672": {
+    "versie": 1,
+    "hash": "4732473cf0b3665101eb145fb26481d9dbdbe1156a699d3ceb3ff79cb8606b0e"
+  },
+  "CVDR759504": {
+    "versie": 1,
+    "hash": "88e0cd50e12342afc1772a2a7949abe242db631c4e6e26e6c542d7ea356726fe"
+  },
+  "CVDR735242": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR760014": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR738306": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR698266": {
+    "versie": 3,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR759728": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR699092": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR739094": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR742786": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR746366": {
+    "versie": 1,
+    "hash": "f1a44ba784d67a3833582e01579fe48905ae4b309e568dad2845ccaae0431f59"
+  },
+  "CVDR642203": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR423160": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR443701": {
+    "versie": 2,
+    "hash": "c8cdf94e71e41497f45c9485b64a8be74d79ccd091df964fb2e0c1642ff53c1e"
+  },
+  "CVDR760261": {
+    "versie": 1,
+    "hash": "31b690e617eeb5510369a236d31c2ec0f5a410e92978277797fc15ef00d653ed"
+  },
+  "CVDR661507": {
+    "versie": 1,
+    "hash": "d4e49d83d8d07778b087505e5da8c72779273d1105b52dc5dfeaa7e80afb1647"
+  },
+  "CVDR739133": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR727448": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR756002": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR760954": {
+    "versie": 1,
+    "hash": "fa9736cb58dd85c0a8ee02f0fb5ab11f8dbc35c78598117b1cfc9363fa1efef9"
+  },
+  "CVDR760839": {
+    "versie": 1,
+    "hash": "6b626e2e0e477edff8f0916e6642475a7dd68c74107c6ae6b35813179edd2a3f"
+  },
+  "CVDR732371": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR756304": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR759345": {
+    "versie": 1,
+    "hash": "f07ec25630b300e7b4ce5451c66003ff5393164d6f211b52f4db508d6f3154c2"
+  },
+  "CVDR759399": {
+    "versie": 1,
+    "skip": "gemini-filter",
+    "fv": 2
+  },
+  "CVDR741322": {
+    "versie": 2,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR749139": {
+    "versie": 1,
+    "skip": "geen isolatie",
+    "fv": 2
+  },
+  "CVDR679131": {
+    "versie": 1,
+    "skip": "titel",
+    "fv": 2
+  },
+  "CVDR705000": {
+    "versie": 5,
+    "hash": "763be9eaee4b410d76f4861cf743b643d52673d61fc219c5ca5ae4d546e1bbcc"
+  },
+  "CVDR682993": {
+    "versie": 5,
+    "hash": "f565526eb81e6d764e80370731a227a6791182a634ae9e889fc28b71b9032600"
   }
 }

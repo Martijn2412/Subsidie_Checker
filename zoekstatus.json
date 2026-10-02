@@ -20,7 +20,12 @@
       "provincie": "Drenthe",
       "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-28"
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Aalsmeer",
@@ -258,7 +263,14 @@
       "provincie": "Noord-Brabant",
       "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-28"
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.gemeentebest.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 3
     },
     {
       "gemeente": "Beuningen",
@@ -986,7 +998,15 @@
       "provincie": "Noord-Holland",
       "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.hoorn.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Regionaal Energieloket"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Horst aan de Maas",
@@ -1271,29 +1291,33 @@
     {
       "gemeente": "Meppel",
       "provincie": "Drenthe",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.meppel.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket",
+        "WoonWijzerWinkel"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 3
     },
     {
       "gemeente": "Middelburg",
       "provincie": "Zeeland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767190",
-          "titel": "Bevoegdhedenbesluit Lokale Aanpak Isolatie gemeente Middelburg 2026",
-          "gewijzigd": "2026-10-02",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767190/1"
-        },
-        {
-          "cvdr_id": "CVDR767189",
-          "titel": "Subsidieregeling Lokale Aanpak Isolatie gemeente Middelburg 2026",
-          "gewijzigd": "2026-10-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767189/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.middelburg.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Midden-Delfland",
@@ -1557,16 +1581,14 @@
     {
       "gemeente": "Oude IJsselstreek",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767098",
-          "titel": "“BELEIDSREGEL Isolatie subsidie Laag Inkomen Achterhoek 2026-2027 - september 2026",
-          "gewijzigd": "2026-09-30",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767098/1"
-        }
-      ],
-      "internet_gezocht": null
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Ouder-Amstel",
@@ -1578,16 +1600,17 @@
     {
       "gemeente": "Oudewater",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767204",
-          "titel": "Subsidieregeling Oudewater isoleert koopwoningen 2026",
-          "gewijzigd": "2026-10-02",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767204/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.oudewater.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Overbetuwe",
@@ -1613,9 +1636,14 @@
     {
       "gemeente": "Pekela",
       "provincie": "Groningen",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Pijnacker-Nootdorp",
@@ -1690,9 +1718,18 @@
     {
       "gemeente": "Ridderkerk",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.ridderkerk.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket",
+        "WoonWijzerWinkel"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Rijssen-Holten",
@@ -1767,16 +1804,17 @@
     {
       "gemeente": "Schiedam",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767066",
-          "titel": "Subsidieregeling Doe-Het-Zelf Aanpak isolerende maatregelen Schiedam 2026",
-          "gewijzigd": "2026-10-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767066/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.schiedam.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket",
+        "WoonWijzerWinkel"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 2
     },
     {
       "gemeente": "Schiermonnikoog",
@@ -1823,9 +1861,14 @@
     {
       "gemeente": "Sluis",
       "provincie": "Zeeland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Smallingerland",
@@ -1949,9 +1992,17 @@
     {
       "gemeente": "Tiel",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": null
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.tiel.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Tilburg",
@@ -1970,9 +2021,17 @@
     {
       "gemeente": "Twenterand",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.twenterand.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Tynaarlo",
@@ -2012,16 +2071,17 @@
     {
       "gemeente": "Utrecht",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767167",
-          "titel": "Subsidiestaat 2026 gemeente Utrecht",
-          "gewijzigd": "2026-10-02",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767167/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.utrecht.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Utrechtse Heuvelrug",
@@ -2033,9 +2093,14 @@
     {
       "gemeente": "Vaals",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Valkenburg aan de Geul",
@@ -2068,36 +2133,28 @@
     {
       "gemeente": "Veere",
       "provincie": "Zeeland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767047",
-          "titel": "Subsidieregeling Lokale Aanpak Isolatie gemeente Veere 2026",
-          "gewijzigd": "2026-10-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767047/1"
-        },
-        {
-          "cvdr_id": "CVDR767049",
-          "titel": "Eerste wijziging Subsidieregeling Aanvullende Maatregel Lokale Aanpak Isolatie gemeente Veere",
-          "gewijzigd": "2026-10-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767049/1"
-        }
-      ],
-      "internet_gezocht": null
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Veldhoven",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR766601",
-          "titel": "Tijdelijke subsidieregeling glasisolatie gemeente Veldhoven",
-          "gewijzigd": "2026-10-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR766601/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.veldhoven.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 5
     },
     {
       "gemeente": "Velsen",
@@ -2221,7 +2278,7 @@
     {
       "gemeente": "Wassenaar",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [
         {
           "cvdr_id": "CVDR762816",
@@ -2230,7 +2287,12 @@
           "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR762816/1"
         }
       ],
-      "internet_gezocht": null
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Waterland",
@@ -2256,9 +2318,14 @@
     {
       "gemeente": "West Maas en Waal",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
-      "internet_gezocht": "2026-09-29"
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Westerkwartier",
@@ -2347,16 +2414,18 @@
     {
       "gemeente": "Woerden",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR767199",
-          "titel": "Subsidieregeling Woerden isoleert koopwoningen 2026",
-          "gewijzigd": "2026-10-02",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767199/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.woerden.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Wormerland",
@@ -2396,154 +2465,99 @@
     {
       "gemeente": "Zeewolde",
       "provincie": "Flevoland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR749311",
-          "titel": "Subsidieregeling lokale aanpak isolatie gemeente Zeewolde 2026",
-          "gewijzigd": "2025-12-12",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR749311/1"
-        }
-      ],
-      "internet_gezocht": null
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Zeist",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR759526",
-          "titel": "Subsidieregeling Lokale Aanpak Isolatie Zeist 2026",
-          "gewijzigd": "2026-03-28",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759526/1"
-        },
-        {
-          "cvdr_id": "CVDR759103",
-          "titel": "Subsidieregeling isolatie kleine Verenigingen van Eigenaren",
-          "gewijzigd": "2026-03-21",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759103/1"
-        },
-        {
-          "cvdr_id": "CVDR725641",
-          "titel": "Subsidieregeling Lokale Aanpak Isolatie Zeist",
-          "gewijzigd": "2024-10-18",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR725641/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zeist.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Zevenaar",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR757892",
-          "titel": "Subsidieregeling Lokale Isolatieaanpak gemeente Zevenaar 2026-2028",
-          "gewijzigd": "2026-03-04",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR757892/1"
-        },
-        {
-          "cvdr_id": "CVDR305401",
-          "titel": "Subsidieverordening Woningisolatie Zevenaar 2013",
-          "gewijzigd": "2017-03-21",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR305401/1"
-        },
-        {
-          "cvdr_id": "CVDR323454",
-          "titel": "Subsidieverordening woningisolatie Zevenaar 2013",
-          "gewijzigd": "2017-03-21",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR323454/1"
-        }
-      ],
-      "internet_gezocht": null
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": null,
+      "gemeentesite": null,
+      "gemeentesite_doorzocht": false,
+      "partners": [],
+      "ai_gezocht": null,
+      "paginas_gevonden": 0
     },
     {
       "gemeente": "Zoetermeer",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR764672",
-          "titel": "Subsidieregeling Isolatie Zoetermeer",
-          "gewijzigd": "2026-09-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR764672/1"
-        },
-        {
-          "cvdr_id": "CVDR759504",
-          "titel": "Subsidieregeling ‘Subsidie Isolatie voor VvE’s’",
-          "gewijzigd": "2026-03-27",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759504/1"
-        },
-        {
-          "cvdr_id": "CVDR735242",
-          "titel": "Gewijzigde Initiatievenregeling Energie Zoetermeer 2025-2026",
-          "gewijzigd": "2025-03-10",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR735242/1"
-        },
-        {
-          "cvdr_id": "CVDR738306",
-          "titel": "Subsidieregeling “VHF-regeling Verduurzamen VvE’s in de wijk Meerzicht 2025”",
-          "gewijzigd": "2025-04-18",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR738306/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zoetermeer.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Zoeterwoude",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR746366",
-          "titel": "Subsidieregeling Lokale Aanpak Isolatie Zoeterwoude 2024-2027",
-          "gewijzigd": "2025-11-11",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR746366/1"
-        },
-        {
-          "cvdr_id": "CVDR642203",
-          "titel": "Verordening van de gemeenteraad van de gemeente Zoeterwoude houdende regels omtrent de duurzaamheidsvoucher (Verordening Duurzaamheidsvoucher Zoeterwoude 2020)",
-          "gewijzigd": "2020-07-09",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR642203/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zoeterwoude.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 5
     },
     {
       "gemeente": "Zuidplas",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR760261",
-          "titel": "Nieuwe Beleidsregels Lokale Aanpak Isolatie Zuidplas 2025",
-          "gewijzigd": "2026-04-14",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760261/1"
-        },
-        {
-          "cvdr_id": "CVDR661507",
-          "titel": "Subsidieregeling Stimuleren van energiebesparende maatregelen Zuidplas",
-          "gewijzigd": "2021-09-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR661507/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zuidplas.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 4
     },
     {
       "gemeente": "Zundert",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR760954",
-          "titel": "Subsidieregeling lokale aanpak isolatie Zundert 2026",
-          "gewijzigd": "2026-04-23",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760954/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zundert.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 3
     },
     {
       "gemeente": "Zutphen",
@@ -2555,62 +2569,55 @@
     {
       "gemeente": "Zwartewaterland",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR760839",
-          "titel": "Subsidieregeling woningisolatie gemeente Zwartewaterland",
-          "gewijzigd": "2026-04-21",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760839/1"
-        },
-        {
-          "cvdr_id": "CVDR732371",
-          "titel": "Verordening leningen asbestsanering gemeente Zwartewaterland",
-          "gewijzigd": "2024-12-25",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR732371/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zwartewaterland.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Isolatieloket",
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     },
     {
       "gemeente": "Zwijndrecht",
       "provincie": "Zuid-Holland",
-      "cvdr_gecheckt": "2026-10-01",
-      "wacht_op_uitlezen": [
-        {
-          "cvdr_id": "CVDR759345",
-          "titel": "Subsidieregeling isolatie koopwoningen in de gemeente Zwijndrecht",
-          "gewijzigd": "2026-03-25",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759345/1"
-        },
-        {
-          "cvdr_id": "CVDR759399",
-          "titel": "Subsidieregeling ‘Bloemenbuurt isoleert VvE’s’",
-          "gewijzigd": "2026-03-26",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759399/1"
-        }
+      "cvdr_gecheckt": "2026-10-02",
+      "wacht_op_uitlezen": [],
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zwijndrecht.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Regionaal Energieloket"
       ],
-      "internet_gezocht": null
+      "ai_gezocht": null,
+      "paginas_gevonden": 2
     },
     {
       "gemeente": "Zwolle",
       "provincie": "Overijssel",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [
         {
-          "cvdr_id": "CVDR705000",
-          "titel": "Subsidieregeling woningisolatie Zwolle 2024",
-          "gewijzigd": "2026-04-16",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR705000/5"
-        },
-        {
-          "cvdr_id": "CVDR682993",
-          "titel": "Subsidieregeling Berkum Energieneutraal Zwolle 2022",
-          "gewijzigd": "2026-04-01",
-          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR682993/5"
+          "cvdr_id": "CVDR741119",
+          "titel": "Verordening verduurzaming eigen woning minima Zwolle 2025",
+          "gewijzigd": "2025-06-26",
+          "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR741119/1"
         }
       ],
-      "internet_gezocht": null
+      "internet_gezocht": "2026-10-02",
+      "gemeentesite": "https://www.zwolle.nl",
+      "gemeentesite_doorzocht": true,
+      "partners": [
+        "Duurzaam Bouwloket",
+        "Isolatieloket",
+        "Regionaal Energieloket"
+      ],
+      "ai_gezocht": null,
+      "paginas_gevonden": 6
     }
   ]
 }
