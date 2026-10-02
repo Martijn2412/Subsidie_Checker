@@ -14,7 +14,7 @@ on:
         type: boolean
         default: false
       aanbieder:
-        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: github, cerebras, mistral, groq, openrouter."
+        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: llm7, pollinations, ovh (zonder sleutel), cerebras, mistral, groq, openrouter."
         required: false
         default: "standaard"
       zonder_ai:
@@ -25,7 +25,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  models: read   # GitHub Models: gratis reserve-taalmodel, geen eigen sleutel nodig
 
 # Nooit twee runs tegelijk: de tweede wacht tot de eerste klaar is.
 concurrency:
@@ -93,7 +92,6 @@ jobs:
           ZONDER_AI: ${{ github.event.inputs.zonder_ai }}
           AANBIEDER: ${{ github.event.inputs.aanbieder }}
           # reserve-taalmodellen (zie reserve_aanbieders in scraper/config.json); ontbrekende worden overgeslagen
-          GITHUB_TOKEN: ${{ github.token }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}

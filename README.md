@@ -58,8 +58,8 @@ Het doel en de afspraken staan in `CLAUDE.md`.
 In de Excel (blad *Gemeenten*) zie je per gemeente waar is gezocht. "Nog niet volledig gezocht" betekent dat
 alleen het CVDR is bekeken; de rest volgt bij een volgende run.
 
-**Geen of te weinig AI-tegoed?** Is Gemini op, dan gaat de scraper vanzelf verder met GitHub Models
-(gratis, geen sleutel nodig) en met andere gratis aanbieders waarvan je een sleutel als secret zet:
+**Geen of te weinig AI-tegoed?** Is Gemini op, dan gaat de scraper vanzelf verder met gratis aanbieders
+zonder sleutel (LLM7.io, Pollinations, OVHcloud; lage limieten) en met andere gratis aanbieders waarvan je een sleutel als secret zet:
 `CEREBRAS_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` (aanmaken op hun site, zonder
 creditcard). Zie `reserve_aanbieders` in `scraper/config.json`.
 

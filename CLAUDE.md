@@ -27,8 +27,8 @@ Een gemeente zonder regeling moet aantoonbaar overal doorzocht zijn. "Niet gezoc
 
 ## De grootste rem: het AI-tegoed
 Met een gratis Gemini-sleutel is het tegoed na een paar dozijn aanroepen op (429). Dan schakelt `llm()` over
-naar de **reserve-aanbieders** (`reserve_aanbieders` in de config): eerst GitHub Models (gratis, geen eigen sleutel:
-de workflow heeft `permissions: models: read`), daarna Cerebras, Mistral, Groq en OpenRouter als hun gratis sleutel
+naar de **reserve-aanbieders** (`reserve_aanbieders` in de config): eerst gratis aanbieders zonder sleutel (LLM7.io, Pollinations,
+OVHcloud; GitHub Models is per 30-7-2026 gestopt), daarna Cerebras, Mistral, Groq en OpenRouter als hun gratis sleutel
 als secret is ingesteld. Te lange tekst voor een aanbieder → de volgende; zoeken met Google kan alleen Gemini.
 Is alles op, dan stopt de run en gaat hij de volgende dag verder (`data/voortgang.json`). Daarom: zoeken zonder AI waar het kan, AI alleen voor
 uitlezen, en nooit opnieuw uitlezen wat niet veranderd is. Een betaalde sleutel (enkele euro's per maand) maakt
@@ -49,5 +49,5 @@ een volle ronde in één à twee dagen mogelijk. Zie `_uitleg_limieten` in de co
   Internet en taalmodel worden in de tests nagebootst (`tests/test_webbronnen.py`, `tests/test_web_run.py`).
 - Echt testen: tabblad Actions → *Subsidies bijwerken* → Run workflow, met een paar gemeenten,
   **proef** aan (geen PR, uitkomst als download) en eventueel **zonder AI** (alleen zoeken, kost geen tegoed)
-  of **aanbieder** `github` (meteen GitHub Models, zonder Gemini).
+  of **aanbieder** `llm7` (meteen de gratis reserve zonder sleutel, zonder Gemini).
   Lokaal: `python scraper/run.py --zonder-ai --alleen Zeist`.

@@ -105,20 +105,40 @@
   },
   "reserve_aanbieders": [
     {
-      "naam": "github",
-      "basis_url": "https://models.github.ai/inference",
-      "sleutel_env": "GITHUB_TOKEN",
+      "naam": "llm7",
+      "basis_url": "https://api.llm7.io/v1",
+      "sleutel_env": "",
       "modellen": {
-        "filter": "openai/gpt-4o-mini",
-        "extractie": "openai/gpt-4o-mini"
+        "filter": "DeepSeek-V4-Flash-0731",
+        "extractie": "DeepSeek-V4-Flash-0731"
       },
-      "max_invoer_tekens": 24000,
-      "max_uitvoer_tokens": 4000,
-      "pauze_sec": 5,
-      "koppen": {
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28"
-      }
+      "max_invoer_tekens": 150000,
+      "max_uitvoer_tokens": 16000,
+      "pauze_sec": 4
+    },
+    {
+      "naam": "pollinations",
+      "basis_url": "https://text.pollinations.ai/openai",
+      "sleutel_env": "",
+      "modellen": {
+        "filter": "openai-fast",
+        "extractie": "openai-fast"
+      },
+      "max_invoer_tekens": 60000,
+      "max_uitvoer_tokens": 8000,
+      "pauze_sec": 16
+    },
+    {
+      "naam": "ovh",
+      "basis_url": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+      "sleutel_env": "",
+      "modellen": {
+        "filter": "Mistral-Small-3.2-24B-Instruct-2506",
+        "extractie": "Meta-Llama-3_3-70B-Instruct"
+      },
+      "max_invoer_tekens": 80000,
+      "max_uitvoer_tokens": 8000,
+      "pauze_sec": 31
     },
     {
       "naam": "cerebras",
@@ -170,7 +190,7 @@
       "json": false
     }
   ],
-  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. Een aanbieder zonder sleutel wordt overgeslagen. 'github' = GitHub Models: gratis en zonder eigen sleutel (de workflow geeft zijn token mee), maar max. ~150 aanvragen per dag en korte teksten (max_invoer_tekens). De andere hebben een gratis sleutel zonder creditcard: maak die aan op de site van de aanbieder en zet hem als repository secret (CEREBRAS_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). Zoeken op internet met Google kan alleen Gemini. Gratis limieten veranderen vaak: controleer ze bij de aanbieder.",
+  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. llm7, pollinations en ovh werken ZONDER sleutel (anoniem, met lage limieten: llm7 ~60 per uur, ovh 2 per minuut). De andere hebben een gratis sleutel zonder creditcard: maak die aan op de site van de aanbieder en zet hem als repository secret (CEREBRAS_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). Een aanbieder zonder sleutel-secret wordt overgeslagen. Modelnamen en gratis limieten veranderen vaak; werkt een aanbieder niet meer, pas dan de modelnaam aan of zet hem lager. (GitHub Models is per 30 juli 2026 gestopt.) Zoeken op internet met Google kan alleen Gemini.",
   "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
   "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400."
