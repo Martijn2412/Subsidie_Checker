@@ -43,6 +43,9 @@ en, als daar niets staat, met AI zoekt op internet.
 3. **Niets relevants in het CVDR?** Dan zoekt het taalmodel op internet (vooral de
    gemeentesite). Per gemeente hooguit eens per 30 dagen.
    Zulke regelingen hebben `"bron": "web"` en betrouwbaarheid "laag": altijd controleren.
+4. **Gevonden op internet maar zonder voorwaarden?** Dan leest de scraper de pagina opnieuw, klikt door
+   naar "voorwaarden", de regeling of een PDF, en laat anders het taalmodel de voorwaarden opzoeken.
+   Hooguit 20 per run en per regeling eens per 7 dagen (`scraper/config.json`).
 
 De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
 (alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.

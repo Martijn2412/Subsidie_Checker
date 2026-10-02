@@ -41,7 +41,7 @@ jobs:
           python-version: "3.12"
 
       - name: Pakketten installeren
-        run: pip install requests google-genai anthropic openpyxl
+        run: pip install requests google-genai anthropic openpyxl pypdf
 
       - name: Regelingen ophalen en voorwaarden uitlezen
         timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem
