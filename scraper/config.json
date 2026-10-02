@@ -132,9 +132,9 @@
       "sleutel_env": "MISTRAL_API_KEY",
       "modellen": {
         "filter": "mistral-small-latest",
-        "extractie": "mistral-large-latest"
+        "extractie": "mistral-small-latest"
       },
-      "max_invoer_tekens": 200000,
+      "max_invoer_tekens": 150000,
       "max_uitvoer_tokens": 16000,
       "pauze_sec": 1.5
     },
@@ -216,7 +216,7 @@
       "json": false
     }
   ],
-  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. Een aanbieder waarvan de sleutel-secret ontbreekt wordt overgeslagen. AANRADER: mistral (gratis 'Experiment'-sleutel, ~1 miljard tokens per maand, alleen sms-verificatie): maak een sleutel op console.mistral.ai en zet hem als repository secret MISTRAL_API_KEY. cerebras/groq/openrouter: ook gratis sleutels (CEREBRAS_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). llm7, pollinations en ovh werken zonder sleutel maar met zeer lage limieten. ollama = eigen open model (zie _uitleg_ollama). Modelnamen en gratis limieten veranderen; werkt er een niet meer, pas de modelnaam aan. (GitHub Models is per 30 juli 2026 gestopt.) Zoeken op internet met Google kan alleen Gemini.",
+  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. Een aanbieder waarvan de sleutel-secret ontbreekt wordt overgeslagen. AANRADER: mistral (gratis 'Experiment'-plan, alleen sms-verificatie; Mistral Large zit NIET in het gratis plan, daarom mistral-small-latest): maak een sleutel op console.mistral.ai en zet hem als repository secret MISTRAL_API_KEY. cerebras/groq/openrouter: ook gratis sleutels (CEREBRAS_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). llm7, pollinations en ovh werken zonder sleutel maar met zeer lage limieten. ollama = eigen open model (zie _uitleg_ollama). Modelnamen en gratis limieten veranderen; werkt er een niet meer, pas de modelnaam aan. (GitHub Models is per 30 juli 2026 gestopt.) Zoeken op internet met Google kan alleen Gemini.",
   "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
   "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400.",
