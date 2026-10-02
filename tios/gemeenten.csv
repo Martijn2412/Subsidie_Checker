@@ -71,7 +71,7 @@ Deurne;Noord-Brabant;geen_regeling;0;0
 Deventer;Overijssel;regeling;2;0
 Diemen;Noord-Holland;regeling;1;0
 Dijk en Waard;Noord-Holland;regeling;3;0
-Dinkelland;Overijssel;regeling;3;0
+Dinkelland;Overijssel;regeling;2;0
 Doesburg;Gelderland;regeling;5;0
 Doetinchem;Gelderland;regeling;4;0
 Dongen;Noord-Brabant;regeling;1;0
@@ -82,7 +82,7 @@ Dronten;Flevoland;regeling;2;0
 Druten;Gelderland;regeling;2;0
 Duiven;Gelderland;regeling;1;0
 Echt-Susteren;Limburg;regeling;1;0
-Edam-Volendam;Noord-Holland;regeling;1;0
+Edam-Volendam;Noord-Holland;alleen_gesloten;0;0
 Ede;Gelderland;regeling;2;0
 Eemnes;Utrecht;regeling;2;0
 Eemsdelta;Groningen;regeling;2;0
@@ -171,7 +171,7 @@ Lisse;Zuid-Holland;regeling;2;0
 Lochem;Gelderland;regeling;2;0
 Loon op Zand;Noord-Brabant;regeling;1;0
 Lopik;Utrecht;geen_regeling;0;0
-Losser;Overijssel;regeling;2;0
+Losser;Overijssel;regeling;1;0
 Maasdriel;Gelderland;alleen_gesloten;0;0
 Maasgouw;Limburg;regeling;1;0
 Maashorst;Noord-Brabant;regeling;1;0
@@ -181,7 +181,7 @@ Medemblik;Noord-Holland;regeling;1;0
 Meerssen;Limburg;geen_regeling;0;0
 Meierijstad;Noord-Brabant;geen_regeling;0;0
 Meppel;Drenthe;regeling;2;0
-Middelburg;Zeeland;regeling;1;2
+Middelburg;Zeeland;wacht_op_uitlezen;0;2
 Midden-Delfland;Zuid-Holland;regeling;1;0
 Midden-Drenthe;Drenthe;regeling;1;0
 Midden-Groningen;Groningen;regeling;1;0
@@ -209,7 +209,7 @@ Oirschot;Noord-Brabant;regeling;1;0
 Oisterwijk;Noord-Brabant;regeling;1;0
 Oldambt;Groningen;regeling;1;0
 Oldebroek;Gelderland;regeling;2;0
-Oldenzaal;Overijssel;regeling;3;0
+Oldenzaal;Overijssel;regeling;2;0
 Olst-Wijhe;Overijssel;regeling;1;0
 Ommen;Overijssel;regeling;1;0
 Oost Gelre;Gelderland;regeling;2;0
@@ -274,7 +274,7 @@ Teylingen;Zuid-Holland;regeling;1;0
 Tholen;Zeeland;regeling;2;0
 Tiel;Gelderland;regeling;2;0
 Tilburg;Noord-Brabant;regeling;1;0
-Tubbergen;Overijssel;regeling;2;0
+Tubbergen;Overijssel;regeling;1;0
 Twenterand;Overijssel;regeling;2;0
 Tynaarlo;Drenthe;geen_regeling;0;0
 Tytsjerksteradiel;Fryslân;regeling;1;0

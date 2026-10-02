@@ -10067,7 +10067,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR743563/1",
     "datum_regelingstekst": "2025-09-01",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -10130,7 +10130,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR757582/1",
     "datum_regelingstekst": "2026-03-01",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -10205,7 +10205,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR723930/2",
     "datum_regelingstekst": "2025-04-30",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -10289,7 +10289,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR749101/1",
     "datum_regelingstekst": "2025-12-10",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },

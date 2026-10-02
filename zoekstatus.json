@@ -1,5 +1,5 @@
 {
-  "peildatum": "2026-10-01",
+  "peildatum": "2026-10-02",
   "gemeenten": [
     {
       "gemeente": "'s-Gravenhage",
@@ -18,7 +18,7 @@
     {
       "gemeente": "Aa en Hunze",
       "provincie": "Drenthe",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -235,7 +235,7 @@
     {
       "gemeente": "Bergen op Zoom",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -256,7 +256,7 @@
     {
       "gemeente": "Best",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -480,7 +480,7 @@
     {
       "gemeente": "Deurne",
       "provincie": "Noord-Brabant",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -515,7 +515,7 @@
     {
       "gemeente": "Doesburg",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": null
     },
@@ -620,7 +620,7 @@
     {
       "gemeente": "Eijsden-Margraten",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -634,7 +634,7 @@
     {
       "gemeente": "Elburg",
       "provincie": "Gelderland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -760,7 +760,7 @@
     {
       "gemeente": "Groningen",
       "provincie": "Groningen",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-28"
     },
@@ -984,7 +984,7 @@
     {
       "gemeente": "Hoorn",
       "provincie": "Noord-Holland",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1201,7 +1201,7 @@
     {
       "gemeente": "Lopik",
       "provincie": "Utrecht",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
@@ -1257,7 +1257,7 @@
     {
       "gemeente": "Meerssen",
       "provincie": "Limburg",
-      "cvdr_gecheckt": "2026-10-01",
+      "cvdr_gecheckt": "2026-10-02",
       "wacht_op_uitlezen": [],
       "internet_gezocht": "2026-09-29"
     },
