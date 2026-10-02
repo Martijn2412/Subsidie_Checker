@@ -30,6 +30,8 @@ class TestAanbieders(unittest.TestCase):
         run.time.sleep = lambda s: None
         run.UITGEPUT.clear()
         run.HOOFD_OP.clear()
+        self.oud_taalmodel = run.CFG.pop("taalmodel", None)
+        self.oud_alleen_zoeken = run.CFG.pop("gemini_alleen_voor_zoeken", None)
         run.CFG["reserve_aanbieders"] = [
             {"naam": "github", "basis_url": "https://gh.test", "sleutel_env": "TEST_GH",
              "modellen": {"filter": "mini", "extractie": "mini"}, "max_invoer_tekens": 100},
@@ -44,6 +46,10 @@ class TestAanbieders(unittest.TestCase):
         for k, v in self.oud.items():
             setattr(run, k, v)
         run.CFG["reserve_aanbieders"] = self.oud_cfg
+        if self.oud_taalmodel is not None:
+            run.CFG["taalmodel"] = self.oud_taalmodel
+        if self.oud_alleen_zoeken is not None:
+            run.CFG["gemini_alleen_voor_zoeken"] = self.oud_alleen_zoeken
         run.requests.post, run.time.sleep = self.oud_post, self.oud_sleep
         run.UITGEPUT.clear()
         del os.environ["TEST_GH"], os.environ["TEST_GROOT"]
@@ -116,6 +122,48 @@ class TestAanbieders(unittest.TestCase):
         finally:
             run.llm_hoofd, run.client = oud_hoofd, None
             run.HOOFD_OP.clear()
+
+    def test_gemini_alleen_voor_zoeken(self):
+        """Standaard: filter en uitlezen via het taalmodel (Pollinations), Gemini alleen voor zoeken met Google."""
+        pogingen = []
+
+        def hoofd(taak, *a, **kw):
+            pogingen.append(taak)
+            return ("gezocht", []) if kw.get("met_bronnen") or (len(a) > 2 and a[2]) else "gezocht"
+        oud_hoofd, run.llm_hoofd, run.client = run.llm_hoofd, hoofd, object()
+        run.CFG["gemini_alleen_voor_zoeken"] = True
+        run.CFG["taalmodel"] = {"naam": "pol", "basis_url": "https://pol.test", "sleutel_env": "",
+                                "sleutel_env_optioneel": "TEST_POL", "modellen": {"filter": "f"}}
+        os.environ["TEST_POL"] = "geheim"
+        koppen = []
+        try:
+            def post(url, headers=None, json=None, timeout=None, **kw):
+                koppen.append(headers)
+                return ok("JA")
+            run.requests.post = post
+            self.assertEqual(run.llm("filter", "kort"), "JA")          # niet via Gemini
+            self.assertEqual(pogingen, [])
+            self.assertEqual(koppen[0]["Authorization"], "Bearer geheim")   # optionele sleutel meegestuurd
+            run.llm("zoeken", "zoek", zoeken=True, met_bronnen=True)       # zoeken wel via Gemini
+            self.assertEqual(pogingen, ["zoeken"])
+        finally:
+            run.llm_hoofd, run.client = oud_hoofd, None
+            del os.environ["TEST_POL"]
+            run.CFG.pop("taalmodel"); run.CFG.pop("gemini_alleen_voor_zoeken")
+
+    def test_zoeken_via_reserve_alleen_met_sleutel(self):
+        run.CFG["taalmodel"] = {"naam": "pol", "basis_url": "https://pol.test", "sleutel_env": "",
+                                "sleutel_env_optioneel": "TEST_POL", "zoeken_alleen_met_sleutel": True,
+                                "modellen": {"zoeken": "zoekmodel"}}
+        try:
+            self.assertIsNone(run.ai_zoekfunctie("zoek"))       # geen sleutel: geen AI-zoekactie
+            os.environ["TEST_POL"] = "geheim"
+            self.nep({"https://pol.test/chat/completions": [ok('{"regelingen": []} Bron: https://www.gemeente.nl/isolatie.')]})
+            tekst, bronnen = run.ai_zoekfunctie("zoek")
+            self.assertEqual(bronnen, ["https://www.gemeente.nl/isolatie."[:-1]])
+        finally:
+            os.environ.pop("TEST_POL", None)
+            run.CFG.pop("taalmodel")
 
     def test_beginnen_bij_gekozen_aanbieder(self):
         run.START_AANBIEDER = "groot"

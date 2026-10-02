@@ -30,10 +30,8 @@ Het doel en de afspraken staan in `CLAUDE.md`.
    naam `GEMINI_API_KEY`, waarde je sleutel van aistudio.google.com (gratis).
    Liever Claude? Zet `"provider": "claude"` in `scraper/config.json` en maak het
    secret `ANTHROPIC_API_KEY` aan.
-   **Aanrader, gratis:** maak ook een Mistral-sleutel als reserve (Gemini gratis is snel op).
-   Ga naar console.mistral.ai, maak een account (alleen sms-verificatie, geen creditcard), kies het gratis plan
-   "Experiment", maak onder *API keys* een sleutel en zet die als secret `MISTRAL_API_KEY`.
-   Is Gemini op, dan gaat de scraper vanzelf verder met Mistral (ongeveer 1 miljard tokens per maand gratis).
+   **Optioneel, gratis:** maak een account op auth.pollinations.ai en zet de sleutel als secret
+   `POLLINATIONS_API_KEY`. Zonder sleutel werkt het ook (anoniem), maar trager en met af en toe een fout.
 3. Settings → Actions → General → Workflow permissions: kies "Read and write" en
    vink "Allow GitHub Actions to create and approve pull requests" aan.
 4. Settings → Pages → Deploy from a branch → `main`, map `/ (root)`.
@@ -62,13 +60,9 @@ Het doel en de afspraken staan in `CLAUDE.md`.
 In de Excel (blad *Gemeenten*) zie je per gemeente waar is gezocht. "Nog niet volledig gezocht" betekent dat
 alleen het CVDR is bekeken; de rest volgt bij een volgende run.
 
-**Geen of te weinig AI-tegoed?** Is Gemini op, dan gaat de scraper vanzelf verder met gratis aanbieders
-zonder sleutel (LLM7.io, Pollinations, OVHcloud; lage limieten) en met andere gratis aanbieders waarvan je een sleutel als secret zet:
-`CEREBRAS_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` (aanmaken op hun site, zonder
-creditcard). Zie `reserve_aanbieders` in `scraper/config.json`.
-Helemaal zonder aanbieder: vink bij Run workflow **lokaal_model** aan (of zet de repository-variabele
-`LOKAAL_MODEL` op `true`). Dan draait een open model (Ollama, Qwen 2.5 7B) op de runner zelf: gratis en
-zonder limiet, maar traag.
+**Welk taalmodel?** Filter en uitlezen gaan via **Pollinations** (gratis, ook zonder sleutel). Gemini wordt alleen
+gebruikt voor de AI-zoekactie met Google; is dat tegoed op, dan gaat de rest gewoon door. Zie `taalmodel` in
+`scraper/config.json`.
 
 De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
 (alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.

@@ -188,8 +188,9 @@ def bronnen_claude(r):
 
 
 def reserve_aanbieders():
-    """Reserve-aanbieders uit config.json: zonder sleutel nodig ("sleutel_env" leeg), of met een sleutel die er is."""
-    lijst = [a for a in CFG.get("reserve_aanbieders", [])
+    """De taalmodellen voor filter en uitlezen: "taalmodel" uit config.json (Pollinations), plus eventuele
+    "reserve_aanbieders". Zonder sleutel nodig ("sleutel_env" leeg), of met een sleutel die er is."""
+    lijst = [a for a in ([CFG["taalmodel"]] if CFG.get("taalmodel") else []) + (CFG.get("reserve_aanbieders") or [])
              if (not a.get("sleutel_env") or os.environ.get(a["sleutel_env"]))
              and (not a.get("adres_env") or os.environ.get(a["adres_env"]))]   # bijv. eigen Ollama: alleen als hij draait
     if START_AANBIEDER:
@@ -206,7 +207,7 @@ class TeLang(Exception):
 
 
 def llm_openai(a, taak, tekst, json_uit):
-    """Eén aanroep bij een OpenAI-compatibele aanbieder (GitHub Models, Cerebras, Groq, Mistral, OpenRouter).
+    """Eén aanroep bij een OpenAI-compatibele aanbieder (zoals Pollinations).
     Geeft de tekst, of None als de aanbieder op is of weigert (dan de volgende proberen)."""
     model = (a.get("modellen") or {}).get(taak)
     if not model or a["naam"] in UITGEPUT:
@@ -219,9 +220,11 @@ def llm_openai(a, taak, tekst, json_uit):
     if json_uit and a.get("json", True):
         body["response_format"] = {"type": "json_object"}
     kop = {"Content-Type": "application/json", **(a.get("koppen") or {})}
-    if a.get("sleutel_env"):
-        kop["Authorization"] = f"Bearer {os.environ[a['sleutel_env']]}"
-    for poging in range(3):
+    sleutel = os.environ.get(a.get("sleutel_env") or a.get("sleutel_env_optioneel") or "")
+    if sleutel:
+        kop["Authorization"] = f"Bearer {sleutel}"
+    pogingen = a.get("pogingen", 3)
+    for poging in range(pogingen):
         time.sleep(a.get("pauze_sec", 2))
         if poging and a.get("seed"):
             body["seed"] = poging   # andere seed: geen opgeslagen (leeg) antwoord terugkrijgen
@@ -230,7 +233,7 @@ def llm_openai(a, taak, tekst, json_uit):
                               timeout=a.get("timeout_sec", 180),
                               allow_redirects=False)   # een doorverwijzing maakt van POST een GET
         except requests.RequestException as e:
-            print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/3")
+            print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/{pogingen}")
             time.sleep(10)
             continue
         if r.status_code == 200:
@@ -244,7 +247,7 @@ def llm_openai(a, taak, tekst, json_uit):
             if antw.strip():
                 print(f"  (antwoord van {a['naam']}, {model})")
                 return antw
-            print(f"  {a['naam']}: leeg antwoord ({r.headers.get('content-type')}: {r.text[:200]!r}), poging {poging + 1}/3")
+            print(f"  {a['naam']}: leeg antwoord ({r.headers.get('content-type')}: {r.text[:200]!r}), poging {poging + 1}/{pogingen}")
             continue
         fout = r.text[:200].replace("\n", " ")
         if 300 <= r.status_code < 400:
@@ -253,7 +256,7 @@ def llm_openai(a, taak, tekst, json_uit):
             return None
         if r.status_code == 429:
             wacht = int(re.sub(r"\D", "", r.headers.get("retry-after", "")) or 0)
-            if 0 < wacht <= 65 and poging < 2:
+            if 0 < wacht <= 65 and poging < pogingen - 1:
                 time.sleep(wacht)
                 continue
             if not wacht and poging == 0 and not re.search(r"day|daily|dag|month|quota|86400", fout, re.I):
@@ -272,7 +275,7 @@ def llm_openai(a, taak, tekst, json_uit):
         if r.status_code == 400 and "response_format" in body:
             body.pop("response_format")   # niet elke aanbieder kent de JSON-modus
             continue
-        print(f"  {a['naam']}: fout {r.status_code} ({fout[:100]}), poging {poging + 1}/3")
+        print(f"  {a['naam']}: fout {r.status_code} ({fout[:100]}), poging {poging + 1}/{pogingen}")
         time.sleep(10 * (poging + 1))
     return None
 
@@ -287,7 +290,7 @@ def llm(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
     if time.monotonic() - START > MAX_AI_SEC:
         raise LimietOp("tijdslimiet van deze run bereikt")
     fout = None
-    if client is not None and not HOOFD_OP:
+    if client is not None and not HOOFD_OP and (zoeken or not CFG.get("gemini_alleen_voor_zoeken")):
         try:
             return llm_hoofd(taak, tekst, json_uit, zoeken, met_bronnen)
         except LimietOp as e:
@@ -297,7 +300,21 @@ def llm(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
                 HOOFD_OP.append(str(e))
                 print(f"  {PROVIDER} is op ({str(e)[:80]}); deze run verder met de reserve-aanbieders")
     if zoeken:
-        raise LimietOp(f"zoeken op internet kan alleen met {PROVIDER}" + (f" ({fout})" if fout else ""))
+        # zoeken met een zoekmodel van een reserve-aanbieder (bijv. Pollinations met sleutel); de links in het
+        # antwoord worden daarna door webbronnen zelf opgehaald en gecontroleerd
+        for a in reserve_aanbieders():
+            if not (a.get("modellen") or {}).get("zoeken"):
+                continue
+            if a.get("zoeken_alleen_met_sleutel") and not os.environ.get(a.get("sleutel_env_optioneel") or ""):
+                continue
+            try:
+                antw = llm_openai(a, "zoeken", tekst, json_uit)
+            except TeLang:
+                continue
+            if antw is not None:
+                bronnen = list(dict.fromkeys(u.rstrip(".,;:") for u in re.findall(r"https?://[^\s\"'<>)\]]+", antw)))
+                return (antw, bronnen) if met_bronnen else antw
+        raise LimietOp("geen taalmodel beschikbaar om op internet te zoeken" + (f" ({fout})" if fout else ""))
     te_lang = []
     for a in reserve_aanbieders():
         try:
@@ -485,7 +502,7 @@ def haal_webpagina(url):
 
 def max_webtekst():
     """Hoeveel webtekst per gemeente naar het taalmodel kan: minder als alleen een klein model beschikbaar is."""
-    if client is not None and not HOOFD_OP:
+    if client is not None and not HOOFD_OP and not CFG.get("gemini_alleen_voor_zoeken"):
         return webbronnen.MAX_TEKST_GEMEENTE
     reserves = [a for a in reserve_aanbieders() if a["naam"] not in UITGEPUT]
     if not reserves:
@@ -509,7 +526,11 @@ ZOEKEN_OP = []   # gevuld zodra zoeken met Google deze run niet meer kan
 def ai_zoekfunctie(prompt):
     """AI-zoekactie met Google. Kan dat niet meer (Gemini op) maar werken de reserve-aanbieders nog,
     dan None: de run gaat door zonder AI-zoekacties."""
-    if ZOEKEN_OP or HOOFD_OP or client is None:
+    kan_zoeken = (client is not None and not HOOFD_OP) or any(
+        (a.get("modellen") or {}).get("zoeken") and (not a.get("zoeken_alleen_met_sleutel")
+                                                    or os.environ.get(a.get("sleutel_env_optioneel") or ""))
+        for a in reserve_aanbieders())
+    if ZOEKEN_OP or not kan_zoeken:
         return None
     try:
         return llm("zoeken", prompt, zoeken=True, met_bronnen=True)

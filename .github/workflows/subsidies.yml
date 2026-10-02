@@ -11,14 +11,6 @@ on:
         description: "Proefrun: geen pull request, de uitkomst (Excel, regelingen.json, log) komt als download bij de run."
         type: boolean
         default: false
-      aanbieder:
-        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: ollama (vinkje lokaal_model), llm7, pollinations, ovh (zonder sleutel), cerebras, mistral, groq, openrouter."
-        required: false
-        default: "standaard"
-      lokaal_model:
-        description: "Open taalmodel (Ollama, Qwen) op de runner zelf draaien: geen sleutel en geen limiet, wel traag. Altijd aan: zet repository-variabele LOKAAL_MODEL op true."
-        type: boolean
-        default: false
       zonder_ai:
         description: "Alleen zoeken (CVDR, gemeentesite, partners), niets naar het taalmodel. Om het zoeken te testen zonder tegoed."
         type: boolean
@@ -57,69 +49,11 @@ jobs:
       - name: Pakketten installeren
         run: pip install requests google-genai anthropic openpyxl pypdf
 
-      # Alleen bij een proef met aanbieder 'mistral-test': één mini-vraag aan Mistral, met de limieten die Mistral teruggeeft
-      - name: Mistral controleren
-        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder == 'mistral-test'
-        continue-on-error: true
-        env:
-          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        run: |
-          echo "sleutel aanwezig: $([ -n "$MISTRAL_API_KEY" ] && echo ja || echo nee), lengte ${#MISTRAL_API_KEY}"
-          for model in mistral-small-latest mistral-large-latest; do
-            echo "== $model"
-            curl -sS --max-time 60 -i https://api.mistral.ai/v1/chat/completions \
-              -H "Authorization: Bearer $MISTRAL_API_KEY" -H "Content-Type: application/json" \
-              -d "{\"model\":\"$model\",\"messages\":[{\"role\":\"user\",\"content\":\"Antwoord alleen: hallo\"}],\"max_tokens\":5}" \
-              | grep -iE "^HTTP|ratelimit|retry|^\{" | head -c 1500; echo
-            sleep 3
-          done
-
-      # Alleen bij een proef met aanbieder 'test': laat zien of de gratis taalmodellen zonder sleutel antwoorden
-      - name: Gratis taalmodellen controleren
-        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder == 'test'
-        continue-on-error: true
-        run: |
-          for basis in https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 https://api.llm7.io/v1 https://text.pollinations.ai/openai; do
-            echo "== $basis/models"
-            curl -sS --max-time 30 "$basis/models" | head -c 2500; echo
-          done
-          vraag='{"messages":[{"role":"user","content":"Antwoord alleen met het woord: hallo"}],"max_tokens":10,"model":"MODEL"}'
-          for paar in "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 Mistral-Small-3.2-24B-Instruct-2506" \
-                      "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 Meta-Llama-3_3-70B-Instruct" \
-                      "https://api.llm7.io/v1 gpt-4o-mini" "https://text.pollinations.ai/openai openai"; do
-            set -- $paar
-            echo "== $1 model $2"
-            curl -sS --max-time 60 -i -X POST "$1/chat/completions" -H "Content-Type: application/json" \
-              -d "${vraag/MODEL/$2}" | head -c 1200; echo
-          done
-
-      # Open taalmodel op de runner (zie "ollama" in scraper/config.json). Het model wordt bewaard in de cache.
-      - name: Open taalmodel ophalen uit de cache
-        if: github.event.inputs.lokaal_model == 'true' || vars.LOKAAL_MODEL == 'true'
-        uses: actions/cache@v4
-        with:
-          path: ~/.ollama/models
-          key: ollama-${{ hashFiles('scraper/config.json') }}
-          restore-keys: ollama-
-
-      - name: Open taalmodel starten (Ollama)
-        if: github.event.inputs.lokaal_model == 'true' || vars.LOKAAL_MODEL == 'true'
-        run: |
-          curl -fsSL https://ollama.com/install.sh | sh
-          sudo systemctl stop ollama 2>/dev/null || true
-          OLLAMA_CONTEXT_LENGTH=16384 OLLAMA_MODELS=$HOME/.ollama/models nohup ollama serve > ollama.log 2>&1 &
-          for i in $(seq 1 30); do curl -s localhost:11434 >/dev/null && break; sleep 2; done
-          MODELLEN=$(python -c "import json;c=json.load(open('scraper/config.json'));print(' '.join(sorted({m for a in c['reserve_aanbieders'] if a['naam']=='ollama' for m in a['modellen'].values()})))")
-          for m in $MODELLEN; do OLLAMA_MODELS=$HOME/.ollama/models ollama pull $m; done
-          echo "OLLAMA_URL=http://localhost:11434/v1" >> "$GITHUB_ENV"
-          nproc; free -g
-
       - name: Regelingen ophalen en voorwaarden uitlezen
         timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem
         run: |
           EXTRA=""
           if [ "$ZONDER_AI" = "true" ]; then EXTRA="--zonder-ai"; fi
-          if [ -n "$AANBIEDER" ] && [ "$AANBIEDER" != "standaard" ]; then EXTRA="$EXTRA --aanbieder $AANBIEDER"; fi
           if [ -n "$ALLEEN" ]; then
             python -u scraper/run.py --alleen "$ALLEEN" $EXTRA
           else
@@ -130,12 +64,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ALLEEN: ${{ github.event.inputs.gemeenten }}
           ZONDER_AI: ${{ github.event.inputs.zonder_ai }}
-          AANBIEDER: ${{ github.event.inputs.aanbieder }}
-          # reserve-taalmodellen (zie reserve_aanbieders in scraper/config.json); ontbrekende worden overgeslagen
-          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
-          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}   # optioneel: gratis sleutel van auth.pollinations.ai
 
       # Is de run hard gestopt (noodrem, runner weg)? Dan staat er wel een tussentijdse stand,
       # maar zijn het overzicht en de TIOS-export misschien niet bijgewerkt. Dat gebeurt hier.

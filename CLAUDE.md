@@ -39,7 +39,7 @@ Een gemeente zonder regeling moet aantoonbaar overal doorzocht zijn. "Niet gezoc
 
 ## Hoe het werkt (per gemeente, `scraper/run.py`)
 1. **CVDR** (`zoek_cvdr`): zoekwoorden uit `scraper/config.json` → trechter: titel → vervallen → tekst →
-   AI-filter (Flash-Lite) → AI-extractie (`scraper/prompt_extractie.md`).
+   AI-filter → AI-extractie (`scraper/prompt_extractie.md`), via Pollinations.
 2. **Internet** (`scraper/webbronnen.py`, eens per `web_zoeken_elke_dagen`):
    gemeentesite (adres uit het Register van Overheidsorganisaties, sitemap of rondgang) + partners
    (`partners` in config: lijstpagina's en URL-sjablonen) → gratis tekstfilter → links naar voorwaarden en pdf's volgen.
@@ -99,24 +99,22 @@ Een gemeente zonder regeling moet aantoonbaar overal doorzocht zijn. "Niet gezoc
   "nog checken" noemen; de checkservice en de checkpagina gaan standaard uit van "ja".
 
 ## Runs en AI-budget
-- Er is geen vast schema: de run start alleen als Martijn op Run workflow drukt. Het gratis Gemini-tegoed
-  wordt om 09:00 Nederlandse tijd opnieuw gevuld. Is het tegoed op, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
+- Er is geen vast schema: de run start alleen als Martijn op Run workflow drukt. Het gratis Gemini-tegoed (alleen
+  voor zoeken) wordt om 09:00 Nederlandse tijd opnieuw gevuld. Lukt het uitlezen niet meer, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
 - Per gemeente staat het resultaat in de log van de stap "Regelingen ophalen en voorwaarden uitlezen":
   ✅ ⚠️ ➖ ❌ 🛑. Op de Summary-pagina van de run staat een tabel.
 
-## Taalmodellen en AI-tegoed
-Met een gratis Gemini-sleutel is het tegoed na een paar dozijn aanroepen op (429). Dan schakelt `llm()` over
-naar de **reserve-aanbieders** (`reserve_aanbieders` in de config), op volgorde: eigen Ollama (als die draait),
-**Mistral** (aanrader: gratis sleutel `MISTRAL_API_KEY`, ~1 miljard tokens per maand), Cerebras, dan aanbieders zonder
-sleutel met zeer lage limieten (LLM7.io, Pollinations, OVHcloud), dan Groq en OpenRouter. Zonder secret wordt een
-aanbieder overgeslagen. Is de hoofdaanbieder op, dan wordt hij de rest van de run niet meer geprobeerd (`HOOFD_OP`).
-GitHub Models is per 30-7-2026 gestopt. Te lange tekst voor een aanbieder → de volgende; zoeken met Google kan alleen Gemini.
-Een **open model** (Ollama, standaard Qwen 2.5 7B) kan op de runner zelf draaien: vinkje *lokaal_model* of
-repository-variabele `LOKAAL_MODEL=true`. Geen sleutel en geen limiet, wel traag (geen grafische kaart).
-Ollama op een eigen server met grafische kaart: zet `OLLAMA_URL`.
-Is alles op, dan stopt de run en gaat hij de volgende dag verder (`data/voortgang.json`). Daarom: zoeken zonder AI waar het kan, AI alleen voor
-uitlezen, en nooit opnieuw uitlezen wat niet veranderd is. Een betaalde sleutel (enkele euro's per maand) maakt
-een volle ronde in één à twee dagen mogelijk. Zie `_uitleg_limieten` in de config.
+## Taalmodellen
+- **Filter en uitlezen: Pollinations** (`taalmodel` in `scraper/config.json`, OpenAI-compatibel). Zonder sleutel
+  werkt het anoniem (model `openai-fast`, ongeveer 1 aanvraag per 15 seconden, soms een tijdelijke 402: daarom
+  meerdere pogingen). Met een gratis sleutel (secret `POLLINATIONS_API_KEY`, account op auth.pollinations.ai)
+  is het betrouwbaarder en kan Pollinations ook op internet zoeken (`modellen.zoeken`).
+- **Gemini** wordt alleen nog gebruikt voor de AI-zoekactie met Google (`gemini_alleen_voor_zoeken`). Is Gemini op,
+  dan wordt alleen dat zoeken overgeslagen; de rest gaat door.
+- Mistral, Ollama en andere aanbieders zijn er bewust uitgehaald (Martijn, 2-10-2026). `reserve_aanbieders` in de
+  config kan nog wel een lijst van OpenAI-compatibele aanbieders bevatten, maar staat standaard leeg.
+- Is het taalmodel niet bereikbaar, dan stopt de run en gaat de volgende verder waar hij stopte (`data/voortgang.json`).
+  Daarom: zoeken zonder AI waar het kan, AI alleen voor uitlezen, en nooit opnieuw uitlezen wat niet veranderd is.
 
 ## Testen
 - `node --test tests/*.test.js` (rekenregels en checkservice)
@@ -127,4 +125,4 @@ een volle ronde in één à twee dagen mogelijk. Zie `_uitleg_limieten` in de co
   `tests/test_aanbieders.py`).
 - Echt testen: Actions → *Subsidies bijwerken* → Run workflow met een paar gemeenten en **proef** aan (geen PR,
   uitkomst als download en per regeling een regel met `→` in de log). Eventueel **zonder AI** (alleen zoeken)
-  of **aanbieder** `mistral` (meteen de reserve, zonder Gemini). Lokaal: `python scraper/run.py --zonder-ai --alleen Zeist`.
+  Lokaal: `python scraper/run.py --zonder-ai --alleen Zeist`.

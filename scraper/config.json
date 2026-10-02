@@ -1,5 +1,28 @@
 {
   "provider": "gemini",
+  "gemini_alleen_voor_zoeken": true,
+  "taalmodel": {
+    "naam": "pollinations",
+    "basis_url": "https://text.pollinations.ai/openai",
+    "sleutel_env": "",
+    "modellen": {
+      "filter": "openai-fast",
+      "extractie": "openai-fast",
+      "zoeken": "gemini-search"
+    },
+    "max_invoer_tekens": 150000,
+    "max_uitvoer_tokens": 16000,
+    "pauze_sec": 16,
+    "extra": {
+      "reasoning_effort": "low"
+    },
+    "seed": true,
+    "sleutel_env_optioneel": "POLLINATIONS_API_KEY",
+    "pogingen": 5,
+    "timeout_sec": 300,
+    "zoeken_alleen_met_sleutel": true
+  },
+  "_uitleg_taalmodel": "Filter en uitlezen gaan via 'taalmodel' (Pollinations, gratis, OpenAI-compatibel). Zonder sleutel werkt het anoniem: ongeveer 1 aanvraag per 15 seconden en soms een tijdelijke fout (402), daarom 'pogingen'. Met een gratis account op auth.pollinations.ai en de sleutel als repository secret POLLINATIONS_API_KEY is het betrouwbaarder. 'provider' (Gemini) wordt alleen nog gebruikt voor de AI-zoekactie met Google (gemini_alleen_voor_zoeken); is Gemini op, dan wordt alleen dat zoeken overgeslagen. Zoeken op internet via Pollinations kan alleen met een sleutel (zonder sleutel heeft Pollinations alleen 'openai-fast', zonder zoekfunctie); het zoekmodel staat bij modellen.zoeken. Klopt die naam niet meer, kijk dan op https://gen.pollinations.ai/models welke modellen 'search' heten en pas hem aan.",
   "alle_gemeenten": true,
   "_uitleg_gemeenten": "alle_gemeenten true = alle gemeenten van Nederland (lijst via PDOK). De lijst hieronder is dan alleen reserve als PDOK niet werkt. Zet op false om alleen deze gemeenten te doen.",
   "gemeenten": [
@@ -112,113 +135,7 @@
       "zoeken": "claude-sonnet-5"
     }
   },
-  "reserve_aanbieders": [
-    {
-      "naam": "ollama",
-      "adres_env": "OLLAMA_URL",
-      "sleutel_env": "",
-      "modellen": {
-        "filter": "qwen2.5:7b",
-        "extractie": "qwen2.5:7b"
-      },
-      "max_invoer_tekens": 45000,
-      "max_uitvoer_tokens": 4000,
-      "pauze_sec": 0,
-      "timeout_sec": 2400
-    },
-    {
-      "naam": "mistral",
-      "basis_url": "https://api.mistral.ai/v1",
-      "sleutel_env": "MISTRAL_API_KEY",
-      "modellen": {
-        "filter": "mistral-small-latest",
-        "extractie": "mistral-small-latest"
-      },
-      "max_invoer_tekens": 150000,
-      "max_uitvoer_tokens": 16000,
-      "pauze_sec": 1.5
-    },
-    {
-      "naam": "cerebras",
-      "basis_url": "https://api.cerebras.ai/v1",
-      "sleutel_env": "CEREBRAS_API_KEY",
-      "modellen": {
-        "filter": "llama3.1-8b",
-        "extractie": "gpt-oss-120b"
-      },
-      "max_invoer_tekens": 140000,
-      "max_uitvoer_tokens": 16000,
-      "pauze_sec": 13
-    },
-    {
-      "naam": "llm7",
-      "basis_url": "https://api.llm7.io/v1",
-      "sleutel_env": "",
-      "modellen": {
-        "filter": "DeepSeek-V4-Flash-0731",
-        "extractie": "DeepSeek-V4-Flash-0731"
-      },
-      "max_invoer_tekens": 150000,
-      "max_uitvoer_tokens": 16000,
-      "pauze_sec": 4
-    },
-    {
-      "naam": "pollinations",
-      "basis_url": "https://text.pollinations.ai/openai",
-      "sleutel_env": "",
-      "modellen": {
-        "filter": "openai-fast",
-        "extractie": "openai-fast"
-      },
-      "max_invoer_tekens": 60000,
-      "max_uitvoer_tokens": 16000,
-      "pauze_sec": 16,
-      "extra": {
-        "reasoning_effort": "low"
-      },
-      "seed": true
-    },
-    {
-      "naam": "ovh",
-      "basis_url": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
-      "sleutel_env": "",
-      "modellen": {
-        "filter": "Mistral-Small-3.2-24B-Instruct-2506",
-        "extractie": "Meta-Llama-3_3-70B-Instruct"
-      },
-      "max_invoer_tekens": 80000,
-      "max_uitvoer_tokens": 8000,
-      "pauze_sec": 31
-    },
-    {
-      "naam": "groq",
-      "basis_url": "https://api.groq.com/openai/v1",
-      "sleutel_env": "GROQ_API_KEY",
-      "modellen": {
-        "filter": "llama-3.1-8b-instant",
-        "extractie": "llama-3.3-70b-versatile"
-      },
-      "max_invoer_tekens": 20000,
-      "max_uitvoer_tokens": 8000,
-      "pauze_sec": 5
-    },
-    {
-      "naam": "openrouter",
-      "basis_url": "https://openrouter.ai/api/v1",
-      "sleutel_env": "OPENROUTER_API_KEY",
-      "modellen": {
-        "filter": "meta-llama/llama-3.3-70b-instruct:free",
-        "extractie": "meta-llama/llama-3.3-70b-instruct:free"
-      },
-      "max_invoer_tekens": 100000,
-      "max_uitvoer_tokens": 8000,
-      "pauze_sec": 4,
-      "json": false
-    }
-  ],
-  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. Een aanbieder waarvan de sleutel-secret ontbreekt wordt overgeslagen. AANRADER: mistral (gratis 'Experiment'-plan, alleen sms-verificatie; Mistral Large zit NIET in het gratis plan, daarom mistral-small-latest): maak een sleutel op console.mistral.ai en zet hem als repository secret MISTRAL_API_KEY. cerebras/groq/openrouter: ook gratis sleutels (CEREBRAS_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). llm7, pollinations en ovh werken zonder sleutel maar met zeer lage limieten. ollama = eigen open model (zie _uitleg_ollama). Modelnamen en gratis limieten veranderen; werkt er een niet meer, pas de modelnaam aan. (GitHub Models is per 30 juli 2026 gestopt.) Zoeken op internet met Google kan alleen Gemini.",
   "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
-  "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400.",
-  "_uitleg_ollama": "ollama = een open model dat je zelf draait (geen sleutel, geen limiet). In GitHub Actions zet je het aan met het vinkje 'lokaal_model' bij Run workflow, of altijd via Settings → Secrets and variables → Actions → Variables: LOKAAL_MODEL = true. Op de gratis runner (geen grafische kaart) is het traag: enkele minuten per regeling. Draait Ollama op een eigen computer of server met grafische kaart, zet dan OLLAMA_URL (bijv. http://server:11434/v1) en het gaat veel sneller."
+  "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400."
 }
