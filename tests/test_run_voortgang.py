@@ -24,7 +24,9 @@ GEMEENTEN = ["Aadorp", "Beekdorp", "Ceedorp", "Deedorp", "Eedorp"]
 TEKST = "Subsidie voor isolatie van de eigen woning door de eigenaar. Dak, vloer en gevel."
 
 
-class TestVoortgang(unittest.TestCase):
+class Basis(unittest.TestCase):
+    """Nep-omgeving: tijdelijke map, nagebootst CVDR en taalmodel."""
+
     def setUp(self):
         self.map = pathlib.Path(tempfile.mkdtemp())
         (self.map / "data").mkdir()
@@ -82,6 +84,8 @@ class TestVoortgang(unittest.TestCase):
     def voortgang(self):
         return json.loads(run.VOORTGANG.read_text())["volgende"]
 
+
+class TestVoortgang(Basis):
     def test_crash_bewaart_werk_en_volgende_run_gaat_verder(self):
         self.crash_bij = "Ceedorp"
         with self.assertRaises(KeyboardInterrupt):

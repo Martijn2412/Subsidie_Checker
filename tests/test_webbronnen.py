@@ -152,6 +152,19 @@ class TestWebbronnen(unittest.TestCase):
         wb.verzamel("Testdorp", "Gelderland", "https://www.testdorp.nl", None, zoek_functie=zoek, parse_json=__import__("json").loads)
         self.assertEqual(vragen, [])
 
+    def test_eerder_gevonden_regeling_wordt_opnieuw_gelezen_met_doorverwijzing(self):
+        # staat niet in de sitemap, maar is eerder via een AI-zoekactie gevonden
+        WEB["https://www.testdorp.nl/nieuws-isolatie"] = ("text/html", PAGINA.format(
+            t="Nieuws", m="<p>Er is weer subsidie voor isolatie van uw woning.</p>"
+            '<a href="/wonen/voorwaarden-isolatiesubsidie.pdf">Bekijk de voorwaarden</a>' + VULLING))
+        try:
+            uit = wb.verzamel("Testdorp", "Gelderland", None, None, eerder=["https://www.testdorp.nl/nieuws-isolatie"])
+        finally:
+            del WEB["https://www.testdorp.nl/nieuws-isolatie"]
+        self.assertEqual([(p["url"], p["bron"]) for p in uit["paginas"]],
+                         [("https://www.testdorp.nl/nieuws-isolatie", "eerder gevonden")])
+        self.assertIn("31 december 2027", uit["paginas"][0]["tekst"])    # voorwaarden uit de pdf erbij
+
     def test_bewijs_controle(self):
         tekst = "Woningeigenaren krijgen maximaal € 1.500 subsidie. De WOZ-waarde is maximaal € 450.000 (peildatum 1-1-2025)."
         rec = {"bewijs": {"bedrag": "maximaal €1.500 subsidie", "criteria.woz_max": "De WOZ-waarde is maximaal 450.000",

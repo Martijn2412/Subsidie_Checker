@@ -43,6 +43,15 @@
   "_uitleg_trefwoorden": "Zoekwoorden voor het CVDR. Elk woord is één zoekvraag per gemeente; meer woorden = langere run.",
   "web_zoeken_elke_dagen": 14,
   "_uitleg_web": "Elke gemeente wordt eens per web_zoeken_elke_dagen doorzocht op de eigen site (sitemap) en bij de partners hieronder. Dat kost geen AI. Lijkt een pagina op een isolatieregeling, dan gaan alle pagina's van die gemeente samen in één AI-aanroep, en alleen als de tekst veranderd is. max_web_zoekacties_per_run = hoeveel AI-zoekacties met Google per run (alleen voor gemeenten waar site en partners niets opleveren of die nog geen open regeling hebben; ai_zoeken_altijd true = voor elke gemeente, alleen zinvol met een betaalde sleutel). gemeente_sites: vaste webadressen als het overheidsregister het verkeerde adres geeft.",
+  "web_limieten": {
+    "paginas_per_gemeente": 6,
+    "kandidaten_gemeentesite": 12,
+    "doorlinks_per_pagina": 4,
+    "rondgang_paginas": 12,
+    "sitemap_bestanden": 15,
+    "ai_zoek_links": 8
+  },
+  "_uitleg_web_limieten": "Grenzen per gemeente bij het zoeken op internet. paginas_per_gemeente: hoeveel relevante pagina's (beste eerst) naar het taalmodel gaan. kandidaten_gemeentesite: hoeveel adressen uit de sitemap worden opgehaald om te bekijken. doorlinks_per_pagina: hoeveel links naar voorwaarden of pdf's per pagina worden gevolgd. rondgang_paginas: hoeveel pagina's worden bekeken als een site geen sitemap heeft. sitemap_bestanden: hoeveel sitemap-bestanden per site. ai_zoek_links: hoeveel links uit een AI-zoekactie worden bekeken. Hoger = vollediger, maar trager.",
   "max_web_zoekacties_per_run": 25,
   "ai_zoeken_altijd": false,
   "gemeente_sites": {

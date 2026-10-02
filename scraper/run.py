@@ -73,6 +73,7 @@ MAX_AI_SEC = CFG.get("max_minuten_taalmodel", 100) * 60  # daarna: rest bij de v
 MAX_RUN_SEC = CFG.get("max_minuten_run", 300) * 60  # daarna netjes stoppen, ruim vóór de grens van GitHub
 BEWAAR_ELKE_SEC = 300  # tussentijds opslaan, zodat een harde onderbreking weinig werk kost
 ALLEEN = [n.strip().lower() for n in sys.argv[sys.argv.index("--alleen") + 1].split(",")] if "--alleen" in sys.argv else None
+webbronnen.LIMIETEN.update(CFG.get("web_limieten", {}))
 ZONDER_AI = "--zonder-ai" in sys.argv  # alleen zoeken, niets naar het taalmodel (om het zoeken te testen)
 WEB_VERSIE = 2  # omhoog als het zoeken op internet verandert: dan worden alle gemeenten opnieuw doorzocht
 FILTER_VERSIE = 2  # omhoog als de filters ruimer worden: eerder afgewezen regelingen worden opnieuw bekeken
@@ -467,6 +468,12 @@ LET OP, afwijkend van hierboven: de tekst hieronder komt niet uit het CVDR maar 
 
 Geef ALLEEN geldige JSON: {{"regelingen": [ {{ ...per regeling het formaat hierboven, plus "bron_url",
 "uitvoerder" en "zelfde_als"... }} ]}}. Geen passende regeling? {{"regelingen": []}}."""
+
+
+def html_naar_tekst(h):
+    t = re.sub(r"(?is)<(script|style|nav|footer|header)[^>]*>.*?</\1>", " ", h)
+    t = re.sub(r"<[^>]+>", " ", t)
+    return re.sub(r"\s+", " ", html.unescape(t)).strip()
 
 
 def haal_webpagina(url):
@@ -972,7 +979,8 @@ def main():
                 print("  zoeken op de gemeentesite en bij partners")
                 gev = webbronnen.verzamel(naam, g.get("provincie"), site_van(naam), partners,
                                           zoek_functie=ai_zoekfunctie if mag_ai_zoeken else None, parse_json=parse_json,
-                                          ai_altijd=CFG.get("ai_zoeken_altijd", False) or not heeft_open)
+                                          ai_altijd=CFG.get("ai_zoeken_altijd", False) or not heeft_open,
+                                          eerder=[r.get("bron_url") for r in oud_web])
                 vs = gev["verslag"]
                 web_paginas = len(vs["paginas"])
                 web_gedaan += vs["ai_gezocht"]

@@ -29,6 +29,9 @@ ROO = "https://organisaties.overheid.nl/archive/exportOO_gemeenten.xml"
 MAX_TEKST_PAGINA = 40_000      # tekens per pagina
 MAX_TEKST_GEMEENTE = 140_000   # tekens die per gemeente naar het taalmodel gaan
 PAUZE = 0.3                    # netjes blijven tegen de websites
+# Grenzen per gemeente; run.py vult ze aan uit "web_limieten" in scraper/config.json
+LIMIETEN = {"paginas_per_gemeente": 6, "kandidaten_gemeentesite": 12, "doorlinks_per_pagina": 4,
+            "rondgang_paginas": 12, "sitemap_bestanden": 15, "ai_zoek_links": 8}
 
 # ---------- teksten herkennen ----------
 ISOLATIE = re.compile(r"isol|spouwmuur|hr\+\+|triple glas|dubbel glas|isolerend glas|kierdicht", re.I)
@@ -192,8 +195,9 @@ def vind_site(naam, roo, vast=None):
     return None
 
 
-def sitemap_urls(site, max_bestanden=15):
+def sitemap_urls(site, max_bestanden=None):
     """Alle webadressen uit de sitemap(s) van een site. Leeg als er geen sitemap is."""
+    max_bestanden = max_bestanden or LIMIETEN["sitemap_bestanden"]
     deel = urllib.parse.urlparse(site)
     host = deel.netloc
     site = f"{deel.scheme}://{host}"   # bijv. https://www.meierijstad.nl/home -> https://www.meierijstad.nl
@@ -236,8 +240,9 @@ def sitemap_urls(site, max_bestanden=15):
     return list(dict.fromkeys(urls))
 
 
-def rondgang(site, max_paginas=12):
+def rondgang(site, max_paginas=None):
     """Geen sitemap? Dan vanaf de homepage de links volgen die op subsidies of isolatie lijken."""
+    max_paginas = max_paginas or LIMIETEN["rondgang_paginas"]
     host = urllib.parse.urlparse(site).netloc
     gevonden, te_doen, gedaan, gelukt = {}, [(site, "")], set(), 0
     while te_doen and len(gedaan) < max_paginas:
@@ -261,9 +266,10 @@ def rondgang(site, max_paginas=12):
     return gevonden, gelukt   # {url: score (adres + linktekst)}, aantal bekeken pagina's
 
 
-def kandidaten_gemeentesite(site, max_kandidaten=12):
+def kandidaten_gemeentesite(site, max_kandidaten=None):
     """De webadressen op de gemeentesite die het meest op een isolatieregeling lijken.
     Geeft (urls, 'sitemap'/'rondgang', aantal bekeken adressen)."""
+    max_kandidaten = max_kandidaten or LIMIETEN["kandidaten_gemeentesite"]
     urls = sitemap_urls(site)
     if urls:
         bron, gescoord = "sitemap", [(score_url(u), u) for u in urls]
@@ -319,8 +325,9 @@ def hoort_bij_gemeente(pagina, gemeente):
 
 
 # ---------- 3. links volgen ----------
-def detail_links(pagina, max_links=4):
+def detail_links(pagina, max_links=None):
     """Links op een relevante pagina naar voorwaarden, pdf's of het loket dat de regeling uitvoert."""
+    max_links = max_links or LIMIETEN["doorlinks_per_pagina"]
     kies = []
     for url, tekst in pagina["links"]:
         if (url.rstrip("/") == pagina["url"].rstrip("/") or URL_NIET.search(urllib.parse.urlparse(url).path)
@@ -367,7 +374,7 @@ def ai_zoek(gemeente, provincie, zoek_functie, parse_json):
 
 # ---------- alles samen per gemeente ----------
 def verzamel(gemeente, provincie, site, partners, zoek_functie=None, parse_json=None, ai_altijd=False,
-             max_paginas=6):
+             max_paginas=None, eerder=()):
     """Zoekt op de gemeentesite en bij partners (en zo nodig met AI) naar pagina's over isolatieregelingen.
     Geeft {"paginas": [{url, tekst, bron}], "verslag": {...}}. Het taalmodel wordt alleen gebruikt
     voor de AI-zoekactie, en alleen als zoek_functie is meegegeven."""
@@ -382,6 +389,9 @@ def verzamel(gemeente, provincie, site, partners, zoek_functie=None, parse_json=
             print(f"    gemeentesite {site}: {e}")
     if partners:
         kandidaten += [(f"partner: {naam}", u) for naam, u in partners.kandidaten(gemeente)]
+    # webadressen van regelingen die eerder al op internet zijn gevonden: altijd opnieuw bekijken
+    kandidaten += [("eerder gevonden", u) for u in eerder if u and u.startswith("http")
+                   and "overheid.nl" not in u and u not in {k for _, k in kandidaten}]
     verslag["kandidaten"] = len(kandidaten)
 
     def bekijk(lijst):
@@ -407,13 +417,13 @@ def verzamel(gemeente, provincie, site, partners, zoek_functie=None, parse_json=
                  for u, b in gevonden_ai if u not in gezien]
         extra = [(b, u) for b, u in extra
                  if "lokaleregelgeving.overheid.nl" not in u and "officiele-overheidspublicaties" not in u]
-        paginas += bekijk(extra[:8])
+        paginas += bekijk(extra[:LIMIETEN["ai_zoek_links"]])
 
     # dubbele pagina's (zelfde eindadres na doorverwijzing) eruit; beste eerst
     uniek = {}
     for p in sorted(paginas, key=lambda p: -p["score"]):
         uniek.setdefault(p["url"].rstrip("/"), p)
-    paginas = list(uniek.values())[:max_paginas]
+    paginas = list(uniek.values())[:max_paginas or LIMIETEN["paginas_per_gemeente"]]
 
     # links volgen naar voorwaarden / pdf / loket
     gedaan = {p["url"].rstrip("/") for p in paginas}

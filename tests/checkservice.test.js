@@ -66,3 +66,15 @@ test("zelfde adres wordt maar één keer opgezocht", async () => {
   await svc.zoekAdres("2511AB", "12");
   assert.equal(pdokAanroepen, voor);
 });
+
+test("eigenaar-bewoner hoeft niet meegestuurd te worden: standaard ja", async () => {
+  const uit = await svc.beoordeel({postcode: "2511AB", huisnummer: "12", bouwjaar: "1931"});
+  assert.equal(uit.uitkomst, "mogelijk");
+  assert.ok(!uit.ontbreekt.includes("eigenaar_bewoner"));
+  assert.doesNotMatch(uit.tekst, /eigenaar-bewoner/);
+});
+
+test("eigenaar_bewoner=nee van TIOS telt wel", async () => {
+  const uit = await svc.beoordeel({postcode: "2511AB", huisnummer: "12", bouwjaar: "1931", eigenaar_bewoner: "nee"});
+  assert.equal(uit.uitkomst, "voldoet_niet");
+});

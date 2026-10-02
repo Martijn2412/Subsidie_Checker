@@ -1,6 +1,6 @@
 # Subsidiecheck isolatie (Takkenkamp)
 
-Checkpagina voor de binnendienst plus een scraper die elke dag de isolatieregelingen van álle
+Checkpagina voor de binnendienst plus een scraper die (als je hem start) de isolatieregelingen van álle
 gemeenten zoekt: in het CVDR (lokaleregelgeving.overheid.nl), op de eigen gemeentesite en bij
 partners zoals energieloketten. De voorwaarden komen in `overzicht_voorwaarden.xlsx`.
 Het doel en de afspraken staan in `CLAUDE.md`.
@@ -73,8 +73,9 @@ zonder limiet, maar traag.
 De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
 (alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.
 
-## Elke dag
-De scraper draait automatisch. Is er iets nieuw of gewijzigd, dan krijg je een
+## Bijwerken
+De scraper draait alleen als je hem start: tabblad Actions → "Subsidies bijwerken" → Run workflow.
+Er is geen vast schema. Is er iets nieuw of gewijzigd, dan krijg je een
 pull request met de wijzigingen in gewone taal. Controleer ze tegen de bronlink,
 zet bij goedgekeurde regelingen `"gecontroleerd": true` en merge. Pas dan ziet de
 binnendienst de wijziging. Niets gewijzigd? Dan komt er geen pull request.
