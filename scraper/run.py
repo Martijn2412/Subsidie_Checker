@@ -228,6 +228,7 @@ def llm_openai(a, taak, tekst, json_uit):
             if antw.strip():
                 print(f"  (antwoord van {a['naam']}, {model})")
                 return antw
+            print(f"  {a['naam']}: leeg antwoord ({r.text[:300]}), poging {poging + 1}/3")
             continue
         fout = r.text[:200].replace("\n", " ")
         if r.status_code == 429:
