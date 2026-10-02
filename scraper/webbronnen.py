@@ -345,7 +345,10 @@ Niets gevonden? Antwoord {{"regelingen": []}}. Verzin nooit een regeling of link
 def ai_zoek(gemeente, provincie, zoek_functie, parse_json):
     """zoek_functie(prompt) -> (tekst, [bron-urls]). Geeft [(url, uitvoerder)] die echt bestaan:
     eerst de links uit het antwoord, aangevuld met de bronnen die Google meegaf."""
-    tekst, bronnen = zoek_functie(ZOEK_PROMPT.format(g=gemeente, p=provincie or "onbekend"))
+    antwoord = zoek_functie(ZOEK_PROMPT.format(g=gemeente, p=provincie or "onbekend"))
+    if antwoord is None:   # zoeken kan nu niet (bijv. tegoed op)
+        return None
+    tekst, bronnen = antwoord
     try:
         antw = parse_json(tekst)
     except Exception:
@@ -391,11 +394,12 @@ def verzamel(gemeente, provincie, site, partners, zoek_functie=None, parse_json=
         return gevonden
 
     paginas = bekijk(kandidaten)
-    if zoek_functie and (ai_altijd or not paginas):
+    gevonden_ai = ai_zoek(gemeente, provincie, zoek_functie, parse_json) if zoek_functie and (ai_altijd or not paginas) else None
+    if gevonden_ai is not None:
         verslag["ai_gezocht"] = True
         gezien = {p["url"] for p in paginas}
         extra = [(b if b.startswith("AI") else f"AI-zoekactie: {b}", u)
-                 for u, b in ai_zoek(gemeente, provincie, zoek_functie, parse_json) if u not in gezien]
+                 for u, b in gevonden_ai if u not in gezien]
         extra = [(b, u) for b, u in extra
                  if "lokaleregelgeving.overheid.nl" not in u and "officiele-overheidspublicaties" not in u]
         paginas += bekijk(extra[:8])

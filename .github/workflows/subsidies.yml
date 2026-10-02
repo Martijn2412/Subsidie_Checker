@@ -13,6 +13,10 @@ on:
         description: "Proefrun: geen pull request, de uitkomst (Excel, regelingen.json, log) komt als download bij de run."
         type: boolean
         default: false
+      aanbieder:
+        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: github, cerebras, mistral, groq, openrouter."
+        required: false
+        default: "standaard"
       zonder_ai:
         description: "Alleen zoeken (CVDR, gemeentesite, partners), niets naar het taalmodel. Om het zoeken te testen zonder tegoed."
         type: boolean
@@ -21,6 +25,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  models: read   # GitHub Models: gratis reserve-taalmodel, geen eigen sleutel nodig
 
 # Nooit twee runs tegelijk: de tweede wacht tot de eerste klaar is.
 concurrency:
@@ -56,6 +61,7 @@ jobs:
         run: |
           EXTRA=""
           if [ "$ZONDER_AI" = "true" ]; then EXTRA="--zonder-ai"; fi
+          if [ -n "$AANBIEDER" ] && [ "$AANBIEDER" != "standaard" ]; then EXTRA="$EXTRA --aanbieder $AANBIEDER"; fi
           if [ -n "$ALLEEN" ]; then
             python -u scraper/run.py --alleen "$ALLEEN" $EXTRA
           else
@@ -66,6 +72,13 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ALLEEN: ${{ github.event.inputs.gemeenten }}
           ZONDER_AI: ${{ github.event.inputs.zonder_ai }}
+          AANBIEDER: ${{ github.event.inputs.aanbieder }}
+          # reserve-taalmodellen (zie reserve_aanbieders in scraper/config.json); ontbrekende worden overgeslagen
+          GITHUB_TOKEN: ${{ github.token }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       # Is de run hard gestopt (noodrem, runner weg)? Dan staat er wel een tussentijdse stand,
       # maar zijn het overzicht en de TIOS-export misschien niet bijgewerkt. Dat gebeurt hier.

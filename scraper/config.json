@@ -103,6 +103,70 @@
       "zoeken": "claude-sonnet-5"
     }
   },
+  "reserve_aanbieders": [
+    {
+      "naam": "github",
+      "basis_url": "https://models.github.ai/inference",
+      "sleutel_env": "GITHUB_TOKEN",
+      "modellen": {
+        "filter": "openai/gpt-4o-mini",
+        "extractie": "openai/gpt-4o-mini"
+      },
+      "max_invoer_tekens": 24000,
+      "max_uitvoer_tokens": 4000,
+      "pauze_sec": 5
+    },
+    {
+      "naam": "cerebras",
+      "basis_url": "https://api.cerebras.ai/v1",
+      "sleutel_env": "CEREBRAS_API_KEY",
+      "modellen": {
+        "filter": "llama3.1-8b",
+        "extractie": "gpt-oss-120b"
+      },
+      "max_invoer_tekens": 140000,
+      "max_uitvoer_tokens": 16000,
+      "pauze_sec": 13
+    },
+    {
+      "naam": "mistral",
+      "basis_url": "https://api.mistral.ai/v1",
+      "sleutel_env": "MISTRAL_API_KEY",
+      "modellen": {
+        "filter": "mistral-small-latest",
+        "extractie": "mistral-small-latest"
+      },
+      "max_invoer_tekens": 100000,
+      "max_uitvoer_tokens": 16000,
+      "pauze_sec": 2
+    },
+    {
+      "naam": "groq",
+      "basis_url": "https://api.groq.com/openai/v1",
+      "sleutel_env": "GROQ_API_KEY",
+      "modellen": {
+        "filter": "llama-3.1-8b-instant",
+        "extractie": "llama-3.3-70b-versatile"
+      },
+      "max_invoer_tekens": 20000,
+      "max_uitvoer_tokens": 8000,
+      "pauze_sec": 5
+    },
+    {
+      "naam": "openrouter",
+      "basis_url": "https://openrouter.ai/api/v1",
+      "sleutel_env": "OPENROUTER_API_KEY",
+      "modellen": {
+        "filter": "meta-llama/llama-3.3-70b-instruct:free",
+        "extractie": "meta-llama/llama-3.3-70b-instruct:free"
+      },
+      "max_invoer_tekens": 100000,
+      "max_uitvoer_tokens": 8000,
+      "pauze_sec": 4,
+      "json": false
+    }
+  ],
+  "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. Een aanbieder zonder sleutel wordt overgeslagen. 'github' = GitHub Models: gratis en zonder eigen sleutel (de workflow geeft zijn token mee), maar max. ~150 aanvragen per dag en korte teksten (max_invoer_tekens). De andere hebben een gratis sleutel zonder creditcard: maak die aan op de site van de aanbieder en zet hem als repository secret (CEREBRAS_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). Zoeken op internet met Google kan alleen Gemini. Gratis limieten veranderen vaak: controleer ze bij de aanbieder.",
   "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
   "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400."

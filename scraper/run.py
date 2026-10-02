@@ -77,8 +77,14 @@ ZONDER_AI = "--zonder-ai" in sys.argv  # alleen zoeken, niets naar het taalmodel
 WEB_VERSIE = 2  # omhoog als het zoeken op internet verandert: dan worden alle gemeenten opnieuw doorzocht
 FILTER_VERSIE = 2  # omhoog als de filters ruimer worden: eerder afgewezen regelingen worden opnieuw bekeken
 
-if "--alleen-overzicht" in sys.argv or ZONDER_AI:
-    client = None  # geen taalmodel nodig, dus ook geen sleutel
+# --aanbieder github: de hoofdaanbieder overslaan en meteen bij deze reserve-aanbieder beginnen (om te testen)
+START_AANBIEDER = sys.argv[sys.argv.index("--aanbieder") + 1].strip().lower() if "--aanbieder" in sys.argv else None
+if START_AANBIEDER in ("", "standaard", PROVIDER):
+    START_AANBIEDER = None
+HOOFD_SLEUTEL = "GEMINI_API_KEY" if PROVIDER == "gemini" else "ANTHROPIC_API_KEY"
+
+if "--alleen-overzicht" in sys.argv or ZONDER_AI or START_AANBIEDER or not os.environ.get(HOOFD_SLEUTEL):
+    client = None  # geen hoofdaanbieder: geen sleutel, of alleen reserve-aanbieders gebruiken
 elif PROVIDER == "gemini":
     from google import genai
     from google.genai import types
@@ -180,15 +186,107 @@ def bronnen_claude(r):
     return uit
 
 
+def reserve_aanbieders():
+    """Reserve-aanbieders uit config.json met een sleutel (GitHub Models gebruikt het token van de workflow)."""
+    lijst = [a for a in CFG.get("reserve_aanbieders", []) if os.environ.get(a.get("sleutel_env", ""))]
+    if START_AANBIEDER:
+        namen = [a["naam"].lower() for a in lijst]
+        lijst = lijst[namen.index(START_AANBIEDER):] if START_AANBIEDER in namen else []
+    return lijst
+
+
+class TeLang(Exception):
+    """De tekst past niet in het model van deze aanbieder."""
+
+
+def llm_openai(a, taak, tekst, json_uit):
+    """Eén aanroep bij een OpenAI-compatibele aanbieder (GitHub Models, Cerebras, Groq, Mistral, OpenRouter).
+    Geeft de tekst, of None als de aanbieder op is of weigert (dan de volgende proberen)."""
+    model = (a.get("modellen") or {}).get(taak)
+    if not model or a["naam"] in UITGEPUT:
+        return None
+    if len(tekst) > a.get("max_invoer_tekens", 10 ** 9):
+        raise TeLang(f"{a['naam']}: tekst te lang ({len(tekst)} tekens, max. {a['max_invoer_tekens']})")
+    body = {"model": model, "messages": [{"role": "user", "content": tekst}], "temperature": 0,
+            "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000))}
+    if json_uit and a.get("json", True):
+        body["response_format"] = {"type": "json_object"}
+    kop = {"Authorization": f"Bearer {os.environ[a['sleutel_env']]}", "Content-Type": "application/json"}
+    for poging in range(3):
+        time.sleep(a.get("pauze_sec", 2))
+        try:
+            r = requests.post(a["basis_url"].rstrip("/") + "/chat/completions", headers=kop, json=body, timeout=180)
+        except requests.RequestException as e:
+            print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/3")
+            time.sleep(10)
+            continue
+        if r.status_code == 200:
+            try:
+                antw = r.json()["choices"][0]["message"]["content"] or ""
+            except (ValueError, KeyError, IndexError):
+                antw = ""
+            if antw.strip():
+                print(f"  (antwoord van {a['naam']}, {model})")
+                return antw
+            continue
+        fout = r.text[:200].replace("\n", " ")
+        if r.status_code == 429:
+            wacht = int(re.sub(r"\D", "", r.headers.get("retry-after", "")) or 0)
+            if 0 < wacht <= 65 and poging < 2:
+                time.sleep(wacht)
+                continue
+            UITGEPUT.add(a["naam"])
+            print(f"  {a['naam']}: limiet bereikt ({fout[:100]}), deze run niet meer gebruiken")
+            return None
+        if r.status_code in (401, 403):
+            UITGEPUT.add(a["naam"])
+            print(f"  {a['naam']}: geen toegang ({r.status_code}: {fout[:100]})")
+            return None
+        if r.status_code in (400, 413) and re.search(r"token|context|too (large|long)|length", fout, re.I):
+            raise TeLang(f"{a['naam']}: {fout[:120]}")
+        if r.status_code == 400 and "response_format" in body:
+            body.pop("response_format")   # niet elke aanbieder kent de JSON-modus
+            continue
+        print(f"  {a['naam']}: fout {r.status_code} ({fout[:100]}), poging {poging + 1}/3")
+        time.sleep(10 * (poging + 1))
+    return None
+
+
 def llm(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
-    """Stuurt tekst naar het taalmodel. Bij drukte of limiet: eerst even wachten,
-    dan het reservemodel proberen, en anders LimietOp opgooien.
-    zoeken=True: het model mag op internet zoeken (Google bij Gemini, web search bij Claude).
+    """Stuurt tekst naar het taalmodel. Eerst de hoofdaanbieder (config "provider"); is die op of er is
+    geen sleutel, dan de reserve-aanbieders uit config.json, op volgorde. Alles op: LimietOp.
+    zoeken=True: het model mag op internet zoeken (alleen Gemini en Claude kunnen dat).
     met_bronnen=True: geeft (tekst, [webadressen die de zoekmachine echt gaf])."""
     if ZONDER_AI:
         raise ZonderAI()
     if time.monotonic() - START > MAX_AI_SEC:
         raise LimietOp("tijdslimiet van deze run bereikt")
+    fout = None
+    if client is not None:
+        try:
+            return llm_hoofd(taak, tekst, json_uit, zoeken, met_bronnen)
+        except LimietOp as e:
+            fout = e
+    if zoeken:
+        raise LimietOp(f"zoeken op internet kan alleen met {PROVIDER}" + (f" ({fout})" if fout else ""))
+    te_lang = []
+    for a in reserve_aanbieders():
+        try:
+            antw = llm_openai(a, taak, tekst, json_uit)
+        except TeLang as e:
+            print(f"  {e}")
+            te_lang.append(a["naam"])
+            continue
+        if antw is not None:
+            return (antw, []) if met_bronnen else antw
+    if te_lang:   # niet op, maar deze tekst is te lang voor wat er nog over is: later opnieuw
+        raise RuntimeError(f"tekst te lang voor de beschikbare modellen ({', '.join(te_lang)})")
+    raise LimietOp(str(fout or "geen taalmodel beschikbaar (sleutel ontbreekt of alle limieten op)")[:200])
+
+
+def llm_hoofd(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
+    """De hoofdaanbieder (Gemini of Claude). Bij drukte of limiet: eerst even wachten,
+    dan het reservemodel proberen, en anders LimietOp opgooien."""
     modellen = [MODELLEN[taak]] + ([MODELLEN[taak + "_reserve"]] if MODELLEN.get(taak + "_reserve") else [])
     modellen = [m for m in modellen if m not in UITGEPUT]
     if not modellen:
@@ -359,8 +457,22 @@ def extraheer_web(gemeente, tekst, bekend):
     return antw.get("regelingen") or []
 
 
+ZOEKEN_OP = []   # gevuld zodra zoeken met Google deze run niet meer kan
+
+
 def ai_zoekfunctie(prompt):
-    return llm("zoeken", prompt, zoeken=True, met_bronnen=True)
+    """AI-zoekactie met Google. Kan dat niet meer (Gemini op) maar werken de reserve-aanbieders nog,
+    dan None: de run gaat door zonder AI-zoekacties."""
+    if ZOEKEN_OP or client is None:
+        return None
+    try:
+        return llm("zoeken", prompt, zoeken=True, met_bronnen=True)
+    except LimietOp as e:
+        if not reserve_aanbieders():
+            raise
+        ZOEKEN_OP.append(str(e))
+        print(f"  AI-zoeken kan deze run niet meer ({str(e)[:100]}); verder met site en partners")
+        return None
 
 
 def bewijs_toepassen(rec, tekst):
