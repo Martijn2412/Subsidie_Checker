@@ -7,9 +7,13 @@ Per gemeente:
      Het gratis quotum is niet genoeg voor alles in één keer: wat niet lukt,
      volgt bij de volgende run. Al uitgelezen regelingen worden alleen opnieuw
      gelezen als de CVDR-versie verandert.
-  3. Niets relevants in het CVDR? Dan zoekt het taalmodel op internet (Google),
-     vooral op de gemeentesite. Zulke regelingen krijgen "bron": "web" en
-     betrouwbaarheid "laag": altijd zelf controleren.
+  3. Voor ELKE gemeente (eens per web_zoeken_elke_dagen): zoeken op de gemeentesite
+     (sitemap) en bij partners (energieloketten, bouwloketten), links naar voorwaarden en
+     pdf's volgen, en als dat niets oplevert een AI-zoekactie met Google (webbronnen.py).
+     Alle pagina's van een gemeente gaan samen in één AI-aanroep, alleen als de tekst veranderd is.
+     Zulke regelingen krijgen "bron": "web": altijd zelf controleren.
+  4. Bij elke uitgelezen regeling wordt gecontroleerd of het "bewijs" van het model echt in de
+     brontekst staat. Zo niet: lagere betrouwbaarheid en een melding in de PR.
 
 Schrijft regelingen.json (de checkpagina) en zoekstatus.json (per gemeente:
 wat nog wacht op uitlezen en wanneer er op internet is gezocht).
@@ -21,6 +25,7 @@ Draait in GitHub Actions. Taalmodel kies je in scraper/config.json ("provider":
   python scraper/run.py --alleen Doesburg,Arnhem   alleen deze gemeenten
   python scraper/run.py --vergelijk tests/baseline_pilot.json
   python scraper/run.py --alleen-overzicht    alleen overzicht_voorwaarden.xlsx opnieuw maken
+  python scraper/run.py --zonder-ai --alleen Zeist   alleen zoeken (CVDR, site, partners), geen taalmodel
 """
 import datetime as dt
 import hashlib
@@ -32,13 +37,13 @@ import re
 import signal
 import sys
 import time
-from urllib.parse import urljoin, urlparse
 
 import requests
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from normaliseer import normaliseer  # noqa: E402  (getallen als getal, ja/nee als true/false)
 import export_tios  # noqa: E402  (tios/subsidies.json en .csv voor de koppeling met TIOS)
+import webbronnen  # noqa: E402  (gemeentesite, partners en AI-zoeken)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "scraper/config.json").read_text(encoding="utf-8"))
@@ -54,6 +59,7 @@ ZOEKSTATUS = ROOT / "zoekstatus.json"  # per gemeente: wachtrij + laatste zoekac
 WEB_STATE = DATA / "web_state.json"  # wanneer per gemeente op internet is gezocht
 OVERZICHT = ROOT / "overzicht_voorwaarden.xlsx"  # alles in één sheet, om te lezen
 VOORTGANG = DATA / "voortgang.json"  # bij welke gemeente de volgende run begint
+GEMEENTE_SITES = DATA / "gemeente_sites.json"  # webadres per gemeente (uit het overheidsregister)
 SRU = "https://zoekservice.overheid.nl/sru/Search"
 UA = {"User-Agent": "Takkenkamp-subsidiecheck/0.1 (interne tool)"}
 VANDAAG = dt.date.today().isoformat()
@@ -67,9 +73,19 @@ MAX_AI_SEC = CFG.get("max_minuten_taalmodel", 100) * 60  # daarna: rest bij de v
 MAX_RUN_SEC = CFG.get("max_minuten_run", 300) * 60  # daarna netjes stoppen, ruim vóór de grens van GitHub
 BEWAAR_ELKE_SEC = 300  # tussentijds opslaan, zodat een harde onderbreking weinig werk kost
 ALLEEN = [n.strip().lower() for n in sys.argv[sys.argv.index("--alleen") + 1].split(",")] if "--alleen" in sys.argv else None
+webbronnen.LIMIETEN.update(CFG.get("web_limieten", {}))
+ZONDER_AI = "--zonder-ai" in sys.argv  # alleen zoeken, niets naar het taalmodel (om het zoeken te testen)
+WEB_VERSIE = 2  # omhoog als het zoeken op internet verandert: dan worden alle gemeenten opnieuw doorzocht
+FILTER_VERSIE = 2  # omhoog als de filters ruimer worden: eerder afgewezen regelingen worden opnieuw bekeken
 
-if "--alleen-overzicht" in sys.argv:
-    client = None  # geen taalmodel nodig, dus ook geen sleutel
+# --aanbieder github: de hoofdaanbieder overslaan en meteen bij deze reserve-aanbieder beginnen (om te testen)
+START_AANBIEDER = sys.argv[sys.argv.index("--aanbieder") + 1].strip().lower() if "--aanbieder" in sys.argv else None
+if START_AANBIEDER in ("", "standaard", PROVIDER):
+    START_AANBIEDER = None
+HOOFD_SLEUTEL = "GEMINI_API_KEY" if PROVIDER == "gemini" else "ANTHROPIC_API_KEY"
+
+if "--alleen-overzicht" in sys.argv or ZONDER_AI or START_AANBIEDER or not os.environ.get(HOOFD_SLEUTEL):
+    client = None  # geen hoofdaanbieder: geen sleutel, of alleen reserve-aanbieders gebruiken
 elif PROVIDER == "gemini":
     from google import genai
     from google.genai import types
@@ -89,7 +105,7 @@ def heeft_voorwaarden(r):
 
 def schrijf_samenvatting(resultaten, stand, totaal):
     """Overzicht per gemeente: in de log en op de samenvattingspagina van de GitHub-run."""
-    volgorde = {"❌": 0, "🛑": 1, "⚠️": 2, "➖": 3, "✅": 4}
+    volgorde = {"❌": 0, "🛑": 1, "⚠️": 2, "🔎": 3, "➖": 4, "✅": 5}
     tel = {}
     for _, sym, _ in resultaten:
         tel[sym] = tel.get(sym, 0) + 1
@@ -134,7 +150,7 @@ class LimietOp(Exception):
     """De (gratis) limiet van het taalmodel is bereikt; de rest volgt bij de volgende run."""
 
 
-TOKENS = {"extractie": 16000, "zoeken": 4000, "filter": 1000}
+TOKENS = {"extractie": 16000, "zoeken": 4000, "filter": 1000}  # web-extractie gebruikt "extractie"
 UITGEPUT = set()  # modellen waarvan de daglimiet op is: deze run niet meer proberen
 
 
@@ -147,12 +163,176 @@ def is_daglimiet(fout):
     return re.search(r"\b402\b|credits|per ?day", fout, re.I) is not None
 
 
-def llm(taak, tekst, json_uit=False, zoeken=False, tokens=None):
-    """Stuurt tekst naar het taalmodel. Bij drukte of limiet: eerst even wachten,
-    dan het reservemodel proberen, en anders LimietOp opgooien.
-    zoeken=True: het model mag op internet zoeken (Google bij Gemini, web search bij Claude)."""
+class ZonderAI(Exception):
+    """Run met --zonder-ai: het taalmodel wordt niet gebruikt."""
+
+
+def bronnen_gemini(r):
+    """De webadressen die Google bij een zoekactie echt heeft gebruikt (doorverwijzing; volgt bij ophalen)."""
+    uit = []
+    for c in getattr(r, "candidates", None) or []:
+        gm = getattr(c, "grounding_metadata", None)
+        for ch in (getattr(gm, "grounding_chunks", None) or []) if gm else []:
+            web = getattr(ch, "web", None)
+            if web is not None and getattr(web, "uri", None):
+                uit.append(web.uri)
+    return uit
+
+
+def bronnen_claude(r):
+    uit = []
+    for b in r.content:
+        if getattr(b, "type", "") == "web_search_tool_result" and isinstance(getattr(b, "content", None), list):
+            uit += [x.url for x in b.content if getattr(x, "url", None)]
+    return uit
+
+
+def reserve_aanbieders():
+    """De taalmodellen voor filter en uitlezen: "taalmodel" uit config.json (Pollinations), plus eventuele
+    "reserve_aanbieders". Zonder sleutel nodig ("sleutel_env" leeg), of met een sleutel die er is."""
+    lijst = [a for a in ([CFG["taalmodel"]] if CFG.get("taalmodel") else []) + (CFG.get("reserve_aanbieders") or [])
+             if (not a.get("sleutel_env") or os.environ.get(a["sleutel_env"]))
+             and (not a.get("adres_env") or os.environ.get(a["adres_env"]))]   # bijv. eigen Ollama: alleen als hij draait
+    if START_AANBIEDER:
+        namen = [a["naam"].lower() for a in lijst]
+        lijst = lijst[namen.index(START_AANBIEDER):] if START_AANBIEDER in namen else []
+    return lijst
+
+
+HOOFD_OP = []   # gevuld zodra de hoofdaanbieder deze run op is
+
+
+class TeLang(Exception):
+    """De tekst past niet in het model van deze aanbieder."""
+
+
+def llm_openai(a, taak, tekst, json_uit):
+    """Eén aanroep bij een OpenAI-compatibele aanbieder (zoals Pollinations).
+    Geeft de tekst, of None als de aanbieder op is of weigert (dan de volgende proberen)."""
+    model = (a.get("modellen") or {}).get(taak)
+    if not model or a["naam"] in UITGEPUT:
+        return None
+    if len(tekst) > a.get("max_invoer_tekens", 10 ** 9):
+        raise TeLang(f"{a['naam']}: tekst te lang ({len(tekst)} tekens, max. {a['max_invoer_tekens']})")
+    body = {"model": model, "messages": [{"role": "user", "content": tekst}], "temperature": 0,
+            "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000)), **(a.get("extra") or {})}
+    basis = os.environ.get(a["adres_env"]) if a.get("adres_env") else a["basis_url"]
+    if json_uit and a.get("json", True):
+        body["response_format"] = {"type": "json_object"}
+    kop = {"Content-Type": "application/json", **(a.get("koppen") or {})}
+    sleutel = os.environ.get(a.get("sleutel_env") or a.get("sleutel_env_optioneel") or "")
+    if sleutel:
+        kop["Authorization"] = f"Bearer {sleutel}"
+    pogingen = a.get("pogingen", 3)
+    for poging in range(pogingen):
+        time.sleep(a.get("pauze_sec", 2))
+        if poging and a.get("seed"):
+            body["seed"] = poging   # andere seed: geen opgeslagen (leeg) antwoord terugkrijgen
+        try:
+            r = requests.post(basis.rstrip("/") + "/chat/completions", headers=kop, json=body,
+                              timeout=a.get("timeout_sec", 180),
+                              allow_redirects=False)   # een doorverwijzing maakt van POST een GET
+        except requests.RequestException as e:
+            print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/{pogingen}")
+            time.sleep(10)
+            continue
+        if r.status_code == 200:
+            try:
+                keuze = r.json()["choices"][0]
+                antw = keuze["message"].get("content") or ""
+            except (ValueError, KeyError, IndexError, AttributeError):
+                keuze, antw = {}, ""
+            if not antw.strip() and keuze.get("finish_reason") == "length":
+                body["max_tokens"] = min(body["max_tokens"] * 2, 32000)   # ruimte op aan 'nadenken': meer ruimte geven
+            if antw.strip():
+                print(f"  (antwoord van {a['naam']}, {model})")
+                return antw
+            print(f"  {a['naam']}: leeg antwoord ({r.headers.get('content-type')}: {r.text[:200]!r}), poging {poging + 1}/{pogingen}")
+            continue
+        fout = r.text[:200].replace("\n", " ")
+        if 300 <= r.status_code < 400:
+            print(f"  {a['naam']}: doorverwezen naar {r.headers.get('location')} ({r.status_code}); pas basis_url aan")
+            UITGEPUT.add(a["naam"])
+            return None
+        if r.status_code == 429:
+            wacht = int(re.sub(r"\D", "", r.headers.get("retry-after", "")) or 0)
+            if 0 < wacht <= 65 and poging < pogingen - 1:
+                time.sleep(wacht)
+                continue
+            if not wacht and poging == 0 and not re.search(r"day|daily|dag|month|quota|86400", fout, re.I):
+                print(f"  {a['naam']}: limiet per minuut ({fout[:80]}), wacht 60s")
+                time.sleep(60)   # waarschijnlijk tokens per minuut: even wachten en nog één keer proberen
+                continue
+            UITGEPUT.add(a["naam"])
+            print(f"  {a['naam']}: limiet bereikt ({fout[:100]}), deze run niet meer gebruiken")
+            return None
+        if r.status_code in (401, 403):
+            UITGEPUT.add(a["naam"])
+            print(f"  {a['naam']}: geen toegang ({r.status_code}: {fout[:100]})")
+            return None
+        if r.status_code in (400, 413) and re.search(r"token|context|too (large|long)|length", fout, re.I):
+            raise TeLang(f"{a['naam']}: {fout[:120]}")
+        if r.status_code == 400 and "response_format" in body:
+            body.pop("response_format")   # niet elke aanbieder kent de JSON-modus
+            continue
+        print(f"  {a['naam']}: fout {r.status_code} ({fout[:100]}), poging {poging + 1}/{pogingen}")
+        time.sleep(10 * (poging + 1))
+    return None
+
+
+def llm(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
+    """Stuurt tekst naar het taalmodel. Eerst de hoofdaanbieder (config "provider"); is die op of er is
+    geen sleutel, dan de reserve-aanbieders uit config.json, op volgorde. Alles op: LimietOp.
+    zoeken=True: het model mag op internet zoeken (alleen Gemini en Claude kunnen dat).
+    met_bronnen=True: geeft (tekst, [webadressen die de zoekmachine echt gaf])."""
+    if ZONDER_AI:
+        raise ZonderAI()
     if time.monotonic() - START > MAX_AI_SEC:
         raise LimietOp("tijdslimiet van deze run bereikt")
+    fout = None
+    if client is not None and not HOOFD_OP and (zoeken or not CFG.get("gemini_alleen_voor_zoeken")):
+        try:
+            return llm_hoofd(taak, tekst, json_uit, zoeken, met_bronnen)
+        except LimietOp as e:
+            fout = e
+            if reserve_aanbieders() and not zoeken:
+                # niet bij elke aanroep opnieuw minuten wachten op een aanbieder die toch op is
+                HOOFD_OP.append(str(e))
+                print(f"  {PROVIDER} is op ({str(e)[:80]}); deze run verder met de reserve-aanbieders")
+    if zoeken:
+        # zoeken met een zoekmodel van een reserve-aanbieder (bijv. Pollinations met sleutel); de links in het
+        # antwoord worden daarna door webbronnen zelf opgehaald en gecontroleerd
+        for a in reserve_aanbieders():
+            if not (a.get("modellen") or {}).get("zoeken"):
+                continue
+            if a.get("zoeken_alleen_met_sleutel") and not os.environ.get(a.get("sleutel_env_optioneel") or ""):
+                continue
+            try:
+                antw = llm_openai(a, "zoeken", tekst, json_uit)
+            except TeLang:
+                continue
+            if antw is not None:
+                bronnen = list(dict.fromkeys(u.rstrip(".,;:") for u in re.findall(r"https?://[^\s\"'<>)\]]+", antw)))
+                return (antw, bronnen) if met_bronnen else antw
+        raise LimietOp("geen taalmodel beschikbaar om op internet te zoeken" + (f" ({fout})" if fout else ""))
+    te_lang = []
+    for a in reserve_aanbieders():
+        try:
+            antw = llm_openai(a, taak, tekst, json_uit)
+        except TeLang as e:
+            print(f"  {e}")
+            te_lang.append(a["naam"])
+            continue
+        if antw is not None:
+            return (antw, []) if met_bronnen else antw
+    if te_lang:   # niet op, maar deze tekst is te lang voor wat er nog over is: later opnieuw
+        raise RuntimeError(f"tekst te lang voor de beschikbare modellen ({', '.join(te_lang)})")
+    raise LimietOp(str(fout or "geen taalmodel beschikbaar (sleutel ontbreekt of alle limieten op)")[:200])
+
+
+def llm_hoofd(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
+    """De hoofdaanbieder (Gemini of Claude). Bij drukte of limiet: eerst even wachten,
+    dan het reservemodel proberen, en anders LimietOp opgooien."""
     modellen = [MODELLEN[taak]] + ([MODELLEN[taak + "_reserve"]] if MODELLEN.get(taak + "_reserve") else [])
     modellen = [m for m in modellen if m not in UITGEPUT]
     if not modellen:
@@ -165,7 +345,7 @@ def llm(taak, tekst, json_uit=False, zoeken=False, tokens=None):
                 if PROVIDER == "gemini":
                     cfg = types.GenerateContentConfig(
                         temperature=0,
-                        max_output_tokens=tokens or TOKENS[taak],
+                        max_output_tokens=TOKENS[taak],
                         # JSON-modus gaat niet samen met Google zoeken; dan zelf de JSON uit de tekst halen
                         response_mime_type="application/json" if json_uit and not zoeken else "text/plain",
                         tools=[types.Tool(google_search=types.GoogleSearch())] if zoeken else None,
@@ -173,11 +353,12 @@ def llm(taak, tekst, json_uit=False, zoeken=False, tokens=None):
                     r = client.models.generate_content(model=model, contents=tekst, config=cfg)
                     if not r.text:
                         raise RuntimeError("leeg antwoord")
-                    return r.text
+                    return (r.text, bronnen_gemini(r)) if met_bronnen else r.text
                 extra = {"tools": [{"type": "web_search_20250305", "name": "web_search", "max_uses": 5}]} if zoeken else {}
-                r = client.messages.create(model=model, max_tokens=min(tokens or TOKENS[taak], 8000),
+                r = client.messages.create(model=model, max_tokens=min(TOKENS[taak], 8000),
                                            messages=[{"role": "user", "content": tekst}], **extra)
-                return "".join(b.text for b in r.content if b.type == "text")
+                antw = "".join(b.text for b in r.content if b.type == "text")
+                return (antw, bronnen_claude(r)) if met_bronnen else antw
             except Exception as e:
                 fout = str(e)
                 laatste_fout = fout
@@ -284,22 +465,26 @@ def gemeentelijst():
     return lijst
 
 
-# ---------- stap 5: niets in het CVDR? zoeken op internet ----------
-WEB_PROMPT = """Zoek op internet of de gemeente {g} op dit moment een EIGEN subsidie, lening, voucher of
-waardebon heeft voor ISOLATIE van BESTAANDE woningen van particulieren (dak, zolder, gevel, spouwmuur,
-vloer/bodem, isolerend glas). Kijk vooral op de website van de gemeente {g} en op verbeterjehuis.nl.
-Negeer: landelijke regelingen (ISDE, Warmtefonds), regelingen van andere gemeenten of de provincie,
-regelingen voor bedrijven, verhuurders of monumenten, en regelingen die al gesloten zijn.
+# ---------- stap 5: gemeentesite en partners (en zo nodig AI-zoeken) ----------
+WEB_EXTRACTIE = """
 
-Antwoord met ALLEEN deze JSON, zonder uitleg:
-{{"regelingen": [{{"naam": "...", "url": "directe link naar de pagina over deze regeling",
-  "samenvatting": "1-3 zinnen: wat, voor wie, hoeveel, tot wanneer"}}]}}
-Niets gevonden? Antwoord {{"regelingen": []}}. Verzin nooit een regeling of link."""
+LET OP, afwijkend van hierboven: de tekst hieronder komt niet uit het CVDR maar van een of meer WEBPAGINA'S
+(gemeentesite of een partner zoals een energieloket) over gemeente {g}. Elke pagina begint met
+"=== Pagina: <webadres> ===". Er kunnen meerdere regelingen op staan, of geen enkele.
+- Neem alleen regelingen op die geld, korting, een voucher, een gratis isolatieactie of een lening geven voor
+  ISOLATIE van BESTAANDE woningen van particulieren, en die gelden voor inwoners van {g}.
+  Brede verduurzamingsregelingen en duurzaamheidsleningen tellen mee als isolatie eronder valt.
+  Niet: landelijke regelingen (ISDE, Warmtefonds), regelingen van andere gemeenten, alleen monumenten,
+  bedrijven of verhuurders, en losse energieadviezen zonder geld of korting.
+- Zet bij elke regeling "bron_url" op het webadres van de pagina waar je hem vond.
+- Zet "uitvoerder" op wie de regeling uitvoert of de aanvraag behandelt (gemeente of partner).
+- Staat er dat het budget op is of de regeling gesloten is: "budgetstatus": "uitgeput".
+- Al bekend uit het CVDR of handmatig ingevoerd voor {g}: {bekend}.
+  Is een regeling op de pagina dezelfde als een daarvan, zet "zelfde_als" op die naam.
+- "bewijs" moet LETTERLIJK uit de pagina's komen.
 
-
-# Sommige gemeentesites (bijv. Groningen) weigeren onbekende programma's; doe je voor als gewone browser
-BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                         "Chrome/130.0 Safari/537.36", "Accept-Language": "nl-NL,nl;q=0.9"}
+Geef ALLEEN geldige JSON: {{"regelingen": [ {{ ...per regeling het formaat hierboven, plus "bron_url",
+"uitvoerder" en "zelfde_als"... }} ]}}. Geen passende regeling? {{"regelingen": []}}."""
 
 
 def html_naar_tekst(h):
@@ -309,138 +494,141 @@ def html_naar_tekst(h):
 
 
 def haal_webpagina(url):
-    r = requests.get(url, headers=BROWSER, timeout=60)
-    r.raise_for_status()
-    return html_naar_tekst(r.text)[:60_000]
+    p = webbronnen.lees_pagina(url)
+    if not p:
+        raise RuntimeError(f"{url} niet bereikbaar")
+    return p["tekst"]
 
 
-def haal_ruw(url):
-    """Pagina of PDF ophalen. Geeft (tekst, html) terug; html is leeg bij een PDF."""
-    r = requests.get(url, headers=BROWSER, timeout=60)
-    r.raise_for_status()
-    if "pdf" in r.headers.get("Content-Type", "").lower() or url.lower().split("?")[0].endswith(".pdf"):
-        try:
-            import io
-            from pypdf import PdfReader
-            tekst = " ".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(r.content)).pages[:30])
-            return re.sub(r"\s+", " ", tekst).strip(), ""
-        except ImportError:
-            return "", ""
-    return html_naar_tekst(r.text), r.text
+def max_webtekst():
+    """Hoeveel webtekst per gemeente naar het taalmodel kan: minder als alleen een klein model beschikbaar is."""
+    if client is not None and not HOOFD_OP and not CFG.get("gemini_alleen_voor_zoeken"):
+        return webbronnen.MAX_TEKST_GEMEENTE
+    reserves = [a for a in reserve_aanbieders() if a["naam"] not in UITGEPUT]
+    if not reserves:
+        return webbronnen.MAX_TEKST_GEMEENTE
+    ruimte = reserves[0].get("max_invoer_tekens", webbronnen.MAX_TEKST_GEMEENTE) - len(PROMPT) - len(WEB_EXTRACTIE) - 2000
+    return max(5000, min(webbronnen.MAX_TEKST_GEMEENTE, ruimte))
 
 
-LINK_WEL = re.compile(r"voorwaarde|subsidieregeling|regeling|aanvra|spelregel|reglement|\.pdf", re.I)
+def extraheer_web(gemeente, tekst, bekend):
+    vraag = (PROMPT + WEB_EXTRACTIE.format(g=gemeente, bekend="; ".join(bekend) or "geen")
+             + "\n\n<webpaginas>\n" + tekst + "\n</webpaginas>")
+    antw = parse_json(llm("extractie", vraag, json_uit=True))
+    if isinstance(antw, list):
+        return antw
+    return antw.get("regelingen") or []
 
 
-def vervolglinks(basis_url, h, max_links=2):
-    """Links op dezelfde site die waarschijnlijk naar de voorwaarden of de regeling zelf gaan."""
-    domein = urlparse(basis_url).netloc
-    gezien, uit = {basis_url.split("#")[0]}, []
-    for href, tekst in re.findall(r'(?is)<a[^>]+href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', h):
-        url = urljoin(basis_url, html.unescape(href))
-        if url in gezien or not url.startswith("http"):
-            continue
-        if urlparse(url).netloc != domein and "lokaleregelgeving" not in url:
-            continue
-        label = html_naar_tekst(tekst) + " " + url
-        if LINK_WEL.search(label) and re.search(r"isol|subsidie|regeling|voorwaarde|duurza", label, re.I):
-            gezien.add(url)
-            uit.append(url)
-        if len(uit) >= max_links:
-            break
-    return uit
+ZOEKEN_OP = []   # gevuld zodra zoeken met Google deze run niet meer kan
 
 
-def lees_pagina(url):
-    """Tekst van de bronpagina plus maximaal 2 doorverwijzingen (voorwaarden, regeling, PDF)."""
-    tekst, h = haal_ruw(url)
-    delen = [tekst]
-    for link in vervolglinks(url, h) if h else []:
-        try:
-            t, _ = haal_ruw(link)
-            if len(t) > 200:
-                delen.append(f"\n\n[Doorverwezen pagina: {link}]\n{t}")
-        except Exception as e:
-            print(f"  web: doorverwijzing {link} niet op te halen ({e})")
-    return "".join(delen)[:80_000]
-
-
-WEB_LEES = """
-
-LET OP: de regelingstekst staat hier niet. Zoek zelf op internet de voorwaarden van de regeling
-"{naam}" van de gemeente {g}. Begin bij {url} en kijk ook naar de pagina's en PDF's waar die pagina naar
-verwijst (bijv. "voorwaarden", "spelregels" of de subsidieregeling zelf). Gebruik alleen de website van
-de gemeente of een officiële bron. Vind je een voorwaarde niet, zet het veld dan op null."""
-
-
-def lees_webregeling(naam, gemeente, url):
-    """Voorwaarden van een via internet gevonden regeling uitlezen.
-    Eerst de pagina zelf (en doorverwijzingen); lukt dat niet of staat er niets in, dan het taalmodel
-    laten zoeken. Geeft (ext, methode) terug; ext is leeg als het niet lukte."""
+def ai_zoekfunctie(prompt):
+    """AI-zoekactie met Google. Kan dat niet meer (Gemini op) maar werken de reserve-aanbieders nog,
+    dan None: de run gaat door zonder AI-zoekacties."""
+    kan_zoeken = (client is not None and not HOOFD_OP) or any(
+        (a.get("modellen") or {}).get("zoeken") and (not a.get("zoeken_alleen_met_sleutel")
+                                                    or os.environ.get(a.get("sleutel_env_optioneel") or ""))
+        for a in reserve_aanbieders())
+    if ZOEKEN_OP or not kan_zoeken:
+        return None
     try:
-        tekst = lees_pagina(url)
-    except Exception as e:
-        print(f"  web: {url} niet op te halen ({e}); taalmodel laten zoeken")
-        tekst = ""
-    if len(tekst) > 300:
-        ext = extraheer(tekst)
-        if ext and (not ext.get("relevant", True) or heeft_voorwaarden(ext)):
-            return ext, "pagina"
-        print(f"  web: geen voorwaarden op {url}; taalmodel laten zoeken")
-    elif tekst:
-        print(f"  web: {url} bevat te weinig tekst ({len(tekst)} tekens); taalmodel laten zoeken")
-    try:
-        ext = parse_json(llm("zoeken", PROMPT + WEB_LEES.format(naam=naam, g=gemeente, url=url),
-                             json_uit=True, zoeken=True, tokens=TOKENS["extractie"]))
-    except LimietOp:
-        raise
-    except Exception as e:
-        print(f"  web: voorwaarden zoeken mislukt ({e})")
-        return {}, None
-    return ext, "zoeken"
+        return llm("zoeken", prompt, zoeken=True, met_bronnen=True)
+    except LimietOp as e:
+        if not reserve_aanbieders():
+            raise
+        ZOEKEN_OP.append(str(e))
+        print(f"  AI-zoeken kan deze run niet meer ({str(e)[:100]}); verder met site en partners")
+        return None
 
 
-def voeg_voorwaarden_toe(rec, ext, methode, samenvatting=""):
-    """Uitgelezen voorwaarden in een web-record zetten. Naam, link en bron blijven staan."""
-    titel = rec["naam"]
-    ext = dict(ext)
-    ext.pop("relevant", None)
-    rec.update({k: v for k, v in ext.items() if v is not None and k not in ("bron_url", "id", "gemeente")})
-    rec = normaliseer(rec)
-    rec["naam"] = ext.get("naam") or titel
-    hoe = {"pagina": "Voorwaarden uitgelezen van de bronpagina.",
-           "zoeken": "Voorwaarden opgezocht door het taalmodel (niet van de pagina zelf gelezen)."}.get(methode, "")
-    rec["opmerkingen"] = " ".join(x for x in ["Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina.",
-                                              hoe, samenvatting, ext.get("opmerkingen") or ""] if x).strip()
-    rec["voorwaarden_gelezen"] = VANDAAG
-    rec["status"] = status(rec)
-    rec["betrouwbaarheid"] = "laag"
+def bewijs_toepassen(rec, tekst):
+    """Controle op verzinnen: staat het bewijs van het model echt in de brontekst?"""
+    ctrl = webbronnen.controleer_bewijs(rec, tekst)
+    rec["bewijs_controle"] = {"datum": VANDAAG, **ctrl}
+    if ctrl["niet_gevonden"]:
+        rec["betrouwbaarheid"] = "laag" if rec.get("bron") == "web" else "middel"
+        rec["opmerkingen"] = (f"Bewijs niet teruggevonden in de brontekst voor: {', '.join(ctrl['niet_gevonden'])}. "
+                              "Controleer deze velden. " + (rec.get("opmerkingen") or "")).strip()
     return rec
 
 
-def web_zoek(g):
-    """Laat het taalmodel op internet zoeken en leest gevonden pagina's uit. Geeft een lijst records."""
+def toon(rec, bron=""):
+    """Korte samenvatting van een uitgelezen regeling in de log, zodat je meteen ziet wat eruit kwam."""
+    c = rec.get("criteria") or {}
+    iso = c.get("isolatiestaat") or {}
+    delen = [f"bedrag: {_bedrag(rec.get('bedrag')) or '?'}",
+             f"t/m: {rec.get('looptijd_eind') or '?'}",
+             f"eigenaar-bewoner: {_tekst(c.get('eigenaar_bewoner')) or '?'}"]
+    if c.get("woz_max"):
+        delen.append(f"WOZ max: {_eur(c['woz_max'])}")
+    if isinstance(iso, dict) and iso.get("omschrijving"):
+        delen.append(f"woning: {str(iso['omschrijving'])[:60]}")
+    if c.get("bouwjaar_max"):
+        delen.append(f"bouwjaar t/m {c['bouwjaar_max']}")
+    bc = rec.get("bewijs_controle") or {}
+    delen.append("bewijs ok" if not bc.get("niet_gevonden") else f"bewijs NIET gevonden: {', '.join(bc['niet_gevonden'])}")
+    print(f"    → {rec.get('naam')}{(' [' + bron + ']') if bron else ''}: " + " · ".join(delen))
+
+
+LANDELIJK = re.compile(r"\bISDE\b|investeringssubsidie duurzame energie|warmtefonds|nationaal isolatieprogramma$",
+                       re.I)
+
+
+def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
+    """Zet de uitkomst van de web-extractie om naar records.
+    bestaand: CVDR/handmatige records van deze gemeente (dezelfde regeling niet dubbel opnemen).
+    Geeft (nieuwe records, [(bestaand record, webadres)] voor 'ook vermeld op', logregels)."""
     naam = g["naam"]
-    antw = parse_json(llm("zoeken", WEB_PROMPT.format(g=naam), json_uit=True, zoeken=True))
-    recs = []
-    for w in (antw.get("regelingen") or [])[:3]:
-        url, titel = (w.get("url") or "").strip(), (w.get("naam") or "").strip()
-        if not url.startswith("http") or not titel:
+    recs, ook, log = [], [], []
+    bronnen = {p["url"]: p["bron"] for p in verslag["paginas"]}
+    for ext in ext_lijst:
+        if not isinstance(ext, dict) or not ext.get("relevant", True):
             continue
-        if "lokaleregelgeving.overheid.nl" in url or "officiele-overheidspublicaties" in url:
-            continue  # staat in het CVDR; die route heeft deze regeling al beoordeeld
+        titel = (ext.get("naam") or "").strip()
+        if not titel:
+            continue
+        if LANDELIJK.search(titel):   # landelijke regelingen horen niet bij de gemeente, welk model het ook noemt
+            print(f"    → {titel}: landelijke regeling, overgeslagen")
+            continue
+        url = ext.get("bron_url") if ext.get("bron_url") in bronnen else (verslag["paginas"][0]["url"] if verslag["paginas"] else None)
+        zelfde = next((r for r in bestaand if (ext.get("zelfde_als") and webbronnen.lijkt_op(ext["zelfde_als"], r["naam"], naam))
+                       or webbronnen.lijkt_op(titel, r["naam"], naam)), None)
+        if zelfde:
+            ook.append((zelfde, url))
+            print(f"    → {titel}: zelfde als CVDR-regeling '{zelfde['naam']}' (ook vermeld op {url})")
+            continue
+        vorige = next((r for r in oud_web if webbronnen.lijkt_op(titel, r["naam"], naam)), None)
         rec = {
-            "id": f"{slug(naam)}-web-{slug(titel)[:50]}", "cvdr_id": None, "bron": "web",
-            "handmatig": False, "gecontroleerd": False,
-            "gemeente": naam, "provincie": g.get("provincie"), "naam": titel,
-            "bron_url": url, "peildatum": VANDAAG,
+            "id": vorige["id"] if vorige else f"{slug(naam)}-web-{slug(titel)[:50]}", "cvdr_id": None, "bron": "web",
+            "bron_type": bronnen.get(url, "internet"), "handmatig": False, "gecontroleerd": False,
+            "gemeente": naam, "provincie": g.get("provincie"), "peildatum": VANDAAG,
         }
-        ext, methode = lees_webregeling(titel, naam, url)
-        if ext and not ext.get("relevant", True):
+        for k in ("relevant", "zelfde_als"):
+            ext.pop(k, None)
+        rec.update({k: v for k, v in ext.items() if v is not None})
+        rec["naam"], rec["bron_url"] = titel, url
+        rec = normaliseer(rec)
+        rec["status"] = status(rec)
+        if rec.get("budgetstatus") == "uitgeput" and rec["status"] != "gesloten":
+            rec["status"] = "gesloten"
+        rec["betrouwbaarheid"] = "middel"
+        rec["opmerkingen"] = (f"Gevonden op internet ({rec['bron_type']}), niet in het CVDR. Controleer de bronpagina. "
+                              + (rec.get("opmerkingen") or "")).strip()
+        rec = bewijs_toepassen(rec, tekst)
+        if any(r["id"] == rec["id"] for r in recs):
             continue
-        rec = voeg_voorwaarden_toe(rec, ext, methode, w.get("samenvatting") or "")
         recs.append(rec)
-    return recs
+        toon(rec, rec["bron_type"])
+        diff = verschillen(vorige, rec)
+        if not vorige or diff:
+            kop = f"**{naam} – {rec['naam']}** ({'nieuw' if not vorige else 'gewijzigd'} via {rec['bron_type']}, {url})"
+            log.append(kop + "".join(f"\n  - {v}: {json.dumps(a, ensure_ascii=False)} → {json.dumps(b, ensure_ascii=False)}"
+                                     for v, a, b in diff if vorige))
+        if rec["bewijs_controle"]["niet_gevonden"]:
+            log.append(f"**{naam} – {rec['naam']}**: bewijs niet teruggevonden voor "
+                       f"{', '.join(rec['bewijs_controle']['niet_gevonden'])} (controleren)")
+    return recs, ook, log
 
 
 # ---------- stap 2: tekst ophalen ----------
@@ -462,13 +650,21 @@ def haal_tekst(xml_url, pagina_url=None):
 
 
 # ---------- stap 3: trechter (eerst gratis, dan pas Gemini) ----------
+# Titels die nooit een isolatieregeling voor woningen zijn
 TITEL_NIET = re.compile(
     r"algemene plaatselijke|\bapv\b|bouwverordening|leges|omgevingsplan|bestemmingsplan|mandaat|delegatie|"
-    r"volmacht|welstand|monument|erfgoed|aardgasvrij|warmtepomp|zonne|warmtenet|groene? da|afval|precario|"
+    r"volmacht|welstand|monument|erfgoed|afval|precario|"
     r"tarie|belasting|huisvesting|parkeer|evenement|sport|cultuur|onderwijs|jeugd|wmo|bijstand|participatie|"
-    r"inspraak|klacht|archief|begroting|reglement van orde|horeca|kinderopvang|verkeer|riool|water|"
+    r"inspraak|klacht|archief|begroting|reglement van orde|horeca|kinderopvang|verkeer|riool|"
     r"dienstverlening|aanwijzingsbesluit|restauratie|bedrijven|maatschappelijk vastgoed|subsidieplafond", re.I)
-TITEL_WEL = re.compile(r"subsidie|regeling|lening|voucher|waardebon|tegoed|bijdrage|stimulering|isol|glas|fonds", re.I)
+# Titels die meestal over iets anders gaan, behalve als isolatie of verduurzaming in de titel staat
+TITEL_MEESTAL_NIET = re.compile(r"warmtepomp|zonne|warmtenet|groene? da|water", re.I)
+TITEL_ISOLATIE = re.compile(r"isol|verduurzam|energiebespar|energiezuinig|duurzaam(heids)?lening|duurzame? woning|"
+                            r"aardgasvrij|energietransitie|woningverbetering", re.I)
+TITEL_WEL = re.compile(r"subsidie|regeling|regels|verordening|lening|voucher|waardebon|tegoed|bijdrage|stimulering|"
+                       r"isol|glas|fonds|verduurzam|energie|duurzaam", re.I)
+# Eerder door het (strengere) AI-filter afgewezen titels die met het ruimere filter opnieuw bekeken worden
+TITEL_HERBEKIJKEN = re.compile(r"lening|verduurzam|duurzaam|aardgasvrij|energie|fonds|stimulering|woning", re.I)
 
 
 def titel_valt_af(titel, gemeente=""):
@@ -476,7 +672,9 @@ def titel_valt_af(titel, gemeente=""):
     De gemeentenaam telt niet mee (anders valt bijv. alles van 'Waterland' af op 'water')."""
     if gemeente:
         titel = re.sub(re.escape(gemeente), " ", titel, flags=re.I)
-    return bool(TITEL_NIET.search(titel)) or not TITEL_WEL.search(titel)
+    if TITEL_NIET.search(titel) or not TITEL_WEL.search(titel):
+        return True
+    return bool(TITEL_MEESTAL_NIET.search(titel)) and not TITEL_ISOLATIE.search(titel)
 
 
 def is_vervallen(cid):
@@ -502,13 +700,15 @@ def tekst_valt_af(tekst):
 
 
 def is_relevant(titel, tekst):
-    """Stap 3d: pas nu Gemini (Flash-Lite) vragen."""
+    """Stap 3d: pas nu het taalmodel (Flash-Lite) vragen."""
     vraag = ("Beantwoord met alleen JA of NEE.\n"
-             "JA alleen als het HOOFDDOEL van deze gemeentelijke regeling isolatie is van BESTAANDE woningen "
-             "van particulieren: dak, zolder, gevel, spouwmuur, vloer/bodem of isolerend glas (HR++/triple).\n"
-             "NEE als de regeling vooral gaat over aardgasvrij/aardgasvrij-klaar, warmtepompen, zonnepanelen, "
-             "warmtenet, algemene verduurzaming of een brede duurzaamheidslening, ook als isolatie daar één van "
-             "de opties is. Ook NEE bij monumenten-, bedrijven- of verhuurdersregelingen.\n\n"
+             "JA als particuliere eigenaren met deze gemeentelijke regeling geld, korting, een voucher of een lening "
+             "kunnen krijgen voor ISOLATIE van hun BESTAANDE woning: dak, zolder, gevel, spouwmuur, vloer/bodem of "
+             "isolerend glas (HR++/triple). Ook JA als isolatie één van de maatregelen is in een bredere "
+             "verduurzamingsregeling, aardgasvrij-regeling of duurzaamheidslening.\n"
+             "NEE als isolatie er niet onder valt (bijv. alleen zonnepanelen, warmtepomp, groen dak, afkoppelen "
+             "regenwater), als het alleen om monumenten, bedrijven, verenigingen of verhuurders gaat, of als het "
+             "geen regeling met geld is (bijv. een besluit over een subsidieplafond of mandaat).\n\n"
              f"Titel: {titel}\n\nBegin van de tekst:\n{tekst[:6000]}")
     return llm("filter", vraag).strip().upper().startswith("JA")
 
@@ -561,7 +761,7 @@ def main():
         return
     state = {} if FORCEER else lees(STATE, {})
     web_state = lees(WEB_STATE, {})
-    oud = {r["id"]: r for r in lees(OUT, [])}
+    oud = {r["id"]: normaliseer(r) for r in lees(OUT, [])}
     oud_per_cvdr = {r["cvdr_id"]: r for r in oud.values() if r.get("cvdr_id")}
     dekking = lees(DEKKING, {})
     zoekstatus = {g["gemeente"]: g for g in lees(ZOEKSTATUS, {}).get("gemeenten", [])}
@@ -569,11 +769,22 @@ def main():
     limiet_op, uitgesteld, web_gedaan = False, 0, 0
     web_interval = CFG.get("web_zoeken_elke_dagen", 30)
     web_max = CFG.get("max_web_zoekacties_per_run", 25)
-    nalees_max = CFG.get("max_web_nalezen_per_run", 20)       # web-regelingen zonder voorwaarden opnieuw lezen
-    nalees_interval = CFG.get("web_nalezen_elke_dagen", 7)
-    nalees_gedaan = 0
     gemeenten = gemeentelijst()
     namen = {g["naam"] for g in gemeenten}
+    sites = lees(GEMEENTE_SITES, {})
+    roo = {}
+    partners = webbronnen.Partners(CFG.get("partners"))
+
+    def site_van(naam):
+        """Webadres van de gemeentesite, bewaard in data/gemeente_sites.json (elke 90 dagen opnieuw opgezocht)."""
+        bekend = sites.get(naam) or {}
+        if bekend.get("datum") and (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(bekend["datum"])).days < 90:
+            return bekend.get("url")
+        if not roo:
+            roo.update(webbronnen.haal_roo() or {"_leeg": ""})
+        sites[naam] = {"url": webbronnen.vind_site(naam, roo, CFG.get("gemeente_sites")), "datum": VANDAAG}
+        return sites[naam]["url"]
+
     print(f"{len(gemeenten)} gemeenten")
     # Is de vorige run halverwege gestopt? Dan beginnen bij de gemeente waar hij bleef.
     volgende = None if ALLEEN else lees(VOORTGANG, {}).get("volgende")
@@ -626,6 +837,7 @@ def main():
         schrijf(OUT, lijst)
         schrijf(STATE, state)
         schrijf(WEB_STATE, web_state)
+        schrijf(GEMEENTE_SITES, sites)
         schrijf(DEKKING, dekking)
         schrijf(ZOEKSTATUS, {"peildatum": VANDAAG,
                              "gemeenten": sorted(zoekstatus.values(), key=lambda x: x["gemeente"])})
@@ -656,12 +868,18 @@ def main():
             if not treffers and "(" in naam:  # PDOK zegt "Hengelo (O)", het CVDR "Hengelo"
                 treffers = zoek_cvdr(re.sub(r"\s*\(.*?\)", "", naam).strip())
         except Exception as e:
-            print(f"  CVDR-zoekvraag mislukt ({e}); vorige uitkomst behouden")
-            nieuw += [r for r in oud.values() if r["gemeente"] == naam and not r.get("handmatig")]
-            resultaat(naam, "❌", "CVDR niet bereikbaar; vorige uitkomst blijft staan")
-            continue
+            # CVDR even niet bereikbaar: vorige CVDR-uitkomst houden en wel op internet verder zoeken
+            print(f"  CVDR-zoekvraag mislukt ({str(e)[:150]}); vorige uitkomst behouden")
+            cvdr_fout = True
+            treffers = {}
+            nieuw += [r for r in oud.values() if r["gemeente"] == naam and r.get("cvdr_id") and not r.get("handmatig")]
+        else:
+            cvdr_fout = False
         print(f"  {len(treffers)} treffers in CVDR")
         relevant, wachtrij = 0, []
+        vorige_status = zoekstatus.get(naam, {})
+        if cvdr_fout:   # wachtrij van de vorige keer niet kwijtraken
+            wachtrij = list(vorige_status.get("wacht_op_uitlezen") or [])
         tel = {"titel": 0, "vervallen": 0, "geen isolatie": 0, "gemini-filter": 0, "ongewijzigd": 0, "uitgelezen": 0}
         for cid, meta in treffers.items():
             st = state.get(cid, {})
@@ -670,8 +888,13 @@ def main():
 
             # al eerder beoordeeld en niets veranderd: niets downloaden
             if zelfde_versie and st.get("skip"):
-                tel[st["skip"]] = tel.get(st["skip"], 0) + 1
-                continue
+                # ruimere filters (FILTER_VERSIE): eerder afgewezen titels die er nu wel door kunnen, opnieuw bekijken
+                herbekijk = st.get("fv", 1) < FILTER_VERSIE and (
+                    (st["skip"] == "titel" and not titel_valt_af(meta["titel"], naam))
+                    or (st["skip"] == "gemini-filter" and TITEL_HERBEKIJKEN.search(meta["titel"])))
+                if not herbekijk:
+                    tel[st["skip"]] = tel.get(st["skip"], 0) + 1
+                    continue
             if zelfde_versie and vorige:
                 nieuw.append({**vorige, "peildatum": VANDAAG, "status": status(vorige)})
                 relevant += 1
@@ -679,7 +902,7 @@ def main():
                 continue
 
             def overslaan(reden):
-                state[cid] = {"versie": meta["versie"], "skip": reden}
+                state[cid] = {"versie": meta["versie"], "skip": reden, "fv": FILTER_VERSIE}
                 tel[reden] += 1
 
             def later():  # limiet bereikt: bewaren voor de volgende run
@@ -716,6 +939,8 @@ def main():
                     overslaan("gemini-filter"); continue
                 print(f"  {cid} v{meta['versie']}: uitlezen")
                 ext = extraheer(tekst)
+            except ZonderAI:
+                later(); continue
             except LimietOp as e:
                 print(f"  AI-BUDGET OF LIMIET OP ({e}). Run stopt; de volgende gaat hier verder.")
                 limiet_op = limiet_reden(e)
@@ -738,6 +963,8 @@ def main():
             rec["naam"] = rec.get("naam") or meta["titel"]
             rec["status"] = status(rec)
             rec["betrouwbaarheid"] = betrouwbaarheid(rec)
+            rec = bewijs_toepassen(rec, tekst)
+            toon(rec, "CVDR")
             state[cid] = {"versie": meta["versie"], "hash": tekst_hash}
             relevant += 1
             tel["uitgelezen"] += 1
@@ -745,6 +972,9 @@ def main():
             diff = verschillen(vorige, rec)
             kop = f"**{naam} – {rec['naam']}** ({'nieuw' if not vorige else 'gewijzigd'}, {rec['bron_url']})"
             log.append(kop + "".join(f"\n  - {v}: {json.dumps(a, ensure_ascii=False)} → {json.dumps(b, ensure_ascii=False)}" for v, a, b in diff))
+            if rec["bewijs_controle"]["niet_gevonden"]:
+                log.append(f"**{naam} – {rec['naam']}**: bewijs niet teruggevonden voor "
+                           f"{', '.join(rec['bewijs_controle']['niet_gevonden'])} (controleren)")
 
         print("  trechter: " + ", ".join(f"{k} {v}" for k, v in tel.items() if v))
         if limiet_op:  # budget/limiet op: deze gemeente is niet af, de volgende run begint hier
@@ -754,32 +984,71 @@ def main():
 
         # regelingen die niet meer gevonden worden: niet weggooien, wel markeren
         gezien = {r["cvdr_id"] for r in nieuw if r.get("cvdr_id")}
-        for r in oud.values():
+        for r in ([] if cvdr_fout else oud.values()):
             if r["gemeente"] == naam and r.get("cvdr_id") and r["cvdr_id"] not in gezien and not r.get("handmatig"):
                 r = {**r, "status": "onbekend", "gecontroleerd": False,
                      "opmerkingen": f"Niet meer gevonden in CVDR op {VANDAAG}: mogelijk ingetrokken of vervangen. " + (r.get("opmerkingen") or "")}
                 nieuw.append(r)
                 log.append(f"**{naam} – {r['naam']}**: niet meer gevonden in CVDR")
 
-        # stap 5: CVDR helemaal afgehandeld en niets relevants? Dan op internet zoeken
+        # stap 5: voor elke gemeente ook de gemeentesite en partners (en zo nodig AI-zoeken)
         oud_web = [r for r in oud.values() if r["gemeente"] == naam and r.get("bron") == "web"]
         ws = web_state.get(naam, {})
-        heeft_handmatig = any(r["gemeente"] == naam and r.get("handmatig") for r in oud.values())
-        web_nodig = relevant == 0 and not wachtrij and not heeft_handmatig
-        web_te_oud = not ws.get("datum") or (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(ws["datum"])).days >= web_interval
+        web_te_oud = (FORCEER or ws.get("versie") != WEB_VERSIE or not ws.get("datum")
+                      or (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(ws["datum"])).days >= web_interval)
         web_uitkomst = None   # wat het zoeken op internet deze run opleverde
-        if web_nodig and web_te_oud and not limiet_op and web_gedaan < web_max:
+        web_paginas = 0
+        if web_te_oud:
+            bestaand = ([r for r in nieuw if r["gemeente"] == naam and r.get("bron") != "web"]
+                        + [r for r in oud.values() if r["gemeente"] == naam and r.get("handmatig")])
+            heeft_open = any(r.get("status") != "gesloten" for r in bestaand)
+            mag_ai_zoeken = not ZONDER_AI and web_gedaan < web_max
             try:
-                print("  niets in CVDR: zoeken op internet")
-                web = web_zoek(g)
-                web_gedaan += 1
-                web_state[naam] = {"datum": VANDAAG, "gevonden": len(web)}
-                oude_ids = {r["id"] for r in oud_web}
-                for r in web:
-                    if r["id"] not in oude_ids:
-                        log.append(f"**{naam} – {r['naam']}** (nieuw via AI-zoekactie op internet, {r['bron_url']})")
-                nieuw += web
-                print(f"  internet: {len(web)} regeling(en)")
+                print("  zoeken op de gemeentesite en bij partners")
+                gev = webbronnen.verzamel(naam, g.get("provincie"), site_van(naam), partners,
+                                          zoek_functie=ai_zoekfunctie if mag_ai_zoeken else None, parse_json=parse_json,
+                                          ai_altijd=CFG.get("ai_zoeken_altijd", False) or not heeft_open,
+                                          eerder=[r.get("bron_url") for r in oud_web])
+                vs = gev["verslag"]
+                web_paginas = len(vs["paginas"])
+                web_gedaan += vs["ai_gezocht"]
+                print(f"  site: {vs['site'] or 'onbekend'} ({vs['site_bron'] or '-'}, {vs['site_urls']} adressen), "
+                      f"{vs['kandidaten']} kandidaten, {len(vs['paginas'])} relevante pagina('s)"
+                      + (", AI-zoekactie gedaan" if vs["ai_gezocht"] else ""))
+                for pg in vs["paginas"]:
+                    print(f"    {pg['bron']}: {pg['url']}")
+                h = webbronnen.tekst_hash(gev["paginas"]) if gev["paginas"] else None
+                nieuw_ws = {"versie": WEB_VERSIE, "datum": VANDAAG, "site": vs["site"], "site_bron": vs["site_bron"],
+                            "site_urls": vs["site_urls"], "kandidaten": vs["kandidaten"], "partners": vs["partners"],
+                            "ai_gezocht": VANDAAG if vs["ai_gezocht"] else ws.get("ai_gezocht"),
+                            "paginas": vs["paginas"], "hash": h, "ook": ws.get("ook", [])}
+                if not gev["paginas"]:
+                    web_recs = oud_web   # niets (meer) gevonden of niet bereikbaar: vorige uitkomst blijft staan
+                elif ZONDER_AI:
+                    web_recs = oud_web
+                elif h == ws.get("hash") and not FORCEER:
+                    print("  pagina's ongewijzigd: vorige uitkomst blijft")
+                    web_recs = [{**r, "peildatum": VANDAAG} for r in oud_web]
+                else:
+                    tekst = webbronnen.samengevoegd(gev["paginas"], max_webtekst())
+                    print(f"  uitlezen ({len(tekst)} tekens uit {len(gev['paginas'])} pagina('s))")
+                    ext = extraheer_web(naam, tekst, [r["naam"] for r in bestaand])
+                    web_recs, ook, wlog = web_records(g, ext, tekst, vs, oud_web, bestaand)
+                    log += wlog
+                    nieuw_ws["ook"] = sorted({(r["id"], u) for r, u in ook if u})
+                    ids = {r["id"] for r in web_recs}
+                    for r in oud_web:   # niet meer gevonden: niet weggooien, wel markeren
+                        if r["id"] in ids:
+                            continue
+                        if not (r.get("opmerkingen") or "").startswith("Niet meer gevonden op internet"):
+                            log.append(f"**{naam} – {r['naam']}**: niet meer gevonden op internet")
+                            r = {**r, "status": "onbekend", "opmerkingen": f"Niet meer gevonden op internet op {VANDAAG}. "
+                                 + (r.get("opmerkingen") or "")}
+                        web_recs.append(r)
+                    print(f"  internet: {len(web_recs)} regeling(en), {len(ook)} al bekend uit het CVDR")
+                if not ZONDER_AI:   # zonder AI niets bewaren: de volgende echte run moet deze gemeente nog uitlezen
+                    web_state[naam] = nieuw_ws
+                nieuw += web_recs
                 web_uitkomst = "gezocht"
             except LimietOp as e:
                 print(f"  AI-BUDGET OF LIMIET OP bij zoeken op internet ({e}). Run stopt.")
@@ -789,51 +1058,33 @@ def main():
                 resultaat(naam, "🛑", f"{limiet_op} bij zoeken op internet; de volgende run gaat hier verder")
                 break
             except Exception as e:
-                print(f"  zoeken op internet mislukt ({e})")
+                print(f"  zoeken op internet mislukt ({type(e).__name__}: {e})")
                 nieuw += oud_web
                 web_uitkomst = "mislukt"
-        elif web_nodig:
-            # vorige internetuitkomst blijft staan tot de volgende zoekactie; zonder voorwaarden? opnieuw lezen
-            for r in oud_web:
-                gelezen = r.get("voorwaarden_gelezen")
-                te_lang = not gelezen or (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(gelezen)).days >= nalees_interval
-                if heeft_voorwaarden(r) or not te_lang or limiet_op or nalees_gedaan >= nalees_max:
-                    nieuw.append(r)
-                    continue
-                try:
-                    print(f"  web: voorwaarden opnieuw lezen voor {r['naam'][:60]}")
-                    nalees_gedaan += 1
-                    ext, methode = lees_webregeling(r["naam"], naam, r["bron_url"])
-                except LimietOp as e:
-                    print(f"  AI-BUDGET OF LIMIET OP bij opnieuw lezen ({e}). Run stopt.")
-                    limiet_op = limiet_reden(e)
-                    nieuw.append(r)
-                    continue
-                if ext and not ext.get("relevant", True):
-                    log.append(f"**{naam} – {r['naam']}**: bij opnieuw lezen geen isolatieregeling; verwijderd ({r['bron_url']})")
-                    continue
-                if heeft_voorwaarden(ext):
-                    r = voeg_voorwaarden_toe(dict(r), ext, methode)
-                    log.append(f"**{naam} – {r['naam']}**: voorwaarden uitgelezen "
-                               f"({'van de bronpagina' if methode == 'pagina' else 'opgezocht door het taalmodel'}, {r['bron_url']})")
-                else:
-                    r = {**r, "voorwaarden_gelezen": VANDAAG}
-                    print("  web: nog steeds geen voorwaarden gevonden")
-                nieuw.append(r)
-            if limiet_op:
-                stand.update(volgende=naam, reden=limiet_op)
-                resultaat(naam, "🛑", f"{limiet_op} bij opnieuw lezen; de volgende run gaat hier verder")
-                break
-        # heeft de gemeente inmiddels een CVDR-regeling, dan vervallen de internetresultaten
+        else:
+            nieuw += oud_web  # vorige internetuitkomst blijft staan tot de volgende zoekronde
+        # "ook vermeld op": webpagina's die een CVDR-regeling van deze gemeente noemen
+        for rid, url in web_state.get(naam, {}).get("ook", []):
+            for r in nieuw:
+                if r["id"] == rid and url not in (r.get("extra_bronnen") or []):
+                    r["extra_bronnen"] = (r.get("extra_bronnen") or []) + [url]
 
         webtreffers = sum(1 for r in nieuw if r["gemeente"] == naam and r.get("bron") == "web")
-        dekking[naam] = {"datum": VANDAAG,
-                         "bronnen_gecheckt": ["CVDR"] + (["internet (AI)"] if web_state.get(naam) and web_nodig else []),
+        w = web_state.get(naam, {})
+        gecheckt = ["CVDR"]
+        if w.get("versie") == WEB_VERSIE:
+            gecheckt += (["gemeentesite"] if w.get("site_urls") else [])
+            gecheckt += ["partners"] + (["AI-zoekactie"] if w.get("ai_gezocht") else [])
+        dekking[naam] = {"datum": VANDAAG, "bronnen_gecheckt": gecheckt,
                          "treffers": len(treffers), "relevante_regelingen": relevant + webtreffers,
                          "wacht_op_uitlezen": len(wachtrij)}
-        zoekstatus[naam] = {"gemeente": naam, "provincie": g.get("provincie"), "cvdr_gecheckt": VANDAAG,
+        zoekstatus[naam] = {"gemeente": naam, "provincie": g.get("provincie"),
+                            "cvdr_gecheckt": vorige_status.get("cvdr_gecheckt") if cvdr_fout else VANDAAG,
                             "wacht_op_uitlezen": wachtrij,
-                            "internet_gezocht": web_state.get(naam, {}).get("datum") if web_nodig else None}
+                            "internet_gezocht": w.get("datum") if w.get("versie") == WEB_VERSIE else None,
+                            "gemeentesite": w.get("site"), "gemeentesite_doorzocht": bool(w.get("site_urls")),
+                            "partners": w.get("partners") or [], "ai_gezocht": w.get("ai_gezocht"),
+                            "paginas_gevonden": len(w.get("paginas") or [])}
         regs = [r for r in nieuw if r["gemeente"] == naam and r.get("status") != "gesloten"]
         zonder = [r for r in regs if not heeft_voorwaarden(r)]
         web_regs = [r for r in regs if r.get("bron") == "web"]
@@ -845,8 +1096,14 @@ def main():
         if web_regs:
             delen.append(f"{len(web_regs)} via internet (controleren)")
         uitleg = f" ({', '.join(delen)})" if delen else ""
-        if web_uitkomst == "mislukt":
-            resultaat(naam, "❌", "niets in CVDR en zoeken op internet mislukt")
+        if cvdr_fout:
+            resultaat(naam, "❌", "CVDR niet bereikbaar, vorige uitkomst blijft staan"
+                      + ("; internet wel doorzocht" if web_uitkomst == "gezocht" else ""))
+        elif web_uitkomst == "mislukt":
+            resultaat(naam, "❌", "zoeken op internet mislukt" + (f"; wel {len(regs)} open regeling(en)" if regs else ""))
+        elif wachtrij and ZONDER_AI:
+            resultaat(naam, "🔎", f"{len(wachtrij)} CVDR-regeling(en) en {web_paginas} "
+                                  f"internetpagina('s) gevonden; uitlezen volgt in een run met AI")
         elif wachtrij:
             resultaat(naam, "⚠️", f"{len(wachtrij)} regeling(en) niet uitgelezen (fout bij ophalen of uitlezen), "
                                   f"volgt bij de volgende run" + (f"; wel gelukt: {len(regs)}" if regs else ""))
@@ -857,7 +1114,7 @@ def main():
         elif any(r["gemeente"] == naam for r in nieuw):
             resultaat(naam, "➖", "alleen gesloten regelingen")
         elif web_uitkomst == "gezocht":
-            resultaat(naam, "➖", "geen regeling in CVDR, en op internet niets gevonden")
+            resultaat(naam, "➖", "geen regeling in CVDR, en op gemeentesite, bij partners en via AI niets gevonden")
         else:
             resultaat(naam, "➖", "geen isolatieregeling gevonden")
         gedaan.add(naam)
@@ -944,7 +1201,15 @@ def rij_voor(r):
     bouwjaar = " ".join(x for x in [f"vanaf {c['bouwjaar_min']}" if c.get("bouwjaar_min") else "",
                                     f"t/m {c['bouwjaar_max']}" if c.get("bouwjaar_max") else "",
                                     _tekst(c.get("bouwjaar_opmerking"))] if x)
-    bron = "handmatig" if r.get("handmatig") else {"web": "internet (AI)", "wacht": "CVDR (wacht)"}.get(r.get("bron"), "CVDR")
+    if r.get("handmatig"):
+        bron = "handmatig"
+    elif r.get("bron") == "web":
+        bron = r.get("bron_type") or "internet (AI)"
+    else:
+        bron = {"wacht": "CVDR (wacht)"}.get(r.get("bron"), "CVDR")
+    bc = r.get("bewijs_controle") or {}
+    bewijs = ("" if not bc else "niet gevonden: " + ", ".join(bc["niet_gevonden"]) if bc.get("niet_gevonden")
+              else f"ok ({bc.get('gecontroleerd', 0)} velden)")
     return {
         "Gemeente": r.get("gemeente"), "Provincie": r.get("provincie"), "Regeling": r.get("naam"),
         "Bron": bron, "Status": r.get("status"), "Gecontroleerd": "" if r.get("bron") == "wacht" else ("ja" if r.get("gecontroleerd") else "nee"),
@@ -958,8 +1223,9 @@ def rij_voor(r):
         "Maatregelen": _tekst(r.get("maatregelen")), "Technische eisen": _tekst(r.get("technische_eisen")),
         "Eisen uitvoerder": _tekst(r.get("uitvoerder_eisen")), "Aanvragen": _tekst(r.get("aanvragen")),
         "Stapelbaar met ISDE": _tekst(r.get("stapelbaar_isde")), "Budget": _tekst(r.get("budgetstatus")),
+        "Uitvoerder": _tekst(r.get("uitvoerder")), "Bewijs gecontroleerd": bewijs,
         "Opmerkingen": _tekst(r.get("opmerkingen")), "Peildatum": _datum(r.get("peildatum")),
-        "Link": r.get("bron_url") or "",
+        "Link": r.get("bron_url") or "", "Ook vermeld op": _tekst(r.get("extra_bronnen")),
     }
 
 
@@ -1006,10 +1272,11 @@ def schrijf_overzicht(regelingen, zoekstatus, dekking):
     rijen = [rij_voor(r) for r in sorted(regelingen + wachtend, key=lambda r: (r.get("gemeente") or "", r.get("naam") or ""))]
     blad(ws, rijen, {"Gemeente": 16, "Regeling": 40, "Bedrag": 35, "WOZ": 24, "Isolatiestaat / energielabel": 35,
                      "Maatregelen": 35, "Technische eisen": 35, "Eisen uitvoerder": 30, "Aanvragen": 30,
-                     "Opmerkingen": 50, "Link": 45, "Inkomensgrens": 25, "VvE / appartement": 25}, "Link")
+                     "Opmerkingen": 50, "Link": 45, "Inkomensgrens": 25, "VvE / appartement": 25,
+                     "Bron": 24, "Bewijs gecontroleerd": 24, "Ook vermeld op": 45}, "Link")
     grijs = PatternFill("solid", fgColor="EDEDED")
     for regel, r in zip(ws.iter_rows(min_row=2), rijen):
-        vul = {"internet (AI)": geel, "CVDR (wacht)": grijs}.get(r["Bron"])
+        vul = grijs if r["Bron"] == "CVDR (wacht)" else geel if r["Bron"] not in ("CVDR", "handmatig") else None
         for cel in regel if vul else []:
             cel.fill = vul
 
@@ -1023,32 +1290,48 @@ def schrijf_overzicht(regelingen, zoekstatus, dekking):
         regs, z, d = per_gemeente.get(g, []), status.get(g, {}), dekking.get(g, {})
         open_ = [r for r in regs if r.get("status") != "gesloten"]
         wacht = len(z.get("wacht_op_uitlezen") or [])
+        bronnen = d.get("bronnen_gecheckt") or ["CVDR"]
+        web_gedaan = "partners" in bronnen
         if open_:
             conclusie = "regeling gevonden"
         elif regs:
             conclusie = "alleen gesloten regeling(en)"
         elif wacht:
             conclusie = "wacht op uitlezen"
+        elif web_gedaan and "gemeentesite" in bronnen:
+            conclusie = "geen regeling gevonden (alles doorzocht)"
+        elif web_gedaan:
+            conclusie = "geen regeling gevonden (gemeentesite niet doorzocht)"
         else:
-            conclusie = "geen regeling gevonden"
+            conclusie = "nog niet volledig gezocht (alleen CVDR)"
         g_rijen.append({
             "Gemeente": g, "Provincie": z.get("provincie") or (regs[0].get("provincie") if regs else ""),
             "Conclusie": conclusie, "Regelingen (open)": len(open_), "Regelingen (totaal)": len(regs),
             "Waarvan via internet (AI)": sum(1 for r in regs if r.get("bron") == "web"),
             "Wacht op uitlezen": wacht, "Treffers in CVDR": d.get("treffers", ""),
             "CVDR gecheckt": _datum(z.get("cvdr_gecheckt") or d.get("datum")),
+            "Bronnen doorzocht": ", ".join(bronnen),
             "Internet gezocht": _datum(z.get("internet_gezocht")),
+            "Gemeentesite": z.get("gemeentesite") or ("" if not web_gedaan else "niet gevonden"),
+            "Partners met regeling": ", ".join(z.get("partners") or []),
+            "AI-zoekactie": _datum(z.get("ai_gezocht")),
+            "Relevante pagina's": z.get("paginas_gevonden", ""),
             "Namen regelingen": ", ".join([r.get("naam") or "" for r in regs]
                                           + [f"{w['titel']} (nog niet uitgelezen)" for w in z.get("wacht_op_uitlezen") or []]),
         })
-    blad(wb.create_sheet("Gemeenten"), g_rijen, {"Gemeente": 20, "Conclusie": 26, "Namen regelingen": 80})
+    blad(wb.create_sheet("Gemeenten"), g_rijen, {"Gemeente": 20, "Conclusie": 34, "Namen regelingen": 80,
+                                                 "Bronnen doorzocht": 34, "Gemeentesite": 30, "Partners met regeling": 28})
 
     uitleg = wb.create_sheet("Uitleg")
     for regel in [
         ["Overzicht isolatieregelingen", f"bijgewerkt {_datum(VANDAAG)}"],
-        ["Regelingen", "Eén rij per regeling met de voorwaarden. Geel = gevonden via AI op internet: altijd de link controleren. "
-                       "Grijs = gevonden in het CVDR maar nog niet uitgelezen."],
-        ["Gemeenten", "Alle gemeenten met de conclusie, ook als er niets is gevonden."],
+        ["Regelingen", "Eén rij per regeling met de voorwaarden. Geel = gevonden op internet (gemeentesite, partner of "
+                       "AI-zoekactie), niet in het CVDR: altijd de link controleren. Grijs = gevonden in het CVDR maar nog niet uitgelezen. "
+                       "'Bewijs gecontroleerd' = staat wat het model uitlas letterlijk in de brontekst. 'Ook vermeld op' = "
+                       "webpagina's (bijv. van een energieloket) die dezelfde regeling noemen."],
+        ["Gemeenten", "Alle gemeenten met de conclusie, ook als er niets is gevonden. 'Bronnen doorzocht' laat zien waar "
+                      "is gezocht: CVDR, gemeentesite, partners (energieloketten e.d.) en AI-zoekactie. "
+                      "'Nog niet volledig gezocht' betekent: alleen het CVDR, de rest volgt bij een volgende run."],
         ["Let op", "Dit bestand wordt bij elke run opnieuw gemaakt. Aanpassingen hierin gaan verloren; "
                    "'gecontroleerd' zet je in regelingen.json."],
     ]:

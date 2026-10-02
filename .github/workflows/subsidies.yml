@@ -7,6 +7,14 @@ on:
         description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten, verder waar de vorige run stopte."
         required: false
         default: ""
+      proef:
+        description: "Proefrun: geen pull request, de uitkomst (Excel, regelingen.json, log) komt als download bij de run."
+        type: boolean
+        default: false
+      zonder_ai:
+        description: "Alleen zoeken (CVDR, gemeentesite, partners), niets naar het taalmodel. Om het zoeken te testen zonder tegoed."
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -44,15 +52,19 @@ jobs:
       - name: Regelingen ophalen en voorwaarden uitlezen
         timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem
         run: |
+          EXTRA=""
+          if [ "$ZONDER_AI" = "true" ]; then EXTRA="--zonder-ai"; fi
           if [ -n "$ALLEEN" ]; then
-            python -u scraper/run.py --alleen "$ALLEEN"
+            python -u scraper/run.py --alleen "$ALLEEN" $EXTRA
           else
-            python -u scraper/run.py --vergelijk tests/baseline_pilot.json
+            python -u scraper/run.py --vergelijk tests/baseline_pilot.json $EXTRA
           fi
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ALLEEN: ${{ github.event.inputs.gemeenten }}
+          ZONDER_AI: ${{ github.event.inputs.zonder_ai }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}   # optioneel: gratis sleutel van auth.pollinations.ai
 
       # Is de run hard gestopt (noodrem, runner weg)? Dan staat er wel een tussentijdse stand,
       # maar zijn het overzicht en de TIOS-export misschien niet bijgewerkt. Dat gebeurt hier.
@@ -62,8 +74,22 @@ jobs:
 
       # Wijzigingen komen als pull request binnen: jij controleert, daarna pas live.
       # Ook na een onderbreking, zodat het werk tot dan toe niet verloren gaat.
+      # Proefrun: geen pull request, wel alles als download (tabblad Actions → de run → Artifacts)
+      - name: Uitkomst van de proefrun bewaren
+        if: always() && github.event.inputs.proef == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: proefrun
+          path: |
+            regelingen.json
+            zoekstatus.json
+            overzicht_voorwaarden.xlsx
+            data/web_state.json
+            data/gemeente_sites.json
+            data/wijzigingen_laatste.md
+
       - name: Pull request maken bij wijzigingen
-        if: always()
+        if: always() && github.event.inputs.proef != 'true' && github.event.inputs.zonder_ai != 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           branch: subsidie-update

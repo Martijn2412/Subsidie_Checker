@@ -27,6 +27,31 @@ subsidie misloopt. **Lever daarom werk af dat klopt en dat blijft werken**, ook 
 - Liever een tool die zichzelf herstelt (verder waar hij stopte, niets kwijt) dan een die iemand moet oppassen.
 - Liever simpel en uitgelegd dan slim en onbegrijpelijk.
 
+## Doel
+Van **elke Nederlandse gemeente** (± 342) uitzoeken of er een regeling is voor **isolatie van bestaande
+koopwoningen** (subsidie, voucher, korting, gratis isolatieactie of lening), **op welke manier dan ook**:
+in het CVDR, op de eigen gemeentesite of bij een partner die het voor de gemeente uitvoert (energieloket,
+bouwloket, WoonWijzerWinkel, SVn). Van elke regeling de **voorwaarden** ophalen en bijwerken in
+`overzicht_voorwaarden.xlsx` (en `regelingen.json`, de checkpagina en de TIOS-export).
+
+Een gemeente zonder regeling moet aantoonbaar overal doorzocht zijn. "Niet gezocht" is iets anders dan
+"niets gevonden". Dat onderscheid moet zichtbaar blijven in de Excel (blad *Gemeenten*, kolom *Bronnen doorzocht*).
+
+## Hoe het werkt (per gemeente, `scraper/run.py`)
+1. **CVDR** (`zoek_cvdr`): zoekwoorden uit `scraper/config.json` → trechter: titel → vervallen → tekst →
+   AI-filter → AI-extractie (`scraper/prompt_extractie.md`), via Pollinations.
+2. **Internet** (`scraper/webbronnen.py`, eens per `web_zoeken_elke_dagen`):
+   gemeentesite (adres uit het Register van Overheidsorganisaties, sitemap of rondgang) + partners
+   (`partners` in config: lijstpagina's en URL-sjablonen) → gratis tekstfilter → links naar voorwaarden en pdf's volgen.
+   Levert dat niets op, of heeft de gemeente nog geen open regeling: AI-zoekactie met Google (de echte bronnen).
+   Alle pagina's van een gemeente gaan in **één** AI-aanroep, en alleen als de tekst veranderd is (hash in `data/web_state.json`).
+3. **Controle op verzinnen**: het `bewijs` per veld moet in de brontekst staan (`controleer_bewijs`).
+   Zo niet: betrouwbaarheid omlaag en een melding in de PR.
+4. **Dubbelen**: een webpagina over een regeling die al uit het CVDR komt wordt geen nieuw record, maar
+   komt bij `extra_bronnen` ("Ook vermeld op" in de Excel).
+5. Uitvoer: `regelingen.json`, `zoekstatus.json`, `overzicht_voorwaarden.xlsx`, `tios/`, `data/`.
+   De workflow (alleen handmatig gestart) maakt een PR "Subsidie-update". Pas na het mergen ziet de binnendienst het.
+
 ## Communicatie
 - Schrijf in het Nederlands, in gewone taal en met korte zinnen. Niet technisch, tenzij Martijn erom vraagt.
 - Documenten voor anderen (zoals TIOS): alleen wat er nodig is en waarom, en kort hoe het gebruikt wordt.
@@ -50,6 +75,10 @@ subsidie misloopt. **Lever daarom werk af dat klopt en dat blijft werken**, ook 
 ## Keuzes en instellingen
 - Kies niet stilletjes een grens of aantal (maximum aantal links, dagen, regelingen per run). Maak er een
   instelling van in `scraper/config.json` met uitleg (`_uitleg_...`), en noem de keuze in je antwoord.
+- Wijzig het extractieformaat niet zonder `normaliseer.py`, `subsidiecheck.js`, `export_tios.py` en de tests mee te nemen.
+- Wordt een filter ruimer, verhoog dan `FILTER_VERSIE` in `scraper/run.py`. Verandert het zoeken op internet,
+  verhoog dan `WEB_VERSIE` (dan wordt alles opnieuw bekeken).
+- Geen API-sleutels of klantgegevens in de repo; de repo en de checkpagina zijn openbaar.
 
 ## Git en pull requests
 - Martijn controleert en merget zelf. Maak alleen een pull request als hij daarom vraagt, of als hij vraagt om
@@ -70,13 +99,30 @@ subsidie misloopt. **Lever daarom werk af dat klopt en dat blijft werken**, ook 
   "nog checken" noemen; de checkservice en de checkpagina gaan standaard uit van "ja".
 
 ## Runs en AI-budget
-- Er is geen vast schema: de run start alleen als Martijn op Run workflow drukt. Het gratis Gemini-tegoed
-  wordt om 09:00 Nederlandse tijd opnieuw gevuld. Is het tegoed op, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
+- Er is geen vast schema: de run start alleen als Martijn op Run workflow drukt. Het gratis Gemini-tegoed (alleen
+  voor zoeken) wordt om 09:00 Nederlandse tijd opnieuw gevuld. Lukt het uitlezen niet meer, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
 - Per gemeente staat het resultaat in de log van de stap "Regelingen ophalen en voorwaarden uitlezen":
   ✅ ⚠️ ➖ ❌ 🛑. Op de Summary-pagina van de run staat een tabel.
+
+## Taalmodellen
+- **Filter en uitlezen: Pollinations** (`taalmodel` in `scraper/config.json`, OpenAI-compatibel). Zonder sleutel
+  werkt het anoniem (model `openai-fast`, ongeveer 1 aanvraag per 15 seconden, soms een tijdelijke 402: daarom
+  meerdere pogingen). Met een gratis sleutel (secret `POLLINATIONS_API_KEY`, account op auth.pollinations.ai)
+  is het betrouwbaarder en kan Pollinations ook op internet zoeken (`modellen.zoeken`).
+- **Gemini** wordt alleen nog gebruikt voor de AI-zoekactie met Google (`gemini_alleen_voor_zoeken`). Is Gemini op,
+  dan wordt alleen dat zoeken overgeslagen; de rest gaat door.
+- Mistral, Ollama en andere aanbieders zijn er bewust uitgehaald (Martijn, 2-10-2026). `reserve_aanbieders` in de
+  config kan nog wel een lijst van OpenAI-compatibele aanbieders bevatten, maar staat standaard leeg.
+- Is het taalmodel niet bereikbaar, dan stopt de run en gaat de volgende verder waar hij stopte (`data/voortgang.json`).
+  Daarom: zoeken zonder AI waar het kan, AI alleen voor uitlezen, en nooit opnieuw uitlezen wat niet veranderd is.
 
 ## Testen
 - `node --test tests/*.test.js` (rekenregels en checkservice)
 - `python -m unittest discover tests` (opschonen, verdergaan na onderbreking, internetregelingen).
   Er is geen sleutel nodig: Gemini, het CVDR en de websites worden nagebootst.
 - De workflow "Tests" draait beide bij elke pull request.
+- Internet en taalmodellen worden in de tests nagebootst (`tests/test_webbronnen.py`, `tests/test_web_run.py`,
+  `tests/test_aanbieders.py`).
+- Echt testen: Actions → *Subsidies bijwerken* → Run workflow met een paar gemeenten en **proef** aan (geen PR,
+  uitkomst als download en per regeling een regel met `→` in de log). Eventueel **zonder AI** (alleen zoeken)
+  Lokaal: `python scraper/run.py --zonder-ai --alleen Zeist`.

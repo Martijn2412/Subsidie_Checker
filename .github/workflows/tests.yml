@@ -24,6 +24,6 @@ jobs:
       - name: Rekenregels (subsidiecheck.js)
         run: node --test tests/*.test.js
       - name: Pakketten voor de scraper-tests
-        run: pip install requests
+        run: pip install requests openpyxl pypdf
       - name: Data opschonen en verdergaan na een onderbreking (Python)
         run: python -m unittest discover tests

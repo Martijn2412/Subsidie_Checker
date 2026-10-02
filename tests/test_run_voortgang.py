@@ -33,8 +33,10 @@ class Basis(unittest.TestCase):
         self.oud = {k: getattr(run, k) for k in
                     ["ROOT", "OUT", "DATA", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE",
                      "OVERZICHT", "VOORTGANG", "MAX_RUN_SEC", "zoek_cvdr", "is_vervallen", "haal_tekst",
-                     "is_relevant", "extraheer", "gemeentelijst", "schrijf_overzicht", "web_zoek"]}
-        for k in ["OUT", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE", "OVERZICHT", "VOORTGANG"]:
+                     "is_relevant", "extraheer", "gemeentelijst", "schrijf_overzicht", "GEMEENTE_SITES"]}
+        self.oud_web = {k: getattr(run.webbronnen, k) for k in ["verzamel", "haal_roo", "vind_site"]}
+        for k in ["OUT", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE", "OVERZICHT", "VOORTGANG",
+                  "GEMEENTE_SITES"]:
             setattr(run, k, self.map / getattr(run, k).relative_to(run.ROOT))
         run.ROOT, run.DATA = self.map, self.map / "data"
         run.gemeentelijst = lambda: [{"naam": n, "provincie": "Test"} for n in GEMEENTEN]
@@ -44,12 +46,19 @@ class Basis(unittest.TestCase):
         run.is_relevant = lambda titel, tekst: True
         run.extraheer = self.nep_extraheer
         run.schrijf_overzicht = lambda *a: None
-        run.web_zoek = lambda g: []
+        # internet: geen pagina's gevonden (het zoeken op internet zelf wordt in test_webbronnen getest)
+        run.webbronnen.verzamel = lambda *a, **kw: {"paginas": [], "verslag": {
+            "site": None, "site_bron": None, "site_urls": 0, "kandidaten": 0, "partners": [], "ai_gezocht": False,
+            "paginas": []}}
+        run.webbronnen.haal_roo = lambda: {}
+        run.webbronnen.vind_site = lambda *a, **kw: None
         self.gezocht, self.uitgelezen, self.crash_bij, self.tijd_op_na, self.budget_op_bij = [], [], None, None, None
 
     def tearDown(self):
         for k, v in self.oud.items():
             setattr(run, k, v)
+        for k, v in self.oud_web.items():
+            setattr(run.webbronnen, k, v)
         shutil.rmtree(self.map)
 
     def nep_cvdr(self, naam, trefwoorden=None):
@@ -146,89 +155,3 @@ class TestVoortgang(Basis):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-class TestWebregelingen(Basis):
-    """Regelingen die via internet zijn gevonden: voorwaarden van de pagina of via het taalmodel."""
-    EXT = {"relevant": True, "naam": "Isolatiesubsidie Webdorp", "bedrag": "max. € 500",
-           "criteria": {"eigenaar_bewoner": True, "woz_max": 400000}}
-
-    def test_vervolglinks_alleen_voorwaarden_op_eigen_site(self):
-        h = ('<a href="/subsidie-isolatie/voorwaarden">Voorwaarden isolatiesubsidie</a>'
-             '<a href="https://andere-site.nl/subsidie-voorwaarden">elders</a>'
-             '<a href="/contact">Contact</a>'
-             '<a href="/documenten/subsidieregeling-isolatie.pdf">Subsidieregeling (pdf)</a>')
-        self.assertEqual(run.vervolglinks("https://www.gemeente.nl/nieuws/isolatie", h),
-                         ["https://www.gemeente.nl/subsidie-isolatie/voorwaarden",
-                          "https://www.gemeente.nl/documenten/subsidieregeling-isolatie.pdf"])
-
-    def test_pagina_met_doorverwijzing_wordt_gelezen(self):
-        opgehaald = []
-        def nep_ruw(url):
-            opgehaald.append(url)
-            if url.endswith("/nieuws"):
-                return "Nieuws: er is weer subsidie voor isolatie. " * 3, '<a href="/isolatie/voorwaarden">Bekijk de voorwaarden</a>'
-            return "Voorwaarden: eigenaar-bewoner, WOZ-waarde tot 400.000 euro. " * 20, ""
-        oud, run.haal_ruw = run.haal_ruw, nep_ruw
-        run.extraheer = lambda tekst: dict(self.EXT) if "WOZ-waarde" in tekst else {}
-        try:
-            ext, methode = run.lees_webregeling("Isolatiesubsidie", "Webdorp", "https://www.webdorp.nl/nieuws")
-        finally:
-            run.haal_ruw = oud
-        self.assertEqual(methode, "pagina")
-        self.assertEqual(ext["criteria"]["woz_max"], 400000)
-        self.assertEqual(opgehaald, ["https://www.webdorp.nl/nieuws", "https://www.webdorp.nl/isolatie/voorwaarden"])
-
-    def test_geblokkeerde_pagina_dan_taalmodel_laten_zoeken(self):
-        def geblokkeerd(url):
-            raise RuntimeError("403 Forbidden")
-        vragen = []
-        oud_ruw, oud_llm = run.haal_ruw, run.llm
-        run.haal_ruw = geblokkeerd
-        run.llm = lambda taak, tekst, **kw: (vragen.append((taak, kw)), json.dumps(self.EXT))[1]
-        try:
-            ext, methode = run.lees_webregeling("Isolatiesubsidie", "Webdorp", "https://www.webdorp.nl/x")
-        finally:
-            run.haal_ruw, run.llm = oud_ruw, oud_llm
-        self.assertEqual(methode, "zoeken")
-        self.assertTrue(vragen[0][1]["zoeken"])
-        self.assertTrue(run.heeft_voorwaarden(ext))
-
-    def test_bestaande_webregeling_zonder_voorwaarden_wordt_opnieuw_gelezen(self):
-        run.zoek_cvdr = lambda naam, trefwoorden=None: {}            # niets in het CVDR
-        web = {"id": "aadorp-web-isolatie", "cvdr_id": None, "bron": "web", "handmatig": False,
-               "gecontroleerd": False, "gemeente": "Aadorp", "provincie": "Test", "naam": "Isolatiesubsidie Aadorp",
-               "bron_url": "https://www.aadorp.nl/isolatie", "peildatum": "2026-09-28", "status": "onbekend",
-               "betrouwbaarheid": "laag", "criteria": {}}
-        run.OUT.write_text(json.dumps([web]))
-        run.WEB_STATE.write_text(json.dumps({n: {"datum": run.VANDAAG, "gevonden": 0} for n in GEMEENTEN}))
-        gelezen = []
-        oud = run.lees_webregeling
-        run.lees_webregeling = lambda naam, g, url: (gelezen.append(url), (dict(self.EXT), "pagina"))[1]
-        try:
-            run.main()
-            r = json.loads(run.OUT.read_text())[0]
-            self.assertEqual(r["criteria"]["woz_max"], 400000)
-            self.assertEqual(r["voorwaarden_gelezen"], run.VANDAAG)
-            self.assertIn("voorwaarden uitgelezen (van de bronpagina", run.LOG_LAST.read_text())
-            run.main()                                                # tweede keer: heeft voorwaarden, niet opnieuw
-            self.assertEqual(gelezen, ["https://www.aadorp.nl/isolatie"])
-        finally:
-            run.lees_webregeling = oud
-
-    def test_niet_gelukt_dan_niet_dezelfde_dag_opnieuw(self):
-        run.zoek_cvdr = lambda naam, trefwoorden=None: {}
-        web = {"id": "aadorp-web-isolatie", "bron": "web", "gemeente": "Aadorp", "naam": "Isolatiesubsidie Aadorp",
-               "bron_url": "https://www.aadorp.nl/isolatie", "status": "onbekend", "criteria": {}}
-        run.OUT.write_text(json.dumps([web]))
-        run.WEB_STATE.write_text(json.dumps({n: {"datum": run.VANDAAG, "gevonden": 0} for n in GEMEENTEN}))
-        pogingen = []
-        oud = run.lees_webregeling
-        run.lees_webregeling = lambda naam, g, url: (pogingen.append(url), ({}, None))[1]
-        try:
-            run.main()
-            run.main()
-        finally:
-            run.lees_webregeling = oud
-        self.assertEqual(len(pogingen), 1)
-        self.assertEqual(json.loads(run.OUT.read_text())[0]["voorwaarden_gelezen"], run.VANDAAG)

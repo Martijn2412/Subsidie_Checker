@@ -61,6 +61,8 @@ def label(x):
 
 def normaliseer(rec):
     """Geeft dezelfde regeling terug met opgeschoonde criteria (past rec niet aan)."""
+    if not rec.get("bron") and (rec.get("cvdr_id") or rec.get("handmatig")):   # oudere records zonder bron
+        rec = {**rec, "bron": "handmatig" if rec.get("handmatig") else "cvdr"}
     c = rec.get("criteria")
     if not isinstance(c, dict):
         return rec

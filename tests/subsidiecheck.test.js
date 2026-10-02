@@ -97,3 +97,9 @@ test("tios/subsidies.json kan direct als zoekstatus mee", () => {
   assert.equal(uit.uitkomst, "geen_regeling");
   assert.equal(uit.wacht_op_uitlezen, 2);
 });
+
+test("lening wordt als lening genoemd, niet als subsidie", () => {
+  const uit = SC.check({gemeente: "Testdorp", energielabel: "E", woz: 1, eigenaar_bewoner: true, woningtype: "grondgebonden"},
+    [regeling({naam: "Verduurzaming Testdorp", type: "lening"})], {nu: NU});
+  assert.match(uit.tekst, /Verduurzaming Testdorp \(lening\)/);
+});

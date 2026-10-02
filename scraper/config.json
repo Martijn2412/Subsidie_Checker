@@ -1,5 +1,28 @@
 {
   "provider": "gemini",
+  "gemini_alleen_voor_zoeken": true,
+  "taalmodel": {
+    "naam": "pollinations",
+    "basis_url": "https://text.pollinations.ai/openai",
+    "sleutel_env": "",
+    "modellen": {
+      "filter": "openai-fast",
+      "extractie": "openai-fast",
+      "zoeken": "gemini-search"
+    },
+    "max_invoer_tekens": 150000,
+    "max_uitvoer_tokens": 16000,
+    "pauze_sec": 16,
+    "extra": {
+      "reasoning_effort": "low"
+    },
+    "seed": true,
+    "sleutel_env_optioneel": "POLLINATIONS_API_KEY",
+    "pogingen": 5,
+    "timeout_sec": 300,
+    "zoeken_alleen_met_sleutel": true
+  },
+  "_uitleg_taalmodel": "Filter en uitlezen gaan via 'taalmodel' (Pollinations, gratis, OpenAI-compatibel). Zonder sleutel werkt het anoniem: ongeveer 1 aanvraag per 15 seconden en soms een tijdelijke fout (402), daarom 'pogingen'. Met een gratis account op auth.pollinations.ai en de sleutel als repository secret POLLINATIONS_API_KEY is het betrouwbaarder. 'provider' (Gemini) wordt alleen nog gebruikt voor de AI-zoekactie met Google (gemini_alleen_voor_zoeken); is Gemini op, dan wordt alleen dat zoeken overgeslagen. Zoeken op internet via Pollinations kan alleen met een sleutel (zonder sleutel heeft Pollinations alleen 'openai-fast', zonder zoekfunctie); het zoekmodel staat bij modellen.zoeken. Klopt die naam niet meer, kijk dan op https://gen.pollinations.ai/models welke modellen 'search' heten en pas hem aan.",
   "alle_gemeenten": true,
   "_uitleg_gemeenten": "alle_gemeenten true = alle gemeenten van Nederland (lijst via PDOK). De lijst hieronder is dan alleen reserve als PDOK niet werkt. Zet op false om alleen deze gemeenten te doen.",
   "gemeenten": [
@@ -31,16 +54,71 @@
   "trefwoorden": [
     "isolatie",
     "isoleren",
+    "isolatiemaatregelen",
     "energiebesparing",
+    "energiebesparende",
     "verduurzaming woning",
-    "duurzaamheidslening"
+    "verduurzamen",
+    "duurzaamheidslening",
+    "spouwmuur",
+    "voucher"
   ],
-  "web_zoeken_elke_dagen": 30,
+  "_uitleg_trefwoorden": "Zoekwoorden voor het CVDR. Elk woord is één zoekvraag per gemeente; meer woorden = langere run.",
+  "web_zoeken_elke_dagen": 14,
+  "_uitleg_web": "Elke gemeente wordt eens per web_zoeken_elke_dagen doorzocht op de eigen site (sitemap) en bij de partners hieronder. Dat kost geen AI. Lijkt een pagina op een isolatieregeling, dan gaan alle pagina's van die gemeente samen in één AI-aanroep, en alleen als de tekst veranderd is. max_web_zoekacties_per_run = hoeveel AI-zoekacties met Google per run (alleen voor gemeenten waar site en partners niets opleveren of die nog geen open regeling hebben; ai_zoeken_altijd true = voor elke gemeente, alleen zinvol met een betaalde sleutel). gemeente_sites: vaste webadressen als het overheidsregister het verkeerde adres geeft.",
+  "web_limieten": {
+    "paginas_per_gemeente": 6,
+    "kandidaten_gemeentesite": 12,
+    "doorlinks_per_pagina": 4,
+    "rondgang_paginas": 12,
+    "sitemap_bestanden": 15,
+    "ai_zoek_links": 8
+  },
+  "_uitleg_web_limieten": "Grenzen per gemeente bij het zoeken op internet. paginas_per_gemeente: hoeveel relevante pagina's (beste eerst) naar het taalmodel gaan. kandidaten_gemeentesite: hoeveel adressen uit de sitemap worden opgehaald om te bekijken. doorlinks_per_pagina: hoeveel links naar voorwaarden of pdf's per pagina worden gevolgd. rondgang_paginas: hoeveel pagina's worden bekeken als een site geen sitemap heeft. sitemap_bestanden: hoeveel sitemap-bestanden per site. ai_zoek_links: hoeveel links uit een AI-zoekactie worden bekeken. Hoger = vollediger, maar trager.",
   "max_web_zoekacties_per_run": 25,
-  "max_web_nalezen_per_run": 20,
-  "web_nalezen_elke_dagen": 7,
-  "_uitleg_nalezen": "Regelingen die via internet zijn gevonden maar nog geen voorwaarden hebben, worden opnieuw uitgelezen (pagina + doorverwijzingen, anders laat het taalmodel ze opzoeken). Hooguit zoveel per run, en per regeling hooguit eens per zoveel dagen.",
-  "max_minuten_taalmodel": 100,
+  "ai_zoeken_altijd": false,
+  "gemeente_sites": {
+    "'s-Gravenhage": "https://www.denhaag.nl"
+  },
+  "partners": [
+    {
+      "naam": "Regionaal Energieloket",
+      "index": [
+        "https://regionaalenergieloket.nl/gemeenten"
+      ],
+      "sjablonen": [
+        "https://{slug}.regionaalenergieloket.nl/isolatieacties",
+        "https://{slug}.regionaalenergieloket.nl/subsidies-en-leningen"
+      ]
+    },
+    {
+      "naam": "Duurzaam Bouwloket",
+      "index": [
+        "https://www.duurzaambouwloket.nl/gemeenten"
+      ],
+      "sjablonen": [
+        "https://nip.duurzaambouwloket.nl/{slug}"
+      ]
+    },
+    {
+      "naam": "WoonWijzerWinkel",
+      "index": [],
+      "sjablonen": [
+        "https://www.woonwijzerwinkel.nl/{slug}/",
+        "https://www.woonwijzerwinkel.nl/gemeente-{slug}/",
+        "https://www.woonwijzerwinkel.nl/isolatie-{slug}/"
+      ]
+    },
+    {
+      "naam": "Isolatieloket",
+      "index": [],
+      "sjablonen": [
+        "https://isolatieloket.nl/{slug}/"
+      ]
+    }
+  ],
+  "_uitleg_partners": "Partners die regelingen voor gemeenten uitvoeren. index = pagina met een lijst van gemeenten (links worden op gemeentenaam gezocht), sjablonen = webadressen per gemeente ({slug} = naam in kleine letters met streepjes, bijv. bergen-op-zoom). Een pagina telt alleen mee als de gemeente erop staat en hij over geld voor isolatie gaat. Partners voeg je hier zelf toe.",
+  "max_minuten_taalmodel": 290,
   "max_minuten_run": 300,
   "_uitleg_run": "max_minuten_run: na zoveel minuten stopt de run netjes en slaat alles op (GitHub stopt hard na 6 uur). Is het AI-budget of de daglimiet op, dan stopt hij meteen. Daarnaast slaat hij elke 5 minuten tussentijds op. De volgende run begint bij de gemeente waar deze stopte (data/voortgang.json).",
   "modellen": {

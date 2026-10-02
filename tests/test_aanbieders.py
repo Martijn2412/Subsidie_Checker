@@ -1,0 +1,174 @@
+"""Test van de keten van taalmodellen: is de ene aanbieder op, dan de volgende; te lange tekst wordt overgeslagen.
+Nagebootst: geen internet. Draaien: python -m unittest discover tests"""
+import os
+import sys
+import unittest
+
+sys.path.insert(0, os.path.dirname(__file__))
+import test_run_voortgang  # noqa: E402,F401  (zet de nep-'google.genai' klaar)
+run = sys.modules["run"]
+
+
+class Antw:
+    def __init__(self, status, json_=None, tekst="", koppen=None):
+        self.status_code, self._json, self.text, self.headers = status, json_, tekst, koppen or {}
+
+    def json(self):
+        return self._json
+
+
+def ok(tekst):
+    return Antw(200, {"choices": [{"message": {"content": tekst}}]})
+
+
+class TestAanbieders(unittest.TestCase):
+    def setUp(self):
+        self.oud = {k: getattr(run, k) for k in ["client", "START_AANBIEDER", "PAUZE"]}
+        self.oud_cfg = run.CFG.get("reserve_aanbieders")
+        self.oud_post, self.oud_sleep = run.requests.post, run.time.sleep
+        run.client, run.START_AANBIEDER = None, None          # geen Gemini-sleutel
+        run.time.sleep = lambda s: None
+        run.UITGEPUT.clear()
+        run.HOOFD_OP.clear()
+        self.oud_taalmodel = run.CFG.pop("taalmodel", None)
+        self.oud_alleen_zoeken = run.CFG.pop("gemini_alleen_voor_zoeken", None)
+        run.CFG["reserve_aanbieders"] = [
+            {"naam": "github", "basis_url": "https://gh.test", "sleutel_env": "TEST_GH",
+             "modellen": {"filter": "mini", "extractie": "mini"}, "max_invoer_tekens": 100},
+            {"naam": "zonder_sleutel", "basis_url": "https://x.test", "sleutel_env": "BESTAAT_NIET",
+             "modellen": {"filter": "x", "extractie": "x"}},
+            {"naam": "groot", "basis_url": "https://groot.test", "sleutel_env": "TEST_GROOT",
+             "modellen": {"filter": "g", "extractie": "g"}}]
+        os.environ["TEST_GH"], os.environ["TEST_GROOT"] = "a", "b"
+        self.aanroepen = []
+
+    def tearDown(self):
+        for k, v in self.oud.items():
+            setattr(run, k, v)
+        run.CFG["reserve_aanbieders"] = self.oud_cfg
+        if self.oud_taalmodel is not None:
+            run.CFG["taalmodel"] = self.oud_taalmodel
+        if self.oud_alleen_zoeken is not None:
+            run.CFG["gemini_alleen_voor_zoeken"] = self.oud_alleen_zoeken
+        run.requests.post, run.time.sleep = self.oud_post, self.oud_sleep
+        run.UITGEPUT.clear()
+        del os.environ["TEST_GH"], os.environ["TEST_GROOT"]
+
+    def nep(self, antwoorden):
+        def post(url, headers=None, json=None, timeout=None, **kw):
+            self.aanroepen.append((url, json["model"], "response_format" in json))
+            return antwoorden[url].pop(0)
+        run.requests.post = post
+
+    def test_volgende_aanbieder_als_limiet_op(self):
+        self.nep({"https://gh.test/chat/completions": [Antw(429, tekst="Rate limit of 150 per 86400s exceeded")],
+                  "https://groot.test/chat/completions": [ok('{"a": 1}'), ok("JA")]})
+        self.assertEqual(run.llm("extractie", "kort", json_uit=True), '{"a": 1}')
+        self.assertIn("github", run.UITGEPUT)
+        self.assertEqual(run.llm("filter", "kort"), "JA")       # github wordt niet meer geprobeerd
+        self.assertEqual([u for u, _, _ in self.aanroepen].count("https://gh.test/chat/completions"), 1)
+        self.assertTrue(self.aanroepen[0][2])                   # JSON-modus gevraagd
+
+    def test_limiet_per_minuut_eerst_wachten(self):
+        self.nep({"https://gh.test/chat/completions": [Antw(429, tekst="Requests rate limit exceeded"), ok("JA")]})
+        self.assertEqual(run.llm("filter", "kort"), "JA")       # na een minuut wachten lukt het wel
+        self.assertNotIn("github", run.UITGEPUT)
+
+    def test_te_lange_tekst_naar_groter_model(self):
+        self.nep({"https://groot.test/chat/completions": [ok("JA")]})
+        self.assertEqual(run.llm("filter", "x" * 500), "JA")
+        self.assertEqual([u for u, _, _ in self.aanroepen], ["https://groot.test/chat/completions"])
+
+    def test_alles_op_geeft_limietop_en_te_lang_geeft_later(self):
+        self.nep({"https://gh.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")], "https://groot.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")]})
+        with self.assertRaises(run.LimietOp):
+            run.llm("filter", "kort")
+        run.UITGEPUT.clear()
+        self.nep({"https://groot.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")]})
+        with self.assertRaises(RuntimeError) as e:              # te lang voor github, groot is op: later opnieuw
+            run.llm("filter", "x" * 500)
+        self.assertNotIsInstance(e.exception, run.LimietOp)
+
+    def test_zoeken_kan_alleen_met_hoofdaanbieder(self):
+        with self.assertRaises(run.LimietOp):
+            run.llm("zoeken", "zoek", zoeken=True, met_bronnen=True)
+        self.assertIsNone(run.ai_zoekfunctie("zoek"))           # zonder Gemini: geen AI-zoekactie, run gaat door
+
+    def test_eigen_model_alleen_als_het_draait(self):
+        run.CFG["reserve_aanbieders"].insert(0, {"naam": "ollama", "adres_env": "TEST_OLLAMA", "sleutel_env": "",
+                                                "modellen": {"filter": "qwen"}, "max_invoer_tekens": 30000})
+        self.assertNotIn("ollama", [a["naam"] for a in run.reserve_aanbieders()])
+        os.environ["TEST_OLLAMA"] = "http://localhost:11434/v1"
+        try:
+            self.assertEqual(run.reserve_aanbieders()[0]["naam"], "ollama")
+            self.nep({"http://localhost:11434/v1/chat/completions": [ok("JA")]})
+            self.assertEqual(run.llm("filter", "kort"), "JA")
+            self.assertLess(run.max_webtekst(), 30000)          # webtekst past in het kleine model
+        finally:
+            del os.environ["TEST_OLLAMA"]
+
+    def test_hoofdaanbieder_op_wordt_niet_steeds_opnieuw_geprobeerd(self):
+        pogingen = []
+
+        def hoofd(*a, **kw):
+            pogingen.append(1)
+            raise run.LimietOp("429 quota")
+        oud_hoofd, run.llm_hoofd, run.client = run.llm_hoofd, hoofd, object()
+        try:
+            self.nep({"https://gh.test/chat/completions": [ok("JA"), ok("NEE")]})
+            self.assertEqual(run.llm("filter", "kort"), "JA")
+            self.assertEqual(run.llm("filter", "kort"), "NEE")
+            self.assertEqual(len(pogingen), 1)                    # Gemini maar één keer geprobeerd
+        finally:
+            run.llm_hoofd, run.client = oud_hoofd, None
+            run.HOOFD_OP.clear()
+
+    def test_gemini_alleen_voor_zoeken(self):
+        """Standaard: filter en uitlezen via het taalmodel (Pollinations), Gemini alleen voor zoeken met Google."""
+        pogingen = []
+
+        def hoofd(taak, *a, **kw):
+            pogingen.append(taak)
+            return ("gezocht", []) if kw.get("met_bronnen") or (len(a) > 2 and a[2]) else "gezocht"
+        oud_hoofd, run.llm_hoofd, run.client = run.llm_hoofd, hoofd, object()
+        run.CFG["gemini_alleen_voor_zoeken"] = True
+        run.CFG["taalmodel"] = {"naam": "pol", "basis_url": "https://pol.test", "sleutel_env": "",
+                                "sleutel_env_optioneel": "TEST_POL", "modellen": {"filter": "f"}}
+        os.environ["TEST_POL"] = "geheim"
+        koppen = []
+        try:
+            def post(url, headers=None, json=None, timeout=None, **kw):
+                koppen.append(headers)
+                return ok("JA")
+            run.requests.post = post
+            self.assertEqual(run.llm("filter", "kort"), "JA")          # niet via Gemini
+            self.assertEqual(pogingen, [])
+            self.assertEqual(koppen[0]["Authorization"], "Bearer geheim")   # optionele sleutel meegestuurd
+            run.llm("zoeken", "zoek", zoeken=True, met_bronnen=True)       # zoeken wel via Gemini
+            self.assertEqual(pogingen, ["zoeken"])
+        finally:
+            run.llm_hoofd, run.client = oud_hoofd, None
+            del os.environ["TEST_POL"]
+            run.CFG.pop("taalmodel"); run.CFG.pop("gemini_alleen_voor_zoeken")
+
+    def test_zoeken_via_reserve_alleen_met_sleutel(self):
+        run.CFG["taalmodel"] = {"naam": "pol", "basis_url": "https://pol.test", "sleutel_env": "",
+                                "sleutel_env_optioneel": "TEST_POL", "zoeken_alleen_met_sleutel": True,
+                                "modellen": {"zoeken": "zoekmodel"}}
+        try:
+            self.assertIsNone(run.ai_zoekfunctie("zoek"))       # geen sleutel: geen AI-zoekactie
+            os.environ["TEST_POL"] = "geheim"
+            self.nep({"https://pol.test/chat/completions": [ok('{"regelingen": []} Bron: https://www.gemeente.nl/isolatie.')]})
+            tekst, bronnen = run.ai_zoekfunctie("zoek")
+            self.assertEqual(bronnen, ["https://www.gemeente.nl/isolatie."[:-1]])
+        finally:
+            os.environ.pop("TEST_POL", None)
+            run.CFG.pop("taalmodel")
+
+    def test_beginnen_bij_gekozen_aanbieder(self):
+        run.START_AANBIEDER = "groot"
+        self.assertEqual([a["naam"] for a in run.reserve_aanbieders()], ["groot"])
+
+
+if __name__ == "__main__":
+    unittest.main()
