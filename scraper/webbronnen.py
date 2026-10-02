@@ -40,7 +40,7 @@ WONING = re.compile(r"woning|huis|eigenaar|bewoner|inwoner", re.I)
 URL_STERK = re.compile(r"isol|subsid|lening|voucher|waardebon|verduurzam|energiebespa|bespaar|spouw|"
                        r"energieloket|woonlasten|energiecoach|energie-?advies|tegoed", re.I)
 URL_ZWAK = re.compile(r"duurzaam|energie|wonen|woning|klimaat|glas|dak|vloer", re.I)
-URL_NIET = re.compile(r"vacature|raadsinformatie|vergader|agenda|bekendmaking|ondernem|bedrijv|"
+URL_NIET = re.compile(r"vacature|raadsinformatie|vergader|agenda|bekendmaking|ondernem|bedrijv|zakelijk|nieuws|"
                       r"monument|evenement|sport|cultuur|jeugd|onderwijs|afval|parkeren|login|"
                       r"\.(jpg|jpeg|png|gif|svg|zip|docx?|xlsx?|mp4|ics)$", re.I)
 LINK_DETAIL = re.compile(r"voorwaarden|regels|reglement|spelregels|aanvra|subsidieregel|"
@@ -127,7 +127,7 @@ def lees_pagina(url):
     try:
         r = haal(url)
     except Exception as e:
-        if not re.search(r"\b(404|410)\b", str(e)):   # niet-bestaande pagina's van sjablonen zijn normaal
+        if not re.search(r"\b(401|403|404|410)\b", str(e)):   # niet-bestaand of achter een login: normaal
             print(f"    niet bereikbaar: {url} ({str(e)[:80]})")
         return None
     soort = (r.headers.get("content-type") or "").lower()
@@ -194,7 +194,9 @@ def vind_site(naam, roo, vast=None):
 
 def sitemap_urls(site, max_bestanden=15):
     """Alle webadressen uit de sitemap(s) van een site. Leeg als er geen sitemap is."""
-    host = urllib.parse.urlparse(site).netloc
+    deel = urllib.parse.urlparse(site)
+    host = deel.netloc
+    site = f"{deel.scheme}://{host}"   # bijv. https://www.meierijstad.nl/home -> https://www.meierijstad.nl
     te_doen = []
     try:
         robots = haal(site + "/robots.txt", timeout=15).text
@@ -299,6 +301,8 @@ class Partners:
         uit, g, s = [], norm(gemeente), slug(gemeente)
         for p in self.config:
             for link, tekst in self.index(p):
+                if URL_NIET.search(urllib.parse.urlparse(link).path):
+                    continue   # bijv. nieuwsberichten die de gemeente noemen
                 pad = norm(urllib.parse.unquote(urllib.parse.urlparse(link).netloc + " " + urllib.parse.urlparse(link).path))
                 if g and (norm(tekst) == g or re.search(rf"(^| ){re.escape(g)}( |$)", pad)):
                     uit.append((p["naam"], link))
@@ -319,8 +323,9 @@ def detail_links(pagina, max_links=4):
     """Links op een relevante pagina naar voorwaarden, pdf's of het loket dat de regeling uitvoert."""
     kies = []
     for url, tekst in pagina["links"]:
-        if url.rstrip("/") == pagina["url"].rstrip("/") or URL_NIET.search(urllib.parse.urlparse(url).path):
-            continue
+        if (url.rstrip("/") == pagina["url"].rstrip("/") or URL_NIET.search(urllib.parse.urlparse(url).path)
+                or re.search(r"overheid\.nl|officiele-overheidspublicaties|/aanvraag|login|inloggen|digid", url, re.I)):
+            continue   # CVDR-teksten komen al via het CVDR; aanvraagformulieren zitten achter een login
         s = (5 if LINK_DETAIL.search(tekst + " " + url) else 0) + score_url(url, tekst)
         if re.search(r"isol|subsid|voucher|loket", tekst + " " + url, re.I) and s >= 5:
             kies.append((s, url))

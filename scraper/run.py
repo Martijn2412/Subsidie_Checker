@@ -104,7 +104,7 @@ def heeft_voorwaarden(r):
 
 def schrijf_samenvatting(resultaten, stand, totaal):
     """Overzicht per gemeente: in de log en op de samenvattingspagina van de GitHub-run."""
-    volgorde = {"❌": 0, "🛑": 1, "⚠️": 2, "➖": 3, "✅": 4}
+    volgorde = {"❌": 0, "🛑": 1, "⚠️": 2, "🔎": 3, "➖": 4, "✅": 5}
     tel = {}
     for _, sym, _ in resultaten:
         tel[sym] = tel.get(sym, 0) + 1
@@ -902,6 +902,7 @@ def main():
         web_te_oud = (FORCEER or ws.get("versie") != WEB_VERSIE or not ws.get("datum")
                       or (dt.date.fromisoformat(VANDAAG) - dt.date.fromisoformat(ws["datum"])).days >= web_interval)
         web_uitkomst = None   # wat het zoeken op internet deze run opleverde
+        web_paginas = 0
         if web_te_oud:
             bestaand = ([r for r in nieuw if r["gemeente"] == naam and r.get("bron") != "web"]
                         + [r for r in oud.values() if r["gemeente"] == naam and r.get("handmatig")])
@@ -913,6 +914,7 @@ def main():
                                           zoek_functie=ai_zoekfunctie if mag_ai_zoeken else None, parse_json=parse_json,
                                           ai_altijd=CFG.get("ai_zoeken_altijd", False) or not heeft_open)
                 vs = gev["verslag"]
+                web_paginas = len(vs["paginas"])
                 web_gedaan += vs["ai_gezocht"]
                 print(f"  site: {vs['site'] or 'onbekend'} ({vs['site_bron'] or '-'}, {vs['site_urls']} adressen), "
                       f"{vs['kandidaten']} kandidaten, {len(vs['paginas'])} relevante pagina('s)"
@@ -1003,6 +1005,9 @@ def main():
                       + ("; internet wel doorzocht" if web_uitkomst == "gezocht" else ""))
         elif web_uitkomst == "mislukt":
             resultaat(naam, "❌", "zoeken op internet mislukt" + (f"; wel {len(regs)} open regeling(en)" if regs else ""))
+        elif wachtrij and ZONDER_AI:
+            resultaat(naam, "🔎", f"{len(wachtrij)} CVDR-regeling(en) en {web_paginas} "
+                                  f"internetpagina('s) gevonden; uitlezen volgt in een run met AI")
         elif wachtrij:
             resultaat(naam, "⚠️", f"{len(wachtrij)} regeling(en) niet uitgelezen (fout bij ophalen of uitlezen), "
                                   f"volgt bij de volgende run" + (f"; wel gelukt: {len(regs)}" if regs else ""))
