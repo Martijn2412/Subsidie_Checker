@@ -57,6 +57,23 @@ jobs:
       - name: Pakketten installeren
         run: pip install requests google-genai anthropic openpyxl pypdf
 
+      # Alleen bij een proef met aanbieder 'mistral-test': één mini-vraag aan Mistral, met de limieten die Mistral teruggeeft
+      - name: Mistral controleren
+        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder == 'mistral-test'
+        continue-on-error: true
+        env:
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        run: |
+          echo "sleutel aanwezig: $([ -n "$MISTRAL_API_KEY" ] && echo ja || echo nee), lengte ${#MISTRAL_API_KEY}"
+          for model in mistral-small-latest mistral-large-latest; do
+            echo "== $model"
+            curl -sS --max-time 60 -i https://api.mistral.ai/v1/chat/completions \
+              -H "Authorization: Bearer $MISTRAL_API_KEY" -H "Content-Type: application/json" \
+              -d "{\"model\":\"$model\",\"messages\":[{\"role\":\"user\",\"content\":\"Antwoord alleen: hallo\"}],\"max_tokens\":5}" \
+              | grep -iE "^HTTP|ratelimit|retry|^\{" | head -c 1500; echo
+            sleep 3
+          done
+
       # Alleen bij een proef met aanbieder 'test': laat zien of de gratis taalmodellen zonder sleutel antwoorden
       - name: Gratis taalmodellen controleren
         if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder == 'test'
