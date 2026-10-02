@@ -514,6 +514,24 @@ def bewijs_toepassen(rec, tekst):
     return rec
 
 
+def toon(rec, bron=""):
+    """Korte samenvatting van een uitgelezen regeling in de log, zodat je meteen ziet wat eruit kwam."""
+    c = rec.get("criteria") or {}
+    iso = c.get("isolatiestaat") or {}
+    delen = [f"bedrag: {_bedrag(rec.get('bedrag')) or '?'}",
+             f"t/m: {rec.get('looptijd_eind') or '?'}",
+             f"eigenaar-bewoner: {_tekst(c.get('eigenaar_bewoner')) or '?'}"]
+    if c.get("woz_max"):
+        delen.append(f"WOZ max: {_eur(c['woz_max'])}")
+    if isinstance(iso, dict) and iso.get("omschrijving"):
+        delen.append(f"woning: {str(iso['omschrijving'])[:60]}")
+    if c.get("bouwjaar_max"):
+        delen.append(f"bouwjaar t/m {c['bouwjaar_max']}")
+    bc = rec.get("bewijs_controle") or {}
+    delen.append("bewijs ok" if not bc.get("niet_gevonden") else f"bewijs NIET gevonden: {', '.join(bc['niet_gevonden'])}")
+    print(f"    → {rec.get('naam')}{(' [' + bron + ']') if bron else ''}: " + " · ".join(delen))
+
+
 def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
     """Zet de uitkomst van de web-extractie om naar records.
     bestaand: CVDR/handmatige records van deze gemeente (dezelfde regeling niet dubbel opnemen).
@@ -532,6 +550,7 @@ def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
                        or webbronnen.lijkt_op(titel, r["naam"], naam)), None)
         if zelfde:
             ook.append((zelfde, url))
+            print(f"    → {titel}: zelfde als CVDR-regeling '{zelfde['naam']}' (ook vermeld op {url})")
             continue
         vorige = next((r for r in oud_web if webbronnen.lijkt_op(titel, r["naam"], naam)), None)
         rec = {
@@ -554,6 +573,7 @@ def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
         if any(r["id"] == rec["id"] for r in recs):
             continue
         recs.append(rec)
+        toon(rec, rec["bron_type"])
         diff = verschillen(vorige, rec)
         if not vorige or diff:
             kop = f"**{naam} – {rec['naam']}** ({'nieuw' if not vorige else 'gewijzigd'} via {rec['bron_type']}, {url})"
@@ -898,6 +918,7 @@ def main():
             rec["status"] = status(rec)
             rec["betrouwbaarheid"] = betrouwbaarheid(rec)
             rec = bewijs_toepassen(rec, tekst)
+            toon(rec, "CVDR")
             state[cid] = {"versie": meta["versie"], "hash": tekst_hash}
             relevant += 1
             tel["uitgelezen"] += 1
