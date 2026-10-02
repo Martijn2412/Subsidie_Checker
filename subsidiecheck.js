@@ -217,7 +217,7 @@
       const crit = evaluate(r, k);
       const [code, tekst] = verdict(r, crit, opties.nu);
       return {
-        id: r.id, naam: r.naam, uitkomst: UITKOMST[code], uitkomst_tekst: tekst,
+        id: r.id, naam: r.naam, type: r.type || null, uitkomst: UITKOMST[code], uitkomst_tekst: tekst,
         bedrag: bedragTekst(r.bedrag), aanvragen_tm: r.looptijd_eind || null,
         bron: r.bron || "cvdr", betrouwbaarheid: r.betrouwbaarheid || null, gecontroleerd: !!r.gecontroleerd,
         bron_url: r.bron_url || null,
@@ -245,7 +245,8 @@
 
   /* Eén regel tekst, bedoeld voor onder het energielabel in TIOS. */
   function samenvatting(res) {
-    const naamBedrag = r => kort(r.naam, 60) + (r.bedrag ? ` (${kort(r.bedrag, 45)})` : "");
+    const isLening = r => /lening/i.test(r.type || "") && !/lening/i.test(r.naam || "");
+    const naamBedrag = r => kort(r.naam, 60) + (isLening(r) ? " (lening)" : "") + (r.bedrag ? ` (${kort(r.bedrag, 45)})` : "");
     const mist = res.ontbreekt.map(v => VELD_TEKST[v] || v);
     const nog = res.wacht_op_uitlezen ? ` Nog ${res.wacht_op_uitlezen} regeling(en) niet uitgelezen.` : "";
     const web = res.regelingen.some(r => r.uitkomst !== "voldoet_niet" && r.uitkomst !== "gesloten" && r.bron === "web") ? " Let op: bron is internet, controleren." : "";

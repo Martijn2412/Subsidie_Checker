@@ -31,8 +31,10 @@ class TestVoortgang(unittest.TestCase):
         self.oud = {k: getattr(run, k) for k in
                     ["ROOT", "OUT", "DATA", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE",
                      "OVERZICHT", "VOORTGANG", "MAX_RUN_SEC", "zoek_cvdr", "is_vervallen", "haal_tekst",
-                     "is_relevant", "extraheer", "gemeentelijst", "schrijf_overzicht", "web_zoek"]}
-        for k in ["OUT", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE", "OVERZICHT", "VOORTGANG"]:
+                     "is_relevant", "extraheer", "gemeentelijst", "schrijf_overzicht", "GEMEENTE_SITES"]}
+        self.oud_web = {k: getattr(run.webbronnen, k) for k in ["verzamel", "haal_roo", "vind_site"]}
+        for k in ["OUT", "STATE", "DEKKING", "LOG_ALL", "LOG_LAST", "ZOEKSTATUS", "WEB_STATE", "OVERZICHT", "VOORTGANG",
+                  "GEMEENTE_SITES"]:
             setattr(run, k, self.map / getattr(run, k).relative_to(run.ROOT))
         run.ROOT, run.DATA = self.map, self.map / "data"
         run.gemeentelijst = lambda: [{"naam": n, "provincie": "Test"} for n in GEMEENTEN]
@@ -42,12 +44,19 @@ class TestVoortgang(unittest.TestCase):
         run.is_relevant = lambda titel, tekst: True
         run.extraheer = self.nep_extraheer
         run.schrijf_overzicht = lambda *a: None
-        run.web_zoek = lambda g: []
+        # internet: geen pagina's gevonden (het zoeken op internet zelf wordt in test_webbronnen getest)
+        run.webbronnen.verzamel = lambda *a, **kw: {"paginas": [], "verslag": {
+            "site": None, "site_bron": None, "site_urls": 0, "kandidaten": 0, "partners": [], "ai_gezocht": False,
+            "paginas": []}}
+        run.webbronnen.haal_roo = lambda: {}
+        run.webbronnen.vind_site = lambda *a, **kw: None
         self.gezocht, self.uitgelezen, self.crash_bij, self.tijd_op_na, self.budget_op_bij = [], [], None, None, None
 
     def tearDown(self):
         for k, v in self.oud.items():
             setattr(run, k, v)
+        for k, v in self.oud_web.items():
+            setattr(run.webbronnen, k, v)
         shutil.rmtree(self.map)
 
     def nep_cvdr(self, naam, trefwoorden=None):

@@ -31,12 +31,61 @@
   "trefwoorden": [
     "isolatie",
     "isoleren",
+    "isolatiemaatregelen",
     "energiebesparing",
+    "energiebesparende",
     "verduurzaming woning",
-    "duurzaamheidslening"
+    "verduurzamen",
+    "duurzaamheidslening",
+    "spouwmuur",
+    "voucher"
   ],
-  "web_zoeken_elke_dagen": 30,
+  "_uitleg_trefwoorden": "Zoekwoorden voor het CVDR. Elk woord is één zoekvraag per gemeente; meer woorden = langere run.",
+  "web_zoeken_elke_dagen": 14,
+  "_uitleg_web": "Elke gemeente wordt eens per web_zoeken_elke_dagen doorzocht op de eigen site (sitemap) en bij de partners hieronder. Dat kost geen AI. Lijkt een pagina op een isolatieregeling, dan gaan alle pagina's van die gemeente samen in één AI-aanroep, en alleen als de tekst veranderd is. max_web_zoekacties_per_run = hoeveel AI-zoekacties met Google per run (alleen voor gemeenten waar site en partners niets opleveren of die nog geen open regeling hebben; ai_zoeken_altijd true = voor elke gemeente, alleen zinvol met een betaalde sleutel). gemeente_sites: vaste webadressen als het overheidsregister het verkeerde adres geeft.",
   "max_web_zoekacties_per_run": 25,
+  "ai_zoeken_altijd": false,
+  "gemeente_sites": {
+    "'s-Gravenhage": "https://www.denhaag.nl"
+  },
+  "partners": [
+    {
+      "naam": "Regionaal Energieloket",
+      "index": [
+        "https://regionaalenergieloket.nl/gemeenten"
+      ],
+      "sjablonen": [
+        "https://{slug}.regionaalenergieloket.nl/isolatieacties",
+        "https://{slug}.regionaalenergieloket.nl/subsidies-en-leningen"
+      ]
+    },
+    {
+      "naam": "Duurzaam Bouwloket",
+      "index": [
+        "https://www.duurzaambouwloket.nl/gemeenten"
+      ],
+      "sjablonen": [
+        "https://nip.duurzaambouwloket.nl/{slug}"
+      ]
+    },
+    {
+      "naam": "WoonWijzerWinkel",
+      "index": [],
+      "sjablonen": [
+        "https://www.woonwijzerwinkel.nl/{slug}/",
+        "https://www.woonwijzerwinkel.nl/gemeente-{slug}/",
+        "https://www.woonwijzerwinkel.nl/isolatie-{slug}/"
+      ]
+    },
+    {
+      "naam": "Isolatieloket",
+      "index": [],
+      "sjablonen": [
+        "https://isolatieloket.nl/{slug}/"
+      ]
+    }
+  ],
+  "_uitleg_partners": "Partners die regelingen voor gemeenten uitvoeren. index = pagina met een lijst van gemeenten (links worden op gemeentenaam gezocht), sjablonen = webadressen per gemeente ({slug} = naam in kleine letters met streepjes, bijv. bergen-op-zoom). Een pagina telt alleen mee als de gemeente erop staat en hij over geld voor isolatie gaat. Partners voeg je hier zelf toe.",
   "max_minuten_taalmodel": 100,
   "max_minuten_run": 300,
   "_uitleg_run": "max_minuten_run: na zoveel minuten stopt de run netjes en slaat alles op (GitHub stopt hard na 6 uur). Is het AI-budget of de daglimiet op, dan stopt hij meteen. Daarnaast slaat hij elke 5 minuten tussentijds op. De volgende run begint bij de gemeente waar deze stopte (data/voortgang.json).",
