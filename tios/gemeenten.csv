@@ -35,7 +35,7 @@ Bergen (NH);Noord-Holland;regeling;1;0
 Bergen op Zoom;Noord-Brabant;geen_regeling;0;0
 Berkelland;Gelderland;regeling;2;0
 Bernheze;Noord-Brabant;regeling;1;0
-Best;Noord-Brabant;regeling;1;0
+Best;Noord-Brabant;regeling;3;0
 Beuningen;Gelderland;regeling;2;0
 Beverwijk;Noord-Holland;regeling;1;0
 Bladel;Noord-Brabant;regeling;1;0
@@ -139,7 +139,7 @@ Hoeksche Waard;Zuid-Holland;regeling;1;0
 Hof van Twente;Overijssel;regeling;1;0
 Hollands Kroon;Noord-Holland;regeling;1;0
 Hoogeveen;Drenthe;regeling;1;0
-Hoorn;Noord-Holland;regeling;2;0
+Hoorn;Noord-Holland;regeling;3;0
 Horst aan de Maas;Limburg;regeling;1;0
 Houten;Utrecht;regeling;1;0
 Huizen;Noord-Holland;regeling;4;0
@@ -181,7 +181,7 @@ Medemblik;Noord-Holland;regeling;1;0
 Meerssen;Limburg;geen_regeling;0;0
 Meierijstad;Noord-Brabant;geen_regeling;0;0
 Meppel;Drenthe;regeling;2;0
-Middelburg;Zeeland;wacht_op_uitlezen;0;2
+Middelburg;Zeeland;regeling;3;0
 Midden-Delfland;Zuid-Holland;regeling;1;0
 Midden-Drenthe;Drenthe;regeling;1;0
 Midden-Groningen;Groningen;regeling;1;0
@@ -219,13 +219,13 @@ Oostzaan;Noord-Holland;regeling;1;0
 Opmeer;Noord-Holland;alleen_gesloten;0;0
 Opsterland;Fryslân;regeling;2;0
 Oss;Noord-Brabant;regeling;1;0
-Oude IJsselstreek;Gelderland;regeling;3;1
+Oude IJsselstreek;Gelderland;regeling;4;0
 Ouder-Amstel;Noord-Holland;regeling;1;0
-Oudewater;Utrecht;regeling;1;1
+Oudewater;Utrecht;regeling;3;0
 Overbetuwe;Gelderland;regeling;2;0
 Papendrecht;Zuid-Holland;regeling;1;0
 Peel en Maas;Limburg;regeling;1;0
-Pekela;Groningen;regeling;2;0
+Pekela;Groningen;regeling;3;0
 Pijnacker-Nootdorp;Zuid-Holland;regeling;1;0
 Purmerend;Noord-Holland;regeling;1;0
 Putten;Gelderland;regeling;3;0
@@ -247,14 +247,14 @@ Rozendaal;Gelderland;regeling;1;0
 Rucphen;Noord-Brabant;geen_regeling;0;0
 Schagen;Noord-Holland;regeling;1;0
 Scherpenzeel;Gelderland;regeling;2;0
-Schiedam;Zuid-Holland;wacht_op_uitlezen;0;1
+Schiedam;Zuid-Holland;regeling;2;0
 Schiermonnikoog;Fryslân;regeling;1;0
 Schouwen-Duiveland;Zeeland;regeling;3;0
 Simpelveld;Limburg;regeling;2;0
 Sint-Michielsgestel;Noord-Brabant;regeling;2;0
 Sittard-Geleen;Limburg;regeling;1;0
 Sliedrecht;Zuid-Holland;regeling;1;0
-Sluis;Zeeland;regeling;2;0
+Sluis;Zeeland;regeling;4;0
 Smallingerland;Fryslân;regeling;1;0
 Soest;Utrecht;regeling;2;0
 Someren;Noord-Brabant;regeling;1;0
@@ -272,24 +272,24 @@ Terschelling;Fryslân;regeling;2;0
 Texel;Noord-Holland;regeling;1;0
 Teylingen;Zuid-Holland;regeling;1;0
 Tholen;Zeeland;regeling;2;0
-Tiel;Gelderland;regeling;2;0
+Tiel;Gelderland;regeling;6;0
 Tilburg;Noord-Brabant;regeling;1;0
 Tubbergen;Overijssel;regeling;1;0
-Twenterand;Overijssel;regeling;2;0
+Twenterand;Overijssel;regeling;4;0
 Tynaarlo;Drenthe;geen_regeling;0;0
 Tytsjerksteradiel;Fryslân;regeling;1;0
 Uitgeest;Noord-Holland;regeling;1;0
 Uithoorn;Noord-Holland;regeling;1;0
 Urk;Flevoland;regeling;1;0
-Utrecht;Utrecht;regeling;6;1
+Utrecht;Utrecht;regeling;11;0
 Utrechtse Heuvelrug;Utrecht;regeling;2;0
-Vaals;Limburg;regeling;1;0
+Vaals;Limburg;regeling;2;0
 Valkenburg aan de Geul;Limburg;regeling;1;0
 Valkenswaard;Noord-Brabant;regeling;1;0
 Veendam;Groningen;regeling;1;0
 Veenendaal;Utrecht;regeling;1;0
-Veere;Zeeland;regeling;2;2
-Veldhoven;Noord-Brabant;regeling;1;1
+Veere;Zeeland;regeling;4;0
+Veldhoven;Noord-Brabant;regeling;2;0
 Velsen;Noord-Holland;regeling;1;0
 Venlo;Limburg;regeling;1;0
 Venray;Limburg;regeling;1;0
@@ -324,20 +324,20 @@ Wijdemeren;Noord-Holland;regeling;2;0
 Wijk bij Duurstede;Utrecht;regeling;1;0
 Winterswijk;Gelderland;regeling;1;0
 Woensdrecht;Noord-Brabant;regeling;1;0
-Woerden;Utrecht;regeling;1;1
+Woerden;Utrecht;regeling;3;0
 Wormerland;Noord-Holland;regeling;1;0
 Woudenberg;Utrecht;regeling;2;0
 Zaanstad;Noord-Holland;regeling;1;0
 Zaltbommel;Gelderland;regeling;2;0
 Zandvoort;Noord-Holland;regeling;2;0
-Zeewolde;Flevoland;wacht_op_uitlezen;0;1
-Zeist;Utrecht;wacht_op_uitlezen;0;3
-Zevenaar;Gelderland;wacht_op_uitlezen;0;3
-Zoetermeer;Zuid-Holland;wacht_op_uitlezen;0;4
-Zoeterwoude;Zuid-Holland;wacht_op_uitlezen;0;2
-Zuidplas;Zuid-Holland;wacht_op_uitlezen;0;2
-Zundert;Noord-Brabant;wacht_op_uitlezen;0;1
+Zeewolde;Flevoland;regeling;1;0
+Zeist;Utrecht;regeling;2;0
+Zevenaar;Gelderland;regeling;3;0
+Zoetermeer;Zuid-Holland;regeling;2;0
+Zoeterwoude;Zuid-Holland;regeling;1;0
+Zuidplas;Zuid-Holland;regeling;2;0
+Zundert;Noord-Brabant;regeling;2;0
 Zutphen;Gelderland;regeling;3;0
-Zwartewaterland;Overijssel;wacht_op_uitlezen;0;2
-Zwijndrecht;Zuid-Holland;wacht_op_uitlezen;0;2
-Zwolle;Overijssel;wacht_op_uitlezen;0;2
+Zwartewaterland;Overijssel;regeling;3;0
+Zwijndrecht;Zuid-Holland;regeling;1;0
+Zwolle;Overijssel;regeling;1;1

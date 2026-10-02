@@ -549,6 +549,68 @@
     "betrouwbaarheid": "laag"
   },
   {
+    "id": "aa-en-hunze-cvdr723040",
+    "cvdr_id": "CVDR723040",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Aa en Hunze",
+    "provincie": "Drenthe",
+    "naam": "Subsidieregeling verduurzaming particuliere woningen Regio Deal gemeente Aa en Hunze 2024-2025",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": 52671,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": true,
+    "looptijd_start": "2024-08-01",
+    "looptijd_eind": "2025-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": "www.regiodealzuidoostdrenthe.nl/subsidieaanvraag",
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "De subsidie wordt uitsluitend verstrekt aan de bewoner die tevens eigenaar is van een bestaande woning in de gemeente Aa en Hunze.",
+      "inkomen": "Subsidie voor voorzieningen ... wordt alleen verstrekt aan natuurlijke personen met een jaarlijks geregistreerd inkomen van maximaal de door de Rijksoverheid vastgestelde inkomensgrens die van toepassing is voor het in aanmerking komen van een sociale huurwoning op basis van een meerpersoonshuishouden.",
+      "inkomensgrens": "voor 2024 geldt een maximale inkomensgrens van € 52.671.",
+      "stapelbaar_isde": "De subsidie is stapelbaar met andere subsidies, zoals de Isolatiesubsidie Drenthe, ISDE subsidie en de Subsidieregeling verduurzaming Volkshuisvesting Drenthe en eventuele andere (in de toekomst) beschikbare subsidies, voor zover aanvrager daarvoor in aanmerking komt en voor zover dat toegestaan is vanuit andere regelingen en tot maximaal het totale investeringsbedrag.",
+      "looptijd_start": "Deze gewijzigde subsidieregeling treedt ... op 1 augustus 2024 in werking.",
+      "looptijd_eind": "Deze subsidieregeling vervalt van rechtswege op 1 januari 2026.",
+      "aanvraagloket": "De aanvraag kan online worden ingediend op www.regiodealzuidoostdrenthe.nl/subsidieaanvraag of fysiek per post naar het op het aanvraagformulier vermelde adres."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR723040/2",
+    "datum_regelingstekst": "2025-02-12",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "aalsmeer-cvdr765390",
     "cvdr_id": "CVDR765390",
     "versie": 1,
@@ -2342,7 +2404,8 @@
     "datum_regelingstekst": "2024-03-19",
     "peildatum": "2026-10-01",
     "status": "gesloten",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "apeldoorn-lai-koopwoningen",
@@ -2522,7 +2585,8 @@
     "datum_regelingstekst": "2023-10-03",
     "peildatum": "2026-10-01",
     "status": "gesloten",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-cvdr755037",
@@ -2586,7 +2650,8 @@
     "datum_regelingstekst": "2026-01-11",
     "peildatum": "2026-10-01",
     "status": "onbekend",
-    "betrouwbaarheid": "middel"
+    "betrouwbaarheid": "middel",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-cvdr609449",
@@ -2660,7 +2725,8 @@
     "datum_regelingstekst": "2020-09-22",
     "peildatum": "2026-10-01",
     "status": "onbekend",
-    "betrouwbaarheid": "middel"
+    "betrouwbaarheid": "middel",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-cvdr714847",
@@ -2745,7 +2811,8 @@
     "datum_regelingstekst": "2026-06-09",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-cvdr738986",
@@ -2838,7 +2905,8 @@
     "datum_regelingstekst": "2025-05-08",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-isa-2026",
@@ -2923,7 +2991,8 @@
     "datum_regelingstekst": "2026-04-04",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "arnhem-cvdr701280",
@@ -2988,7 +3057,8 @@
     "datum_regelingstekst": "2023-10-03",
     "peildatum": "2026-10-01",
     "status": "gesloten",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "assen-cvdr716048",
@@ -4835,6 +4905,150 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "best-web-isolatiesubsidie-voor-woningeigenaren",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Best",
+    "provincie": "Noord-Brabant",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie voor woningeigenaren",
+    "type": "subsidie",
+    "maatregelen": "isolatie van bestaande woning",
+    "doelgroep": "particulier eigenaar-bewoner",
+    "bedrag": "maximaal €3.000 voor erkend bedrijf, €1.500 voor doe-het-zelf",
+    "technische_eisen": "isolatie uitgevoerd na 1 januari 2025",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 484000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "energielabel D-G of minimaal 2 slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "bonus",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "aanvragen": "aanvragen via Regionaal Energieloket",
+    "uitvoerder_eisen": "geen",
+    "stapelbaar_isde": "ja",
+    "looptijd_start": "2025-01-01",
+    "looptijd_eind": "2027-12-31",
+    "aanvraagloket": "Regionaal Energieloket",
+    "bewijs": {
+      "eigenaar_bewoner": "U bent eigenaar én bewoner van een koopwoning in Best.",
+      "woz_max": "De WOZ-waarde van uw woning bedraagt maximaal € 484.000 (peildatum 1 januari 2022).",
+      "isolatiestaat": "Uw woning heeft energielabel D, E, F of G. Heeft uw woning geen energielabel? Dan moet uw woning minimaal 2 slecht geïsoleerde bouwdelen hebben.",
+      "bouwdelen_min": "Heeft uw woning geen energielabel? Dan moet uw woning minimaal 2 slecht geïsoleerde bouwdelen hebben."
+    },
+    "bron_url": "https://www.gemeentebest.nl/subsidies",
+    "uitvoerder": "Gemeente Best",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "best-cvdr764252",
+    "cvdr_id": "CVDR764252",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Best",
+    "provincie": "Noord-Brabant",
+    "naam": "Nadere Subsidieregeling Isolatie en Zonnepanelen gemeente Best",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 484000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning of twee of meer niet of slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "bonus",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-01-01",
+    "looptijd_eind": "2030-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: vve. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "een particuliere eigenaar-bewoner van een woning",
+      "woz_max": "maximaal €484.000 (peildatum 1 januari 2022)",
+      "isolatiestaat": "een vastgesteld energielabel D, E, F of G heeft of twee of meer niet of slecht geïsoleerde bouwdelen",
+      "inkomen": "met maximaal €1000 indien de aanvrager een huishoudelijke inkomen heeft van maximaal 120% van het sociaal wettelijk minimumloon",
+      "vve": "alleen grondgebonden woningen",
+      "looptijd_eind": "een aanvraag kan ingediend worden tot en met 31 december 2030"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR764252/1",
+    "datum_regelingstekst": "2026-07-28",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": [
+        "vve"
+      ]
+    }
+  },
+  {
     "id": "best-web-subsidieregeling-isolatie-en-zonnepanelen-gemeente",
     "cvdr_id": null,
     "bron": "web",
@@ -4845,7 +5059,7 @@
     "naam": "Subsidieregeling Isolatie en Zonnepanelen gemeente Best",
     "bron_url": "https://www.gemeentebest.nl/nieuws/subsidie-voor-isolatie-van-uw-woning",
     "peildatum": "2026-09-28",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor particuliere eigenaar-bewoners in de gemeente Best met een koopwoning met een WOZ-waarde tot maximaal € 484.000 (peiljaar 2022) en energielabel D t/m G of minimaal twee slecht geïsoleerde bouwdelen. De vergoeding bedraagt bij uitbesteding aan een bedrijf € 1.500 voor één isolatiemaatregel en € 2.250 voor twee of meer maatregelen (met mogelijke bonussen voor biobased materiaal, natuurvriendelijk isoleren of een laag inkomen), en bij doe-het-zelf isolatie maximaal € 750 voor materiaalkosten. De regeling geldt voor werkzaamheden vanaf 1 januari 2025 en loopt tot en met 31 december 2027 (of zolang het budget strekt).",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor particuliere eigenaar-bewoners in de gemeente Best met een koopwoning met een WOZ-waarde tot maximaal € 484.000 (peiljaar 2022) en energielabel D t/m G of minimaal twee slecht geïsoleerde bouwdelen. De vergoeding bedraagt bij uitbesteding aan een bedrijf € 1.500 voor één isolatiemaatregel en € 2.250 voor twee of meer maatregelen (met mogelijke bonussen voor biobased materiaal, natuurvriendelijk isoleren of een laag inkomen), en bij doe-het-zelf isolatie maximaal € 750 voor materiaalkosten. De regeling geldt voor werkzaamheden vanaf 1 januari 2025 en loopt tot en met 31 december 2027 (of zolang het budget strekt).",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -6526,7 +6740,8 @@
     "datum_regelingstekst": "2022-10-06",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "bronckhorst-cvdr743293",
@@ -6610,7 +6825,8 @@
     "datum_regelingstekst": "2025-09-01",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "bronckhorst-cvdr467088",
@@ -6674,7 +6890,8 @@
     "datum_regelingstekst": "2018-05-01",
     "peildatum": "2026-10-01",
     "status": "onbekend",
-    "betrouwbaarheid": "middel"
+    "betrouwbaarheid": "middel",
+    "bron": "cvdr"
   },
   {
     "id": "brummen-web-subsidie-lokale-aanpak-isolatie",
@@ -9983,7 +10200,8 @@
     "datum_regelingstekst": null,
     "peildatum": "2026-09-22",
     "betrouwbaarheid": "laag",
-    "opmerkingen": "Alleen Energieloket-pagina gezien; officiële regelingstekst nog zoeken. Niet voor wijk De Ooi (eigen regeling)."
+    "opmerkingen": "Alleen Energieloket-pagina gezien; officiële regelingstekst nog zoeken. Niet voor wijk De Ooi (eigen regeling).",
+    "bron": "handmatig"
   },
   {
     "id": "doesburg-isa-2025-2028",
@@ -10069,7 +10287,8 @@
     "datum_regelingstekst": "2025-09-01",
     "peildatum": "2026-10-02",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doesburg-cvdr757582",
@@ -10132,7 +10351,8 @@
     "datum_regelingstekst": "2026-03-01",
     "peildatum": "2026-10-02",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doesburg-cvdr723930",
@@ -10207,7 +10427,8 @@
     "datum_regelingstekst": "2025-04-30",
     "peildatum": "2026-10-02",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doesburg-cvdr749101",
@@ -10291,7 +10512,8 @@
     "datum_regelingstekst": "2025-12-10",
     "peildatum": "2026-10-02",
     "status": "onbekend",
-    "betrouwbaarheid": "middel"
+    "betrouwbaarheid": "middel",
+    "bron": "cvdr"
   },
   {
     "id": "doetinchem-cvdr745517",
@@ -10358,7 +10580,8 @@
     "datum_regelingstekst": "2025-11-01",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doetinchem-cvdr719693",
@@ -10431,7 +10654,8 @@
     "datum_regelingstekst": "2024-05-14",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doetinchem-isa-2025-2027",
@@ -10520,7 +10744,8 @@
     "datum_regelingstekst": "2026-07-17",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doetinchem-cvdr758159",
@@ -10589,7 +10814,8 @@
     "datum_regelingstekst": "2026-03-07",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "doetinchem-cvdr407463",
@@ -10654,7 +10880,8 @@
     "datum_regelingstekst": "2017-10-17",
     "peildatum": "2026-10-01",
     "status": "gesloten",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "dongen-cvdr725291",
@@ -18127,24 +18354,135 @@
     "naam": "Doe-het-zelf kadokaart isolatie",
     "bron_url": "https://duurzaam.hoorn.nl/uitgelicht/kadokaart-van-e750-voor-doe-het-zelver/",
     "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Particuliere huiseigenaren met een woning met energielabel D, E, F of G kunnen een kadokaart van € 750,- aanvragen voor de aanschaf van isolatiematerialen (onder andere voor dak-, muur- of vloerisolatie) om zelf aan de slag te gaan. De kadokaart kan worden besteed bij aangesloten lokale bouwmarkten via het Regionaal Energieloket. De actie loopt zolang het subsidiebudget strekt (op = op).",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Particuliere huiseigenaren met een woning met energielabel D, E, F of G kunnen een kadokaart van € 750,- aanvragen voor de aanschaf van isolatiematerialen (onder andere voor dak-, muur- of vloerisolatie) om zelf aan de slag te gaan. De kadokaart kan worden besteed bij aangesloten lokale bouwmarkten via het Regionaal Energieloket. De actie loopt zolang het subsidiebudget strekt (op = op).",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
+  },
+  {
+    "id": "hoorn-web-isolatiesubsidie-gemeente-hoorn-duurzaam-bouwloket",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "partner: Duurzaam Bouwloket",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Hoorn",
+    "provincie": "Noord-Holland",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie gemeente Hoorn - Duurzaam Bouwloket",
+    "type": "subsidie",
+    "maatregelen": "isolatie van bestaande woning",
+    "doelgroep": "particulier eigenaar-bewoner",
+    "bedrag": 1000,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2021-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht of matig geïsoleerd",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "aanvraag starten t/m 30-06-2028",
+    "looptijd_eind": "2028-06-30",
+    "aanvraagloket": "https://nip.duurzaambouwloket.nl/hoorn",
+    "opmerkingen": "Gevonden op internet (partner: Duurzaam Bouwloket), niet in het CVDR. Controleer de bronpagina. Spouwmuur-, bodem- & vloerisolatie niet meer toegestaan via optie 2 per 19-02-2026",
+    "bewijs": {
+      "eigenaar_bewoner": "Je komt mogelijk in aanmerking voor de subsidie van maximaal € 1.000.",
+      "woz_max": "De WOZ-waarde van je woning bedraagt maximaal € 477.000 (peildatum 1 januari 2021).",
+      "isolatiestaat": "Je woning slecht of matig is geïsoleerd met energielabel D, E, F of G.",
+      "bouwdelen_min": "Heb je een energielabel A, B, C of geen energielabel? Dan moet jouw woning minimaal twee bouwdelen hebben die matig of slecht geïsoleerd zijn."
+    },
+    "bron_url": "https://nip.duurzaambouwloket.nl/hoorn",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "hoorn-web-vergoeding-voor-isoleren-gemeentelijke-isolatiesub",
     "cvdr_id": null,
     "bron": "web",
+    "bron_type": "partner: Duurzaam Bouwloket",
     "handmatig": false,
     "gecontroleerd": false,
     "gemeente": "Hoorn",
     "provincie": "Noord-Holland",
-    "naam": "Vergoeding voor isoleren (Gemeentelijke isolatiesubsidie)",
-    "bron_url": "https://www.hoorn.nl/vergoeding-voor-isoleren",
-    "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. De gemeente Hoorn verstrekt een subsidie van maximaal € 2.500 voor isolatiemaatregelen (zoals dak-, gevel-, vloer- en glasisolatie) aan particuliere woningeigenaren met een slecht geïsoleerde koopwoning (energielabel C t/m G of ten minste twee slecht geïsoleerde bouwdelen) en een WOZ-waarde onder het vastgestelde plafond. De regeling wordt uitgevoerd in samenwerking met Klimaatroute en omvat tevens gratis advies en begeleiding. De subsidie is beschikbaar zolang er budget is vanuit het Nationaal Isolatieprogramma.",
+    "peildatum": "2026-10-02",
+    "naam": "Vergoeding voor isoleren - Gemeente Hoorn",
+    "type": "subsidie",
+    "maatregelen": "isolatie van bestaande woning",
+    "doelgroep": "particulier eigenaar-bewoner",
+    "bedrag": 2500,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 300000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2021-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht of matig geïsoleerd",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "aanvraag starten",
+    "aanvraagloket": "https://www.hoorn.nl/vergoeding-voor-isoleren",
+    "opmerkingen": "Gevonden op internet (partner: Duurzaam Bouwloket), niet in het CVDR. Controleer de bronpagina. Geen expliciete einddatum vermeld",
+    "bewijs": {
+      "eigenaar_bewoner": "Wil je uw huis beter isoleren? Dan kun je van de gemeente Hoorn een vergoeding krijgen tot €2.500.",
+      "woz_max": "De WOZ-waarde van je woning is maximaal € 300.000,- met energielabel D, E, F of G.",
+      "isolatiestaat": "Je komt in aanmerking voor de vergoeding als je een koopwoning hebt met een WOZ-waarde van maximaal € 300.000,- met energielabel D, E, F of G."
+    },
+    "bron_url": "https://nip.duurzaambouwloket.nl/hoorn",
     "status": "onbekend",
-    "betrouwbaarheid": "laag"
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "horst-aan-de-maas-cvdr745550",
@@ -23444,7 +23782,7 @@
       "uitvoerder_eisen": "U heeft voor de aanvraag een EPA-maatwerkadvies van een erkende adviseur nodig [...] BRL9500-MWA-W of BRL9500-MWA-U gecertificeerde adviseur.",
       "aanvraagloket": "Met de toewijzingsbrief vraagt u de lening digitaal aan via www.svn.nl"
     },
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Met de Duurzaamheidslening kunnen particuliere eigenaar-bewoners van een bestaande woning (minimaal 1 jaar oud) in Meppel energiebesparende maatregelen zoals woningisolatie financieren. Het leenbedrag ligt tussen de € 2.500 en € 25.000, waarbij via een EPA-maatwerkadvies minimaal twee labelsprongen (tot minstens label C) moeten worden behaald. De lening loopt doorlopend zolang het gemeentelijke budget toereikend is.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Met de Duurzaamheidslening kunnen particuliere eigenaar-bewoners van een bestaande woning (minimaal 1 jaar oud) in Meppel energiebesparende maatregelen zoals woningisolatie financieren. Het leenbedrag ligt tussen de € 2.500 en € 25.000, waarbij via een EPA-maatwerkadvies minimaal twee labelsprongen (tot minstens label C) moeten worden behaald. De lening loopt doorlopend zolang het gemeentelijke budget toereikend is.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -23459,7 +23797,7 @@
     "naam": "Gemeentelijke subsidie energiebesparende isolatiemaatregelen",
     "bron_url": "https://duurzaam.meppel.nl/gemeentelijke-subsidie-energiebesparende-isolatiemaatregelen/",
     "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Deze subsidie vergoedt 100% van de kosten tot maximaal € 2.500 voor isolatiemaatregelen zoals spouwmuur-, dak-, gevel-, vloer- en glasisolatie. De regeling is bedoeld voor woningeigenaren/hoofdbewoners in de gemeente Meppel met een geregistreerd gezamenlijk inkomen van maximaal € 40.000 per jaar. Aanvragen kunnen worden ingediend tot en met 31 december 2026 of totdat het subsidieplafond is bereikt.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Deze subsidie vergoedt 100% van de kosten tot maximaal € 2.500 voor isolatiemaatregelen zoals spouwmuur-, dak-, gevel-, vloer- en glasisolatie. De regeling is bedoeld voor woningeigenaren/hoofdbewoners in de gemeente Meppel met een geregistreerd gezamenlijk inkomen van maximaal € 40.000 per jaar. Aanvragen kunnen worden ingediend tot en met 31 december 2026 of totdat het subsidieplafond is bereikt.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -23527,7 +23865,7 @@
     "looptijd_eind": "2026-10-01",
     "budgetstatus": "Totaal subsidieplafond € 2.447.295 (verdeling op volgorde van ontvangst)",
     "aanvraagloket": null,
-    "opmerkingen": "In de metadata van de regeling staat 2026-10-01 als einddatum vermeld, terwijl artikel 13 lid 3 noemt dat de regeling eindigt op 31 december 2027. Conform instructie is de strengste einddatum (2026-10-01) aangehouden.",
+    "opmerkingen": "Niet meer gevonden in CVDR op 2026-10-02: mogelijk ingetrokken of vervangen. In de metadata van de regeling staat 2026-10-01 als einddatum vermeld, terwijl artikel 13 lid 3 noemt dat de regeling eindigt op 31 december 2027. Conform instructie is de strengste einddatum (2026-10-01) aangehouden.",
     "bewijs": {
       "naam": "Subsidieregeling Lokale Aanpak Isolatie gemeente Middelburg 2025",
       "type": "Het subsidiebedrag dat eenmalig op grond van deze subsidieregeling voor dezelfde woning kan worden verleend is € 2.050.",
@@ -23551,8 +23889,204 @@
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR736667/2",
     "datum_regelingstekst": "2025-12-20",
     "peildatum": "2026-10-01",
-    "status": "open",
+    "status": "onbekend",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "middelburg-cvdr767189",
+    "cvdr_id": "CVDR767189",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Middelburg",
+    "provincie": "Zeeland",
+    "naam": "Subsidieregeling Lokale Aanpak Isolatie gemeente Middelburg 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 500000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-10-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is eigenaar-bewoner van de woning waarvoor subsidie wordt aangevraagd",
+      "woz_max": "de WOZ-waarde van de woning met peildatum 1 januari 2022 bedraagt niet meer dan €500.000",
+      "isolatiestaat": "er is sprake van een slecht geïsoleerde woning",
+      "vve": "de vereniging van eigenaars kan namens de eigenaar-bewoner van een appartementsrecht een aanvraag indienen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767189/1",
+    "datum_regelingstekst": "2026-10-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "middelburg-cvdr336821",
+    "cvdr_id": "CVDR336821",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Middelburg",
+    "provincie": "Zeeland",
+    "naam": "VERORDENING STIMULERINGSLENING DUURZAME (PARTICULIERE) WONINGVERBETERING",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 170000,
+      "woz_regel": "lt",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1969,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2014-01-01",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: bouwjaar_max. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "aanvrager : een eigenaar en bewoner",
+      "woz_max": "WOZ-waarde van minder dan € 170.000,--",
+      "bouwjaar_max": "gebouwd vóór 1970"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR336821/1",
+    "datum_regelingstekst": "2014-01-01",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": [
+        "bouwjaar_max"
+      ]
+    }
+  },
+  {
+    "id": "middelburg-web-zeeuws-isolatieprogramma-middelburg",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Middelburg",
+    "provincie": "Zeeland",
+    "peildatum": "2026-10-02",
+    "naam": "Zeeuws Isolatieprogramma Middelburg",
+    "type": "subsidie",
+    "maatregelen": "isolatie",
+    "doelgroep": "woningeigenaar",
+    "bedrag": 2050,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 500000,
+      "woz_regel": "lt",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "looptijd_eind": "2050-01-01",
+    "bron_url": "https://www.middelburg.nl/subsidieregeling-zeeuws-isolatieprogramma-zip",
+    "uitvoerder": "Gemeente Middelburg",
+    "bewijs": {
+      "woz_max": "WOZ-waarde tot en met € 500.000",
+      "woz_regel": "WOZ-waarde tot en met € 500.000",
+      "isolatiestaat": "Het Zeeuws Isolatieprogramma stimuleert woningeigenaren met energielabel D, E, F, G of vergelijkbaar om hun slecht geïsoleerde woningen te isoleren",
+      "bouwdelen_min": "minimaal 2 bouwdelen zijn onvoldoende geïsoleerd",
+      "bedrag": "tot € 2.050 subsidie voor één isolatiemaatregel",
+      "looptijd_eind": "t/m 01 Jan 2050"
+    },
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "midden-delfland-cvdr714807",
@@ -27952,7 +28486,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR746640/1",
     "datum_regelingstekst": "2025-11-10",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "middel"
   },
@@ -28039,7 +28573,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR744801/1",
     "datum_regelingstekst": "2025-09-02",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -28107,9 +28641,77 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR746636/1",
     "datum_regelingstekst": "2023-04-01",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "oude-ijsselstreek-cvdr767098",
+    "cvdr_id": "CVDR767098",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Oude IJsselstreek",
+    "provincie": "Gelderland",
+    "naam": "“BELEIDSREGEL Isolatie subsidie Laag Inkomen Achterhoek 2026-2027 - september 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "bouwjaar_max 1999",
+        "regels": [
+          {
+            "bouwjaar_max": 1999
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1999,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": 46500,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-09-15",
+    "looptijd_eind": "2027-09-30",
+    "budgetstatus": null,
+    "aanvraagloket": "Energieloket Achterhoek",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: eigenaar_bewoner. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is een eigenaar-bewoner",
+      "bouwjaar_max": "is gebouwd voor het jaar 2000",
+      "inkomen": "het gezamenlijk inkomen van de aanvrager is niet meer dan € 46.500,- (peiljaar 2025) bruto per jaar",
+      "vve": "de aanvrager is een eigenaar van een koopwoning die zelf in deze koopwoning woont",
+      "looptijd_start": "De aanvrager kan tot en met 30 september 2027 een subsidieaanvraag doen",
+      "looptijd_eind": "De aanvrager kan tot en met 30 september 2027 een subsidieaanvraag doen",
+      "aanvraagloket": "de aanvraag moet digitaal via het portaal van Energieloket Achterhoek worden gedaan"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767098/1",
+    "datum_regelingstekst": "2026-09-30",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": [
+        "eigenaar_bewoner"
+      ]
+    }
   },
   {
     "id": "ouder-amstel-cvdr739154",
@@ -28203,6 +28805,65 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "oudewater-web-isolatiesubsidie-koopwoningen",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Oudewater",
+    "provincie": "Utrecht",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie koopwoningen",
+    "type": "subsidie",
+    "doelgroep": "particulier",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": 2022,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          },
+          {
+            "bouwjaar_max": 1994
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1994,
+      "bouwjaar_opmerking": "bouwjaar_max 1994",
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "looptijd_start": "2025-09-27",
+    "looptijd_eind": "2028-12-31",
+    "bewijs": {
+      "eigenaar_bewoner": "U bent eigenaar van de grondgebonden koopwoning (een woning met eigen ingang aan de straat, dus geen appartement of flat).",
+      "woz_max": "Uw woning heeft een WOZ-waarde van maximaal € 477.000 (peiljaar 2022).",
+      "isolatiestaat_bouwdelen_min": "Minimaal 2 bouwdelen (bijvoorbeeld vloer en dak) van uw woning zijn niet of slecht geïsoleerd.",
+      "bouwjaar_max": "Uw woning is gebouwd vóór 1995.",
+      "vve": "Uw woning is geen onderdeel van een Vereniging van Eigenaren (VvE).",
+      "looptijd_start": "De actieperiode loopt van 27 september 2025 tot en met 31 december 2028."
+    },
+    "bron_url": "https://www.oudewater.nl/Subsidie/Isolatiesubsidie_koopwoningen",
+    "uitvoerder": "Winst uit je Woning",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "oudewater-cvdr744612",
     "cvdr_id": "CVDR744612",
     "versie": 1,
@@ -28277,9 +28938,83 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR744612/1",
     "datum_regelingstekst": "2025-09-27",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "oudewater-cvdr767204",
+    "cvdr_id": "CVDR767204",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Oudewater",
+    "provincie": "Utrecht",
+    "naam": "Subsidieregeling Oudewater isoleert koopwoningen 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1995,
+      "bouwjaar_opmerking": "bouwjaar moet voor 1995 zijn",
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "aanvrager: meerderjarig natuurlijk persoon die eigenaar-bewoner is van een grondgebonden woning",
+      "woz_max": "maximale WOZ-waarde heeft van € 477.000,- (peildatum 1 januari 2022)",
+      "isolatiestaat.omschrijving": "slecht geïsoleerde woning",
+      "isolatiestaat.regels.labels": "energielabel D, E, F of G",
+      "isolatiestaat.regels.bouwdelen_min": "minimaal twee niet of slecht geïsoleerde bouwdelen telt",
+      "bouwjaar_max": "voor 1995 is gebouwd",
+      "looptijd_eind": "de regeling treedt in werking op de dag na die van de bekendmaking en geldt tot en met 31 december 2028"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767204/1",
+    "datum_regelingstekst": "2026-10-02",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "overbetuwe-cvdr744231",
@@ -28658,6 +29393,81 @@
     "betrouwbaarheid": "laag"
   },
   {
+    "id": "pekela-cvdr715878",
+    "cvdr_id": "CVDR715878",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Pekela",
+    "provincie": "Groningen",
+    "naam": "Subsidieregeling energiebesparing en isolatie woningen van eigenaar-bewoners gemeente Pekela",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 249000,
+      "woz_regel": "lte",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerd",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1994,
+      "bouwjaar_opmerking": "woning moet vóór 1994 zijn gebouwd",
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2023-01-01",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: bouwjaar_max. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "de eigenaar-bewoner die een aanvraag voor subsidie op grond van deze regeling heeft ingediend",
+      "woz_max": "maximaal € 249.000",
+      "isolatiestaat": "slecht geïsoleerd",
+      "bouwjaar_max": "voorheen 1994",
+      "inkomen": "niet hoger is dan 125% van het minimumloon",
+      "looptijd_eind": "30 juni 2026"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR715878/1",
+    "datum_regelingstekst": "2024-01-21",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": [
+        "bouwjaar_max"
+      ]
+    }
+  },
+  {
     "id": "pekela-web-subsidieregeling-maatregelen-energiebesparing-en-i",
     "cvdr_id": null,
     "bron": "web",
@@ -28671,6 +29481,65 @@
     "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Gemeentelijke subsidie voor particuliere eigenaar-bewoners van woningen met een WOZ-waarde tot maximaal € 249.000 en een slecht energielabel (D t/m G of ten minste twee slecht geïsoleerde bouwdelen), dan wel huishoudens met een inkomen tot 125% van het sociaal minimum. De tegemoetkoming bedraagt maximaal € 1.750 voor isolatiemaatregelen zoals dak-, gevel-, spouwmuur-, vloer- en glasisolatie. De regeling loopt tot en met 30 december 2026, zolang het subsidiebudget toereikend is.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
+  },
+  {
+    "id": "pekela-cvdr463049",
+    "cvdr_id": "CVDR463049",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Pekela",
+    "provincie": "Groningen",
+    "naam": "Verordening Stimuleringslening particuliere woningverbetering gemeente Pekela",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 150000,
+      "woz_regel": "lte",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": "2014-01-01",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager: een meerderjarig natuurlijk persoon die volgens het kadaster de bestaande woning in eigendom heeft en daadwerkelijk bewoont",
+      "woz_max": "WOZ-waarde van maximaal € 150.000,- (peildatum is moment van aanvraag)",
+      "woz_regel": "maximaal 150000",
+      "looptijd_eind": "Deze verordening treedt in werking met ingang van 1 januari 2014"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR463049/2",
+    "datum_regelingstekst": "2018-04-03",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "pijnacker-nootdorp-cvdr728320",
@@ -29885,7 +30754,7 @@
     "naam": "Stimuleringsregeling duurzaam",
     "bron_url": "https://www.ridderkerk.nl/stimuleringsregeling-duurzaam",
     "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Gemeentelijke stimuleringslening (uitgevoerd via het SVn) voor energiebesparende maatregelen, waaronder de isolatie van dak, vloer, gevel en glas. De lening is bedoeld voor particuliere woningeigenaren (en huurders met toestemming) van een bestaande woning in Ridderkerk, waarbij minstens één van de aanvragers jonger dan 76 jaar is. De lening wordt verstrekt tegen een gunstige rente (2,3%) via een bouwdepot, zolang het gemeentelijke budget toereikend is.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Gemeentelijke stimuleringslening (uitgevoerd via het SVn) voor energiebesparende maatregelen, waaronder de isolatie van dak, vloer, gevel en glas. De lening is bedoeld voor particuliere woningeigenaren (en huurders met toestemming) van een bestaande woning in Ridderkerk, waarbij minstens één van de aanvragers jonger dan 76 jaar is. De lening wordt verstrekt tegen een gunstige rente (2,3%) via een bouwdepot, zolang het gemeentelijke budget toereikend is.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -29900,7 +30769,7 @@
     "naam": "Subsidie voor doe-het-zelvers",
     "bron_url": "https://www.ridderkerk.nl/subsidie-voor-doe-het-zelvers",
     "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Voucher/subsidie voor de aanschaf van isolatiemateriaal (voor o.a. vloer, kruipruimte, binnenzijde van dak of gevel, en kierdichting) om de woning zelf te isoleren. Bedoeld voor eigenaar-bewoners van een koopwoning in Ridderkerk met een WOZ-waarde tot maximaal € 330.000,- en een energielabel D, E, F of G. De subsidie bedraagt maximaal € 1.350,- per woning en loopt zolang het beschikbare budget toereikend is.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Voucher/subsidie voor de aanschaf van isolatiemateriaal (voor o.a. vloer, kruipruimte, binnenzijde van dak of gevel, en kierdichting) om de woning zelf te isoleren. Bedoeld voor eigenaar-bewoners van een koopwoning in Ridderkerk met een WOZ-waarde tot maximaal € 330.000,- en een energielabel D, E, F of G. De subsidie bedraagt maximaal € 1.350,- per woning en loopt zolang het beschikbare budget toereikend is.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -30866,6 +31735,131 @@
     "betrouwbaarheid": "middel"
   },
   {
+    "id": "schiedam-web-energiebespaarlening-particuliere-woningeigenaren",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "partner: Regionaal Energieloket",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Schiedam",
+    "provincie": "Zuid-Holland",
+    "peildatum": "2026-10-02",
+    "naam": "Energiebespaarlening Particuliere Woningeigenaren",
+    "type": "Lening",
+    "maatregelen": "Isolatie van bestaande woning",
+    "doelgroep": "Particuliere woningeigenaren",
+    "bedrag": "0",
+    "technische_eisen": "0",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "3 maanden geldig",
+    "uitvoerder_eisen": "0",
+    "bewijs": {
+      "eigenaar_bewoner": "U dient eigenaar en bewoner te zijn van een bestaande woning.",
+      "inkomen": "Heeft u een koopwoning en een (gezamenlijk) inkomen dat niet hoger is dan €60.000,-?"
+    },
+    "bron_url": "https://schiedam.regionaalenergieloket.nl/subsidies-en-leningen",
+    "uitvoerder": "Nationaal Warmtefonds",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (partner: Regionaal Energieloket), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "schiedam-cvdr767066",
+    "cvdr_id": "CVDR767066",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Schiedam",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling Doe-Het-Zelf Aanpak isolerende maatregelen Schiedam 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 370000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 2012,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-10-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Eigenaar-bewoner: natuurlijk persoon die volgens de kadastrale gegevens eigenaar is van een bestaande grondgebonden woning in gemeente Schiedam",
+      "woz_max": "de WOZ-waarde van de woning niet hoger is dan € 370.000,-",
+      "woz_regel": "niet hoger is dan",
+      "woz_peildatum": "WOZ-waarde gebaseerd op gegevens uit het meetjaar 2024",
+      "isolatiestaat.labels": "de woning minimaal twee slecht geïsoleerde bouwdelen heeft of beschikt over een energielabel D, E, F of G",
+      "isolatiestaat.bouwdelen_min": "de woning minimaal twee slecht geïsoleerde bouwdelen heeft",
+      "bouwjaar_max": "de woning is gebouwd vóór 2012 gebouwd"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767066/1",
+    "datum_regelingstekst": "2026-10-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "schiermonnikoog-web-subsidieregeling-aardgasvrij-eiland-natuurvriendel",
     "cvdr_id": null,
     "bron": "web",
@@ -31776,6 +32770,120 @@
     "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Een laagrentende lening via het SVn voor onder andere isolatie en andere verduurzamingsmaatregelen aan de eigen woning. De lening is bedoeld voor eigenaar-bewoners van een bestaande woning in de gemeente Sluis die vergund is vóór 1 juli 2018. Het leenbedrag is minimaal € 2.500 en maximaal € 35.000 (consumptief) of € 50.000 (hypothecair), en de regeling loopt zolang het budget toereikend is.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
+  },
+  {
+    "id": "sluis-cvdr682481",
+    "cvdr_id": "CVDR682481",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Sluis",
+    "provincie": "Zeeland",
+    "naam": "Verordening Lening Duurzaam en Langer Thuis, gemeente Sluis",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {},
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR682481/1",
+    "datum_regelingstekst": "2022-11-01",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 0,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "sluis-cvdr328894",
+    "cvdr_id": "CVDR328894",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Sluis",
+    "provincie": "Zeeland",
+    "naam": "Verordening Stimuleringslening Duurzame Particuliere Woningverbetering gemeente Sluis (DPW-2)",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 170000,
+      "woz_regel": "lte",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1969,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2014-04-01",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "aanvrager : een eigenaar/bewoner",
+      "woz_max": "WOZ-waarde vertegenwoordigen van maximaal €170.000,-",
+      "woz_regel": "maximaal €170.000,-",
+      "bouwjaar_max": "die zijn gebouwd vóór 1970",
+      "looptijd_start": "Deze verordening treedt in werking met ingang van 1 april 2014"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR328894/1",
+    "datum_regelingstekst": "2016-03-01",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "sluis-web-zeeuws-isolatieprogramma-zip-gemeente-sluis",
@@ -33912,9 +35020,256 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR63680/1",
     "datum_regelingstekst": "2018-07-10",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
+  },
+  {
+    "id": "tiel-cvdr759781",
+    "cvdr_id": "CVDR759781",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Tiel",
+    "provincie": "Gelderland",
+    "naam": "Maatregelenlijst Toekomstbestendig Wonen Lening Tiel 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Voor een grondgebonden woning (geen monument): Isoleren Dakisolatie met een Rd-waarde groter dan of gelijk aan 3,5 m² K/W.",
+      "isolatiestaat": "Voor een grondgebonden woning (geen monument): Isoleren Dakisolatie met een Rd-waarde groter dan of gelijk aan 3,5 m² K/W."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759781/1",
+    "datum_regelingstekst": "2026-04-01",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "tiel-web-nip-subsidie",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Tiel",
+    "provincie": "Gelderland",
+    "peildatum": "2026-10-02",
+    "naam": "NIP-subsidie",
+    "type": "subsidie",
+    "maatregelen": "isolatie van dak, vloer, gevel, glasisolatie",
+    "doelgroep": "woningeigenaar",
+    "bedrag": "max 1330",
+    "technische_eisen": "energielabel D, E, F of G, of 2 slecht geïsoleerde bouwdelen",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "energielabel D, E, F of G, of 2 slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "online via energielokettiel.nl",
+    "uitvoerder_eisen": "offerte, factuur, foto, meldcode",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": "null",
+    "aanvraagloket": "energielokettiel.nl",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina. Geen specifieke woz-regel, alleen eigenaren van bestaande woningen",
+    "bewijs": {
+      "energielabel": "U komt in aanmerking als u een geregistreerd energielabel D, E, F of G heeft, of als u kunt aantonen dat u twee slecht geïsoleerde bouwdelen heeft.",
+      "max_bedrag": "maximaal €1330"
+    },
+    "bron_url": "https://www.tiel.nl/energieloket-tiel",
+    "uitvoerder": "Gemeente Tiel",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "tiel-web-toekomstbestendig-wonen-lening-grondgebonden-wonin",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Tiel",
+    "provincie": "Gelderland",
+    "peildatum": "2026-10-02",
+    "naam": "Toekomstbestendig Wonen Lening - grondgebonden woningen",
+    "type": "lening",
+    "maatregelen": "isolatie, levensloopbestendig maken, funderingsherstel, asbestsanering, warmtepomp, zonneboiler, ventilatie, etc.",
+    "doelgroep": "woningeigenaar",
+    "bedrag": "2500-35000",
+    "technische_eisen": "minimaal 1 isolatiemaatregel",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "energielabel C of lager, of D-E-F-G, of geen label maar 2 slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "labels": [
+              "C",
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "aanvragen": "online via www.svn.nl",
+    "uitvoerder_eisen": "aanvraagformulier, offerte, omgevingsvergunning indien nodig",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": "null",
+    "aanvraagloket": "www.svn.nl",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina. Geen specifieke woz-regel, alleen eigenaren van bestaande woningen",
+    "bewijs": {
+      "eigenaar_bewoner": "De lening is voor eigenaren van een bestaande woning in Tiel .",
+      "isolatiestaat": "Uw woning heeft een energielabel C of lager (dus D, E, F, G).",
+      "minimaal_isolatie": "Om van de lening gebruik te kunnen maken, moet u altijd minimaal 1 isolatiemaatregel nemen."
+    },
+    "bron_url": "https://www.tiel.nl/toekomstbestendig-wonen-lening-grondgebonden-woningen",
+    "uitvoerder": "Gemeente Tiel",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "tiel-cvdr409925",
+    "cvdr_id": "CVDR409925",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Tiel",
+    "provincie": "Gelderland",
+    "naam": "Verordening Duurzaamheidslening",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": "schriftelijk bij het college",
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2016-06-22",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager ... eigenaar-bewoner is"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR409925/1",
+    "datum_regelingstekst": "2018-07-10",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 1,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "tiel-cvdr323082",
@@ -33974,7 +35329,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR323082/1",
     "datum_regelingstekst": "2018-07-10",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "onbekend",
     "betrouwbaarheid": "middel"
   },
@@ -34247,7 +35602,7 @@
     "naam": "Doe-het-zelf subsidie voor isolatie",
     "bron_url": "https://www.twenterand.nl/doe-het-zelf-subsidie-voor-isolatie",
     "peildatum": "2026-09-29",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor woningeigenaren in Twenterand die zelf isolatiemaatregelen uitvoeren, zoals dak-, vloer- of muurisolatie. De regeling vergoedt een deel van de materiaalkosten van goedgekeurde isolatiematerialen. Aanvragen dienen vooraf te worden ingediend, waarna de werkzaamheden binnen zes maanden moeten worden uitgevoerd.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor woningeigenaren in Twenterand die zelf isolatiemaatregelen uitvoeren, zoals dak-, vloer- of muurisolatie. De regeling vergoedt een deel van de materiaalkosten van goedgekeurde isolatiematerialen. Aanvragen dienen vooraf te worden ingediend, waarna de werkzaamheden binnen zes maanden moeten worden uitgevoerd.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
   },
@@ -34294,7 +35649,7 @@
     "stapelbaar_isde": true,
     "budgetstatus": "Op 29 juli 2025 was er nog € 4.350.000 subsidie beschikbaar.",
     "aanvraagloket": "Gemeente Twenterand (online formulier voor gereedmelding op de website)",
-    "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor woningeigenaren in de gemeente Twenterand voor het laten uitvoeren van isolatiemaatregelen (dak-, gevel-, spouwmuur-, vloer-, bodemisolatie en HR++/triple glas). De vergoeding bedraagt in de basis 35% van de kosten (minimaal € 250 en tot maximaal € 5.000). De regeling loopt onder de Verordening Duurzaamheidssubsidie Twenterand 2025-2028 zolang er budget beschikbaar is. WOZ-waarde (maximaal € 392.000) en bouwjaar (voor 1983) zijn geen toelatingseisen, maar bepalen of het subsidiemaximum € 5.000 of € 3.000 bedraagt. Werkzaamheden moeten binnen 6 maanden na subsidiebevestiging worden uitgevoerd.",
+    "opmerkingen": "Niet meer gevonden op internet op 2026-10-02. Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. Subsidie voor woningeigenaren in de gemeente Twenterand voor het laten uitvoeren van isolatiemaatregelen (dak-, gevel-, spouwmuur-, vloer-, bodemisolatie en HR++/triple glas). De vergoeding bedraagt in de basis 35% van de kosten (minimaal € 250 en tot maximaal € 5.000). De regeling loopt onder de Verordening Duurzaamheidssubsidie Twenterand 2025-2028 zolang er budget beschikbaar is. WOZ-waarde (maximaal € 392.000) en bouwjaar (voor 1983) zijn geen toelatingseisen, maar bepalen of het subsidiemaximum € 5.000 of € 3.000 bedraagt. Werkzaamheden moeten binnen 6 maanden na subsidiebevestiging worden uitgevoerd.",
     "bewijs": {
       "naam": "Duurzaamheidssubsidie voor een geïsoleerd huis | Twenterand",
       "type": "Met de duurzaamheidssubsidie voor een geïsoleerd huis is dat extra aantrekkelijk.",
@@ -34312,6 +35667,125 @@
     },
     "status": "onbekend",
     "betrouwbaarheid": "laag"
+  },
+  {
+    "id": "twenterand-cvdr746987",
+    "cvdr_id": "CVDR746987",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Twenterand",
+    "provincie": "Overijssel",
+    "naam": "Verordening duurzaamheidssubsidie Twenterand 2025-2028",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 392000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "voorwaarde",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-12-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is woningeigenaar",
+      "woz_max": "WOZ-waarde van maximaal € 392.000,- (peildatum 1 januari 2024)",
+      "vve": "optioneel gemachtigd door een VvE"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR746987/2",
+    "datum_regelingstekst": "2026-09-17",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    },
+    "extra_bronnen": [
+      "https://www.twenterand.nl/isoleren"
+    ]
+  },
+  {
+    "id": "twenterand-cvdr756859",
+    "cvdr_id": "CVDR756859",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Twenterand",
+    "provincie": "Overijssel",
+    "naam": "Verordening maatwerksubsidie energiearmoede Twenterand 2026 - 2027",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "voorwaarde",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-02-06",
+    "looptijd_eind": "2027-11-30",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is eigenaar van een woning in Twenterand, dan wel is eigenaar van een woning in Twenterand en optioneel gemachtigd door een VvE",
+      "inkomen": "het inkomen van het huishouden van de aanvrager bedraagt maximaal 150% van de bijstandsnorm op grond van de Participatiewet",
+      "vve": "optioneel gemachtigd door een VvE"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR756859/1",
+    "datum_regelingstekst": "2026-02-13",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "tytsjerksteradiel-cvdr756362",
@@ -34670,6 +36144,218 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "utrecht-cvdr758475",
+    "cvdr_id": "CVDR758475",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Utrecht",
+    "provincie": "Utrecht",
+    "naam": "Besluit van Gedeputeerde Staten van Utrecht van 3 maart 2026, nr. UTSP-601784774-7, houdende nadere regels op grond van de Algemene subsidieverordening provincie Utrecht 2022 (Subsidieregeling energietransitie provincie Utrecht 2026-2030)",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": "2030-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Subsidie kan worden verstrekt aan: woningcorporaties; verenigingen van eigenaars; woonverenigingen of woningcoöperaties; overige rechtspersonen die meerdere voor verhuur bestemde woningen in eigendom hebben; energiecoöperaties; of projectmatige samenwerkingsverbanden van onder a tot en met e bedoelde subsidieontvangers.",
+      "inkomen": "Subsidie kan worden geweigerd als: voor dezelfde subsidiabele activiteiten binnen hetzelfde gebied al subsidie is verkregen op grond van deze regeling; en de aanvraag geen concrete output-indicatoren bevat over het aantal woningeigenaren dat actief deelneemt of gaat deelnemen aan activiteiten als huisbezoeken, bijeenkomsten of adviesgesprekken."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR758475/1",
+    "datum_regelingstekst": "2026-03-12",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "utrecht-web-isolatiesubsidie-utrecht",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Utrecht",
+    "provincie": "Utrecht",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie Utrecht",
+    "type": "Subsidie",
+    "maatregelen": [
+      "dakisolatie",
+      "vloerisolatie",
+      "spouwmuurisolatie",
+      "gevelisolatie",
+      "HR++-glas",
+      "tripleglas",
+      "geïsoleerd kozijnpaneel",
+      "geïsoleerde deur",
+      "CO₂-gestuurde ventilatie",
+      "balansventilatie met warmteterugwinning"
+    ],
+    "doelgroep": "Eigenaar-bewoner, VvE, kleine VvE",
+    "bedrag": 1500,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 563000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "woning slecht geïsoleerd",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "voorwaarde",
+      "vve_opmerking": "voor grote vve 8+"
+    },
+    "aanvragen": "U vraagt de subsidie aan met DigiD of e-Herkenning",
+    "looptijd_start": "2024-01-01",
+    "looptijd_eind": "2027-12-31",
+    "aanvraagloket": "subsidiewoningisoleren@utrecht.nl",
+    "bewijs": {
+      "naam": "Isolatiesubsidie Utrecht",
+      "type": "Subsidie",
+      "maatregelen": "dakisolatie, vloerisolatie, spouwmuurisolatie, gevelisolatie, HR++-glas, tripleglas, geïsoleerd kozijnpaneel, geïsoleerde deur, CO₂-gestuurde ventilatie, balansventilatie met warmteterugwinning",
+      "doelgroep": "Eigenaar-bewoner, VvE, kleine VvE",
+      "bedrag": "maximaal € 1.500",
+      "technische_eisen": "null",
+      "eigenaar_bewoner": "Eigenaar-bewoner is verplicht",
+      "woz_max": "De WOZ-waarde op 1 januari 2024 was lager dan € 563.000",
+      "woz_regel": "De WOZ-waarde op 1 januari 2024 was lager dan € 563.000",
+      "woz_peildatum": "De WOZ-waarde op 1 januari 2024 was lager dan € 563.000",
+      "isolatiestaat": "De woning is slecht geïsoleerd. Dit is het geval als uw woning een officieel energielabel D, E, F of G heeft. Of nog 2 of meer van deze onderdelen zijn slecht geïsoleerd: de vloer en de bodem, de gevel, het dak en de zolder/vlieringvloer, de ramen en deuren",
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "woonoppervlak_max": null,
+      "inkomen": "null",
+      "vve": "U bent eigenaar van de woning en u woont zelf in de woning",
+      "vve_opmerking": "Voor grote vve 8+"
+    },
+    "bron_url": "https://www.utrecht.nl/wonen-en-leven/duurzame-stad/energie/besparen/grote-vve-energiezuinig-maken/hulp-bij-isoleren-voor-grote-vves-overvecht-noordwest-zuid-en-zuidwest",
+    "uitvoerder": "Gemeente Utrecht",
+    "status": "open",
+    "betrouwbaarheid": "laag",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: technische_eisen, eigenaar_bewoner, bouwjaar_min, bouwjaar_max, woonoppervlak_max, inkomen, vve_opmerking. Controleer deze velden. Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 17,
+      "niet_gevonden": [
+        "technische_eisen",
+        "eigenaar_bewoner",
+        "bouwjaar_min",
+        "bouwjaar_max",
+        "woonoppervlak_max",
+        "inkomen",
+        "vve_opmerking"
+      ]
+    }
+  },
+  {
+    "id": "utrecht-cvdr659309",
+    "cvdr_id": "CVDR659309",
+    "versie": 3,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Utrecht",
+    "provincie": "Utrecht",
+    "naam": "Nadere regel subsidie Energieadvies aan huis en Trajectbegeleiding gemeente Utrecht",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-09-18",
+    "looptijd_eind": "2028-11-01",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "De aanvrager is een natuurlijke persoon die eigenaar en bewoner is van een grondgebonden woning",
+      "vve": "Ook de VvE van een grondgebonden gesplitste woning mag de aanvraag doen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR659309/3",
+    "datum_regelingstekst": "2026-09-18",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "utrecht-cvdr701793",
     "cvdr_id": "CVDR701793",
     "versie": 4,
@@ -34772,7 +36458,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR701793/4",
     "datum_regelingstekst": "2026-02-13",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -34869,7 +36555,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR701795/1",
     "datum_regelingstekst": "2023-10-14",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -34975,9 +36661,84 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR735066/3",
     "datum_regelingstekst": "2026-02-13",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "utrecht-cvdr739088",
+    "cvdr_id": "CVDR739088",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Utrecht",
+    "provincie": "Utrecht",
+    "naam": "Nadere regel subsidie woning isoleren grote vve gemeente Utrecht",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 488000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-06-01",
+    "looptijd_eind": "2027-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Eigenaar-bewoner is een natuurlijke persoon die eigenaar is van een woning (appartementsrecht) binnen een vve",
+      "woz_max": "Lage WOZ-waarde: een vve heeft een lage WOZ-waarde als de gemiddelde WOZ-waarde van alle woningen in de grote vve gelijk of lager is dan de gemiddelde WOZ-waarde in Utrecht: € 488.000 in 2022",
+      "woz_regel": "Lage WOZ-waarde: een vve heeft een lage WOZ-waarde als de gemiddelde WOZ-waarde van alle woningen in de grote vve gelijk of lager is dan de gemiddelde WOZ-waarde in Utrecht",
+      "woz_peildatum": "Op het moment van ingaan van deze regeling is dat de WOZ waarde op peildatum 1-1-2022",
+      "isolatiestaat.omschrijving": "Slecht geïsoleerde woning: Als op gebouwniveau twee van de volgende bestaande bouwdelen van het gebouw niet of slecht geïsoleerd zijn",
+      "isolatiestaat.regels.labels": "Wanneer lid i. niet van toepassing is komen alleen de particuliere woningen binnen de grote vve met energielabel D, E, F of G in aanmerking voor subsidie",
+      "isolatiestaat.regels.bouwdelen_min": "Als op gebouwniveau twee van de volgende bestaande bouwdelen van het gebouw niet of slecht geïsoleerd zijn",
+      "vve": "Grote vve: vereniging van eigenaars, woonvereniging of wooncoöperatie die bestaat uit minimaal 8 woningen waarvan minimaal één woning bewoond wordt door een eigenaar-bewoner"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR739088/2",
+    "datum_regelingstekst": "2026-06-09",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 8,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "utrecht-cvdr744076",
@@ -35069,7 +36830,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR744076/2",
     "datum_regelingstekst": "2026-06-09",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -35160,7 +36921,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR735162/2",
     "datum_regelingstekst": "2026-01-16",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -35247,9 +37008,65 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR723084/4",
     "datum_regelingstekst": "2026-09-29",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "utrecht-cvdr767167",
+    "cvdr_id": "CVDR767167",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Utrecht",
+    "provincie": "Utrecht",
+    "naam": "Subsidiestaat 2026 gemeente Utrecht",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Het stimuleren van eigenaar-bewoners van slecht geïsoleerde woningen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767167/1",
+    "datum_regelingstekst": "2026-10-02",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 1,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "utrechtse-heuvelrug-cvdr760323",
@@ -35426,6 +37243,63 @@
     "opmerkingen": "Gevonden via AI-zoekactie op internet, niet in het CVDR. Controleer de bronpagina. De gemeente Vaals verstrekt een subsidie van € 1.400 voor isolatiemaatregelen zoals dak-, vloer-, gevel-, spouwmuur- en glasisolatie. De regeling is bedoeld voor woningeigenaren die zelf in het huis wonen met een laag energielabel (D t/m G of minstens twee slecht geïsoleerde bouwdelen) en een WOZ-waarde onder de maximale grens. De aanvraag loopt via de Lokale Aanpak Isolatie (Energieklus/Sobolt) en is beschikbaar zolang het subsidiebudget strekt.",
     "status": "onbekend",
     "betrouwbaarheid": "laag"
+  },
+  {
+    "id": "vaals-cvdr409328",
+    "cvdr_id": "CVDR409328",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Vaals",
+    "provincie": "Limburg",
+    "naam": "Verordening Duurzaamheidslening gemeente Vaals 2015",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2015-02-01",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de eigenaar wordt bewoond",
+      "bouwjaar_max": "voor 01-01-2011 in gebruik is genomen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR409328/2",
+    "datum_regelingstekst": "2018-05-29",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "valkenburg-aan-de-geul-cvdr764680",
@@ -36066,6 +37940,79 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "veere-cvdr767049",
+    "cvdr_id": "CVDR767049",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Veere",
+    "provincie": "Zeeland",
+    "naam": "Eerste wijziging Subsidieregeling Aanvullende Maatregel Lokale Aanpak Isolatie gemeente Veere",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 500000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-10-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is eigenaar-bewoner van de woning waarvoor subsidie wordt aangevraagd",
+      "woz_max": "de WOZ-waarde van de woning met peildatum 1 januari 2022 bedraagt niet meer dan € 500.000",
+      "woz_regel": "niet meer dan € 500.000",
+      "woz_peildatum": "peildatum 1 januari 2022",
+      "isolatiestaat": "er is sprake van een slecht geïsoleerde woning",
+      "vve": "een vereniging van eigenaars kan namens een eigenaar-bewoner van een appartementsrecht een aanvraag indienen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767049/1",
+    "datum_regelingstekst": "2026-10-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "veere-cvdr761585",
     "cvdr_id": "CVDR761585",
     "versie": 1,
@@ -36133,7 +38080,7 @@
     "looptijd_eind": "2028-06-28",
     "budgetstatus": "Subsidieplafond bedraagt € 660.000.",
     "aanvraagloket": "Aanvraagformulier dat beschikbaar is via het Zeeuws Isolatie Programma.",
-    "opmerkingen": "Niet meer gevonden in CVDR op 2026-10-01: mogelijk ingetrokken of vervangen. In artikel 14 lid 2 staat dat de regeling vervalt op 30 juni 2028, maar de metadata vermeldt 2028-06-28. De strengste datum (2028-06-28) is aangehouden. Tevens geldt de voorwaarde dat men minimaal twee maatregelen uitvoert: één uit deze regeling en één waarvoor een ZIP-aanvraag is ingediend.",
+    "opmerkingen": "Niet meer gevonden in CVDR op 2026-10-02: mogelijk ingetrokken of vervangen. Niet meer gevonden in CVDR op 2026-10-01: mogelijk ingetrokken of vervangen. In artikel 14 lid 2 staat dat de regeling vervalt op 30 juni 2028, maar de metadata vermeldt 2028-06-28. De strengste datum (2028-06-28) is aangehouden. Tevens geldt de voorwaarde dat men minimaal twee maatregelen uitvoert: één uit deze regeling en één waarvoor een ZIP-aanvraag is ingediend.",
     "bewijs": {
       "naam": "Subsidieregeling Aanvullende Maatregel Lokale Aanpak Isolatie gemeente Veere",
       "type": "Besluit van burgemeester en wethouders van de gemeente Veere tot vaststelling van de Subsidieregeling",
@@ -36252,9 +38199,82 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR736156/2",
     "datum_regelingstekst": "2025-12-13",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
+  },
+  {
+    "id": "veere-cvdr767047",
+    "cvdr_id": "CVDR767047",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Veere",
+    "provincie": "Zeeland",
+    "naam": "Subsidieregeling Lokale Aanpak Isolatie gemeente Veere 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 500000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-10-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de aanvrager is eigenaar-bewoner van de woning waarvoor subsidie wordt aangevraagd",
+      "woz_max": "de WOZ-waarde van de woning met peildatum 1 januari 2022 bedraagt niet meer dan € 500.000",
+      "woz_regel": "niet meer dan € 500.000",
+      "woz_peildatum": "1 januari 2022",
+      "isolatiestaat": "er is sprake van een slecht geïsoleerde woning",
+      "vve": "de vereniging van eigenaars kan namens de eigenaar-bewoner van een appartementsrecht een aanvraag indienen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767047/1",
+    "datum_regelingstekst": "2026-10-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "veldhoven-cvdr758216",
@@ -36341,9 +38361,89 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR758216/1",
     "datum_regelingstekst": "2026-02-28",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "extra_bronnen": [
+      "https://www.veldhoven.nl/isoleren"
+    ]
+  },
+  {
+    "id": "veldhoven-cvdr766601",
+    "cvdr_id": "CVDR766601",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Veldhoven",
+    "provincie": "Noord-Brabant",
+    "naam": "Tijdelijke subsidieregeling glasisolatie gemeente Veldhoven",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 435000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-09-09",
+    "looptijd_eind": "2026-12-09",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Regeling geldt alleen voor grondgebonden koopwoningen, geen appartementen of VvE-woningen.",
+    "bewijs": {
+      "eigenaar_bewoner": "b. eigenaar-bewoner: particuliere woningeigenaar die tevens bewoner is van de woning;",
+      "woz_max": "De WOZ-waarde van de woning bedraagt maximaal € 435.000 met peildatum 1 januari 2022;",
+      "woz_regel": "maximaal € 435.000",
+      "woz_peildatum": "peildatum 1 januari 2022",
+      "isolatiestaat": "g. slecht geïsoleerde woning: een woning met een energielabelklasse D, E, F, G of een met die labelklasse vergelijkbare energetische staat, waaronder wordt verstaan een woning waarin ten minste twee bestaande bouwdelen niet of slecht geïsoleerd zijn, waaronder ramen (glas);",
+      "vve": "2. De woning is een koopwoning, niet zijnde een appartement.; g. de woning niet grondgebonden is;",
+      "looptijd_start": "1. Deze subsidieregeling treedt in werking de dag na bekendmaking.; 2. Deze subsidieregeling vervalt op het moment dat het subsidieplafond is bereikt, maar uiterlijk drie maanden na de datum van inwerkingtreding;"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR766601/1",
+    "datum_regelingstekst": "2026-10-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    },
+    "extra_bronnen": [
+      "https://www.veldhoven.nl/glasisolatie"
+    ]
   },
   {
     "id": "velsen-cvdr735657",
@@ -38315,7 +40415,7 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR762818/1",
     "datum_regelingstekst": "2026-06-13",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
     "betrouwbaarheid": "hoog"
   },
@@ -39854,6 +41954,60 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "woerden-cvdr643638",
+    "cvdr_id": "CVDR643638",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Woerden",
+    "provincie": "Utrecht",
+    "naam": "Besluit van burgemeester en wethouders van Woerden houdende een lijst duurzaamheidsmaatregelen als bedoeld in artikel 5 van de Verordening Duurzaamheidslening Woerden 2011 (Lijst duurzaamheidsmaatregelen)",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": null,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2020-07-14",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {},
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR643638/1",
+    "datum_regelingstekst": "2020-09-02",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 0,
+      "niet_gevonden": []
+    }
+  },
+  {
     "id": "woerden-cvdr744613",
     "cvdr_id": "CVDR744613",
     "versie": 2,
@@ -39934,9 +42088,87 @@
     },
     "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR744613/2",
     "datum_regelingstekst": "2026-07-17",
-    "peildatum": "2026-10-01",
+    "peildatum": "2026-10-02",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "extra_bronnen": [
+      "https://www.woerden.nl/Subsidie/Isolatiesubsidie_koopwoningen"
+    ]
+  },
+  {
+    "id": "woerden-cvdr767199",
+    "cvdr_id": "CVDR767199",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Woerden",
+    "provincie": "Utrecht",
+    "naam": "Subsidieregeling Woerden isoleert koopwoningen 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 486000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1994,
+      "bouwjaar_opmerking": "bouwjaar moet voor 1995 zijn",
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": "2028-06-30",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "naam": "Subsidieregeling Woerden isoleert koopwoningen 2026",
+      "eigenaar_bewoner": "aanvrager: meerderjarig natuurlijk persoon die eigenaar-bewoner is van een grondgebonden woning",
+      "woz_max": "maximale WOZ-waarde heeft van € 486.000,- (peildatum 1 januari 2022)",
+      "isolatiestaat": "slecht geïsoleerde woning: een woning met een geldig energielabel D, E, F of G, dan wel een woning die nog minimaal twee niet of slecht geïsoleerde bouwdelen telt",
+      "bouwjaar_max": "voor 1995 is gebouwd",
+      "inkomen": "die beschikken over een Groene Hartpas, of die middels een inkomenstoets kunnen aantonen dat het inkomen maximaal 150% van het sociaal minimum is",
+      "vve": "niet valt onder een Vereniging van Eigenaren",
+      "looptijd_eind": "Een subsidieaanvraag kan uiterlijk tot en met 30 juni 2028 worden ingediend"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR767199/1",
+    "datum_regelingstekst": "2026-10-02",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 8,
+      "niet_gevonden": []
+    }
   },
   {
     "id": "wormerland-cvdr759753",
@@ -40833,6 +43065,1240 @@
     "betrouwbaarheid": "hoog"
   },
   {
+    "id": "zeewolde-cvdr749311",
+    "cvdr_id": "CVDR749311",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zeewolde",
+    "provincie": "Flevoland",
+    "naam": "Subsidieregeling lokale aanpak isolatie gemeente Zeewolde 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-12-13",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Subsidie geldt alleen voor grondgebonden koopwoningen, bestaande woningen, maatregelen na 31-12-2024, 100% tot €1925.",
+    "bewijs": {
+      "eigenaar_bewoner": "een natuurlijk persoon, woonachtig in de gemeente Zeewolde, die eigenaar en bewoner is van een bestaande woning",
+      "woz_max": "een WOZ-waarde hebben van maximaal € 477.000 (peildatum 1 januari 2022)",
+      "isolatiestaat": "een woning met een energielabelklasse D, E, F of G of een met die labelklassen vergelijkbare energetische staat, waaronder wordt verstaan een woning waarin ten minste twee van de volgende bestaande bouwdelen niet of slecht geïsoleerd zijn",
+      "vve": "grondgebonden koopwoningen",
+      "looptijd_eind": "verval op 31-12-2026 of zoveel eerder als het beschikbare subsidieplafond als bedoeld in artikel 7 is bereikt"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR749311/1",
+    "datum_regelingstekst": "2025-12-12",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zeist-cvdr725641",
+    "cvdr_id": "CVDR725641",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zeist",
+    "provincie": "Utrecht",
+    "naam": "Subsidieregeling Lokale Aanpak Isolatie Zeist",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 586000,
+      "woz_regel": "lt",
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2024-10-19",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: vve. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "een natuurlijk persoon, woonachtig in de gemeente Zeist, die eigenaar en bewoner is van een bestaande woning",
+      "woz_max": "lager dan € 586.000 euro in 2022",
+      "isolatiestaat.omschrijving": "slecht geïsoleerde woning",
+      "isolatiestaat.regels.1.labels": "een woning met een energielabelklasse D, E, F, G",
+      "isolatiestaat.regels.2.bouwdelen_min": "ten minste twee van de volgende bestaande bouwdelen niet of slecht geïsoleerd zijn",
+      "vve": "een VvE indien: minimaal 60% van de appartementen slecht geïsoleerd is; ... maar voor particuliere eigenaar-bewoners geldt alleen de eigenaar-bewoner optie"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR725641/1",
+    "datum_regelingstekst": "2024-10-18",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": [
+        "vve"
+      ]
+    }
+  },
+  {
+    "id": "zeist-cvdr759526",
+    "cvdr_id": "CVDR759526",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zeist",
+    "provincie": "Utrecht",
+    "naam": "Subsidieregeling Lokale Aanpak Isolatie Zeist 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 700000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1995,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-04-01",
+    "looptijd_eind": "2028-01-01",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "de natuurlijke persoon die een woning in eigendom heeft en waarin hij zijn hoofdverblijf heeft",
+      "woz_max": "met een WOZ-waarde van maximaal € 700.000,- op 1 januari 2022",
+      "woz_regel": "maximaal",
+      "woz_peildatum": "1 januari 2022",
+      "isolatiestaat.omschrijving": "slecht geïsoleerde woning",
+      "isolatiestaat.regels.labels": "energielabelklasse D, E, F, G of indien label A, B, C, of onbekend: een met die labelklassen vergelijkbare energetische staat",
+      "isolatiestaat.regels.bouwdelen_min": "ten minste twee van de volgende bestaande bouwdelen niet of slecht geïsoleerd",
+      "bouwjaar_max": "die voor 1995 gebouwd is",
+      "vve": "die niet onder een VvE valt",
+      "looptijd_start": "Een aanvraag voor subsidie op grond van deze regeling kan met ingang van 1 april 2026 worden ingediend",
+      "looptijd_eind": "De regeling vervalt met ingang van 1 januari 2028"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759526/1",
+    "datum_regelingstekst": "2026-03-28",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 11,
+      "niet_gevonden": []
+    },
+    "extra_bronnen": [
+      "https://www.zeist.nl/energie-en-milieu/klimaat-en-energie/uw-woning-verduurzamen/subsidie-voor-isolatie"
+    ]
+  },
+  {
+    "id": "zevenaar-cvdr757892",
+    "cvdr_id": "CVDR757892",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zevenaar",
+    "provincie": "Gelderland",
+    "naam": "Subsidieregeling Lokale Isolatieaanpak gemeente Zevenaar 2026-2028",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2024-01-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "woz_max": "WOZ-waarde gelijk of lager dan de NHG-grens van €477.000,-- (peildatum 1 januari 2022).",
+      "woz_regel": "WOZ-waarde gelijk of lager dan de NHG-grens van €477.000,-- (peildatum 1 januari 2022).",
+      "woz_peildatum": "WOZ-waarde gelijk of lager dan de NHG-grens van €477.000,-- (peildatum 1 januari 2022).",
+      "isolatiestaat.labels": "laag Energielabel te hebben (D, E, F of G).",
+      "isolatiestaat.bouwdelen_min": "twee of meer slecht geïsoleerde bouwdelen.",
+      "inkomen": "Voor eigenaar-bewoners met een inkomen van maximaal het Norminkomen is de subsidie: Maximaal € 4.000,--.",
+      "vve": "Indien het gaat om een gebouw van een Vereniging van Eigenaars (VvE), wooncoöperatie of woonvereniging, dan mag het een niet-grondgebonden woning zijn."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR757892/1",
+    "datum_regelingstekst": "2026-03-04",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zevenaar-cvdr643490",
+    "cvdr_id": "CVDR643490",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zevenaar",
+    "provincie": "Gelderland",
+    "naam": "Subsidieregeling energiebesparende maatregelen woningen gemeente Zevenaar",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2020-09-01",
+    "looptijd_eind": "2021-03-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "De aanvrager moet verklaren dat de energiebesparende maatregel(en), diensten en/of producten worden uitgevoerd/toegepast in, aan of op de bestaande woning van de aanvrager."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR643490/1",
+    "datum_regelingstekst": "2020-09-01",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 1,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zevenaar-cvdr305401",
+    "cvdr_id": "CVDR305401",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zevenaar",
+    "provincie": "Gelderland",
+    "naam": "Subsidieverordening Woningisolatie Zevenaar 2013",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": "eigenaar-bewoner",
+    "bedrag": 750,
+    "technische_eisen": "Rd-waarde minimaal 2,5 m² K/W",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "woning opgeleverd vóór 1 januari 1980",
+        "regels": [
+          {
+            "bouwjaar_max": 1979
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1979,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2013-01-01",
+    "looptijd_eind": "2015-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "technische_eisen": "aanbrengen van vloerisolatie met een isolatiewaarde (Rd-waarde) van minimaal 2,5 m² K/W",
+      "isolatiestaat": "de woning is opgeleverd vóór 1 januari 1980; de woning heeft een woonbestemming",
+      "bouwjaar_max": "de grens voor subsidie ligt daarom bij woningen die zijn opgeleverd voor 1 januari 1980"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR305401/1",
+    "datum_regelingstekst": "2017-03-21",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "hoog",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zevenaar-cvdr323454",
+    "cvdr_id": "CVDR323454",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zevenaar",
+    "provincie": "Gelderland",
+    "naam": "Subsidieverordening woningisolatie Zevenaar 2013",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2013-07-01",
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Eigenaar-bewoner: de eigenaar van de woning, die tevens de woning bewoont.",
+      "vve": "Eigenaar-bewoners binnen een Vereniging van Eigenaren (VVE) komen wel in aanmerking voor subsidie."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR323454/1",
+    "datum_regelingstekst": "2017-03-21",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 2,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zevenaar-cvdr757279",
+    "cvdr_id": "CVDR757279",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zevenaar",
+    "provincie": "Gelderland",
+    "naam": "Verordening Toekomstbestendig Wonen 2026 gemeente Zevenaar",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "Doelgroep: woningen met energielabel C of lager",
+        "regels": [
+          {
+            "labels": [
+              "C",
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": null,
+    "looptijd_eind": null,
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: isolatiestaat.regels.labels. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "Eigenaar-bewoner : de natuurlijke persoon die een woning in eigendom heeft en deze woning als hoofdverblijf bewoont of zal gaan bewonen",
+      "isolatiestaat.omschrijving": "Doelgroep: woningen met energielabel C of lager",
+      "isolatiestaat.regels.labels": "labels: [\"C\",\"D\",\"E\",\"F\",\"G\"]"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR757279/1",
+    "datum_regelingstekst": "2026-02-20",
+    "peildatum": "2026-10-02",
+    "status": "onbekend",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": [
+        "isolatiestaat.regels.labels"
+      ]
+    }
+  },
+  {
+    "id": "zoetermeer-cvdr764672",
+    "cvdr_id": "CVDR764672",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zoetermeer",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling Isolatie Zoetermeer",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lt",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "een energielabel D, E, F, G of een woning waarin ten minste twee van de volgende bouwdelen niet of slecht geïsoleerd zijn",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-09-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: vve. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "De subsidieregeling heeft tot doel het stimuleren en faciliteren van energiebesparende isolatiemaatregelen bij bestaande, slecht geïsoleerde, grondgebonden koopwoningen van eigenaar-bewoners",
+      "woz_max": "WOZ-waarde onder de € 477.000,- (peildatum 2022)",
+      "isolatiestaat": "een energielabel D, E, F, G of een woning waarin ten minste twee van de volgende bouwdelen niet of slecht geïsoleerd zijn",
+      "vve": "alleen grondgebonden woningen"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR764672/1",
+    "datum_regelingstekst": "2026-09-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": [
+        "vve"
+      ]
+    },
+    "extra_bronnen": [
+      "https://www.zoetermeer.nl/subsidie-isolatie-voor-eengezinswoningen"
+    ]
+  },
+  {
+    "id": "zoetermeer-cvdr759504",
+    "cvdr_id": "CVDR759504",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zoetermeer",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling ‘Subsidie Isolatie voor VvE’s’",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "een gemiddeld energielabel D, E, F, G of een aantoonbare vergelijkbare energetische staat",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-03-26",
+    "looptijd_eind": "2028-12-01",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Subsidie wordt uitsluitend verstrekt aan: VvE’s in Zoetermeer ten behoeve van eigenaar-bewoners binnen de VvE die voldoen aan: een gemiddeld energielabel D, E, F, G",
+      "woz_max": "80% van de woningen heeft een gemiddelde WOZ-waarde van maximaal € 477.000,- (peildatum 2022)",
+      "woz_regel": "maximaal € 477.000,- (peildatum 2022)",
+      "woz_peildatum": "peildatum 2022",
+      "isolatiestaat.omschrijving": "een gemiddeld energielabel D, E, F, G of een aantoonbare vergelijkbare energetische staat",
+      "isolatiestaat.regels[0].labels": "een gemiddeld energielabel D, E, F, G",
+      "vve": "Subsidie kan uitsluitend worden verstrekt voor: energiebesparende isolatiemaatregelen ... voor VvE’s gelden de minimale isolatiewaarden en minimale m2 eisen zoals omschreven in de SVVE-regeling",
+      "looptijd_start": "Deze subsidieregeling treedt in werking op 26 maart 2026",
+      "looptijd_eind": "Deze subsidieregeling vervalt op 1 december 2028"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759504/1",
+    "datum_regelingstekst": "2026-03-27",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 9,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zoeterwoude-web-subsidie-nationaal-isolatieprogramma-gemeente-zoet",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "partner: Regionaal Energieloket",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zoeterwoude",
+    "provincie": "Zuid-Holland",
+    "peildatum": "2026-10-02",
+    "naam": "Subsidie Nationaal Isolatieprogramma gemeente Zoeterwoude",
+    "type": "subsidie",
+    "maatregelen": "isolatie",
+    "doelgroep": "particulier",
+    "bedrag": 1600,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 524000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "woning heeft energielabel D, E, F of G of twee of meer slecht geïsoleerde delen",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "looptijd_start": "2024-01-01",
+    "looptijd_eind": "2025-12-22",
+    "bewijs": {
+      "naam": "Subsidie Nationaal Isolatieprogramma gemeente Zoeterwoude",
+      "type": "subsidie",
+      "maatregelen": "isolatie",
+      "doelgroep": "particulier",
+      "bedrag": "Subsidie geeft huiseigenaren een subsidie van €1.600",
+      "technische_eisen": "",
+      "criteria_eigenaar_bewoner": "U bent eigenaar van een woning",
+      "criteria_woz_max": "WOZ-waarde onder de €524.000,- (Peildatum 1-1-2024)",
+      "criteria_isolatiestaat": "de woning heeft twee of meer slecht geïsoleerde delen (dak, vloer, ramen, gevel)",
+      "looptijd_start": "Vanaf begin 2024",
+      "looptijd_eind": "tijdens 22 december 2025"
+    },
+    "bron_url": "https://zoeterwoude.regionaalenergieloket.nl/subsidies-en-leningen",
+    "uitvoerder": "Gemeente Zoeterwoude",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (partner: Regionaal Energieloket), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 11,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zoeterwoude-cvdr746366",
+    "cvdr_id": "CVDR746366",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zoeterwoude",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling Lokale Aanpak Isolatie Zoeterwoude 2024-2027",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 524000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-10-28",
+    "looptijd_eind": "2027-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "eigenaar-bewoner: natuurlijk persoon die: een woning in eigendom heeft waarin hij zijn hoofdverblijf heeft",
+      "woz_max": "WOZ-waarde van maximaal 524.000 euro",
+      "woz_regel": "maximaal",
+      "woz_peildatum": "peildatum 1 januari 2024",
+      "isolatiestaat.omschrijving": "slecht geïsoleerde woning",
+      "isolatiestaat.regels": "ten minste twee van de volgende bestaande bouwdelen ... niet of slecht geïsoleerd zijn",
+      "looptijd_start": "treedt, na bekendmaking, met ingang van 28 oktober 2025 in werking",
+      "looptijd_eind": "maximaal 31 december 2027"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR746366/1",
+    "datum_regelingstekst": "2025-11-11",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 8,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zoeterwoude-cvdr443701",
+    "cvdr_id": "CVDR443701",
+    "versie": 2,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zoeterwoude",
+    "provincie": "Zuid-Holland",
+    "naam": "Verordening van de gemeenteraad van de gemeente Zoeterwoude houdende regels omtrent subsidie Subsidieverordening Duurzaam Zoeterwoude 2017 -2018",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2017-02-23",
+    "looptijd_eind": "2018-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Voor bestaande woningen: de naam en het adres van de aanvrager; adres van de woning, als deze afwijkt van bovenstaande; het emailadres van de aanvrager; bouwjaar van de woning; de datum van de subsidieaanvraag; de beschrijving van de maatregelen waarvoor subsidie wordt aangevraagd (bij voorkeur zoals opgenomen in bijlage 1 bij de categorieënindeling); een offerte of koopovereenkomst voor de aangevraagde maatregel of voorziening; rekeningnummer van aanvrager; een verklaring dat, indien voor een maatregel een vergunningsplicht is, hieraan voldaan is; indien het een huurwoning betreft: een akkoord van de verhuurder; ondertekening van de aanvrager."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR443701/2",
+    "datum_regelingstekst": "2018-11-12",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 1,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zuidplas-web-isolatievergoeding-gemeente-zuidplas",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "partner: Duurzaam Bouwloket",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zuidplas",
+    "provincie": "Zuid-Holland",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatievergoeding gemeente Zuidplas",
+    "type": "subsidie",
+    "doelgroep": "particulier eigenwoning",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "Energielabel D-G of geen label en minimaal 2 slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "bonus",
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "Aanvragen mogelijk t/m 30-06-2027",
+    "looptijd_eind": "2027-06-30",
+    "bewijs": {
+      "eigenaar_bewoner": "De gemeente geeft een vergoeding aan inwoners met een slecht geïsoleerd huis.",
+      "woz_max": "De WOZ-waarde van uw huis is maximaal € 477.000 (gemeten op 1 januari 2022).",
+      "isolatiestaat": "De gemeente geeft een vergoeding aan inwoners met een slecht geïsoleerd huis. Je krijgt een vergoeding als jouw huis: Energielabel D, E, F of G heeft. Als uw woning geen energielabel heeft, of energielabel A, B, C? Dan moet uw woning minstens twee bouwdelen hebben die slecht geïsoleerd zijn.",
+      "inkomen": "Eigenaar-bewoners met een verzamelinkomen van minder dan € 60.000,- kunnen aanspraak maken op een lening met een rente van 0%.",
+      "vve": null
+    },
+    "bron_url": "https://nip.duurzaambouwloket.nl/zuidplas",
+    "uitvoerder": "Duurzaam Bouwloket",
+    "status": "open",
+    "betrouwbaarheid": "laag",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: vve. Controleer deze velden. Gevonden op internet (partner: Duurzaam Bouwloket), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": [
+        "vve"
+      ]
+    }
+  },
+  {
+    "id": "zuidplas-cvdr760261",
+    "cvdr_id": "CVDR760261",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zuidplas",
+    "provincie": "Zuid-Holland",
+    "naam": "Nieuwe Beleidsregels Lokale Aanpak Isolatie Zuidplas 2025",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2024-06-01",
+    "looptijd_eind": "2027-06-30",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "een natuurlijk persoon, woonachtig in de gemeente Zuidplas, die als eigenaar- bewoner van een grondgebonden koopwoning een aanvraag voor een financiële bijdrage doet",
+      "woz_max": "WOZ-waarde (peildatum 1 januari 2022) onder de € 477.000",
+      "woz_regel": "onder de € 477.000",
+      "woz_peildatum": "peildatum 1 januari 2022",
+      "isolatiestaat": "de woning heeft energielabel D, E, F of G. In het geval de woning geen energielabel heeft, of energielabel A, B of C, geldt als voorwaarde dat de woning minimaal twee slecht geïsoleerde bouwdelen heeft",
+      "vve": "VvE’s zijn uitgesloten van deze regeling"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760261/1",
+    "datum_regelingstekst": "2026-04-14",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 6,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zuidplas-cvdr661507",
+    "cvdr_id": "CVDR661507",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zuidplas",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling Stimuleren van energiebesparende maatregelen Zuidplas",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2021-09-01",
+    "looptijd_eind": "2021-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "woningeigenaar van een bestaande woning die niet voor verhuur bedoeld is die een aanvraag vaststelling subsidie doet",
+      "looptijd_start": "Deze subsidieregeling treedt in werking op 1 september 2021",
+      "looptijd_eind": "In afwijking van artikel 7, tweede lid, van de ASV, dient een aanvrager de subsidieaanvraag in tussen 1 september en 31 december van het jaar 2021"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR661507/1",
+    "datum_regelingstekst": "2021-09-01",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 3,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zundert-web-isolatiesubsidie-gemeente-zundert",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zundert",
+    "provincie": "Noord-Brabant",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie - gemeente Zundert",
+    "type": "subsidie",
+    "maatregelen": [
+      "Isolatie van dak, vloer, gevel of glas volgens ISDE-eisen",
+      "Energiezuinig ventilatiesysteem (alleen in combinatie met isolatie)",
+      "Extra subsidie bij biobased isolatiemateriaal"
+    ],
+    "doelgroep": "Particulier eigenaar-bewoner",
+    "technische_eisen": "ISDE-eisen (Rc ≥ 3,5 m²K/W voor dak, vloer, gevel; Ug ≤ 1,2 W/m²K voor glas)",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "Slecht geïsoleerd (minimaal 2 bouwdelen niet goed geïsoleerd)",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1992,
+      "bouwjaar_opmerking": "gebouwd voor 1993",
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "nee",
+      "vve_opmerking": "Monumenten, VvE-woningen, woonwagens en recreatiewoningen komen niet in aanmerking"
+    },
+    "aanvragen": "digitale aanvraagformulier",
+    "looptijd_start": "2026-02-01",
+    "looptijd_eind": "2028-12-31",
+    "aanvraagloket": "digitale aanvraagformulier",
+    "bewijs": {
+      "eigenaar_bewoner": "U bent eigenaar en bewoner van een koopwoning in de gemeente Zundert.",
+      "woz_max": "WOZ-waarde van uw koopwoning in het jaar 2022 lager dan €477.000.",
+      "isolatiestaat.regels.labels": "Uw woning is slecht geïsoleerd (minimaal 2 bouwdelen zoals dak, vloer, gevel of glas zijn niet goed geïsoleerd).",
+      "bouwjaar_max": "Uw woning is gebouwd voor 1993.",
+      "vve_opmerking": "Monumenten, woningen van bedrijven, VvE-woningen, woonwagens en recreatiewoningen zonder woonbestemming komen niet in aanmerking."
+    },
+    "bron_url": "https://www.zundert.nl/duurzaamheid/energie-besparen/isolatiesubsidie",
+    "uitvoerder": "gemeente Zundert",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "opmerkingen": "Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina.",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zundert-cvdr760954",
+    "cvdr_id": "CVDR760954",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zundert",
+    "provincie": "Noord-Brabant",
+    "naam": "Subsidieregeling lokale aanpak isolatie Zundert 2026",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lt",
+      "woz_peildatum": "2022",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerde woning",
+        "regels": [
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1993,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2026-02-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: vve. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "eigenaar-bewoner: natuurlijk persoon die een woning in eigendom heeft waarin hij zijn hoofdverblijf heeft of direct na renovatie van deze woning zal hebben",
+      "woz_max": "WOZ 2022 < NHG van 477.000",
+      "isolatiestaat.omschrijving": "slecht geïsoleerde woning: woning met een energielabelklasse D, E, F, G of een met die labelklassen vergelijkbare energetische staat",
+      "isolatiestaat.regels.labels": "energielabelklasse D, E, F, G",
+      "isolatiestaat.regels.bouwdelen_min": "minimaal 2 slecht geïsoleerde bouwdelen",
+      "bouwjaar_max": "koopwoningen < 1993",
+      "inkomen": "inkomen < 130% sociaal minimum",
+      "vve": "woningen die zijn aangesloten bij een VvE of GVvE komen niet in aanmerking"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760954/1",
+    "datum_regelingstekst": "2026-04-23",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 8,
+      "niet_gevonden": [
+        "vve"
+      ]
+    }
+  },
+  {
     "id": "zutphen-cvdr741234",
     "cvdr_id": "CVDR741234",
     "versie": 1,
@@ -40903,7 +44369,8 @@
     "datum_regelingstekst": "2025-06-28",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "zutphen-cvdr758825",
@@ -41004,7 +44471,8 @@
     "datum_regelingstekst": "2026-03-19",
     "peildatum": "2026-10-01",
     "status": "open",
-    "betrouwbaarheid": "hoog"
+    "betrouwbaarheid": "hoog",
+    "bron": "cvdr"
   },
   {
     "id": "zutphen-cvdr751546",
@@ -41082,6 +44550,494 @@
     "datum_regelingstekst": "2026-01-01",
     "peildatum": "2026-10-01",
     "status": "onbekend",
-    "betrouwbaarheid": "middel"
+    "betrouwbaarheid": "middel",
+    "bron": "cvdr"
+  },
+  {
+    "id": "zwartewaterland-web-isolatiesubsidie-voor-doe-het-zelvers",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwartewaterland",
+    "provincie": "Overijssel",
+    "peildatum": "2026-10-02",
+    "naam": "Isolatiesubsidie voor doe-het-zelvers",
+    "type": "subsidie",
+    "maatregelen": "Gevelisolatie, Spouwmuurisolatie, Dakisolatie, Zolderisolatie, Hoogrendementsglas, Vloerisolatie, Bodemisolatie",
+    "doelgroep": "Particulier eigenaar-bewoner",
+    "bedrag": "600 voor eerste maatregel, 1.000 voor tweede maatregel",
+    "technische_eisen": "zelfde als ISDE",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 357000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "twee slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1992,
+      "bouwjaar_opmerking": "bouwjaar voor 1992",
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "aanvragen": "reserveren, uitvoering, energiecoach, uitbetaling",
+    "uitvoerder_eisen": "energiecoach controleert uitvoering",
+    "stapelbaar_isde": "ja",
+    "looptijd_start": "2023-10-01",
+    "looptijd_eind": "2028-11-30",
+    "budgetstatus": "op=op",
+    "aanvraagloket": "Team Duurzaam 14 038",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: technische_eisen. Controleer deze velden. Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina. max 2 maatregelen, subsidie niet voor appartementen",
+    "bewijs": {
+      "naam": "Isolatiesubsidie voor doe-het-zelvers",
+      "type": "subsidie",
+      "maatregelen": "Gevelisolatie, Spouwmuurisolatie, Dakisolatie, Zolderisolatie, Hoogrendementsglas, Vloerisolatie, Bodemisolatie",
+      "doelgroep": "Particulier eigenaar-bewoner",
+      "bedrag": "600 voor eerste maatregel, 1.000 voor tweede maatregel",
+      "technische_eisen": "zelfde als ISDE",
+      "criteria": {
+        "eigenaar_bewoner": "U bent eigenaar van de woning.",
+        "woz_max": "De woning waarvoor u subsidie aanvraagt, had op 1 januari 2024 een WOZ-waarde van maximaal €357.000.",
+        "isolatiestaat": "U moet twee slecht geïsoleerde bouwdelen opgeven.",
+        "bouwjaar_max": "De woning waarvoor u subsidie aanvraagt, is gebouwd voor 1992."
+      }
+    },
+    "bron_url": "https://www.zwartewaterland.nl/subsidie-isolatiemaatregelen-aanvragen",
+    "uitvoerder": "Gemeente Zwartewaterland",
+    "status": "open",
+    "betrouwbaarheid": "laag",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": [
+        "technische_eisen"
+      ]
+    }
+  },
+  {
+    "id": "zwartewaterland-web-subsidie-isolatiemaatregelen-aanvragen",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "gemeentesite",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwartewaterland",
+    "provincie": "Overijssel",
+    "peildatum": "2026-10-02",
+    "naam": "Subsidie isolatiemaatregelen aanvragen",
+    "type": "subsidie",
+    "maatregelen": "Gevelisolatie, Spouwmuurisolatie, Dakisolatie, Zoldervloerisolatie, Vloerisolatie, Bodemisolatie, Hoogrendementsglas",
+    "doelgroep": "Particulier eigenaar-bewoner",
+    "bedrag": "600 voor eerste maatregel, 1.000 voor tweede maatregel",
+    "technische_eisen": "zelfde als ISDE",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 357000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "twee slecht geïsoleerde bouwdelen",
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1992,
+      "bouwjaar_opmerking": "bouwjaar voor 1992",
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "aanvragen": "reserveren, uitvoering, betaling, uitbetaling",
+    "uitvoerder_eisen": "energieadviseur bij reservering, bouwbedrijf voor uitvoering",
+    "stapelbaar_isde": "ja",
+    "looptijd_start": "2023-10-01",
+    "looptijd_eind": "2028-11-30",
+    "budgetstatus": "op=op",
+    "aanvraagloket": "Team Duurzaam 14 038",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: technische_eisen. Controleer deze velden. Gevonden op internet (gemeentesite), niet in het CVDR. Controleer de bronpagina. max 2 maatregelen, subsidie niet voor appartementen",
+    "bewijs": {
+      "naam": "Subsidie isolatiemaatregelen aanvragen",
+      "type": "subsidie",
+      "maatregelen": "Gevelisolatie, Spouwmuurisolatie, Dakisolatie, Zoldervloerisolatie, Vloerisolatie, Bodemisolatie, Hoogrendementsglas",
+      "doelgroep": "Particulier eigenaar-bewoner",
+      "bedrag": "600 voor eerste maatregel, 1.000 voor tweede maatregel",
+      "technische_eisen": "zelfde als ISDE",
+      "criteria": {
+        "eigenaar_bewoner": "U bent eigenaar van de woning.",
+        "woz_max": "De woning waarvoor u subsidie aanvraagt, had op 1 januari 2024 een WOZ-waarde van maximaal €357.000.",
+        "isolatiestaat": "U moet twee slecht geïsoleerde bouwdelen opgeven.",
+        "bouwjaar_max": "De woning waarvoor u subsidie aanvraagt, is gebouwd voor 1992."
+      }
+    },
+    "bron_url": "https://www.zwartewaterland.nl/subsidie-isolatiemaatregelen-aanvragen",
+    "uitvoerder": "Gemeente Zwartewaterland",
+    "status": "open",
+    "betrouwbaarheid": "laag",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": [
+        "technische_eisen"
+      ]
+    }
+  },
+  {
+    "id": "zwartewaterland-cvdr760839",
+    "cvdr_id": "CVDR760839",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwartewaterland",
+    "provincie": "Overijssel",
+    "naam": "Subsidieregeling woningisolatie gemeente Zwartewaterland",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 299000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": 1991,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "nee",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2023-01-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": "WOZ-waarde strikt 299.000,- op 2022-01-01, ondanks later vermelding van 357.000,-.",
+    "bewijs": {
+      "eigenaar_bewoner": "Subsidie wordt uitsluitend verstrekt aan de eigenaar-bewoner van een woning in de gemeente Zwartewaterland.",
+      "woz_max": "De WOZ-waarde van het pand mag maximaal €299.000,- bedragen op waardepeildatum 1 januari 2022 voor uitgevoerde maatregel(en) en aanvragen van 1 januari 2023 tot en met 31 december 2024.",
+      "bouwjaar_max": "De aanvraag heeft betrekking op een grondgebonden woning - niet zijnde een appartement, woonboot of wagen - van de eigenaar-bewoner, die gebouwd is voor 1992.",
+      "isolatiestaat": "De aanvraag is voorzien van een opgave van minimaal twee slecht geïsoleerde bouwdelen conform definitie volgens de RVO.",
+      "vve": "De aanvraag heeft betrekking op een grondgebonden woning - niet zijnde een appartement, woonboot of wagen - van de eigenaar-bewoner.",
+      "looptijd_start": "Een aanvraag voor subsidie kan worden ingediend van 1 januari 2023 tot en met 31 december 2028.",
+      "looptijd_eind": "Een aanvraag voor subsidie kan worden ingediend van 1 januari 2023 tot en met 31 december 2028."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR760839/1",
+    "datum_regelingstekst": "2026-04-21",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 7,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zwijndrecht-web-energiebespaarlening-particuliere-woningeigenaren",
+    "cvdr_id": null,
+    "bron": "web",
+    "bron_type": "partner: Regionaal Energieloket",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwijndrecht",
+    "provincie": "Zuid-Holland",
+    "peildatum": "2026-10-02",
+    "naam": "Energiebespaarlening Particuliere Woningeigenaren",
+    "type": "Lening",
+    "maatregelen": "Isolatie",
+    "doelgroep": "Particuliere woningeigenaren",
+    "bedrag": "1000-28000",
+    "technische_eisen": "Alle maatregelen moeten uitgevoerd worden door een aannemer of installateur",
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": "vereist",
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "aanvragen": "3 maanden geldig",
+    "uitvoerder_eisen": "Alle maatregelen moeten uitgevoerd worden door een aannemer of installateur",
+    "stapelbaar_isde": "ja",
+    "looptijd_eind": "2026-09-10",
+    "aanvraagloket": "Nationaal Warmtefonds",
+    "opmerkingen": "Gevonden op internet (partner: Regionaal Energieloket), niet in het CVDR. Controleer de bronpagina. Geen tegenstrijdige data",
+    "bewijs": {
+      "bedrag": "€1.000 - €29.000 (0% rente bij verzamelinkomen tot €60.000)",
+      "technische_eisen": "Alle maatregelen moeten uitgevoerd worden door een aannemer of installateur",
+      "criteria_eigenaar_bewoner": "U dient eigenaar en bewoner te zijn van een bestaande woning.",
+      "criteria_inkomen": "Heeft u een koopwoning en een (gezamenlijk) inkomen dat niet hoger is dan €60.000,-?",
+      "criteria_aanvragen": "De aanvraag voor de Energiebespaarlening is 3 maanden geldig."
+    },
+    "bron_url": "https://zwijndrecht.regionaalenergieloket.nl/subsidies-en-leningen",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zwijndrecht-cvdr759345",
+    "cvdr_id": "CVDR759345",
+    "versie": 1,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwijndrecht",
+    "provincie": "Zuid-Holland",
+    "naam": "Subsidieregeling isolatie koopwoningen in de gemeente Zwijndrecht",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 477000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2022-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": [
+          {
+            "labels": [
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "UNKNOWN"
+            ]
+          },
+          {
+            "labels": [
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          {
+            "bouwjaar_max": 1995,
+            "bouwdelen_min": 2
+          },
+          {
+            "labels": [
+              "UNKNOWN"
+            ],
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": "max 1 per huishouden",
+    "uitvoerder_eisen": "SKG IKOB certificaat, Insula certificaat of vergelijkbaar, NVI voor spouwmuur/dak",
+    "stapelbaar_isde": null,
+    "looptijd_start": "2025-01-01",
+    "looptijd_eind": "2026-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": "digitale systeem van intermediair",
+    "opmerkingen": "Bewijs niet teruggevonden in de brontekst voor: aanvraagloket. Controleer deze velden.",
+    "bewijs": {
+      "eigenaar_bewoner": "eigenaar-bewoner is een inwoner van de gemeente die eigenaar is van een woning en deze woning zelf bewoont",
+      "woz_max": "maximale WOZ-waarde heeft van € 477.000 (prijspeil 1 januari 2022)",
+      "woz_peildatum": "peildatum 1 januari 2022",
+      "isolatiestaat": "definitie in artikel 1 lid 2d of 2e",
+      "aanvragen": "Per huishouden kan slechts één keer subsidie worden aangevraagd",
+      "uitvoerder_eisen": "uitvoerder: een isolatiebedrijf dat beschikt over een SKG IKOB certificaat, een Insula certificaat of een vergelijkbaar certificaat en in geval van spouwmuurisolatie of dakisolatie van buitenaf een certificaat Natuurvriendelijk Isoleren (NVI)",
+      "looptijd_start": "tijdens 1 januari 2025 t/m 31 december 2026",
+      "looptijd_eind": "tijdens 1 januari 2025 t/m 31 december 2026",
+      "aanvraagloket": "de aanvraag kan tot en met 31 oktober 2026 worden ingediend via het digitale systeem van de intermediair"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR759345/1",
+    "datum_regelingstekst": "2026-03-25",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 9,
+      "niet_gevonden": [
+        "aanvraagloket"
+      ]
+    }
+  },
+  {
+    "id": "zwolle-cvdr682993",
+    "cvdr_id": "CVDR682993",
+    "versie": 5,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwolle",
+    "provincie": "Overijssel",
+    "naam": "Subsidieregeling Berkum Energieneutraal Zwolle 2022",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": null,
+      "woz_regel": null,
+      "woz_peildatum": null,
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": null,
+        "regels": []
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": "ja",
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2022-11-01",
+    "looptijd_eind": "2028-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Subsidie wordt uitsluitend verstrekt aan eigenaren en VVE’s van bestaande woningen in Berkum.",
+      "vve": "Subsidie wordt uitsluitend verstrekt aan eigenaren en VVE’s van bestaande woningen in Berkum.",
+      "looptijd_start": "de activiteiten zijn uitgevoerd in de periode 11 november 2020 tot en met 31 oktober 2028",
+      "looptijd_eind": "Deze subsidieregeling vervalt op 31 december 2028"
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR682993/5",
+    "datum_regelingstekst": "2026-04-01",
+    "peildatum": "2026-10-02",
+    "status": "open",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 4,
+      "niet_gevonden": []
+    }
+  },
+  {
+    "id": "zwolle-cvdr705000",
+    "cvdr_id": "CVDR705000",
+    "versie": 5,
+    "bron": "cvdr",
+    "handmatig": false,
+    "gecontroleerd": false,
+    "gemeente": "Zwolle",
+    "provincie": "Overijssel",
+    "naam": "Subsidieregeling woningisolatie Zwolle 2024",
+    "type": null,
+    "maatregelen": null,
+    "doelgroep": null,
+    "bedrag": null,
+    "technische_eisen": null,
+    "criteria": {
+      "eigenaar_bewoner": true,
+      "woz_max": 443000,
+      "woz_regel": "lte",
+      "woz_peildatum": "2024-01-01",
+      "woz_uitzondering": null,
+      "isolatiestaat": {
+        "omschrijving": "slecht geïsoleerd",
+        "regels": [
+          {
+            "bouwdelen_min": 2
+          }
+        ]
+      },
+      "bouwjaar_min": null,
+      "bouwjaar_max": null,
+      "bouwjaar_opmerking": null,
+      "woonoppervlak_max": null,
+      "inkomen": null,
+      "vve": null,
+      "vve_opmerking": null
+    },
+    "inkomensgrens": null,
+    "aanvragen": null,
+    "uitvoerder_eisen": null,
+    "stapelbaar_isde": null,
+    "looptijd_start": "2024-01-01",
+    "looptijd_eind": "2025-12-31",
+    "budgetstatus": null,
+    "aanvraagloket": null,
+    "opmerkingen": null,
+    "bewijs": {
+      "eigenaar_bewoner": "Subsidie wordt uitsluitend verstrekt aan eigenaar-bewoners.",
+      "woz_max": "op peildatum 1 januari 2024 heeft de woning een vastgestelde WOZ-waarde van maximaal € 443.000;",
+      "woz_peildatum": "op peildatum 1 januari 2024",
+      "isolatiestaat": "de woning is bij de start van de uitvoering van de activiteit slecht geïsoleerd;",
+      "isolatiestaat_regels": "slecht geïsoleerd: minstens twee slecht geïsoleerde bouwdelen, zoals beschreven in bijlage 1 bij deze subsidieregeling."
+    },
+    "bron_url": "https://lokaleregelgeving.overheid.nl/CVDR705000/5",
+    "datum_regelingstekst": "2026-04-16",
+    "peildatum": "2026-10-02",
+    "status": "gesloten",
+    "betrouwbaarheid": "middel",
+    "bewijs_controle": {
+      "datum": "2026-10-02",
+      "gecontroleerd": 5,
+      "niet_gevonden": []
+    },
+    "extra_bronnen": [
+      "https://nip.duurzaambouwloket.nl/zwolle"
+    ]
   }
 ]

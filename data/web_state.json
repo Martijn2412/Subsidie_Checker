@@ -20,8 +20,32 @@
     "gevonden": 0
   },
   "Best": {
-    "datum": "2026-09-28",
-    "gevonden": 1
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.gemeentebest.nl",
+    "site_bron": "sitemap",
+    "site_urls": 307,
+    "kandidaten": 12,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.gemeentebest.nl/subsidies",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://best.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://best.regionaalenergieloket.nl/isolatieacties",
+        "bron": "partner: Regionaal Energieloket"
+      }
+    ],
+    "hash": "a061e969b66cdc245889456f73aa617d756136f2b9d79f1e3b60d639deb98f7f",
+    "ook": []
   },
   "Bladel": {
     "datum": "2026-09-28",
@@ -72,8 +96,45 @@
     "gevonden": 1
   },
   "Hoorn": {
-    "datum": "2026-09-29",
-    "gevonden": 2
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.hoorn.nl",
+    "site_bron": "sitemap",
+    "site_urls": 1160,
+    "kandidaten": 22,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://nip.duurzaambouwloket.nl/hoorn",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://hoorn.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.hoorn.nl/energiesubsidie",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.hoorn.nl/duurzaamheidslening",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://energieloketten.nl/hoorn",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://www.hoorn.nl/duurzaamheidslening/Kan-ik-ook-een-lening-aanvragen-voor-het-realiseren-van-een-aanbouw-aan-een-bestaande-woning.html",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "c3a4795edc7845bc66dd14bbbee97c5c00abe6edfad44060e94a6de4029bed05",
+    "ook": []
   },
   "Landgraaf": {
     "datum": "2026-09-29",
@@ -92,8 +153,34 @@
     "gevonden": 0
   },
   "Meppel": {
-    "datum": "2026-09-29",
-    "gevonden": 2
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.meppel.nl",
+    "site_bron": "sitemap",
+    "site_urls": 227,
+    "kandidaten": 22,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket",
+      "WoonWijzerWinkel"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.woonwijzerwinkel.nl/meppelrade-glas/",
+        "bron": "partner: WoonWijzerWinkel"
+      },
+      {
+        "url": "https://meppel.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/meppel/",
+        "bron": "partner: Isolatieloket"
+      }
+    ],
+    "hash": "aa5dc5977de58b37596868515a445189401d3ebdca17bbe69eca49f0013c2f5b",
+    "ook": []
   },
   "Midden-Drenthe": {
     "datum": "2026-09-29",
@@ -128,16 +215,75 @@
     "gevonden": 2
   },
   "Ridderkerk": {
-    "datum": "2026-09-29",
-    "gevonden": 2
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.ridderkerk.nl",
+    "site_bron": "sitemap",
+    "site_urls": 856,
+    "kandidaten": 22,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket",
+      "WoonWijzerWinkel"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.ridderkerk.nl/direct-regelen/belastingen-subsidies/subsdie-energie/subsidie-voor-doe-het-zelvers/",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://isolatieloket.nl/ridderkerk/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://ridderkerk.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.ridderkerk.nl/direct-regelen/belastingen-subsidies/subsdie-energie/stimuleringsregeling-duurzaam/",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.ridderkerk.nl/direct-regelen/wonen-leefomgeving-verbouwen/duurzaamheid/duurzaam/ik-begon-30-jaar-geleden-met-het-isoleren-van-de-muren/",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.woonwijzerwinkel.nl/gemeente-ridderkerk/",
+        "bron": "partner: WoonWijzerWinkel"
+      }
+    ],
+    "hash": "0cc766f7767e275acc7b6aa6e1a17985a53d6b8acdc3c06e37d9e0dee0eed957",
+    "ook": []
   },
   "Rucphen": {
     "datum": "2026-09-29",
     "gevonden": 0
   },
   "Schiedam": {
-    "datum": "2026-09-29",
-    "gevonden": 1
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.schiedam.nl",
+    "site_bron": "sitemap",
+    "site_urls": 1167,
+    "kandidaten": 20,
+    "partners": [
+      "Regionaal Energieloket",
+      "WoonWijzerWinkel"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://schiedam.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.woonwijzerwinkel.nl/gemeente-schiedam/",
+        "bron": "partner: WoonWijzerWinkel"
+      }
+    ],
+    "hash": "aec9f697d27632278d328f514be0329b3e4a3558de2fa7d7f511dffd9c58f76f",
+    "ook": []
   },
   "Schiermonnikoog": {
     "datum": "2026-09-29",
@@ -152,8 +298,50 @@
     "gevonden": 0
   },
   "Twenterand": {
-    "datum": "2026-09-29",
-    "gevonden": 2
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.twenterand.nl",
+    "site_bron": "sitemap",
+    "site_urls": 1257,
+    "kandidaten": 22,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.twenterand.nl/isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.twenterand.nl/isoleren?origin=%2Fduurzaamheidssubsidie",
+        "bron": "eerder gevonden"
+      },
+      {
+        "url": "https://twenterand.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.twenterand.nl/gratis-advies-van-een-energiecoach",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://isolatieloket.nl/twenterand/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.twenterand.nl/vraag-vanaf-vandaag-subsidie-aan-voor-een-duurzaam-huis",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "adedcbf651f74596d1156218254ae0f428b4d8e7c97743449a26e9af674ead46",
+    "ook": [
+      [
+        "twenterand-cvdr746987",
+        "https://www.twenterand.nl/isoleren"
+      ]
+    ]
   },
   "Tynaarlo": {
     "datum": "2026-09-29",
@@ -178,5 +366,563 @@
   "Wijdemeren": {
     "datum": "2026-09-29",
     "gevonden": 2
+  },
+  "Middelburg": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.middelburg.nl",
+    "site_bron": "sitemap",
+    "site_urls": 824,
+    "kandidaten": 21,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://middelburg.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/middelburg/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.middelburg.nl/gratis-hulp-bij-isoleren-woning",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.middelburg.nl/subsidieregeling-zeeuws-isolatieprogramma-zip",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.middelburg.nl/subsidieregeling-klimaat-energie-en-circulariteit",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.middelburg.nl/rijkssubsidies-duurzaamheid",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "596215aa7b8597dabe85f8f7e7925f064cc6f69bbd8c5eb55d2c465286c408a0",
+    "ook": []
+  },
+  "Oudewater": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.oudewater.nl",
+    "site_bron": "sitemap",
+    "site_urls": 419,
+    "kandidaten": 20,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.oudewater.nl/Subsidie/Isolatiesubsidie_koopwoningen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://oudewater.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/oudewater/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.oudewater.nl/Duurzaamheid/Isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.oudewater.nl/Subsidie/Subsidie_verduurzamen_VvEs",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.oudewater.nl/Subsidie",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "03129877adf332498defcbd1f4f393c3de830bf2b768c8aa3669fd208d6c2be4",
+    "ook": []
+  },
+  "Tiel": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.tiel.nl",
+    "site_bron": "sitemap",
+    "site_urls": 461,
+    "kandidaten": 20,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.tiel.nl/toekomstbestendig-wonen-lening-grondgebonden-woningen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://isolatieloket.nl/tiel/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://tiel.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.tiel.nl/toekomstbestendig-wonen-lening-vves",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.tiel.nl/energieloket-tiel",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.tiel.nl/subsidie-duurzaam-en-aantrekkelijk-erfgoed",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "3f363f13468e9161d9c6c4e9fef29ea47f34ec72a8fba3965b57ed9ff2a77671",
+    "ook": []
+  },
+  "Utrecht": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.utrecht.nl",
+    "site_bron": "sitemap",
+    "site_urls": 3394,
+    "kandidaten": 20,
+    "partners": [
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.utrecht.nl/wonen-en-leven/duurzame-stad/energie/besparen/grote-vve-energiezuinig-maken/hulp-bij-isoleren-voor-grote-vves-overvecht-noordwest-zuid-en-zuidwest",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://isolatieloket.nl/utrecht/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://energieloket.utrecht.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.utrecht.nl/bestuur-en-organisatie/subsidiehulp/wonen-en-leefomgeving",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.utrecht.nl/bestuur-en-organisatie/subsidiehulp/subsidies-duurzaamheid",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.utrecht.nl/wonen-en-leven/duurzame-stad/energie/besparen/kleine-vve-energiezuinig-maken/extra-subsidie-voor-een-actieve-vve",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "4041516f16272dd32fe4e5ed5fd15be30153f4af9d40e50b2b470bc8d6bf2b36",
+    "ook": []
+  },
+  "Veldhoven": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.veldhoven.nl",
+    "site_bron": "sitemap",
+    "site_urls": 429,
+    "kandidaten": 20,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.veldhoven.nl/isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://veldhoven.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.veldhoven.nl/natuurvriendelijk-isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.veldhoven.nl/glasisolatie",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://veldhoven.regionaalenergieloket.nl/isolatieacties",
+        "bron": "partner: Regionaal Energieloket"
+      }
+    ],
+    "hash": "b17dce647a973eb4b51af6d6859367d42759bb3bd24a99028af7388277cfef60",
+    "ook": [
+      [
+        "veldhoven-cvdr758216",
+        "https://www.veldhoven.nl/isoleren"
+      ],
+      [
+        "veldhoven-cvdr766601",
+        "https://www.veldhoven.nl/glasisolatie"
+      ]
+    ]
+  },
+  "Woerden": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.woerden.nl",
+    "site_bron": "sitemap",
+    "site_urls": 465,
+    "kandidaten": 20,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.woerden.nl/Subsidie/Isolatiesubsidie_koopwoningen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://nip.duurzaambouwloket.nl/woerden",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://woerden.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/woerden/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.woerden.nl/Duurzaamheid/Isoleren_en_ventileren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.woerden.nl/Subsidie/Subsidie_verduurzamen_VvEs",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "427135f8aefcec3b03dc4f7d65a2fdf0ae62072d95b0118ac5c0eceb8066a473",
+    "ook": [
+      [
+        "woerden-cvdr744613",
+        "https://www.woerden.nl/Subsidie/Isolatiesubsidie_koopwoningen"
+      ]
+    ]
+  },
+  "Zeist": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zeist.nl",
+    "site_bron": "sitemap",
+    "site_urls": 477,
+    "kandidaten": 19,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://nip.duurzaambouwloket.nl/zeist",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://www.zeist.nl/energie-en-milieu/klimaat-en-energie/uw-woning-verduurzamen/subsidie-voor-isolatie",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zeist.nl/energie-en-milieu/klimaat-en-energie/uw-woning-verduurzamen/isolatiesubsidie-voor-kleine-vves",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zeist.nl/energie-en-milieu/klimaat-en-energie/uw-woning-verduurzamen/uw-woning-isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zeist.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/zeist/",
+        "bron": "partner: Isolatieloket"
+      }
+    ],
+    "hash": "e75407457735d95bd97258318ebafa3eac10f933650dbf809c15758805fe78b5",
+    "ook": [
+      [
+        "zeist-cvdr759526",
+        "https://www.zeist.nl/energie-en-milieu/klimaat-en-energie/uw-woning-verduurzamen/subsidie-voor-isolatie"
+      ]
+    ]
+  },
+  "Zoetermeer": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zoetermeer.nl",
+    "site_bron": "sitemap",
+    "site_urls": 900,
+    "kandidaten": 20,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.zoetermeer.nl/subsidie-isolatie-voor-eengezinswoningen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zoetermeer.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zoetermeer.nl/subsidie-isolatie-voor-vves",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zoetermeer.regionaalenergieloket.nl/isolatieacties",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zoetermeer.nl/subsidies",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zoetermeer.nl/dienstverlening",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "5383027557d0a6d6491fc5a18f83fba3ec2899e830e6268df127d3fc7159e805",
+    "ook": [
+      [
+        "zoetermeer-cvdr764672",
+        "https://www.zoetermeer.nl/subsidie-isolatie-voor-eengezinswoningen"
+      ]
+    ]
+  },
+  "Zoeterwoude": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zoeterwoude.nl",
+    "site_bron": "sitemap",
+    "site_urls": 387,
+    "kandidaten": 20,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://zoeterwoude.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zoeterwoude.nl/duurzaamheid/subsidies-en-grootschalige-inkoopacties",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zoeterwoude.nl/duurzaamheid/isoleren",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zoeterwoude.nl/duurzaamheid/regionaal-energieloket",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zoeterwoude.nl/werk-en-geldzaken/hulp-bij-gestegen-energiekosten/hulp-bij-energiebesparende-maatregelen",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "07f3016d52ea727be6bfa0fc9a31d72f2d148ba6d7bfc32ea7214f8331f6c573",
+    "ook": []
+  },
+  "Zuidplas": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zuidplas.nl",
+    "site_bron": "sitemap",
+    "site_urls": 786,
+    "kandidaten": 20,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://nip.duurzaambouwloket.nl/zuidplas",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://zuidplas.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zuidplas.nl/duurzaamheidslening",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://energieloketten.nl/zuidplas",
+        "bron": "partner: Duurzaam Bouwloket"
+      }
+    ],
+    "hash": "554f960ed1265c7e308ed9e8cbc8cf7cebb9e43583904d31203f809d4ecb91b3",
+    "ook": []
+  },
+  "Zundert": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zundert.nl",
+    "site_bron": "sitemap",
+    "site_urls": 231,
+    "kandidaten": 14,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.zundert.nl/duurzaamheid/energie-besparen/isolatiesubsidie",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zundert.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zundert.nl/wonen/regelingen-en-leningen",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "3b6b0dbd49ed3e5d2abf95da1521192505f2ed248c91793f07f38697ac09d766",
+    "ook": []
+  },
+  "Zwartewaterland": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zwartewaterland.nl",
+    "site_bron": "sitemap",
+    "site_urls": 664,
+    "kandidaten": 20,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://www.zwartewaterland.nl/subsidie-isolatiemaatregelen-aanvragen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zwartewaterland.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://www.zwartewaterland.nl/gemeentelijke-subsidie-isolatiemaatregelen-vves",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://isolatieloket.nl/zwartewaterland/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.zwartewaterland.nl/subsidies-en-leningen-voor-verduurzamen",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://energieloketten.nl/zwartewaterland",
+        "bron": "partner: Duurzaam Bouwloket"
+      }
+    ],
+    "hash": "77bf673f6c2636c6fb9da559acda54ccf8c54bd4077f5f3962b58ee73b0e5d2e",
+    "ook": []
+  },
+  "Zwijndrecht": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zwijndrecht.nl",
+    "site_bron": "sitemap",
+    "site_urls": 681,
+    "kandidaten": 20,
+    "partners": [
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://zwijndrecht.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://zwijndrecht.nl/Alle_onderwerpen/Duurzaamheid/Landelijke_subsidie_voor_woningisolatie",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "ddff079b717025b179a1bc62fc9ebd53f3d08161286715941dc2b9e0490561cb",
+    "ook": []
+  },
+  "Zwolle": {
+    "versie": 2,
+    "datum": "2026-10-02",
+    "site": "https://www.zwolle.nl",
+    "site_bron": "sitemap",
+    "site_urls": 2081,
+    "kandidaten": 20,
+    "partners": [
+      "Duurzaam Bouwloket",
+      "Isolatieloket",
+      "Regionaal Energieloket"
+    ],
+    "ai_gezocht": null,
+    "paginas": [
+      {
+        "url": "https://nip.duurzaambouwloket.nl/zwolle",
+        "bron": "partner: Duurzaam Bouwloket"
+      },
+      {
+        "url": "https://www.zwolle.nl/subsidieregeling-woningisolatie",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://www.zwolle.nl/subsidieregeling-woningisolatie-vve",
+        "bron": "gemeentesite"
+      },
+      {
+        "url": "https://zwolle.regionaalenergieloket.nl/subsidies-en-leningen",
+        "bron": "partner: Regionaal Energieloket"
+      },
+      {
+        "url": "https://isolatieloket.nl/zwolle/",
+        "bron": "partner: Isolatieloket"
+      },
+      {
+        "url": "https://www.zwolle.nl/tot-eu-1300-subsidie-voor-isolatie-zwolle-helpt-woningeigenaren-direct-aan-een-comfortabeler-huis",
+        "bron": "gemeentesite"
+      }
+    ],
+    "hash": "a9a5704c96e3e965587ab54dc98d7fbbdfe15808cf8f9adbc4cdcf3ea6f29efa",
+    "ook": [
+      [
+        "zwolle-cvdr705000",
+        "https://nip.duurzaambouwloket.nl/zwolle"
+      ]
+    ]
   }
 }
