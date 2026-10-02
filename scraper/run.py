@@ -514,7 +514,7 @@ def max_webtekst():
 def extraheer_web(gemeente, tekst, bekend):
     vraag = (PROMPT + WEB_EXTRACTIE.format(g=gemeente, bekend="; ".join(bekend) or "geen")
              + "\n\n<webpaginas>\n" + tekst + "\n</webpaginas>")
-    antw = parse_json(llm("extractie", vraag, json_uit=True))
+    antw = vraag_json(vraag)
     if isinstance(antw, list):
         return antw
     return antw.get("regelingen") or []
@@ -714,9 +714,21 @@ def is_relevant(titel, tekst):
 
 
 # ---------- stap 4: voorwaarden extraheren ----------
-def extraheer(tekst):
-    antw = llm("extractie", PROMPT + "\n\n<regelingstekst>\n" + tekst + "\n</regelingstekst>", json_uit=True)
+def vraag_json(vraag):
+    """Taalmodel om JSON vragen. Is het antwoord geen geldige JSON (bijv. een ontbrekende komma),
+    dan nog één keer vragen, met de nadruk op geldige JSON."""
+    antw = llm("extractie", vraag, json_uit=True)
+    try:
+        return parse_json(antw)
+    except json.JSONDecodeError as e:
+        print(f"  antwoord was geen geldige JSON ({e}); nog één keer vragen")
+    antw = llm("extractie", vraag + "\n\nLET OP: je vorige antwoord was geen geldige JSON. Geef nu ALLEEN geldige JSON "
+               "(dubbele aanhalingstekens, komma's tussen velden, geen tekst eromheen).", json_uit=True)
     return parse_json(antw)
+
+
+def extraheer(tekst):
+    return vraag_json(PROMPT + "\n\n<regelingstekst>\n" + tekst + "\n</regelingstekst>")
 
 
 TOETS = ["eigenaar_bewoner", "woz_max", "isolatiestaat", "bouwjaar_max", "woonoppervlak_max", "inkomen", "vve"]
