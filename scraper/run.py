@@ -187,8 +187,8 @@ def bronnen_claude(r):
 
 
 def reserve_aanbieders():
-    """Reserve-aanbieders uit config.json met een sleutel (GitHub Models gebruikt het token van de workflow)."""
-    lijst = [a for a in CFG.get("reserve_aanbieders", []) if os.environ.get(a.get("sleutel_env", ""))]
+    """Reserve-aanbieders uit config.json: zonder sleutel nodig ("sleutel_env" leeg), of met een sleutel die er is."""
+    lijst = [a for a in CFG.get("reserve_aanbieders", []) if not a.get("sleutel_env") or os.environ.get(a["sleutel_env"])]
     if START_AANBIEDER:
         namen = [a["naam"].lower() for a in lijst]
         lijst = lijst[namen.index(START_AANBIEDER):] if START_AANBIEDER in namen else []
@@ -211,8 +211,9 @@ def llm_openai(a, taak, tekst, json_uit):
             "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000))}
     if json_uit and a.get("json", True):
         body["response_format"] = {"type": "json_object"}
-    kop = {"Authorization": f"Bearer {os.environ[a['sleutel_env']]}", "Content-Type": "application/json",
-           **(a.get("koppen") or {})}
+    kop = {"Content-Type": "application/json", **(a.get("koppen") or {})}
+    if a.get("sleutel_env"):
+        kop["Authorization"] = f"Bearer {os.environ[a['sleutel_env']]}"
     for poging in range(3):
         time.sleep(a.get("pauze_sec", 2))
         try:
