@@ -24,7 +24,9 @@ GEMEENTEN = ["Aadorp", "Beekdorp", "Ceedorp", "Deedorp", "Eedorp"]
 TEKST = "Subsidie voor isolatie van de eigen woning door de eigenaar. Dak, vloer en gevel."
 
 
-class TestVoortgang(unittest.TestCase):
+class Basis(unittest.TestCase):
+    """Nep-omgeving: tijdelijke map, nagebootst CVDR en taalmodel."""
+
     def setUp(self):
         self.map = pathlib.Path(tempfile.mkdtemp())
         (self.map / "data").mkdir()
@@ -73,6 +75,8 @@ class TestVoortgang(unittest.TestCase):
     def voortgang(self):
         return json.loads(run.VOORTGANG.read_text())["volgende"]
 
+
+class TestVoortgang(Basis):
     def test_crash_bewaart_werk_en_volgende_run_gaat_verder(self):
         self.crash_bij = "Ceedorp"
         with self.assertRaises(KeyboardInterrupt):
@@ -142,3 +146,89 @@ class TestVoortgang(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestWebregelingen(Basis):
+    """Regelingen die via internet zijn gevonden: voorwaarden van de pagina of via het taalmodel."""
+    EXT = {"relevant": True, "naam": "Isolatiesubsidie Webdorp", "bedrag": "max. € 500",
+           "criteria": {"eigenaar_bewoner": True, "woz_max": 400000}}
+
+    def test_vervolglinks_alleen_voorwaarden_op_eigen_site(self):
+        h = ('<a href="/subsidie-isolatie/voorwaarden">Voorwaarden isolatiesubsidie</a>'
+             '<a href="https://andere-site.nl/subsidie-voorwaarden">elders</a>'
+             '<a href="/contact">Contact</a>'
+             '<a href="/documenten/subsidieregeling-isolatie.pdf">Subsidieregeling (pdf)</a>')
+        self.assertEqual(run.vervolglinks("https://www.gemeente.nl/nieuws/isolatie", h),
+                         ["https://www.gemeente.nl/subsidie-isolatie/voorwaarden",
+                          "https://www.gemeente.nl/documenten/subsidieregeling-isolatie.pdf"])
+
+    def test_pagina_met_doorverwijzing_wordt_gelezen(self):
+        opgehaald = []
+        def nep_ruw(url):
+            opgehaald.append(url)
+            if url.endswith("/nieuws"):
+                return "Nieuws: er is weer subsidie voor isolatie. " * 3, '<a href="/isolatie/voorwaarden">Bekijk de voorwaarden</a>'
+            return "Voorwaarden: eigenaar-bewoner, WOZ-waarde tot 400.000 euro. " * 20, ""
+        oud, run.haal_ruw = run.haal_ruw, nep_ruw
+        run.extraheer = lambda tekst: dict(self.EXT) if "WOZ-waarde" in tekst else {}
+        try:
+            ext, methode = run.lees_webregeling("Isolatiesubsidie", "Webdorp", "https://www.webdorp.nl/nieuws")
+        finally:
+            run.haal_ruw = oud
+        self.assertEqual(methode, "pagina")
+        self.assertEqual(ext["criteria"]["woz_max"], 400000)
+        self.assertEqual(opgehaald, ["https://www.webdorp.nl/nieuws", "https://www.webdorp.nl/isolatie/voorwaarden"])
+
+    def test_geblokkeerde_pagina_dan_taalmodel_laten_zoeken(self):
+        def geblokkeerd(url):
+            raise RuntimeError("403 Forbidden")
+        vragen = []
+        oud_ruw, oud_llm = run.haal_ruw, run.llm
+        run.haal_ruw = geblokkeerd
+        run.llm = lambda taak, tekst, **kw: (vragen.append((taak, kw)), json.dumps(self.EXT))[1]
+        try:
+            ext, methode = run.lees_webregeling("Isolatiesubsidie", "Webdorp", "https://www.webdorp.nl/x")
+        finally:
+            run.haal_ruw, run.llm = oud_ruw, oud_llm
+        self.assertEqual(methode, "zoeken")
+        self.assertTrue(vragen[0][1]["zoeken"])
+        self.assertTrue(run.heeft_voorwaarden(ext))
+
+    def test_bestaande_webregeling_zonder_voorwaarden_wordt_opnieuw_gelezen(self):
+        run.zoek_cvdr = lambda naam, trefwoorden=None: {}            # niets in het CVDR
+        web = {"id": "aadorp-web-isolatie", "cvdr_id": None, "bron": "web", "handmatig": False,
+               "gecontroleerd": False, "gemeente": "Aadorp", "provincie": "Test", "naam": "Isolatiesubsidie Aadorp",
+               "bron_url": "https://www.aadorp.nl/isolatie", "peildatum": "2026-09-28", "status": "onbekend",
+               "betrouwbaarheid": "laag", "criteria": {}}
+        run.OUT.write_text(json.dumps([web]))
+        run.WEB_STATE.write_text(json.dumps({n: {"datum": run.VANDAAG, "gevonden": 0} for n in GEMEENTEN}))
+        gelezen = []
+        oud = run.lees_webregeling
+        run.lees_webregeling = lambda naam, g, url: (gelezen.append(url), (dict(self.EXT), "pagina"))[1]
+        try:
+            run.main()
+            r = json.loads(run.OUT.read_text())[0]
+            self.assertEqual(r["criteria"]["woz_max"], 400000)
+            self.assertEqual(r["voorwaarden_gelezen"], run.VANDAAG)
+            self.assertIn("voorwaarden uitgelezen (van de bronpagina", run.LOG_LAST.read_text())
+            run.main()                                                # tweede keer: heeft voorwaarden, niet opnieuw
+            self.assertEqual(gelezen, ["https://www.aadorp.nl/isolatie"])
+        finally:
+            run.lees_webregeling = oud
+
+    def test_niet_gelukt_dan_niet_dezelfde_dag_opnieuw(self):
+        run.zoek_cvdr = lambda naam, trefwoorden=None: {}
+        web = {"id": "aadorp-web-isolatie", "bron": "web", "gemeente": "Aadorp", "naam": "Isolatiesubsidie Aadorp",
+               "bron_url": "https://www.aadorp.nl/isolatie", "status": "onbekend", "criteria": {}}
+        run.OUT.write_text(json.dumps([web]))
+        run.WEB_STATE.write_text(json.dumps({n: {"datum": run.VANDAAG, "gevonden": 0} for n in GEMEENTEN}))
+        pogingen = []
+        oud = run.lees_webregeling
+        run.lees_webregeling = lambda naam, g, url: (pogingen.append(url), ({}, None))[1]
+        try:
+            run.main()
+            run.main()
+        finally:
+            run.lees_webregeling = oud
+        self.assertEqual(len(pogingen), 1)
+        self.assertEqual(json.loads(run.OUT.read_text())[0]["voorwaarden_gelezen"], run.VANDAAG)

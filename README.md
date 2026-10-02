@@ -1,6 +1,6 @@
 # Subsidiecheck isolatie (Takkenkamp)
 
-Checkpagina voor de binnendienst plus een scraper die elke dag de gemeentelijke
+Checkpagina voor de binnendienst plus een scraper die (als je hem start) de gemeentelijke
 isolatieregelingen van álle gemeenten ophaalt uit het CVDR (lokaleregelgeving.overheid.nl)
 en, als daar niets staat, met AI zoekt op internet.
 
@@ -43,12 +43,16 @@ en, als daar niets staat, met AI zoekt op internet.
 3. **Niets relevants in het CVDR?** Dan zoekt het taalmodel op internet (vooral de
    gemeentesite). Per gemeente hooguit eens per 30 dagen.
    Zulke regelingen hebben `"bron": "web"` en betrouwbaarheid "laag": altijd controleren.
+4. **Gevonden op internet maar zonder voorwaarden?** Dan leest de scraper de pagina opnieuw, klikt door
+   naar "voorwaarden", de regeling of een PDF, en laat anders het taalmodel de voorwaarden opzoeken.
+   Hooguit 20 per run en per regeling eens per 7 dagen (`scraper/config.json`).
 
 De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
 (alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.
 
-## Elke dag
-De scraper draait automatisch. Is er iets nieuw of gewijzigd, dan krijg je een
+## Bijwerken
+De scraper draait alleen als je hem start: tabblad Actions → "Subsidies bijwerken" → Run workflow.
+Er is geen vast schema. Is er iets nieuw of gewijzigd, dan krijg je een
 pull request met de wijzigingen in gewone taal. Controleer ze tegen de bronlink,
 zet bij goedgekeurde regelingen `"gecontroleerd": true` en merge. Pas dan ziet de
 binnendienst de wijziging. Niets gewijzigd? Dan komt er geen pull request.

@@ -22,6 +22,8 @@
      CACHE      (standaard koppeling/subsidies-cache.json)
      SLEUTEL    (optioneel: dan moet de aanroep ?sleutel=... of header X-Sleutel meesturen)
      PDOK       (zet op "uit" om nooit adressen op te zoeken)
+     EIGENAAR_BEWONER_STANDAARD  (standaard "ja": alle leads van Takkenkamp zijn eigenaar-bewoner.
+                Stuurt TIOS eigenaar_bewoner wel mee, dan telt dat. Zet op "" om het niet aan te nemen.)
 */
 "use strict";
 const http = require("http");
@@ -35,6 +37,7 @@ const DATA_URL = process.env.DATA_URL || "https://martijn2412.github.io/Subsidie
 const CACHE = process.env.CACHE || path.join(__dirname, "subsidies-cache.json");
 const SLEUTEL = process.env.SLEUTEL || "";
 const PDOK_AAN = process.env.PDOK !== "uit";
+const EIGENAAR_BEWONER_STANDAARD = process.env.EIGENAAR_BEWONER_STANDAARD ?? "ja";
 const VERVERS_MS = 24 * 60 * 60 * 1000;
 const OUD_NA_DAGEN = 14;
 const PDOK_TIMEOUT_MS = 3000;
@@ -81,6 +84,7 @@ async function zoekAdres(postcode, huisnummer) {
 async function beoordeel(params) {
   const klant = Object.assign({}, params);
   delete klant.sleutel; delete klant.postcode; delete klant.huisnummer; delete klant.toevoeging;
+  if (klant.eigenaar_bewoner == null || klant.eigenaar_bewoner === "") klant.eigenaar_bewoner = EIGENAAR_BEWONER_STANDAARD;
   let adres = null, waarschuwing = null;
 
   if (PDOK_AAN && params.postcode && params.huisnummer) {
