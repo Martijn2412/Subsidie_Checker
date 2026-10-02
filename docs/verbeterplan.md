@@ -52,9 +52,18 @@ toetsen. Hieronder staat wat er beter kan, het belangrijkste eerst.
 11. **Taalmodel als reserve van een andere aanbieder** (bijv. Mistral, gratis) voor als Gemini vol of overbelast is.
 
 ## Kosten
-Na de eerste vulling verandert er per maand maar een handvol regelingen. De gratis Gemini-laag is dan
-genoeg (filter en uitlezen alleen bij wijzigingen). Wil je zekerheid, dan kost een betaalde sleutel naar
-schatting enkele euro's per maand.
+Het uitlezen van voorwaarden gebeurt door een taalmodel via een API-sleutel. Elke aanroep verbruikt tokens,
+en tokens kosten geld zodra het gratis tegoed op is. Na de eerste vulling verandert er per maand maar een
+handvol regelingen, dus het verbruik daalt dan sterk (filter en uitlezen alleen bij wijzigingen).
+
+Mogelijk kan het ook zonder betaalde sleutel: met een taalmodel dat lokaal op een eigen computer draait
+(bijvoorbeeld via Ollama). Dan zijn er geen tokenkosten. Nadelen:
+- Het kan traag zijn. Hoe snel hangt af van de rekenkracht van de computer (vooral de videokaart).
+- Die computer moet aanstaan tijdens de run; GitHub Actions kan er niet zomaar bij.
+- Zoeken op internet doet het model dan niet zelf; dat moet de scraper overnemen.
+- Een klein lokaal model leest voorwaarden mogelijk minder goed. Eerst testen tegen `tests/baseline_pilot.json`.
+
+Dit is nog niet gebouwd of getest. De scraper kent nu alleen `"provider": "gemini"` en `"claude"`.
 
 ## Privacy
 Met optie 2 uit `docs/TIOS-koppeling.md` gaan er geen klantgegevens naar GitHub of naar een AI-model:
