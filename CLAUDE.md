@@ -3,6 +3,30 @@
 Eigenaar: Martijn (Takkenkamp, binnendienst). Uitleg van het project staat in `README.md`,
 de koppeling met TIOS in `docs/TIOS-koppeling.md`.
 
+## Waar dit om draait
+Nederland moet van het gas af, en dat begint bij goed geïsoleerde huizen. Bijna elke gemeente heeft daar geld
+voor: een subsidie, een voucher of een lening voor dak-, vloer-, gevel- of glasisolatie. Maar die regelingen
+staan verspreid over 342 gemeenten, elk met eigen voorwaarden, budgetten en einddata. Ze veranderen
+voortdurend, en geen mens houdt dat bij.
+
+**Deze tool houdt het wél bij.** Elke dag haalt hij van álle gemeenten de isolatieregelingen op, leest de
+voorwaarden uit en zet ze klaar. Komt er bij Takkenkamp een lead binnen, dan staat in TIOS onder het
+energielabel in één regel of die klant **mogelijk recht heeft op subsidie**. Bijvoorbeeld: "Mogelijk subsidie:
+Isolatiesubsidie Doesburg (max. € 2.000). Nog checken: eigenaar-bewoner."
+
+Waarom dat ertoe doet:
+- **Voor de klant:** honderden tot duizenden euro's die anders blijven liggen, omdat niemand wist dat de
+  regeling bestond. Dat kan het verschil zijn tussen wel of niet isoleren.
+- **Voor de binnendienst:** geen zoekwerk per gemeente meer. Ze zien het meteen en kunnen het in het eerste
+  gesprek noemen.
+- **Voor Takkenkamp:** meer klanten die "ja" zeggen, en een voorsprong op bedrijven die dit niet weten.
+
+Elke gemeente die ontbreekt, en elke voorwaarde die niet is uitgelezen, is dus een klant die misschien
+subsidie misloopt. **Lever daarom werk af dat klopt en dat blijft werken**, ook als Martijn er niet meer is:
+- Liever eerlijk "dit weet ik niet" dan een oordeel dat een klant iets belooft wat niet waar is.
+- Liever een tool die zichzelf herstelt (verder waar hij stopte, niets kwijt) dan een die iemand moet oppassen.
+- Liever simpel en uitgelegd dan slim en onbegrijpelijk.
+
 ## Communicatie
 - Schrijf in het Nederlands, in gewone taal en met korte zinnen. Niet technisch, tenzij Martijn erom vraagt.
 - Documenten voor anderen (zoals TIOS): alleen wat er nodig is en waarom, en kort hoe het gebruikt wordt.
