@@ -197,6 +197,9 @@ def reserve_aanbieders():
     return lijst
 
 
+HOOFD_OP = []   # gevuld zodra de hoofdaanbieder deze run op is
+
+
 class TeLang(Exception):
     """De tekst past niet in het model van deze aanbieder."""
 
@@ -279,11 +282,15 @@ def llm(taak, tekst, json_uit=False, zoeken=False, met_bronnen=False):
     if time.monotonic() - START > MAX_AI_SEC:
         raise LimietOp("tijdslimiet van deze run bereikt")
     fout = None
-    if client is not None:
+    if client is not None and not HOOFD_OP:
         try:
             return llm_hoofd(taak, tekst, json_uit, zoeken, met_bronnen)
         except LimietOp as e:
             fout = e
+            if reserve_aanbieders() and not zoeken:
+                # niet bij elke aanroep opnieuw minuten wachten op een aanbieder die toch op is
+                HOOFD_OP.append(str(e))
+                print(f"  {PROVIDER} is op ({str(e)[:80]}); deze run verder met de reserve-aanbieders")
     if zoeken:
         raise LimietOp(f"zoeken op internet kan alleen met {PROVIDER}" + (f" ({fout})" if fout else ""))
     te_lang = []
@@ -467,7 +474,7 @@ def haal_webpagina(url):
 
 def max_webtekst():
     """Hoeveel webtekst per gemeente naar het taalmodel kan: minder als alleen een klein model beschikbaar is."""
-    if client is not None:
+    if client is not None and not HOOFD_OP:
         return webbronnen.MAX_TEKST_GEMEENTE
     reserves = [a for a in reserve_aanbieders() if a["naam"] not in UITGEPUT]
     if not reserves:
@@ -491,7 +498,7 @@ ZOEKEN_OP = []   # gevuld zodra zoeken met Google deze run niet meer kan
 def ai_zoekfunctie(prompt):
     """AI-zoekactie met Google. Kan dat niet meer (Gemini op) maar werken de reserve-aanbieders nog,
     dan None: de run gaat door zonder AI-zoekacties."""
-    if ZOEKEN_OP or client is None:
+    if ZOEKEN_OP or HOOFD_OP or client is None:
         return None
     try:
         return llm("zoeken", prompt, zoeken=True, met_bronnen=True)

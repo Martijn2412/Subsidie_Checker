@@ -30,6 +30,10 @@ Het doel en de afspraken staan in `CLAUDE.md`.
    naam `GEMINI_API_KEY`, waarde je sleutel van aistudio.google.com (gratis).
    Liever Claude? Zet `"provider": "claude"` in `scraper/config.json` en maak het
    secret `ANTHROPIC_API_KEY` aan.
+   **Aanrader, gratis:** maak ook een Mistral-sleutel als reserve (Gemini gratis is snel op).
+   Ga naar console.mistral.ai, maak een account (alleen sms-verificatie, geen creditcard), kies het gratis plan
+   "Experiment", maak onder *API keys* een sleutel en zet die als secret `MISTRAL_API_KEY`.
+   Is Gemini op, dan gaat de scraper vanzelf verder met Mistral (ongeveer 1 miljard tokens per maand gratis).
 3. Settings → Actions → General → Workflow permissions: kies "Read and write" en
    vink "Allow GitHub Actions to create and approve pull requests" aan.
 4. Settings → Pages → Deploy from a branch → `main`, map `/ (root)`.

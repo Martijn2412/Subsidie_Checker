@@ -29,6 +29,7 @@ class TestAanbieders(unittest.TestCase):
         run.client, run.START_AANBIEDER = None, None          # geen Gemini-sleutel
         run.time.sleep = lambda s: None
         run.UITGEPUT.clear()
+        run.HOOFD_OP.clear()
         run.CFG["reserve_aanbieders"] = [
             {"naam": "github", "basis_url": "https://gh.test", "sleutel_env": "TEST_GH",
              "modellen": {"filter": "mini", "extractie": "mini"}, "max_invoer_tekens": 100},
@@ -94,6 +95,22 @@ class TestAanbieders(unittest.TestCase):
             self.assertLess(run.max_webtekst(), 30000)          # webtekst past in het kleine model
         finally:
             del os.environ["TEST_OLLAMA"]
+
+    def test_hoofdaanbieder_op_wordt_niet_steeds_opnieuw_geprobeerd(self):
+        pogingen = []
+
+        def hoofd(*a, **kw):
+            pogingen.append(1)
+            raise run.LimietOp("429 quota")
+        oud_hoofd, run.llm_hoofd, run.client = run.llm_hoofd, hoofd, object()
+        try:
+            self.nep({"https://gh.test/chat/completions": [ok("JA"), ok("NEE")]})
+            self.assertEqual(run.llm("filter", "kort"), "JA")
+            self.assertEqual(run.llm("filter", "kort"), "NEE")
+            self.assertEqual(len(pogingen), 1)                    # Gemini maar één keer geprobeerd
+        finally:
+            run.llm_hoofd, run.client = oud_hoofd, None
+            run.HOOFD_OP.clear()
 
     def test_beginnen_bij_gekozen_aanbieder(self):
         run.START_AANBIEDER = "groot"

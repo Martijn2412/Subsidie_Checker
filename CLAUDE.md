@@ -27,9 +27,11 @@ Een gemeente zonder regeling moet aantoonbaar overal doorzocht zijn. "Niet gezoc
 
 ## De grootste rem: het AI-tegoed
 Met een gratis Gemini-sleutel is het tegoed na een paar dozijn aanroepen op (429). Dan schakelt `llm()` over
-naar de **reserve-aanbieders** (`reserve_aanbieders` in de config): eerst gratis aanbieders zonder sleutel (LLM7.io, Pollinations,
-OVHcloud; GitHub Models is per 30-7-2026 gestopt), daarna Cerebras, Mistral, Groq en OpenRouter als hun gratis sleutel
-als secret is ingesteld. Te lange tekst voor een aanbieder → de volgende; zoeken met Google kan alleen Gemini.
+naar de **reserve-aanbieders** (`reserve_aanbieders` in de config), op volgorde: eigen Ollama (als die draait),
+**Mistral** (aanrader: gratis sleutel `MISTRAL_API_KEY`, ~1 miljard tokens per maand), Cerebras, dan aanbieders zonder
+sleutel met zeer lage limieten (LLM7.io, Pollinations, OVHcloud), dan Groq en OpenRouter. Zonder secret wordt een
+aanbieder overgeslagen. Is de hoofdaanbieder op, dan wordt hij de rest van de run niet meer geprobeerd (`HOOFD_OP`).
+GitHub Models is per 30-7-2026 gestopt. Te lange tekst voor een aanbieder → de volgende; zoeken met Google kan alleen Gemini.
 Een **open model** (Ollama, standaard Qwen 2.5 7B) kan op de runner zelf draaien: vinkje *lokaal_model* of
 repository-variabele `LOKAAL_MODEL=true`. Geen sleutel en geen limiet, wel traag (geen grafische kaart).
 Ollama op een eigen server met grafische kaart: zet `OLLAMA_URL`.
