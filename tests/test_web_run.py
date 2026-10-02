@@ -73,6 +73,7 @@ class TestWebRun(unittest.TestCase):
         return [
             {"naam": "Subsidie isolatie", "zelfde_als": "Subsidieregeling isolatie eigen woning Testdorp 2025",
              "bron_url": SITE, "bedrag": "max. € 1.500"},
+            {"naam": "Investeringssubsidie duurzame energie en energiebesparing (ISDE)", "bron_url": LOKET},
             {"naam": "Isolatieactie spouwmuur Testdorp", "type": "korting", "bron_url": LOKET,
              "uitvoerder": "Regionaal Energieloket", "bedrag": "30% korting", "looptijd_eind": "2027-03-01",
              "criteria": {"eigenaar_bewoner": True},

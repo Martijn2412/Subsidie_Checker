@@ -550,6 +550,10 @@ def toon(rec, bron=""):
     print(f"    → {rec.get('naam')}{(' [' + bron + ']') if bron else ''}: " + " · ".join(delen))
 
 
+LANDELIJK = re.compile(r"\bISDE\b|investeringssubsidie duurzame energie|warmtefonds|nationaal isolatieprogramma$",
+                       re.I)
+
+
 def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
     """Zet de uitkomst van de web-extractie om naar records.
     bestaand: CVDR/handmatige records van deze gemeente (dezelfde regeling niet dubbel opnemen).
@@ -562,6 +566,9 @@ def web_records(g, ext_lijst, tekst, verslag, oud_web, bestaand):
             continue
         titel = (ext.get("naam") or "").strip()
         if not titel:
+            continue
+        if LANDELIJK.search(titel):   # landelijke regelingen horen niet bij de gemeente, welk model het ook noemt
+            print(f"    → {titel}: landelijke regeling, overgeslagen")
             continue
         url = ext.get("bron_url") if ext.get("bron_url") in bronnen else (verslag["paginas"][0]["url"] if verslag["paginas"] else None)
         zelfde = next((r for r in bestaand if (ext.get("zelfde_als") and webbronnen.lijkt_op(ext["zelfde_als"], r["naam"], naam))
