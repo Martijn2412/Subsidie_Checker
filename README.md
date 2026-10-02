@@ -62,6 +62,9 @@ alleen het CVDR is bekeken; de rest volgt bij een volgende run.
 zonder sleutel (LLM7.io, Pollinations, OVHcloud; lage limieten) en met andere gratis aanbieders waarvan je een sleutel als secret zet:
 `CEREBRAS_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` (aanmaken op hun site, zonder
 creditcard). Zie `reserve_aanbieders` in `scraper/config.json`.
+Helemaal zonder aanbieder: vink bij Run workflow **lokaal_model** aan (of zet de repository-variabele
+`LOKAAL_MODEL` op `true`). Dan draait een open model (Ollama, Qwen 2.5 7B) op de runner zelf: gratis en
+zonder limiet, maar traag.
 
 De limieten in `scraper/config.json` staan ingesteld op een **betaalde** API-sleutel
 (alles in één run). Gratis sleutel? Zie `_uitleg_limieten` in dat bestand.

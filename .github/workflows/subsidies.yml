@@ -14,9 +14,13 @@ on:
         type: boolean
         default: false
       aanbieder:
-        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: llm7, pollinations, ovh (zonder sleutel), cerebras, mistral, groq, openrouter."
+        description: "Taalmodel om mee te beginnen: standaard (Gemini, daarna reserves), of meteen een reserve: ollama (vinkje lokaal_model), llm7, pollinations, ovh (zonder sleutel), cerebras, mistral, groq, openrouter."
         required: false
         default: "standaard"
+      lokaal_model:
+        description: "Open taalmodel (Ollama, Qwen) op de runner zelf draaien: geen sleutel en geen limiet, wel traag. Altijd aan: zet repository-variabele LOKAAL_MODEL op true."
+        type: boolean
+        default: false
       zonder_ai:
         description: "Alleen zoeken (CVDR, gemeentesite, partners), niets naar het taalmodel. Om het zoeken te testen zonder tegoed."
         type: boolean
@@ -55,9 +59,9 @@ jobs:
       - name: Pakketten installeren
         run: pip install requests google-genai anthropic openpyxl pypdf
 
-      # Alleen bij een proef met een gekozen aanbieder: laat zien of de gratis taalmodellen zonder sleutel antwoorden
+      # Alleen bij een proef met aanbieder 'test': laat zien of de gratis taalmodellen zonder sleutel antwoorden
       - name: Gratis taalmodellen controleren
-        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder != 'standaard' && github.event.inputs.aanbieder != ''
+        if: github.event.inputs.proef == 'true' && github.event.inputs.aanbieder == 'test'
         continue-on-error: true
         run: |
           for basis in https://oai.endpoints.kepler.ai.cloud.ovh.net/v1 https://api.llm7.io/v1 https://text.pollinations.ai/openai; do
@@ -73,6 +77,27 @@ jobs:
             curl -sS --max-time 60 -i -X POST "$1/chat/completions" -H "Content-Type: application/json" \
               -d "${vraag/MODEL/$2}" | head -c 1200; echo
           done
+
+      # Open taalmodel op de runner (zie "ollama" in scraper/config.json). Het model wordt bewaard in de cache.
+      - name: Open taalmodel ophalen uit de cache
+        if: github.event.inputs.lokaal_model == 'true' || vars.LOKAAL_MODEL == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama/models
+          key: ollama-${{ hashFiles('scraper/config.json') }}
+          restore-keys: ollama-
+
+      - name: Open taalmodel starten (Ollama)
+        if: github.event.inputs.lokaal_model == 'true' || vars.LOKAAL_MODEL == 'true'
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          sudo systemctl stop ollama 2>/dev/null || true
+          OLLAMA_CONTEXT_LENGTH=16384 OLLAMA_MODELS=$HOME/.ollama/models nohup ollama serve > ollama.log 2>&1 &
+          for i in $(seq 1 30); do curl -s localhost:11434 >/dev/null && break; sleep 2; done
+          MODELLEN=$(python -c "import json;c=json.load(open('scraper/config.json'));print(' '.join(sorted({m for a in c['reserve_aanbieders'] if a['naam']=='ollama' for m in a['modellen'].values()})))")
+          for m in $MODELLEN; do OLLAMA_MODELS=$HOME/.ollama/models ollama pull $m; done
+          echo "OLLAMA_URL=http://localhost:11434/v1" >> "$GITHUB_ENV"
+          nproc; free -g
 
       - name: Regelingen ophalen en voorwaarden uitlezen
         timeout-minutes: 320   # de run stopt zelf al na 300 min (config.json); dit is de noodrem

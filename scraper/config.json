@@ -86,7 +86,7 @@
     }
   ],
   "_uitleg_partners": "Partners die regelingen voor gemeenten uitvoeren. index = pagina met een lijst van gemeenten (links worden op gemeentenaam gezocht), sjablonen = webadressen per gemeente ({slug} = naam in kleine letters met streepjes, bijv. bergen-op-zoom). Een pagina telt alleen mee als de gemeente erop staat en hij over geld voor isolatie gaat. Partners voeg je hier zelf toe.",
-  "max_minuten_taalmodel": 100,
+  "max_minuten_taalmodel": 290,
   "max_minuten_run": 300,
   "_uitleg_run": "max_minuten_run: na zoveel minuten stopt de run netjes en slaat alles op (GitHub stopt hard na 6 uur). Is het AI-budget of de daglimiet op, dan stopt hij meteen. Daarnaast slaat hij elke 5 minuten tussentijds op. De volgende run begint bij de gemeente waar deze stopte (data/voortgang.json).",
   "modellen": {
@@ -104,6 +104,19 @@
     }
   },
   "reserve_aanbieders": [
+    {
+      "naam": "ollama",
+      "adres_env": "OLLAMA_URL",
+      "sleutel_env": "",
+      "modellen": {
+        "filter": "qwen2.5:7b",
+        "extractie": "qwen2.5:7b"
+      },
+      "max_invoer_tekens": 45000,
+      "max_uitvoer_tokens": 4000,
+      "pauze_sec": 0,
+      "timeout_sec": 2400
+    },
     {
       "naam": "llm7",
       "basis_url": "https://api.llm7.io/v1",
@@ -125,8 +138,12 @@
         "extractie": "openai-fast"
       },
       "max_invoer_tekens": 60000,
-      "max_uitvoer_tokens": 8000,
-      "pauze_sec": 16
+      "max_uitvoer_tokens": 16000,
+      "pauze_sec": 16,
+      "extra": {
+        "reasoning_effort": "low"
+      },
+      "seed": true
     },
     {
       "naam": "ovh",
@@ -193,5 +210,6 @@
   "_uitleg_reserve": "Is de hoofdaanbieder (provider) op of is er geen sleutel, dan gaat de scraper verder bij deze aanbieders, op volgorde. llm7, pollinations en ovh werken ZONDER sleutel (anoniem, met lage limieten: llm7 ~60 per uur, ovh 2 per minuut). De andere hebben een gratis sleutel zonder creditcard: maak die aan op de site van de aanbieder en zet hem als repository secret (CEREBRAS_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY). Een aanbieder zonder sleutel-secret wordt overgeslagen. Modelnamen en gratis limieten veranderen vaak; werkt een aanbieder niet meer, pas dan de modelnaam aan of zet hem lager. (GitHub Models is per 30 juli 2026 gestopt.) Zoeken op internet met Google kan alleen Gemini.",
   "pauze_tussen_aanroepen_sec": 7,
   "max_resultaten_per_zoekvraag": 50,
-  "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400."
+  "_uitleg_limieten": "Ingesteld voor een GRATIS Gemini-sleutel (pauze 7, 100 minuten, 25 web-zoekacties). Op de gratis laag heeft Flash maar ~20 aanvragen per dag; is die op of overbelast, dan gaat de scraper verder met het reservemodel (Flash-Lite, ~500 per dag). Betaalde sleutel? Zet pauze op 1, max_minuten_taalmodel op 300 en max_web_zoekacties_per_run op 400.",
+  "_uitleg_ollama": "ollama = een open model dat je zelf draait (geen sleutel, geen limiet). In GitHub Actions zet je het aan met het vinkje 'lokaal_model' bij Run workflow, of altijd via Settings → Secrets and variables → Actions → Variables: LOKAAL_MODEL = true. Op de gratis runner (geen grafische kaart) is het traag: enkele minuten per regeling. Draait Ollama op een eigen computer of server met grafische kaart, zet dan OLLAMA_URL (bijv. http://server:11434/v1) en het gaat veel sneller."
 }

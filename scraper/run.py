@@ -188,7 +188,9 @@ def bronnen_claude(r):
 
 def reserve_aanbieders():
     """Reserve-aanbieders uit config.json: zonder sleutel nodig ("sleutel_env" leeg), of met een sleutel die er is."""
-    lijst = [a for a in CFG.get("reserve_aanbieders", []) if not a.get("sleutel_env") or os.environ.get(a["sleutel_env"])]
+    lijst = [a for a in CFG.get("reserve_aanbieders", [])
+             if (not a.get("sleutel_env") or os.environ.get(a["sleutel_env"]))
+             and (not a.get("adres_env") or os.environ.get(a["adres_env"]))]   # bijv. eigen Ollama: alleen als hij draait
     if START_AANBIEDER:
         namen = [a["naam"].lower() for a in lijst]
         lijst = lijst[namen.index(START_AANBIEDER):] if START_AANBIEDER in namen else []
@@ -208,7 +210,8 @@ def llm_openai(a, taak, tekst, json_uit):
     if len(tekst) > a.get("max_invoer_tekens", 10 ** 9):
         raise TeLang(f"{a['naam']}: tekst te lang ({len(tekst)} tekens, max. {a['max_invoer_tekens']})")
     body = {"model": model, "messages": [{"role": "user", "content": tekst}], "temperature": 0,
-            "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000))}
+            "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000)), **(a.get("extra") or {})}
+    basis = os.environ.get(a["adres_env"]) if a.get("adres_env") else a["basis_url"]
     if json_uit and a.get("json", True):
         body["response_format"] = {"type": "json_object"}
     kop = {"Content-Type": "application/json", **(a.get("koppen") or {})}
@@ -216,8 +219,11 @@ def llm_openai(a, taak, tekst, json_uit):
         kop["Authorization"] = f"Bearer {os.environ[a['sleutel_env']]}"
     for poging in range(3):
         time.sleep(a.get("pauze_sec", 2))
+        if poging and a.get("seed"):
+            body["seed"] = poging   # andere seed: geen opgeslagen (leeg) antwoord terugkrijgen
         try:
-            r = requests.post(a["basis_url"].rstrip("/") + "/chat/completions", headers=kop, json=body, timeout=180,
+            r = requests.post(basis.rstrip("/") + "/chat/completions", headers=kop, json=body,
+                              timeout=a.get("timeout_sec", 180),
                               allow_redirects=False)   # een doorverwijzing maakt van POST een GET
         except requests.RequestException as e:
             print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/3")
@@ -225,9 +231,12 @@ def llm_openai(a, taak, tekst, json_uit):
             continue
         if r.status_code == 200:
             try:
-                antw = r.json()["choices"][0]["message"]["content"] or ""
-            except (ValueError, KeyError, IndexError):
-                antw = ""
+                keuze = r.json()["choices"][0]
+                antw = keuze["message"].get("content") or ""
+            except (ValueError, KeyError, IndexError, AttributeError):
+                keuze, antw = {}, ""
+            if not antw.strip() and keuze.get("finish_reason") == "length":
+                body["max_tokens"] = min(body["max_tokens"] * 2, 32000)   # ruimte op aan 'nadenken': meer ruimte geven
             if antw.strip():
                 print(f"  (antwoord van {a['naam']}, {model})")
                 return antw
@@ -454,6 +463,17 @@ def haal_webpagina(url):
     if not p:
         raise RuntimeError(f"{url} niet bereikbaar")
     return p["tekst"]
+
+
+def max_webtekst():
+    """Hoeveel webtekst per gemeente naar het taalmodel kan: minder als alleen een klein model beschikbaar is."""
+    if client is not None:
+        return webbronnen.MAX_TEKST_GEMEENTE
+    reserves = [a for a in reserve_aanbieders() if a["naam"] not in UITGEPUT]
+    if not reserves:
+        return webbronnen.MAX_TEKST_GEMEENTE
+    ruimte = reserves[0].get("max_invoer_tekens", webbronnen.MAX_TEKST_GEMEENTE) - len(PROMPT) - len(WEB_EXTRACTIE) - 2000
+    return max(5000, min(webbronnen.MAX_TEKST_GEMEENTE, ruimte))
 
 
 def extraheer_web(gemeente, tekst, bekend):
@@ -942,7 +962,7 @@ def main():
                     print("  pagina's ongewijzigd: vorige uitkomst blijft")
                     web_recs = [{**r, "peildatum": VANDAAG} for r in oud_web]
                 else:
-                    tekst = webbronnen.samengevoegd(gev["paginas"])
+                    tekst = webbronnen.samengevoegd(gev["paginas"], max_webtekst())
                     print(f"  uitlezen ({len(tekst)} tekens uit {len(gev['paginas'])} pagina('s))")
                     ext = extraheer_web(naam, tekst, [r["naam"] for r in bestaand])
                     web_recs, ook, wlog = web_records(g, ext, tekst, vs, oud_web, bestaand)

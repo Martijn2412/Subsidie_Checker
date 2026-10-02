@@ -434,16 +434,16 @@ def verzamel(gemeente, provincie, site, partners, zoek_functie=None, parse_json=
     return {"paginas": paginas, "verslag": verslag}
 
 
-def samengevoegd(paginas):
-    """Eén tekst voor het taalmodel, met per pagina een kop met het webadres."""
+def samengevoegd(paginas, max_tekens=MAX_TEKST_GEMEENTE):
+    """Eén tekst voor het taalmodel, met per pagina een kop met het webadres (beste pagina's eerst)."""
     delen, totaal = [], 0
     for p in paginas:
         stuk = f"\n\n=== Pagina: {p['url']} (bron: {p['bron']}) ===\n{p['tekst']}"
-        if totaal + len(stuk) > MAX_TEKST_GEMEENTE:
-            stuk = stuk[:max(0, MAX_TEKST_GEMEENTE - totaal)]
+        if totaal + len(stuk) > max_tekens:
+            stuk = stuk[:max(0, max_tekens - totaal)]
         delen.append(stuk)
         totaal += len(stuk)
-        if totaal >= MAX_TEKST_GEMEENTE:
+        if totaal >= max_tekens:
             break
     return "".join(delen).strip()
 

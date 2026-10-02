@@ -82,6 +82,19 @@ class TestAanbieders(unittest.TestCase):
             run.llm("zoeken", "zoek", zoeken=True, met_bronnen=True)
         self.assertIsNone(run.ai_zoekfunctie("zoek"))           # zonder Gemini: geen AI-zoekactie, run gaat door
 
+    def test_eigen_model_alleen_als_het_draait(self):
+        run.CFG["reserve_aanbieders"].insert(0, {"naam": "ollama", "adres_env": "TEST_OLLAMA", "sleutel_env": "",
+                                                "modellen": {"filter": "qwen"}, "max_invoer_tekens": 30000})
+        self.assertNotIn("ollama", [a["naam"] for a in run.reserve_aanbieders()])
+        os.environ["TEST_OLLAMA"] = "http://localhost:11434/v1"
+        try:
+            self.assertEqual(run.reserve_aanbieders()[0]["naam"], "ollama")
+            self.nep({"http://localhost:11434/v1/chat/completions": [ok("JA")]})
+            self.assertEqual(run.llm("filter", "kort"), "JA")
+            self.assertLess(run.max_webtekst(), 30000)          # webtekst past in het kleine model
+        finally:
+            del os.environ["TEST_OLLAMA"]
+
     def test_beginnen_bij_gekozen_aanbieder(self):
         run.START_AANBIEDER = "groot"
         self.assertEqual([a["naam"] for a in run.reserve_aanbieders()], ["groot"])

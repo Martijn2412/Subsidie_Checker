@@ -30,6 +30,9 @@ Met een gratis Gemini-sleutel is het tegoed na een paar dozijn aanroepen op (429
 naar de **reserve-aanbieders** (`reserve_aanbieders` in de config): eerst gratis aanbieders zonder sleutel (LLM7.io, Pollinations,
 OVHcloud; GitHub Models is per 30-7-2026 gestopt), daarna Cerebras, Mistral, Groq en OpenRouter als hun gratis sleutel
 als secret is ingesteld. Te lange tekst voor een aanbieder → de volgende; zoeken met Google kan alleen Gemini.
+Een **open model** (Ollama, standaard Qwen 2.5 7B) kan op de runner zelf draaien: vinkje *lokaal_model* of
+repository-variabele `LOKAAL_MODEL=true`. Geen sleutel en geen limiet, wel traag (geen grafische kaart).
+Ollama op een eigen server met grafische kaart: zet `OLLAMA_URL`.
 Is alles op, dan stopt de run en gaat hij de volgende dag verder (`data/voortgang.json`). Daarom: zoeken zonder AI waar het kan, AI alleen voor
 uitlezen, en nooit opnieuw uitlezen wat niet veranderd is. Een betaalde sleutel (enkele euro's per maand) maakt
 een volle ronde in één à twee dagen mogelijk. Zie `_uitleg_limieten` in de config.
