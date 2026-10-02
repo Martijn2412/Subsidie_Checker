@@ -63,17 +63,22 @@ class TestAanbieders(unittest.TestCase):
         self.assertEqual([u for u, _, _ in self.aanroepen].count("https://gh.test/chat/completions"), 1)
         self.assertTrue(self.aanroepen[0][2])                   # JSON-modus gevraagd
 
+    def test_limiet_per_minuut_eerst_wachten(self):
+        self.nep({"https://gh.test/chat/completions": [Antw(429, tekst="Requests rate limit exceeded"), ok("JA")]})
+        self.assertEqual(run.llm("filter", "kort"), "JA")       # na een minuut wachten lukt het wel
+        self.assertNotIn("github", run.UITGEPUT)
+
     def test_te_lange_tekst_naar_groter_model(self):
         self.nep({"https://groot.test/chat/completions": [ok("JA")]})
         self.assertEqual(run.llm("filter", "x" * 500), "JA")
         self.assertEqual([u for u, _, _ in self.aanroepen], ["https://groot.test/chat/completions"])
 
     def test_alles_op_geeft_limietop_en_te_lang_geeft_later(self):
-        self.nep({"https://gh.test/chat/completions": [Antw(429)], "https://groot.test/chat/completions": [Antw(429)]})
+        self.nep({"https://gh.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")], "https://groot.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")]})
         with self.assertRaises(run.LimietOp):
             run.llm("filter", "kort")
         run.UITGEPUT.clear()
-        self.nep({"https://groot.test/chat/completions": [Antw(429)]})
+        self.nep({"https://groot.test/chat/completions": [Antw(429, tekst="Daily quota exceeded")]})
         with self.assertRaises(RuntimeError) as e:              # te lang voor github, groot is op: later opnieuw
             run.llm("filter", "x" * 500)
         self.assertNotIsInstance(e.exception, run.LimietOp)

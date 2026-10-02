@@ -255,6 +255,10 @@ def llm_openai(a, taak, tekst, json_uit):
             if 0 < wacht <= 65 and poging < 2:
                 time.sleep(wacht)
                 continue
+            if not wacht and poging == 0 and not re.search(r"day|daily|dag|month|quota|86400", fout, re.I):
+                print(f"  {a['naam']}: limiet per minuut ({fout[:80]}), wacht 60s")
+                time.sleep(60)   # waarschijnlijk tokens per minuut: even wachten en nog één keer proberen
+                continue
             UITGEPUT.add(a["naam"])
             print(f"  {a['naam']}: limiet bereikt ({fout[:100]}), deze run niet meer gebruiken")
             return None
