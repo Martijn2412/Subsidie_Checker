@@ -165,6 +165,11 @@ class TestAanbieders(unittest.TestCase):
             os.environ.pop("TEST_POL", None)
             run.CFG.pop("taalmodel")
 
+    def test_kapotte_json_wordt_nog_een_keer_gevraagd(self):
+        self.nep({"https://groot.test/chat/completions": [ok('{"naam": "A" "bedrag": 1}'), ok('{"naam": "A", "bedrag": 1}')]})
+        self.assertEqual(run.extraheer("kort"), {"naam": "A", "bedrag": 1})
+        self.assertEqual(len(self.aanroepen), 2)
+
     def test_beginnen_bij_gekozen_aanbieder(self):
         run.START_AANBIEDER = "groot"
         self.assertEqual([a["naam"] for a in run.reserve_aanbieders()], ["groot"])
