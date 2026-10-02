@@ -541,7 +541,7 @@ const BOUWDELEN=["Dak/zolder","Gevel/spouw","Vloer/bodem","Glas"];
 const SEGS={eb:[["ja","Ja"],["nee","Nee"],["","Onbekend"]],
             type:[["grondgebonden","Grondgebonden"],["appartement","Appartement"],["","Onbekend"]],
             inkomen:[["ja","Ja"],["nee","Nee"],["","Onbekend"]]};
-const blank=()=>({pc:"",hn:"",tv:"",adres:null,bron:{},gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"",type:"",inkomen:""});
+const blank=()=>({pc:"",hn:"",tv:"",adres:null,bron:{},gemeente:"",label:"",woz:null,bouwjaar:null,opp:null,bouwdelen:[],bouwdelenBeoordeeld:false,eb:"ja",type:"",inkomen:""});
 let klant=blank();
 let data=DEMO, dsName="Pilotdata (handmatig gecontroleerd)", dsLive=false;
 let zstatus={};  // zoekstatus per gemeente (genormaliseerde naam)

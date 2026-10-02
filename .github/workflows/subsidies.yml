@@ -1,9 +1,7 @@
 name: Subsidies bijwerken
 
 on:
-  schedule:
-    - cron: "15 4 * * *"   # elke dag rond 06:15 Nederlandse tijd
-  workflow_dispatch:        # handmatig starten via het tabblad Actions
+  workflow_dispatch:        # alleen handmatig starten via het tabblad Actions → Run workflow
     inputs:
       gemeenten:
         description: "Alleen deze gemeenten (komma's ertussen, bijv. Doesburg,Arnhem). Leeg = alle gemeenten, verder waar de vorige run stopte."

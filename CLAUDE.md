@@ -9,10 +9,10 @@ voor: een subsidie, een voucher of een lening voor dak-, vloer-, gevel- of glasi
 staan verspreid over 342 gemeenten, elk met eigen voorwaarden, budgetten en einddata. Ze veranderen
 voortdurend, en geen mens houdt dat bij.
 
-**Deze tool houdt het wél bij.** Elke dag haalt hij van álle gemeenten de isolatieregelingen op, leest de
-voorwaarden uit en zet ze klaar. Komt er bij Takkenkamp een lead binnen, dan staat in TIOS onder het
+**Deze tool houdt het wél bij.** Zodra Martijn hem start, haalt hij van álle gemeenten de isolatieregelingen
+op, leest de voorwaarden uit en zet ze klaar. Komt er bij Takkenkamp een lead binnen, dan staat in TIOS onder het
 energielabel in één regel of die klant **mogelijk recht heeft op subsidie**. Bijvoorbeeld: "Mogelijk subsidie:
-Isolatiesubsidie Doesburg (max. € 2.000). Nog checken: eigenaar-bewoner."
+Isolatiesubsidie Doesburg (max. € 2.000). Nog checken: WOZ-waarde."
 
 Waarom dat ertoe doet:
 - **Voor de klant:** honderden tot duizenden euro's die anders blijven liggen, omdat niemand wist dat de
@@ -66,10 +66,12 @@ subsidie misloopt. **Lever daarom werk af dat klopt en dat blijft werken**, ook 
   `"handmatig": true` in `regelingen.json`.
 - Gemeentenamen komen van PDOK, bijvoorbeeld "'s-Gravenhage" en "Hengelo (O)". TIOS stuurt postcode en
   huisnummer; de checkservice zoekt de gemeente zelf op. TIOS stuurt bouwjaar en woonoppervlak altijd mee.
+- Alle leads van Takkenkamp zijn eigenaar-bewoner. Vraag daar niet naar en laat de check het niet als
+  "nog checken" noemen; de checkservice en de checkpagina gaan standaard uit van "ja".
 
 ## Runs en AI-budget
-- De dagelijkse run start rond 06:15. Het gratis Gemini-tegoed wordt om 09:00 Nederlandse tijd opnieuw
-  gevuld. Is het tegoed op, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
+- Er is geen vast schema: de run start alleen als Martijn op Run workflow drukt. Het gratis Gemini-tegoed
+  wordt om 09:00 Nederlandse tijd opnieuw gevuld. Is het tegoed op, dan stopt de run; de volgende gaat verder waar hij stopte (`data/voortgang.json`).
 - Per gemeente staat het resultaat in de log van de stap "Regelingen ophalen en voorwaarden uitlezen":
   ✅ ⚠️ ➖ ❌ 🛑. Op de Summary-pagina van de run staat een tabel.
 

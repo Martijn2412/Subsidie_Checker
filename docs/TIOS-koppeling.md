@@ -2,9 +2,9 @@
 
 Doel: als er in TIOS een lead of klant binnenkomt, staat onder het energielabel één regel zoals
 
-> **Mogelijk subsidie: Isolatiesubsidie Doesburg (max. € 2.000). Nog checken: eigenaar-bewoner.**
+> **Mogelijk subsidie: Isolatiesubsidie Doesburg (max. € 2.000). Nog checken: WOZ-waarde.**
 
-TIOS hoeft daarvoor niets zelf uit te rekenen. Alles staat klaar in deze repo en wordt elke dag bijgewerkt.
+TIOS hoeft daarvoor niets zelf uit te rekenen. Alles staat klaar in deze repo en wordt bijgewerkt zodra Martijn de scraper start.
 
 ## Wat er klaarstaat
 
@@ -31,12 +31,12 @@ Alles is optioneel. Wat ontbreekt, komt terug als "aanvullen".
 | `woz` | `325000` | Vragen aan de klant of het WOZ-waardeloket (geen gratis bulk-API). |
 | `bouwjaar` | `1968` | TIOS (stuurt het altijd mee). |
 | `woonoppervlak` | `115` | TIOS (stuurt het altijd mee). |
-| `eigenaar_bewoner` | `true` | Vraag in het intakeformulier. |
+| `eigenaar_bewoner` | `true` | Niet nodig: alle leads van Takkenkamp zijn eigenaar-bewoner. De checkservice en de checkpagina gaan daar standaard van uit. |
 | `woningtype` | `"tussenwoning"`, `"appartement"` | TIOS of BAG. Woorden als tussen/hoek/vrijstaand = grondgebonden, flat/portiek/VvE = appartement. |
 | `laag_inkomen` | `false` | Vraag in het intakeformulier (alleen nodig bij inkomensregelingen). |
 | `slechte_bouwdelen` | `2` | Inschatting adviseur: aantal niet of slecht geïsoleerde bouwdelen. |
 
-**Tip:** voeg in TIOS twee vragen toe aan de intake: "Woont u zelf in de woning?" en "Weet u uw WOZ-waarde?". Dat zijn de gegevens die het vaakst ontbreken.
+**Tip:** voeg in TIOS de vraag "Weet u uw WOZ-waarde?" toe aan de intake. Die ontbreekt het vaakst.
 
 ## De uitkomst
 
@@ -47,14 +47,14 @@ const uit = SubsidieCheck.check(
 );
 uit.uitkomst   // "mogelijk" | "aanvullen" | "voldoet_niet" | "geen_regeling" | "onbekend"
 uit.tekst      // de regel voor onder het energielabel
-uit.ontbreekt  // bijv. ["woz", "eigenaar_bewoner"]: wat de binnendienst nog moet vragen
+uit.ontbreekt  // bijv. ["woz", "woningtype"]: wat de binnendienst nog moet vragen
 uit.regelingen // per regeling: naam, bedrag, aanvragen_tm, bron_url, uitkomst, controles
 ```
 
 | `uitkomst` | Betekenis | Voorbeeldtekst |
 |---|---|---|
 | `mogelijk` | Voldoet aan alle bekende voorwaarden van minstens één regeling | Mogelijk subsidie: … (max. € 2.000). |
-| `aanvullen` | Kan nog, maar er mist informatie | Mogelijk subsidie (2 regelingen in Arnhem). Aanvullen: WOZ-waarde, eigenaar-bewoner. |
+| `aanvullen` | Kan nog, maar er mist informatie | Mogelijk subsidie (2 regelingen in Arnhem). Aanvullen: WOZ-waarde. |
 | `voldoet_niet` | Er zijn regelingen, maar de klant valt erbuiten | Geen passende subsidie in Apeldoorn: voldoet niet aan WOZ ≤ €477.000. |
 | `geen_regeling` | Geen open regeling gevonden (of nog niet uitgelezen) | Geen open gemeentelijke isolatiesubsidie gevonden in Groningen. |
 
@@ -65,7 +65,7 @@ Altijd indicatief: de binnendienst checkt de bron voordat er iets aan de klant w
 TIOS draait op Ubuntu. De kortste route is `koppeling/checkservice.js`: een kleine service (alleen Node.js nodig, geen pakketten) die één keer per dag `tios/subsidies.json` ophaalt en een oordeel teruggeeft op:
 
 ```
-GET http://localhost:8085/check?postcode=2511AB&huisnummer=12&energielabel=E&bouwjaar=1931&woonoppervlak=95&woz=300000&eigenaar_bewoner=ja
+GET http://localhost:8085/check?postcode=2511AB&huisnummer=12&energielabel=E&bouwjaar=1931&woonoppervlak=95&woz=300000
 ```
 
 **Stuur postcode + huisnummer mee, niet de gemeentenaam.** De service zoekt de gemeente dan zelf op bij PDOK. Dat is dezelfde bron als de subsidielijst, dus de naam klopt altijd. Met alleen `gemeente=Den Haag` vindt hij niets, want in de lijst heet die gemeente "'s-Gravenhage". Bouwjaar, woonoppervlak en de andere velden stuurt TIOS zelf mee. Alleen postcode en huisnummer gaan naar PDOK. De server moet daarvoor naar `api.pdok.nl` mogen. Is PDOK niet bereikbaar, dan gebruikt de service `gemeente=` als reserve en zet hij een `waarschuwing` in het antwoord. `koppeling/subsidiecheck.service` laat hem als systemd-dienst draaien. Uitleg, beheer en overdracht: `docs/Technisch-ontwerp-TIOS-koppeling.docx`.
@@ -93,7 +93,7 @@ Voordeel: de klantgegevens verlaten TIOS niet (privacy). Er is geen server nodig
 Een gratis Cloudflare Worker (of Azure Function) die TIOS aanroept:
 ```
 GET https://subsidiecheck.<jouw-domein>.workers.dev/?gemeente=Arnhem&energielabel=E&woz=300000
-→ {"uitkomst":"aanvullen","tekst":"Mogelijk subsidie (…). Aanvullen: …","ontbreekt":["eigenaar_bewoner"]}
+→ {"uitkomst":"aanvullen","tekst":"Mogelijk subsidie (…). Aanvullen: …","ontbreekt":["woz"]}
 ```
 De code is kort, omdat al het rekenwerk in `subsidiecheck.js` zit:
 ```js
