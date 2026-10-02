@@ -211,11 +211,13 @@ def llm_openai(a, taak, tekst, json_uit):
             "max_tokens": min(TOKENS[taak], a.get("max_uitvoer_tokens", 4000))}
     if json_uit and a.get("json", True):
         body["response_format"] = {"type": "json_object"}
-    kop = {"Authorization": f"Bearer {os.environ[a['sleutel_env']]}", "Content-Type": "application/json"}
+    kop = {"Authorization": f"Bearer {os.environ[a['sleutel_env']]}", "Content-Type": "application/json",
+           **(a.get("koppen") or {})}
     for poging in range(3):
         time.sleep(a.get("pauze_sec", 2))
         try:
-            r = requests.post(a["basis_url"].rstrip("/") + "/chat/completions", headers=kop, json=body, timeout=180)
+            r = requests.post(a["basis_url"].rstrip("/") + "/chat/completions", headers=kop, json=body, timeout=180,
+                              allow_redirects=False)   # een doorverwijzing maakt van POST een GET
         except requests.RequestException as e:
             print(f"  {a['naam']}: fout ({str(e)[:100]}), poging {poging + 1}/3")
             time.sleep(10)
@@ -228,9 +230,13 @@ def llm_openai(a, taak, tekst, json_uit):
             if antw.strip():
                 print(f"  (antwoord van {a['naam']}, {model})")
                 return antw
-            print(f"  {a['naam']}: leeg antwoord ({r.text[:300]}), poging {poging + 1}/3")
+            print(f"  {a['naam']}: leeg antwoord ({r.headers.get('content-type')}: {r.text[:200]!r}), poging {poging + 1}/3")
             continue
         fout = r.text[:200].replace("\n", " ")
+        if 300 <= r.status_code < 400:
+            print(f"  {a['naam']}: doorverwezen naar {r.headers.get('location')} ({r.status_code}); pas basis_url aan")
+            UITGEPUT.add(a["naam"])
+            return None
         if r.status_code == 429:
             wacht = int(re.sub(r"\D", "", r.headers.get("retry-after", "")) or 0)
             if 0 < wacht <= 65 and poging < 2:

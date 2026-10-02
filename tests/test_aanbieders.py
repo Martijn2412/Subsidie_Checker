@@ -48,7 +48,7 @@ class TestAanbieders(unittest.TestCase):
         del os.environ["TEST_GH"], os.environ["TEST_GROOT"]
 
     def nep(self, antwoorden):
-        def post(url, headers=None, json=None, timeout=None):
+        def post(url, headers=None, json=None, timeout=None, **kw):
             self.aanroepen.append((url, json["model"], "response_format" in json))
             return antwoorden[url].pop(0)
         run.requests.post = post
